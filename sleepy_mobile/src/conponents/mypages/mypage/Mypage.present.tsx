@@ -19,6 +19,8 @@ import {
   InsertImage,
   HistoryWrapper,
   HistoryTitleWrapper,
+  BuyLineWrapper,
+  PointLineWrapper,
   BuyHistory,
   PointHistory,
   BuyHistoryWrapper,
@@ -28,6 +30,7 @@ import {
   Row,
   Column,
   ColumnContent,
+  ColumnContentWapper,
 } from "./Mypage.styles";
 
 import { useNavigation } from "@react-navigation/native";
@@ -83,10 +86,22 @@ const MypageUI = (props: any) => {
         </IconWrapper>
         <HistoryWrapper>
           <HistoryTitleWrapper>
-            <BuyHistory onPress={props.onPressShowBuy}>구매내역</BuyHistory>
-            <PointHistory onPress={props.onPressShowPoint}>
-              포인트내역
-            </PointHistory>
+            <BuyLineWrapper isPoint={props.isPoint}>
+              <BuyHistory
+                onPress={props.onPressShowBuy}
+                isPoint={props.isPoint}
+              >
+                구매내역
+              </BuyHistory>
+            </BuyLineWrapper>
+            <PointLineWrapper isPoint={props.isPoint}>
+              <PointHistory
+                onPress={props.onPressShowPoint}
+                isPoint={props.isPoint}
+              >
+                포인트내역
+              </PointHistory>
+            </PointLineWrapper>
           </HistoryTitleWrapper>
         </HistoryWrapper>
         {!props.isPoint ? (
@@ -104,7 +119,9 @@ const MypageUI = (props: any) => {
             </RowName>
             <Row>
               <Column>2021-02-24</Column>
-              <ColumnContent></ColumnContent>
+              <ColumnContentWapper>
+                <ColumnContent>충전</ColumnContent>
+              </ColumnContentWapper>
               <Column>+1000000</Column>
               <Column>1000000</Column>
             </Row>
