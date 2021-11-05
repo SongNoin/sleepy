@@ -55,19 +55,19 @@ const Category = () => {
         </CategoryIconWrapper>
         <CategoryIconWrapper onPress={() => navigation.navigate("상품 리스트")}>
           <CategoryIcon
-            source={require("../../../public/images/home/pillow.png")}
+            source={require("../../../public/images/home/blankits.png")}
           />
           <CategoryText>이불</CategoryText>
         </CategoryIconWrapper>
         <CategoryIconWrapper onPress={() => navigation.navigate("상품 리스트")}>
           <CategoryIcon
-            source={require("../../../public/images/home/pillow.png")}
+            source={require("../../../public/images/home/courtain.png")}
           />
-          <CategoryText>암막커든</CategoryText>
+          <CategoryText>암막커튼</CategoryText>
         </CategoryIconWrapper>
         <CategoryIconWrapper onPress={() => navigation.navigate("상품 리스트")}>
           <CategoryIcon
-            source={require("../../../public/images/home/pillow.png")}
+            source={require("../../../public/images/home/pajamas.png")}
           />
           <CategoryText>수면잠옷</CategoryText>
         </CategoryIconWrapper>
@@ -75,25 +75,25 @@ const Category = () => {
       <CategoryMiddleWrapper>
         <CategoryIconWrapper onPress={() => navigation.navigate("상품 리스트")}>
           <CategoryIcon
-            source={require("../../../public/images/home/pillow.png")}
+            source={require("../../../public/images/home/oil.png")}
           />
           <CategoryText>오일</CategoryText>
         </CategoryIconWrapper>
         <CategoryIconWrapper onPress={() => navigation.navigate("상품 리스트")}>
           <CategoryIcon
-            source={require("../../../public/images/home/pillow.png")}
+            source={require("../../../public/images/home/book.png")}
           />
           <CategoryText>도서</CategoryText>
         </CategoryIconWrapper>
         <CategoryIconWrapper onPress={() => navigation.navigate("상품 리스트")}>
           <CategoryIcon
-            source={require("../../../public/images/home/pillow.png")}
+            source={require("../../../public/images/home/eyepatch.png")}
           />
           <CategoryText>수면용품</CategoryText>
         </CategoryIconWrapper>
         <CategoryIconWrapper onPress={() => navigation.navigate("상품 리스트")}>
           <CategoryIcon
-            source={require("../../../public/images/home/pillow.png")}
+            source={require("../../../public/images/home/pill.png")}
           />
           <CategoryText>수면보조제</CategoryText>
         </CategoryIconWrapper>
