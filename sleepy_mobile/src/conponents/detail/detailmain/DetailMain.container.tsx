@@ -3,9 +3,7 @@ import React from "react";
 import DetailUI from "./DetailMain.present";
 
 const DetailContainer = () => {
-    return(
-        <DetailUI />
-    )
-}
+  return <DetailUI />;
+};
 
-export default DetailContainer
+export default DetailContainer;

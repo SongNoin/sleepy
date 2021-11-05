@@ -3,9 +3,7 @@ import React from "react";
 import MypageUI from "./Mypage.present";
 
 const MypageContainer = () => {
-    return(
-        <MypageUI />
-    )
-}
+  return <MypageUI />;
+};
 
-export default MypageContainer
+export default MypageContainer;
