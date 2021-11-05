@@ -3,9 +3,7 @@ import React from "react";
 import SearchUI from "./Search.present";
 
 const SearchContainer = () => {
-    return(
-        <SearchUI />
-    )
-}
+  return <SearchUI />;
+};
 
-export default SearchContainer
+export default SearchContainer;
