@@ -2,10 +2,25 @@ import React from "react";
 
 import {
   MyMainView,
-  MyMainText,
+  ProfileWrapper,
+  ProfileImage,
+  ProfileInfoWrapper,
+  ProfileNameWapper,
+  ProfileName,
+  ProfileNameNim,
+  ProfileEmailWrapper,
+  ProfileEmail,
+  ProfileEmailContent,
+  ProfilePointWrapper,
+  ProfilePoint,
+  ProfilePointContent,
   IconBackGround,
   IconWrapper,
   InsertImage,
+  HistoryWrapper,
+  HistoryTitleWrapper,
+  BuyHistory,
+  PointHistory,
 } from "./Mypage.styles";
 
 import { useNavigation } from "@react-navigation/native";
@@ -15,7 +30,25 @@ const MypageUI = () => {
 
   return (
     <MyMainView>
-      <MyMainText>여기는 마이페이지 입니다.</MyMainText>
+      <ProfileWrapper>
+        <ProfileImage
+          source={require("../../../../public/images/mypage/mypageexmapleprofile.png")}
+        />
+        <ProfileInfoWrapper>
+          <ProfileNameWapper>
+            <ProfileName>밥 먹고 똥 싸는게 좋다</ProfileName>
+            <ProfileNameNim>님</ProfileNameNim>
+          </ProfileNameWapper>
+          <ProfileEmailWrapper>
+            <ProfileEmail>이메일</ProfileEmail>
+            <ProfileEmailContent>littlebi96@naver.com</ProfileEmailContent>
+          </ProfileEmailWrapper>
+          <ProfilePointWrapper>
+            <ProfilePoint>포인트</ProfilePoint>
+            <ProfilePointContent>100,000,000,000</ProfilePointContent>
+          </ProfilePointWrapper>
+        </ProfileInfoWrapper>
+      </ProfileWrapper>
       <IconWrapper>
         <IconBackGround onPress={() => navigation.navigate("내정보 수정")}>
           <InsertImage
@@ -38,6 +71,12 @@ const MypageUI = () => {
           />
         </IconBackGround>
       </IconWrapper>
+      <HistoryWrapper>
+        <HistoryTitleWrapper>
+          <BuyHistory>구매내역</BuyHistory>
+          <PointHistory>포인트내역</PointHistory>
+        </HistoryTitleWrapper>
+      </HistoryWrapper>
     </MyMainView>
   );
 };
