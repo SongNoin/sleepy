@@ -4,24 +4,25 @@ import { useNavigation } from "@react-navigation/native";
 
 import {
   HomeView,
-  HomeText,
-  CategoryWrapper,
-  CategoryIcon,
   DetailProduct,
   DetailProductText,
+  MainBanner,
+  MainBannerWrapper,
 } from "./Home.styles";
+
+import Category from "./Category";
 
 const HomeUI = () => {
   const navigation = useNavigation();
 
   return (
     <HomeView>
-      <HomeText>여기는 메인 페이지 입니다.</HomeText>
-      <CategoryWrapper onPress={() => navigation.navigate("상품 리스트")}>
-        <CategoryIcon
-          source={require("../../../public/images/home/pillow.png")}
+      <MainBannerWrapper>
+        <MainBanner
+          source={require("../../../public/images/home/mainbanner.png")}
         />
-      </CategoryWrapper>
+      </MainBannerWrapper>
+      <Category />
 
       <DetailProduct onPress={() => navigation.navigate("상품 상세보기")}>
         <DetailProductText>디테일 페이지 이동</DetailProductText>
