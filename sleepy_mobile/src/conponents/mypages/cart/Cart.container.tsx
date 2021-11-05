@@ -3,9 +3,7 @@ import React from "react";
 import CartUI from "./Cart.present";
 
 const CartContainer = () => {
-    return(
-        <CartUI />
-    )
-}
+  return <CartUI />;
+};
 
-export default CartContainer
+export default CartContainer;
