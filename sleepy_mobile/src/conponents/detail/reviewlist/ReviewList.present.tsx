@@ -1,13 +1,34 @@
 import React from "react";
 import { ScrollView } from "react-native";
+import ReviewListCard from "./ReviewList.Card.present";
 
-import { FavoriteView, FavoriteText } from "./ReviewList.styles";
+import {
+  Wrapper,
+  // InnerWrapper,
+  // ReviewWrapper,
+  Title,
+  // InnerTopWrapper,
+  // Avatar,
+  // TopMiddleWrapper,
+  // Nickname,
+  // Star,
+  // ReviewStar,
+  // Photos,
+  // AddPhoto,
+  // BottomWrapper,
+  // ContentTitle,
+  // ReviewContent,
+} from "./ReviewList.styles";
 
 const ReviewListUI = () => {
   return (
-    <FavoriteView>
-      <FavoriteText>리스트</FavoriteText>
-    </FavoriteView>
+    <ScrollView>
+      <Wrapper>
+        <Title>리뷰</Title>
+        <ReviewListCard />
+        <ReviewListCard />
+      </Wrapper>
+    </ScrollView>
   );
 };
 

@@ -4,10 +4,14 @@ export const Wrapper = styled.View`
   flex: 1;
   align-items: center;
   background-color: white;
+  margin-bottom: 5%;
 `;
 
 export const ProductWrapper = styled.View`
   width: 339px;
+  margin-bottom: 4%;
+  border-bottom-width: 3px;
+  border-bottom-color: #f1eef7;
 `;
 
 export const ProductImage = styled.Image`
@@ -52,11 +56,6 @@ export const ProductPrice = styled.Text`
   margin-bottom: 5%;
 `;
 
-export const Line = styled.View`
-  border: 1px solid #f1eef6;
-  margin-bottom: 4%;
-`;
-
 export const DetaillWrapper = styled.View`
   width: 339px;
   border: 2px solid #f9f8f8;
@@ -65,7 +64,7 @@ export const DetaillWrapper = styled.View`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 7%;
+  margin-bottom: 5%;
 `;
 
 export const DetailContent = styled.Text`
@@ -84,57 +83,4 @@ export const Photo = styled.Image`
   border: 1px solid black;
   border: none;
   border-radius: 13px;
-`;
-
-export const ReviewWrapper = styled.View`
-  width: 339px;
-  height: 160px;
-  border: 2px solid #f9f8f8;
-  border-radius: 13px;
-  margin-top: 4%;
-  padding: 12px;
-`;
-
-export const Title = styled.Text`
-  font-weight: 600;
-  font-style: normal;
-  font-size: 18px;
-  line-height: 24.52px;
-  color: black;
-  margin-bottom: 4%;
-  padding-left: 4%;
-`;
-
-export const InnerTopWrapper = styled.View`
-  display: flex;
-  flex-direction: row;
-`;
-
-export const Avatar = styled.Image`
-  width: 36px;
-  height: 36px;
-  margin-right: 2%;
-`;
-
-export const TopMiddleWrapper = styled.View``;
-
-export const Nickname = styled.Text``;
-
-export const Star = styled.View`
-  display: flex;
-  flex-direction: row;
-`;
-
-export const AddPhoto = styled.Image``;
-
-export const BottomWrapper = styled.View``;
-
-export const ContentTitle = styled.Text``;
-
-export const ReviewContent = styled.Text`
-  font-weight: 500;
-  font-style: normal;
-  font-size: 10px;
-  line-height: 13.62px;
-  color: black;
 `;
