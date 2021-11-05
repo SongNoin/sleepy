@@ -1,12 +1,60 @@
 import React from "react";
 
-import { DetailMainView, DetailText } from "./DetailMain.styles";
+import {
+  Wrapper,
+  ProductWrapper,
+  ProductImage,
+  ReviewInfoWrapper,
+  ReviewStar,
+  ReviewAverage,
+  ProductName,
+  ProductPrice,
+  DetaillWrapper,
+  DetailContent,
+  Photo,
+  ReviewWrapper,
+  InnerTopWrapper,
+  Avatar,
+  TopMiddleWrapper,
+  Nickname,
+  Star,
+  AddPhoto,
+  BottomWrapper,
+  Title,
+  ReviewContent,
+} from "./DetailMain.styles";
 
 const DetailUI = () => {
   return (
-    <DetailMainView>
-      <DetailText>여기는 상품 디테일페이지...</DetailText>
-    </DetailMainView>
+    <Wrapper>
+      <ProductWrapper>
+        <ProductImage></ProductImage>
+        <ReviewInfoWrapper>
+          <ReviewStar></ReviewStar>
+          <ReviewAverage></ReviewAverage>
+        </ReviewInfoWrapper>
+        <ProductName></ProductName>
+        <ProductPrice></ProductPrice>
+      </ProductWrapper>
+      <DetaillWrapper>
+        <DetailContent></DetailContent>
+        <Photo></Photo>
+      </DetaillWrapper>
+      <ReviewWrapper>
+        <InnerTopWrapper>
+          <Avatar></Avatar>
+          <TopMiddleWrapper>
+            <Nickname></Nickname>
+            <Star></Star>
+          </TopMiddleWrapper>
+          <AddPhoto></AddPhoto>
+        </InnerTopWrapper>
+        <BottomWrapper>
+          <Title></Title>
+          <ReviewContent></ReviewContent>
+        </BottomWrapper>
+      </ReviewWrapper>
+    </Wrapper>
   );
 };
 
