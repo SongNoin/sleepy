@@ -3,9 +3,7 @@ import React from "react";
 import HomeUI from "./Home.present";
 
 const HomeContainer = () => {
-    return(
-        <HomeUI />
-    )
-}
+  return <HomeUI />;
+};
 
-export default HomeContainer
+export default HomeContainer;
