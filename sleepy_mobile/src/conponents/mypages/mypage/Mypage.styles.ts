@@ -4,6 +4,7 @@ export const MyMainView = styled.View`
   flex: 1;
   align-items: center;
   background-color: white;
+  padding-bottom: 20px;
 `;
 
 export const ProfileWrapper = styled.View`
@@ -106,24 +107,38 @@ export const HistoryTitleWrapper = styled.View`
 
   margin-top: 30px;
 `;
-export const BuyHistory = styled.Text`
+
+export const BuyLineWrapper = styled.View<{ isPoint: boolean }>`
+  width: 80px;
+  border-bottom-width: ${(props) => (props.isPoint === false ? "2px" : "0px")};
+  border-bottom-color: #5b5bc0;
   margin-right: 26px;
-
-  font-family: Noto Sans;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 14px;
-  line-height: 19px;
-  color: #5b5bc0;
+  padding-bottom: 4px;
 `;
-export const PointHistory = styled.Text`
+export const PointLineWrapper = styled.View<{ isPoint: boolean }>`
+  width: 80px;
+  border-bottom-width: ${(props) => (props.isPoint === true ? "2px" : "0px")};
+  border-bottom-color: #5b5bc0;
+  padding-bottom: 4px;
+`;
+
+export const BuyHistory = styled.Text<{ isPoint: boolean }>`
   font-family: Noto Sans;
   font-style: normal;
-  font-weight: normal;
+  font-weight: ${(props) => (props.isPoint === false ? "bold" : "normal")};
   font-size: 14px;
   line-height: 19px;
-
-  color: #8c8c8c;
+  color: ${(props) => (props.isPoint === false ? "#5b5bc0" : "#8c8c8c")};
+  text-align: center;
+`;
+export const PointHistory = styled.Text<{ isPoint: boolean }>`
+  font-family: Noto Sans;
+  font-style: normal;
+  font-weight: ${(props) => (props.isPoint === true ? "bold" : "normal")};
+  font-size: 14px;
+  line-height: 19px;
+  color: ${(props) => (props.isPoint === true ? "#5b5bc0" : "#8c8c8c")};
+  text-align: center;
 `;
 
 export const BuyHistoryWrapper = styled.View`
@@ -254,6 +269,42 @@ export const ColumnName = styled.Text`
   color: #5b5bc0;
   text-align: center;
 `;
-export const Row = styled.View``;
-export const Column = styled.Text``;
-export const ColumnContent = styled.View``;
+export const Row = styled.View`
+  width: 339px;
+  display: flex;
+  flex-direction: row;
+
+  padding-top: 7px;
+  padding-bottom: 7px;
+`;
+export const Column = styled.Text`
+  width: 25%;
+
+  font-family: Noto Sans;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 10px;
+  line-height: 14px;
+  color: #848484;
+  text-align: center;
+`;
+export const ColumnContentWapper = styled.View`
+  width: 25%;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const ColumnContent = styled.Text`
+  width: 34px;
+  height: 14px;
+  border: 1px solid #5b5bc0;
+  border-radius: 2px;
+  text-align: center;
+
+  font-family: Noto Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 9px;
+  line-height: 12px;
+  color: #5b5bc0;
+`;
