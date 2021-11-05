@@ -8,6 +8,9 @@
 
 import React from 'react';
 
+import {ApolloProvider} from '@apollo/client';
+import { client } from './src/apollo/client';
+
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
@@ -21,11 +24,14 @@ const App: () => Node = () => {
   const Stack = createNativeStackNavigator()
 
   return (
-   <NavigationContainer >
-     <Stack.Navigator screenOptions={{headerShown: false}}>
-       <Stack.Screen name="tabNavigator" component={TabNavigator} />
-     </Stack.Navigator>
-   </NavigationContainer>
+    <ApolloProvider client={client}>
+      <NavigationContainer >
+        <Stack.Navigator screenOptions={{headerShown: false}}>
+          <Stack.Screen name="tabNavigator" component={TabNavigator} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </ApolloProvider>
+   
   );
 };
 
