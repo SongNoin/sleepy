@@ -104,7 +104,7 @@ const HomeUI = () => {
                   source={require("../../../public/images/home/moon-on.png")}
                 />
               </ContentsWrapper>
-              <ProductPrice>199000원</ProductPrice>
+              <ProductPrice>199900원</ProductPrice>
             </InformationWrapper>
           </DetailProductWrapper>
         </NewProductWrapper>
