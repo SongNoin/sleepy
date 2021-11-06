@@ -4,7 +4,7 @@ export const Wrapper = styled.View`
   flex: 1;
   align-items: center;
   background-color: white;
-  margin-bottom: 5%;
+  margin-bottom: 2%;
 `;
 
 export const ProductWrapper = styled.View`
@@ -84,3 +84,28 @@ export const Photo = styled.Image`
   border: none;
   border-radius: 13px;
 `;
+
+export const ReviewWrapper = styled.View`
+  background-color: white;
+`;
+
+export const Title = styled.Text`
+  margin-top: 4%;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 18px;
+  line-height: 24.52px;
+  color: black;
+  margin-bottom: 4%;
+  padding-left: 4%;
+  padding-bottom: 3%;
+  margin-left: 4%;
+  margin-bottom: 6%;
+  width: 339px;
+  border-bottom-width: 2px;
+  border-bottom-color: #f1eef7;
+`;
+
+export const IconBackGround = styled.TouchableOpacity``;
+
+export const BuyButton = styled.Text``;
