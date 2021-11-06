@@ -276,6 +276,9 @@ export const Row = styled.View`
 
   padding-top: 7px;
   padding-bottom: 7px;
+
+  border-bottom-width: 1px;
+  border-bottom-color: #e2e2ff;
 `;
 export const Column = styled.Text`
   width: 25%;
