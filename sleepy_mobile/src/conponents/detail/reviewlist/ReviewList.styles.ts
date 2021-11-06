@@ -1,7 +1,5 @@
 import styled from "@emotion/native";
 
-export const Wrapper = styled.View``;
-
 export const InnerWrapper = styled.View`
   align-items: center;
   margin-bottom: 6%;
@@ -10,27 +8,10 @@ export const InnerWrapper = styled.View`
 export const ReviewWrapper = styled.View`
   width: 339px;
   height: 160px;
-  border: 2px solid #f9f8f8;
-  border: none;
+  border: 2px solid #f1eef7;
   border-radius: 13px;
-  padding: 12px;
+  padding: 11px;
   background-color: white;
-`;
-
-export const Title = styled.Text`
-  font-weight: 600;
-  font-style: normal;
-  font-size: 18px;
-  line-height: 24.52px;
-  color: black;
-  margin-bottom: 4%;
-  padding-left: 4%;
-  padding-bottom: 3%;
-  margin-left: 4%;
-  margin-bottom: 6%;
-  width: 339px;
-  border-bottom-width: 2px;
-  border-bottom-color: white;
 `;
 
 export const InnerTopWrapper = styled.View`
