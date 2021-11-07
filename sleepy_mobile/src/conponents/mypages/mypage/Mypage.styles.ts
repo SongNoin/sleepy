@@ -29,7 +29,7 @@ export const ProfileNameWapper = styled.View`
   align-items: center;
 `;
 export const ProfileName = styled.Text`
-  font-family: Noto Sans;
+  font-family: "NotoSans-Bold";
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
@@ -45,7 +45,7 @@ export const ProfileEmailWrapper = styled.View`
 `;
 
 export const ProfileEmail = styled.Text`
-  font-family: Noto Sans;
+  font-family: "NotoSans-Bold";
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
@@ -53,7 +53,7 @@ export const ProfileEmail = styled.Text`
   color: #3b3b3b;
 `;
 export const ProfileEmailContent = styled.Text`
-  font-family: Noto Sans;
+  font-family: "NotoSans-Regular";
   font-style: normal;
   font-weight: normal;
   font-size: 12px;
@@ -63,7 +63,7 @@ export const ProfilePointWrapper = styled.View`
   margin-top: 5px;
 `;
 export const ProfilePoint = styled.Text`
-  font-family: Noto Sans;
+  font-family: "NotoSans-Bold";
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
@@ -71,7 +71,7 @@ export const ProfilePoint = styled.Text`
   color: #3b3b3b;
 `;
 export const ProfilePointContent = styled.Text`
-  font-family: Noto Sans;
+  font-family: "NotoSans-Bold";
   font-style: normal;
   font-weight: normal;
   font-size: 12px;
@@ -123,7 +123,7 @@ export const PointLineWrapper = styled.View<{ isPoint: boolean }>`
 `;
 
 export const BuyHistory = styled.Text<{ isPoint: boolean }>`
-  font-family: Noto Sans;
+  font-family: "NotoSans-Bold";
   font-style: normal;
   font-weight: ${(props) => (props.isPoint === false ? "bold" : "normal")};
   font-size: 14px;
@@ -132,7 +132,7 @@ export const BuyHistory = styled.Text<{ isPoint: boolean }>`
   text-align: center;
 `;
 export const PointHistory = styled.Text<{ isPoint: boolean }>`
-  font-family: Noto Sans;
+  font-family: "NotoSans-Bold";
   font-style: normal;
   font-weight: ${(props) => (props.isPoint === true ? "bold" : "normal")};
   font-size: 14px;
@@ -174,7 +174,7 @@ export const ProductDateWrapper = styled.View`
   align-items: center;
 `;
 export const ProductDate = styled.Text`
-  font-family: Noto Sans;
+  font-family: "NotoSans-Regular";
   font-style: normal;
   font-weight: 600;
   font-size: 9px;
@@ -183,7 +183,7 @@ export const ProductDate = styled.Text`
   color: #646464;
 `;
 export const ProductDateContent = styled.Text`
-  font-family: Noto Sans;
+  font-family: "NotoSans-Regular";
   font-style: normal;
   font-weight: normal;
   font-size: 9px;
@@ -197,7 +197,7 @@ export const ProductNameWrapper = styled.View`
   margin-top: 5px;
 `;
 export const ProductName = styled.Text`
-  font-family: Noto Sans;
+  font-family: "NotoSans-Bold";
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
@@ -210,7 +210,7 @@ export const ProductPriceWrapper = styled.View`
 `;
 
 export const ProductPrice = styled.Text`
-  font-family: Noto Sans;
+  font-family: "NotoSans-Regular";
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
@@ -230,7 +230,7 @@ export const ReviewButon = styled.TouchableOpacity`
   margin-top: 5px;
 `;
 export const ReviewButtonText = styled.Text`
-  font-family: Noto Sans;
+  font-family: "NotoSans-Bold";
   font-style: normal;
   font-weight: 600;
   font-size: 10px;
@@ -261,7 +261,7 @@ export const RowName = styled.View`
 export const ColumnName = styled.Text`
   width: 25%;
 
-  font-family: Noto Sans;
+  font-family: "NotoSans-Bold";
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
@@ -283,7 +283,7 @@ export const Row = styled.View`
 export const Column = styled.Text`
   width: 25%;
 
-  font-family: Noto Sans;
+  font-family: "NotoSans-Regular";
   font-style: normal;
   font-weight: 300;
   font-size: 10px;
@@ -304,7 +304,7 @@ export const ColumnContent = styled.Text`
   border-radius: 2px;
   text-align: center;
 
-  font-family: Noto Sans;
+  font-family: "NotoSans-Regular";
   font-style: normal;
   font-weight: normal;
   font-size: 9px;

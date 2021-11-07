@@ -15,7 +15,7 @@ export const FavoriteCountWrapper = styled.View`
   margin-top: 24px;
 `;
 export const FavoriteCount = styled.Text`
-  font-family: Noto Sans;
+  font-family: "NotoSans-Bold";
   font-style: normal;
   font-weight: bold;
   font-size: 14px;
@@ -24,7 +24,7 @@ export const FavoriteCount = styled.Text`
   margin-right: 15px;
 `;
 export const FavoriteCountContent = styled.Text`
-  font-family: Noto Sans;
+  font-family: "NotoSans-Regular";
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
@@ -34,7 +34,7 @@ export const FavoriteCountContent = styled.Text`
 `;
 
 export const FavoriteCountUnit = styled.Text`
-  font-family: Noto Sans;
+  font-family: "NotoSans-Bold";
   font-style: normal;
   font-weight: bold;
   font-size: 14px;
@@ -67,7 +67,7 @@ export const FavoriteContent = styled.View`
   display: flex;
 `;
 export const FavoriteName = styled.Text`
-  font-family: Noto Sans;
+  font-family: "NotoSans-Bold";
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
@@ -77,7 +77,7 @@ export const FavoriteName = styled.Text`
   margin-bottom: 20px;
 `;
 export const FavoritePrice = styled.Text`
-  font-family: Noto Sans;
+  font-family: "NotoSans-Regular";
   font-style: normal;
   font-weight: 600;
   font-size: 14px;

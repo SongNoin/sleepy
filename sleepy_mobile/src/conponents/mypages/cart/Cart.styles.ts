@@ -15,7 +15,7 @@ export const CartCountWrapper = styled.View`
   margin-top: 24px;
 `;
 export const CartCount = styled.Text`
-  font-family: Noto Sans;
+  font-family: "NotoSans-Bold";
   font-style: normal;
   font-weight: bold;
   font-size: 14px;
@@ -24,7 +24,7 @@ export const CartCount = styled.Text`
   margin-right: 15px;
 `;
 export const CartCountContent = styled.Text`
-  font-family: Noto Sans;
+  font-family: "NotoSans-Regular";
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
@@ -34,7 +34,7 @@ export const CartCountContent = styled.Text`
 `;
 
 export const CartCountUnit = styled.Text`
-  font-family: Noto Sans;
+  font-family: "NotoSans-Bold";
   font-style: normal;
   font-weight: bold;
   font-size: 14px;
@@ -66,7 +66,7 @@ export const CartContent = styled.View`
   display: flex;
 `;
 export const CartName = styled.Text`
-  font-family: Noto Sans;
+  font-family: "NotoSans-Bold";
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
@@ -76,7 +76,7 @@ export const CartName = styled.Text`
   margin-bottom: 20px;
 `;
 export const CartPrice = styled.Text`
-  font-family: Noto Sans;
+  font-family: "NotoSans-Regular";
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
