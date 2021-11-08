@@ -7,8 +7,7 @@ import {
   DetailProduct,
   MainBanner,
   MainBannerWrapper,
-  NewProductWrapper,
-  NewProductTitle,
+  BestProductTitle,
   DetailProductWrapper,
   ProductImage,
   InformationWrapper,
@@ -18,13 +17,14 @@ import {
   ProductPrice,
   MoreProduct,
   MoreProductText,
+  BestProductWrapper,
 } from "./Home.styles";
 
 import Category from "./Category";
-
+import NewProductItem from "./NewProductItem";
 import { ScrollView } from "react-native";
 
-const HomeUI = () => {
+const HomeUI = (props) => {
   const navigation = useNavigation();
 
   return (
@@ -36,8 +36,8 @@ const HomeUI = () => {
           />
         </MainBannerWrapper>
         <Category />
-        <NewProductWrapper>
-          <NewProductTitle>금주의 신상품</NewProductTitle>
+        <BestProductWrapper>
+          <BestProductTitle>베스트 상품</BestProductTitle>
 
           <DetailProductWrapper>
             <InformationWrapper>
@@ -107,7 +107,9 @@ const HomeUI = () => {
               <ProductPrice>199900원</ProductPrice>
             </InformationWrapper>
           </DetailProductWrapper>
-        </NewProductWrapper>
+        </BestProductWrapper>
+
+        <NewProductItem data={props.data} sizes={props.sizes} />
         <MoreProduct>
           <MoreProductText>상품 더보기</MoreProductText>
         </MoreProduct>
