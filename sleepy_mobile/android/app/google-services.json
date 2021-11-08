@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "549731169070",
+    "project_id": "sleepy-firebase",
+    "storage_bucket": "sleepy-firebase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:549731169070:android:250de281aa9fdad2a500bf",
+        "android_client_info": {
+          "package_name": "com.sleepy_mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "549731169070-aio153519ti2rfjm99c524fqr2rvs10e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sleepy_mobile",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "549731169070-ev7rlasdm6iqgpnr7uncom1bhpgheg0q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXv3Ef52DCN-xu52TJrMwLzcNeKpvCf_s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "549731169070-ev7rlasdm6iqgpnr7uncom1bhpgheg0q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
