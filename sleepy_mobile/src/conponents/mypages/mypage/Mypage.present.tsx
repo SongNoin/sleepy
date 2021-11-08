@@ -54,11 +54,15 @@ const MypageUI = (props: any) => {
             </ProfileNameWapper>
             <ProfileEmailWrapper>
               <ProfileEmail>이메일</ProfileEmail>
-              <ProfileEmailContent>{props.data?.fetchUserLoggedIn?.email}</ProfileEmailContent>
+              <ProfileEmailContent>
+                {props.data?.fetchUserLoggedIn?.email}
+              </ProfileEmailContent>
             </ProfileEmailWrapper>
             <ProfilePointWrapper>
               <ProfilePoint>포인트</ProfilePoint>
-              <ProfilePointContent>100,000,000,000</ProfilePointContent>
+              <ProfilePointContent>
+                {props.data?.fetchUserLoggedIn?.userPoint.amount} 원
+              </ProfilePointContent>
             </ProfilePointWrapper>
           </ProfileInfoWrapper>
         </ProfileWrapper>
@@ -78,7 +82,7 @@ const MypageUI = (props: any) => {
               source={require("../../../../public/images/mypage/cart.png")}
             />
           </IconBackGround>
-          <IconBackGround>
+          <IconBackGround onPress={() => navigation.navigate("포인트")}>
             <InsertImage
               source={require("../../../../public/images/mypage/charge.png")}
             />

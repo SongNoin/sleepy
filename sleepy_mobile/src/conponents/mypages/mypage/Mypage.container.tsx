@@ -1,25 +1,15 @@
 import React, { useEffect, useState } from "react";
-import {gql, useQuery} from "@apollo/client";
-
-const FETCH_USER_LOGGED_IN = gql`
-  query fetchUserLoggedIn {
-    fetchUserLoggedIn{
-      _id
-      name
-      email
-    }
-  }
-`
-
+import { useQuery } from "@apollo/client";
 import MypageUI from "./Mypage.present";
+import { FETCH_USER_LOGGED_IN } from "./Mypage.queries";
 
 const MypageContainer = () => {
   const [isPoint, setIsPoint] = useState(false);
-  const {data} = useQuery(FETCH_USER_LOGGED_IN);
+  const { data } = useQuery(FETCH_USER_LOGGED_IN);
 
-  useEffect(()=>{
-    console.log(data?.fetchUserLoggedIn)
-  },[data])
+  useEffect(() => {
+    console.log(data?.fetchUserLoggedIn);
+  }, [data]);
 
   function onPressShowBuy() {
     setIsPoint(false);
