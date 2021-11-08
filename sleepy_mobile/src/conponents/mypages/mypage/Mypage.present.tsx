@@ -49,12 +49,12 @@ const MypageUI = (props: any) => {
           />
           <ProfileInfoWrapper>
             <ProfileNameWapper>
-              <ProfileName>밥 먹고 똥 싸는게 좋다</ProfileName>
+              <ProfileName>{props.data?.fetchUserLoggedIn?.name}</ProfileName>
               <ProfileNameNim>님</ProfileNameNim>
             </ProfileNameWapper>
             <ProfileEmailWrapper>
               <ProfileEmail>이메일</ProfileEmail>
-              <ProfileEmailContent>littlebi96@naver.com</ProfileEmailContent>
+              <ProfileEmailContent>{props.data?.fetchUserLoggedIn?.email}</ProfileEmailContent>
             </ProfileEmailWrapper>
             <ProfilePointWrapper>
               <ProfilePoint>포인트</ProfilePoint>

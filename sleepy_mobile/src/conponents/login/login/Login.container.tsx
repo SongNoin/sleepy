@@ -18,24 +18,27 @@ const LoginContainer = () => {
   const signIn = async () => {
     await GoogleSignin.hasPlayServices();
     const userInfo = await GoogleSignin.signIn()
+    console.log(userInfo)
     
     try {
-        await createUser({
+       const createUserRes = await createUser({
             variables: {
                 createUserInput: {
-                    email: userInfo.user.email,
+                    email: userInfo.user?.email,
                     password: userInfo.idToken?.substr(0,15),
-                    name: userInfo.user.name
+                    name: String(userInfo.user?.name)
                 }
             }
         })
+
         const result = await loginUser({
             variables: {
                 email: userInfo.user.email,
                 password: userInfo.idToken?.substr(0,15)
             }
         })
-        setAccessToken(result.data?.loginUser.accessToken)
+        setAccessToken(result?.data?.loginUser.accessToken)
+        // console.log(createUserRes.data?.createUser.name)
         console.log(result.data?.loginUser.accessToken)
     } catch (_:any) {
         const result = await loginUser({
@@ -44,7 +47,7 @@ const LoginContainer = () => {
                 password: userInfo.idToken?.substr(0,15)
             }
         })
-        setAccessToken(result.data?.loginUser.accessToken)
+        setAccessToken(result?.data?.loginUser.accessToken)
         console.log(result.data?.loginUser.accessToken);
     }
   };

@@ -17,6 +17,7 @@ import LoginNavigator from "./pages/navigation/loginAuth";
 export const AuthContext = createContext(null);
 
 
+
 const App: () => Node = () => {
   const Stack = createNativeStackNavigator();
   const [accessToken , setAccessToken] = useState("")
@@ -25,6 +26,7 @@ const App: () => Node = () => {
     setAccessToken: setAccessToken,
   
   };
+
 
   const uploadLink = createUploadLink({
     uri: 'http://34.64.161.16/team05',
