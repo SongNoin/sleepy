@@ -25,13 +25,15 @@
     "@react-navigation/stack": "^6.0.11",
     "apollo-upload-client": "^16.0.0",
     "graphql": "^16.0.1",
+    "iamport-react-native": "^2.0.0-rc.1",
     "react": "17.0.2",
     "react-native": "0.66.2",
     "react-native-gesture-handler": "^1.10.3",
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "^3.9.0",
     "react-native-svg": "^12.1.1",
-    "react-native-svg-transformer": "^0.14.3"
+    "react-native-svg-transformer": "^0.14.3",
+    "react-native-webview": "^11.14.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

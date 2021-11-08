@@ -12,16 +12,16 @@ export const ProfileWrapper = styled.View`
   display: flex;
   flex-direction: row;
   margin-top: 24px;
+  margin-right: 85px;
 `;
 
 export const ProfileImage = styled.Image`
   width: 100px;
   height: 100px;
+  margin-right: 24px;
 `;
 
-export const ProfileInfoWrapper = styled.View`
-  margin-left: 24px;
-`;
+export const ProfileInfoWrapper = styled.View``;
 
 export const ProfileNameWapper = styled.View`
   display: flex;
