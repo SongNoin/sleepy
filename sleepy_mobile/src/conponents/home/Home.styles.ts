@@ -35,12 +35,17 @@ export const ProductImage = styled.Image`
   border-radius: 15px;
 `;
 
+export const BestProductWrapper = styled.View`
+  margin-top: 32px;
+  width: 100%;
+`;
+
 export const NewProductWrapper = styled.View`
   margin-top: 32px;
   width: 100%;
 `;
 
-export const NewProductTitle = styled.Text`
+export const BestProductTitle = styled.Text`
   width: 100%;
   height: 25px;
   font-weight: bold;
@@ -53,10 +58,28 @@ export const DetailProductWrapper = styled.View`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+
   margin-top: 10px;
 `;
 
 export const InformationWrapper = styled.View``;
+
+export const NewProductInfoWrapper = styled.View``;
+
+export const NewProductInfoWrapper2 = styled.View``;
+
+export const MiddleWrapper = styled.View`
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+`;
+
+export const MiddleWrapper2 = styled.View`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+`;
 
 export const ContentsWrapper = styled.View`
   width: 160px;
