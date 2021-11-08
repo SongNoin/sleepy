@@ -2,47 +2,50 @@ import styled from "@emotion/native";
 
 export const FavoriteView = styled.View`
   flex: 1;
-  align-items: center;
+  /* align-items: center; */
   background-color: white;
   padding-bottom: 20px;
 `;
 
 export const FavoriteCountWrapper = styled.View`
+  width: 339px;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   align-items: center;
 
+  margin-left: 18px;
+  margin-right: 18px;
   margin-top: 24px;
+
+  padding-bottom: 12px;
+  padding-left: 9px;
+  border-bottom-width: 2px;
+  border-bottom-color: #f1eef6;
 `;
 export const FavoriteCount = styled.Text`
   font-family: "NotoSans-Bold";
   font-style: normal;
-  font-weight: bold;
-  font-size: 14px;
-  line-height: 19px;
-  color: #5b5bc0;
-  margin-right: 15px;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 25px;
+  color: #3b3b3b;
 `;
 export const FavoriteCountContent = styled.Text`
-  font-family: "NotoSans-Regular";
+  font-family: "NotoSans-Bold";
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
   line-height: 19px;
-  color: #8c8c8c;
+  /* identical to box height */
+
+  color: #5b5bc0;
   margin-right: 5px;
 `;
-
-export const FavoriteCountUnit = styled.Text`
-  font-family: "NotoSans-Bold";
-  font-style: normal;
-  font-weight: bold;
-  font-size: 14px;
-  line-height: 19px;
-  color: #5b5bc0;
+export const FavoriteListWrapper = styled.View`
+  display: flex;
+  align-items: center;
 `;
-
-export const FavoriteListWrapper = styled.View``;
 export const FavoriteCard = styled.View`
   width: 339px;
   height: 140px;
@@ -77,7 +80,7 @@ export const FavoriteName = styled.Text`
   margin-bottom: 20px;
 `;
 export const FavoritePrice = styled.Text`
-  font-family: "NotoSans-Regular";
+  font-family: "NotoSans-Bold";
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
@@ -85,3 +88,4 @@ export const FavoritePrice = styled.Text`
 
   color: #5b5bc0;
 `;
+
