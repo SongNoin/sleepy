@@ -6,7 +6,6 @@ import {
   FavoriteCountWrapper,
   FavoriteCount,
   FavoriteCountContent,
-  FavoriteCountUnit,
   FavoriteListWrapper,
   FavoriteCard,
   FavoriteImage,
@@ -20,9 +19,8 @@ const FavoriteUI = () => {
     <ScrollView>
       <FavoriteView>
         <FavoriteCountWrapper>
-          <FavoriteCount>찜 한 갯수 :</FavoriteCount>
-          <FavoriteCountContent>1000</FavoriteCountContent>
-          <FavoriteCountUnit>개</FavoriteCountUnit>
+          <FavoriteCount>찜한 상품</FavoriteCount>
+          <FavoriteCountContent>9999+</FavoriteCountContent>
         </FavoriteCountWrapper>
         <FavoriteListWrapper>
           <FavoriteCard>
@@ -31,7 +29,7 @@ const FavoriteUI = () => {
             />
             <FavoriteContent>
               <FavoriteName>글자는띄어쓰기없이</FavoriteName>
-              <FavoritePrice>199000원</FavoritePrice>
+              <FavoritePrice>199000 원</FavoritePrice>
             </FavoriteContent>
           </FavoriteCard>
         </FavoriteListWrapper>
