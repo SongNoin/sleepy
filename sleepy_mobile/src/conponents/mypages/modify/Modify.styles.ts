@@ -13,7 +13,7 @@ export const ModifyTitleWapper = styled.View`
   margin-top: 24px;
 `;
 export const Title = styled.Text`
-  font-family: Noto Sans;
+  font-family: "NotoSans-Bold";
   font-style: normal;
   font-weight: 600;
   font-size: 18px;
@@ -23,7 +23,7 @@ export const Title = styled.Text`
 `;
 export const ModifynameInputWrapper = styled.View``;
 export const ModifyInputLabel = styled.Text`
-  font-family: Noto Sans;
+  font-family: "NotoSans-Bold";
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
@@ -58,7 +58,7 @@ export const ModifyButton = styled.TouchableOpacity`
 `;
 
 export const ModifyButtonText = styled.Text`
-  font-family: Noto Sans;
+  font-family: "NotoSans-Bold";
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
