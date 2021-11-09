@@ -2,6 +2,7 @@ import React from "react";
 import { ScrollView } from "react-native";
 import ReviewListContainer from "../reviewlist/ReviewList.container";
 import BuyContainer from "../buy/Buy.container";
+import ProductImages from "./ProductImages";
 
 import {
   Wrapper,
@@ -26,9 +27,10 @@ const DetailUI = () => {
     <ScrollView>
       <Wrapper>
         <ProductWrapper>
-          <ProductImage
+          <ProductImages />
+          {/* <ProductImage
             source={require("../../../../public/images/detail/bag1.png")}
-          />
+          /> */}
           <ReviewInfoWrapper>
             <ReviewStar
               source={require("../../../../public/images/detail/star.png")}
