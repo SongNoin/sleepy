@@ -22,6 +22,7 @@ const MiddleWrapper2 = styled.View`
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
+  width: 100%;
 `;
 
 const DetailProductWrapper = styled.View`
@@ -82,52 +83,110 @@ const NewProductItem = (props) => {
       <NewProductTitle>금주의 신상품</NewProductTitle>
       <MiddleWrapper2>
         <DetailProductWrapper>
-          {props.data?.fetchUseditems.map((el, index) => (
-            <NewProductInfoWrapper key={el._id}>
-              {index % 2 === 0 && (
-                <>
-                  <DetailProduct
-                    onPress={() => navigation.navigate("상품 상세보기")}
-                  >
-                    <ProductImage
-                      source={require("../../../public/images/home/product1.png")}
-                    />
-                  </DetailProduct>
-                  <ContentsWrapper>
-                    <ProductTitle>{el.name}</ProductTitle>
-                    <FavoriteImage
-                      source={require("../../../public/images/home/moon-off.png")}
-                    />
-                  </ContentsWrapper>
-                  <ProductPrice>{el.price}원</ProductPrice>
-                </>
-              )}
-            </NewProductInfoWrapper>
-          ))}
+          {props.isEdit === false ? (
+            <>
+              {props.data?.fetchUseditems.slice(0, 4).map((el, index) => (
+                <NewProductInfoWrapper key={el._id}>
+                  {index % 2 === 0 && (
+                    <>
+                      <DetailProduct
+                        onPress={() => navigation.navigate("상품 상세보기")}
+                      >
+                        <ProductImage
+                          source={require("../../../public/images/home/product1.png")}
+                        />
+                      </DetailProduct>
+                      <ContentsWrapper>
+                        <ProductTitle>{el.name}</ProductTitle>
+                        <FavoriteImage
+                          source={require("../../../public/images/home/moon-off.png")}
+                        />
+                      </ContentsWrapper>
+                      <ProductPrice>{el.price}원</ProductPrice>
+                    </>
+                  )}
+                </NewProductInfoWrapper>
+              ))}
+            </>
+          ) : (
+            <>
+              {props.data?.fetchUseditems.map((el, index) => (
+                <NewProductInfoWrapper key={el._id}>
+                  {index % 2 === 0 && (
+                    <>
+                      <DetailProduct
+                        onPress={() => navigation.navigate("상품 상세보기")}
+                      >
+                        <ProductImage
+                          source={require("../../../public/images/home/product1.png")}
+                        />
+                      </DetailProduct>
+                      <ContentsWrapper>
+                        <ProductTitle>{el.name}</ProductTitle>
+                        <FavoriteImage
+                          source={require("../../../public/images/home/moon-off.png")}
+                        />
+                      </ContentsWrapper>
+                      <ProductPrice>{el.price}원</ProductPrice>
+                    </>
+                  )}
+                </NewProductInfoWrapper>
+              ))}
+            </>
+          )}
         </DetailProductWrapper>
         <DetailProductWrapper>
-          {props.data?.fetchUseditems.map((el, index) => (
-            <NewProductInfoWrapper key={el._id}>
-              {index % 2 !== 0 && (
-                <>
-                  <DetailProduct
-                    onPress={() => navigation.navigate("상품 상세보기")}
-                  >
-                    <ProductImage
-                      source={require("../../../public/images/home/product1.png")}
-                    />
-                  </DetailProduct>
-                  <ContentsWrapper>
-                    <ProductTitle>{el.name}</ProductTitle>
-                    <FavoriteImage
-                      source={require("../../../public/images/home/moon-off.png")}
-                    />
-                  </ContentsWrapper>
-                  <ProductPrice>{el.price}원</ProductPrice>
-                </>
-              )}
-            </NewProductInfoWrapper>
-          ))}
+          {props.isEdit === false ? (
+            <>
+              {props.data?.fetchUseditems.slice(0, 4).map((el, index) => (
+                <NewProductInfoWrapper key={el._id}>
+                  {index % 2 !== 0 && (
+                    <>
+                      <DetailProduct
+                        onPress={() => navigation.navigate("상품 상세보기")}
+                      >
+                        <ProductImage
+                          source={require("../../../public/images/home/product1.png")}
+                        />
+                      </DetailProduct>
+                      <ContentsWrapper>
+                        <ProductTitle>{el.name}</ProductTitle>
+                        <FavoriteImage
+                          source={require("../../../public/images/home/moon-off.png")}
+                        />
+                      </ContentsWrapper>
+                      <ProductPrice>{el.price}원</ProductPrice>
+                    </>
+                  )}
+                </NewProductInfoWrapper>
+              ))}
+            </>
+          ) : (
+            <>
+              {props.data?.fetchUseditems.map((el, index) => (
+                <NewProductInfoWrapper key={el._id}>
+                  {index % 2 !== 0 && (
+                    <>
+                      <DetailProduct
+                        onPress={() => navigation.navigate("상품 상세보기")}
+                      >
+                        <ProductImage
+                          source={require("../../../public/images/home/product1.png")}
+                        />
+                      </DetailProduct>
+                      <ContentsWrapper>
+                        <ProductTitle>{el.name}</ProductTitle>
+                        <FavoriteImage
+                          source={require("../../../public/images/home/moon-off.png")}
+                        />
+                      </ContentsWrapper>
+                      <ProductPrice>{el.price}원</ProductPrice>
+                    </>
+                  )}
+                </NewProductInfoWrapper>
+              ))}
+            </>
+          )}
         </DetailProductWrapper>
       </MiddleWrapper2>
     </NewProductWrapper>

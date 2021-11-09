@@ -18,6 +18,9 @@ import {
   MoreProduct,
   MoreProductText,
   BestProductWrapper,
+  MoreProductWrapper,
+  CloseProduct,
+  CloseProductText,
 } from "./Home.styles";
 
 import Category from "./Category";
@@ -109,10 +112,21 @@ const HomeUI = (props) => {
           </DetailProductWrapper>
         </BestProductWrapper>
 
-        <NewProductItem data={props.data} sizes={props.sizes} />
-        <MoreProduct>
-          <MoreProductText>상품 더보기</MoreProductText>
-        </MoreProduct>
+        <NewProductItem data={props.data} isEdit={props.isEdit} />
+
+        {props.isEdit === false ? (
+          <MoreProduct>
+            <MoreProductText onPress={props.onPressMoreProduct}>
+              상품 더보기
+            </MoreProductText>
+          </MoreProduct>
+        ) : (
+          <CloseProduct>
+            <CloseProductText onPress={props.onPressCloseProduct}>
+              접기
+            </CloseProductText>
+          </CloseProduct>
+        )}
       </HomeView>
     </ScrollView>
   );

@@ -125,4 +125,25 @@ export const MoreProductText = styled.Text`
   font-weight: 600;
   font-size: 18px;
   color: #685b7e;
+  text-align: center;
+`;
+
+export const CloseProduct = styled.TouchableOpacity`
+  width: 339px;
+  height: 70px;
+  background: #f1eef6;
+  border-radius: 15px;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const CloseProductText = styled.Text`
+  width: 100px;
+  height: 25px;
+  font-weight: 600;
+  font-size: 18px;
+  color: #685b7e;
+  text-align: center;
 `;
