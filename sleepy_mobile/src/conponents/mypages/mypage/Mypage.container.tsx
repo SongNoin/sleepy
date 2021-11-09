@@ -13,10 +13,6 @@ const MypageContainer = () => {
     variables: { page: 1 },
   });
 
-  useEffect(() => {
-    console.log(data?.fetchUserLoggedIn);
-  }, [data]);
-
   function onPressShowBuy() {
     setIsPoint(false);
   }
