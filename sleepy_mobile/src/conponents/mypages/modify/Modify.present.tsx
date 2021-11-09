@@ -6,6 +6,8 @@ import {
   ModifynameWrapper,
   ModifyTitleWapper,
   Title,
+  ModifyInputWrapper,
+  RecentNameContent,
   ModifynameInputWrapper,
   ModifyInputLabel,
   ModifyInput,
@@ -14,7 +16,7 @@ import {
   ModifyButtonText,
 } from "./Modify.styles";
 
-const ModifyUI = () => {
+const ModifyUI = (props: any) => {
   return (
     <ScrollView>
       <ModifyView>
@@ -24,12 +26,20 @@ const ModifyUI = () => {
           </ModifyTitleWapper>
           <ModifynameInputWrapper>
             <ModifyInputLabel>현재 닉네임</ModifyInputLabel>
-            <ModifyInput></ModifyInput>
+            <ModifyInputWrapper>
+              <RecentNameContent>
+                {props.data?.fetchUserLoggedIn.name}
+              </RecentNameContent>
+            </ModifyInputWrapper>
             <ModifyInputLabel>변경할 닉네임</ModifyInputLabel>
-            <ModifyInput></ModifyInput>
+            <ModifyInputWrapper>
+              <ModifyInput onChangeText={props.onChangeNickname}></ModifyInput>
+            </ModifyInputWrapper>
           </ModifynameInputWrapper>
           <ModifyButton>
-            <ModifyButtonText>닉네임 변경하기</ModifyButtonText>
+            <ModifyButtonText onPress={props.onClickUpdateUserName}>
+              닉네임 변경하기
+            </ModifyButtonText>
           </ModifyButton>
         </ModifynameWrapper>
         <ModifyPasswordWrapper>
@@ -41,11 +51,18 @@ const ModifyUI = () => {
               <Title>비밀번호 변경</Title>
             </ModifyTitleWapper>
             <ModifyInputLabel>현재 비밀번호</ModifyInputLabel>
-            <ModifyInput></ModifyInput>
+            <ModifyInputWrapper>
+              <ModifyInput></ModifyInput>
+            </ModifyInputWrapper>
             <ModifyInputLabel>새 비밀번호</ModifyInputLabel>
-            <ModifyInput></ModifyInput>
+            <ModifyInputWrapper>
+              <ModifyInput></ModifyInput>
+            </ModifyInputWrapper>
+
             <ModifyInputLabel>새 비밀번호 확인</ModifyInputLabel>
-            <ModifyInput></ModifyInput>
+            <ModifyInputWrapper>
+              <ModifyInput></ModifyInput>
+            </ModifyInputWrapper>
           </ModifynameInputWrapper>
           <ModifyButton>
             <ModifyButtonText>비밀번호 변경하기</ModifyButtonText>

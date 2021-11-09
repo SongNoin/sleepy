@@ -12,7 +12,7 @@ export const ProfileWrapper = styled.View`
   display: flex;
   flex-direction: row;
   margin-top: 24px;
-  margin-right: 85px;
+  margin-right: 80px;
 `;
 
 export const ProfileImage = styled.Image`
