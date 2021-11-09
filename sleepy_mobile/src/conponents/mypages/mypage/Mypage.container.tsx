@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useQuery } from "@apollo/client";
 import MypageUI from "./Mypage.present";
-import { FETCH_USER_LOGGED_IN } from "./Mypage.queries";
+import {
+  FETCH_USER_LOGGED_IN,
+  FETCH_POINT_TRANSACTIONS,
+} from "./Mypage.queries";
 
 const MypageContainer = () => {
   const [isPoint, setIsPoint] = useState(false);
   const { data } = useQuery(FETCH_USER_LOGGED_IN);
+  const { data: pointData } = useQuery(FETCH_POINT_TRANSACTIONS, {
+    variables: { page: 1 },
+  });
 
   useEffect(() => {
     console.log(data?.fetchUserLoggedIn);
@@ -13,12 +19,10 @@ const MypageContainer = () => {
 
   function onPressShowBuy() {
     setIsPoint(false);
-    console.log("aaa", isPoint);
   }
 
   function onPressShowPoint() {
     setIsPoint(true);
-    console.log("aaa", isPoint);
   }
   return (
     <MypageUI
@@ -26,6 +30,7 @@ const MypageContainer = () => {
       onPressShowPoint={onPressShowPoint}
       isPoint={isPoint}
       data={data}
+      pointData={pointData}
     />
   );
 };

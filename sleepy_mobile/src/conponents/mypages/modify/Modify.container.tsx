@@ -8,10 +8,16 @@ const ModifyContainer = () => {
   const [updateUser] = useMutation(UPDATE_USER);
   const { data } = useQuery(FETCH_USER_LOGGEDIN);
   const [myName, setMyName] = useState("");
+  const [myPassword, setMyPassword] = useState("");
 
   function onChangeNickname(event: any) {
     setMyName(event);
     console.log(myName);
+  }
+
+  function onChangePassword(event: any) {
+    setMyPassword(event);
+    console.log(myPassword);
   }
 
   async function onClickUpdateUserName() {
@@ -31,6 +37,7 @@ const ModifyContainer = () => {
   return (
     <ModifyUI
       onChangeNickname={onChangeNickname}
+      onChangePassword={onChangePassword}
       onClickUpdateUserName={onClickUpdateUserName}
       myName={myName}
       data={data}

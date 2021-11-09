@@ -121,14 +121,16 @@ const MypageUI = (props: any) => {
               <ColumnName>거래 및 충전내역</ColumnName>
               <ColumnName>잔액</ColumnName>
             </RowName>
-            <Row>
-              <Column>2021-02-24</Column>
-              <ColumnContentWapper>
-                <ColumnContent>충전</ColumnContent>
-              </ColumnContentWapper>
-              <Column>+1000000</Column>
-              <Column>1000000</Column>
-            </Row>
+            {props.pointData?.fetchPointTransactions.map((el: any) => (
+              <Row key={el._id}>
+                <Column>{el.createdAt.slice(0, 10)}</Column>
+                <ColumnContentWapper>
+                  <ColumnContent>{el.status}</ColumnContent>
+                </ColumnContentWapper>
+                <Column>{el.amount.toLocaleString("ko-KR")}</Column>
+                <Column>{el.balance.toLocaleString("ko-KR")}</Column>
+              </Row>
+            ))}
           </PointHistoryWrapper>
         )}
       </MyMainView>
