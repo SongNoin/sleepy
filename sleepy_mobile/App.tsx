@@ -1,4 +1,5 @@
 import React, { createContext, useEffect, useState } from "react";
+import type { Node } from "react";
 import {
   ApolloClient,
   ApolloProvider,
@@ -7,49 +8,35 @@ import {
 } from '@apollo/client';
 import {createUploadLink} from 'apollo-upload-client';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-
-import type { Node } from "react";
-
 import TabNavigator from "./pages/navigation/tabNavigator";
 import LoginNavigator from "./pages/navigation/loginAuth";
+
 export const AuthContext = createContext(null);
-
-
 
 const App: () => Node = () => {
   const Stack = createNativeStackNavigator();
   const [accessToken , setAccessToken] = useState("")
-  const [user, setUser] = useState("");
-  const authValue = {
-    accessToken: accessToken,
-    setAccessToken: setAccessToken,
-    setUser: setUser
-  };
+  const authValue = {};
 
   useEffect(() => {
     AsyncStorage.getItem("@user", (_: any, result: any) => {
-      setUser(result);
+      setAccessToken(result)
     });
   }, []);
-
 
   const uploadLink = createUploadLink({
     uri: 'http://34.64.161.16/team05',
     headers: {
       authorization: `Bearer ${accessToken}`,
     },
-    credentials: 'include', // "중요한 정보들을 포함시켜줘"
+    credentials: 'include', 
   });
 
   const client = new ApolloClient({
-    // 주소를 등록해줘야함
-    // uri: "http://backend03.codebootcamp.co.kr/graphql",
     cache: new InMemoryCache(),
     link: ApolloLink.from([uploadLink]),
-    // errorLink , uploadLink 순서에 맞춰서 넣어줌
   });
 
   return (
@@ -58,12 +45,11 @@ const App: () => Node = () => {
         <NavigationContainer>
           <Stack.Navigator screenOptions={{ headerShown: false }}>
             {
-              user ? 
+              accessToken ? 
                 <Stack.Screen name="tabNavigator" component={TabNavigator} /> 
                 : 
                 <Stack.Screen name="Login" component={LoginNavigator} />
             }
-            {/* user가 있으면 tab , 없으면 Login */}
           </Stack.Navigator>
         </NavigationContainer>
       </ApolloProvider>

@@ -1,15 +1,13 @@
-import React, { useContext } from "react";
+import React from "react";
 import LoginUI from "./Login.present";
 import { GoogleSignin } from "@react-native-google-signin/google-signin";
 import { CREATE_USER, LOGIN_USER } from "./Login.queries";
 import { useMutation } from "@apollo/client";
-import { AuthContext } from "../../../../App";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const LoginContainer = () => {
   const [createUser] = useMutation(CREATE_USER);
   const [loginUser] = useMutation(LOGIN_USER);
-  const { setAccessToken, setUser }: any = useContext(AuthContext);
 
   GoogleSignin.configure({
     webClientId:
@@ -38,9 +36,7 @@ const LoginContainer = () => {
           password: userInfo.idToken?.substr(0, 15),
         },
       });
-      setAccessToken(result?.data?.loginUser.accessToken);
       AsyncStorage.setItem("@user", result?.data?.loginUser.accessToken);
-      setUser(result?.data?.loginUser.accessToken);
     } catch (_: any) {
       const result = await loginUser({
         variables: {
@@ -48,9 +44,7 @@ const LoginContainer = () => {
           password: userInfo.idToken?.substr(0, 15),
         },
       });
-      setAccessToken(result?.data?.loginUser.accessToken);
       AsyncStorage.setItem("@user", result?.data?.loginUser.accessToken);
-      setUser(result?.data?.loginUser.accessToken);
     }
   };
 
