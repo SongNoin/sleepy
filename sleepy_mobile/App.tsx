@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import {
   ApolloClient,
   ApolloProvider,
@@ -6,6 +6,7 @@ import {
   ApolloLink,
 } from '@apollo/client';
 import {createUploadLink} from 'apollo-upload-client';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -21,11 +22,18 @@ export const AuthContext = createContext(null);
 const App: () => Node = () => {
   const Stack = createNativeStackNavigator();
   const [accessToken , setAccessToken] = useState("")
+  const [user, setUser] = useState("");
   const authValue = {
     accessToken: accessToken,
     setAccessToken: setAccessToken,
-  
+    setUser: setUser
   };
+
+  useEffect(() => {
+    AsyncStorage.getItem("@user", (_: any, result: any) => {
+      setUser(result);
+    });
+  }, []);
 
 
   const uploadLink = createUploadLink({
@@ -50,7 +58,7 @@ const App: () => Node = () => {
         <NavigationContainer>
           <Stack.Navigator screenOptions={{ headerShown: false }}>
             {
-              accessToken ? 
+              user ? 
                 <Stack.Screen name="tabNavigator" component={TabNavigator} /> 
                 : 
                 <Stack.Screen name="Login" component={LoginNavigator} />
