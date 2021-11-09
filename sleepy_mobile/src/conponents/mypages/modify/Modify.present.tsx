@@ -56,7 +56,7 @@ const ModifyUI = (props: any) => {
             </ModifyInputWrapper>
             <ModifyInputLabel>새 비밀번호</ModifyInputLabel>
             <ModifyInputWrapper>
-              <ModifyInput></ModifyInput>
+              <ModifyInput onChangeText={props.onChangePassword}></ModifyInput>
             </ModifyInputWrapper>
 
             <ModifyInputLabel>새 비밀번호 확인</ModifyInputLabel>

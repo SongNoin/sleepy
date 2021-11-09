@@ -79,7 +79,7 @@ export const CartName = styled.Text`
   margin-bottom: 20px;
 `;
 export const CartPrice = styled.Text`
-  font-family: "NotoSans-Regular";
+  font-family: "NotoSans-Bold";
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
