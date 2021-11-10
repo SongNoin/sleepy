@@ -7,8 +7,7 @@ import {
   DetailProduct,
   MainBanner,
   MainBannerWrapper,
-  NewProductWrapper,
-  NewProductTitle,
+  BestProductTitle,
   DetailProductWrapper,
   ProductImage,
   InformationWrapper,
@@ -18,13 +17,17 @@ import {
   ProductPrice,
   MoreProduct,
   MoreProductText,
+  BestProductWrapper,
+  MoreProductWrapper,
+  CloseProduct,
+  CloseProductText,
 } from "./Home.styles";
 
 import Category from "./Category";
-
+import NewProductItem from "./NewProductItem";
 import { ScrollView } from "react-native";
 
-const HomeUI = () => {
+const HomeUI = (props) => {
   const navigation = useNavigation();
 
   return (
@@ -36,8 +39,8 @@ const HomeUI = () => {
           />
         </MainBannerWrapper>
         <Category />
-        <NewProductWrapper>
-          <NewProductTitle>금주의 신상품</NewProductTitle>
+        <BestProductWrapper>
+          <BestProductTitle>베스트 상품</BestProductTitle>
 
           <DetailProductWrapper>
             <InformationWrapper>
@@ -107,10 +110,23 @@ const HomeUI = () => {
               <ProductPrice>199900원</ProductPrice>
             </InformationWrapper>
           </DetailProductWrapper>
-        </NewProductWrapper>
-        <MoreProduct>
-          <MoreProductText>상품 더보기</MoreProductText>
-        </MoreProduct>
+        </BestProductWrapper>
+
+        <NewProductItem data={props.data} isEdit={props.isEdit} />
+
+        {props.isEdit === false ? (
+          <MoreProduct>
+            <MoreProductText onPress={props.onPressMoreProduct}>
+              상품 더보기
+            </MoreProductText>
+          </MoreProduct>
+        ) : (
+          <CloseProduct>
+            <CloseProductText onPress={props.onPressCloseProduct}>
+              접기
+            </CloseProductText>
+          </CloseProduct>
+        )}
       </HomeView>
     </ScrollView>
   );

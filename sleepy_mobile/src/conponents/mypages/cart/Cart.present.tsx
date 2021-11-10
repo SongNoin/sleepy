@@ -6,13 +6,13 @@ import {
   CartCountWrapper,
   CartCount,
   CartCountContent,
-  CartCountUnit,
   CartListWrapper,
   CartCard,
   CartImage,
   CartContent,
   CartName,
   CartPrice,
+  TotalPriceWrapper,
 } from "./Cart.styles";
 
 const CartUI = () => {
@@ -20,9 +20,8 @@ const CartUI = () => {
     <ScrollView>
       <MyCartView>
         <CartCountWrapper>
-          <CartCount>총합산가격 :</CartCount>
-          <CartCountContent>1000</CartCountContent>
-          <CartCountUnit>개</CartCountUnit>
+          <CartCount>상품가격</CartCount>
+          <CartCountContent>19999000 원</CartCountContent>
         </CartCountWrapper>
         <CartListWrapper>
           <CartCard>
@@ -35,6 +34,15 @@ const CartUI = () => {
             </CartContent>
           </CartCard>
         </CartListWrapper>
+        <CartCountWrapper></CartCountWrapper>
+        <TotalPriceWrapper>
+          <CartCount>배송비</CartCount>
+          <CartCountContent>+3000원</CartCountContent>
+        </TotalPriceWrapper>
+        <TotalPriceWrapper>
+          <CartCount>총 합산 가격</CartCount>
+          <CartCountContent>20,002,000 원</CartCountContent>
+        </TotalPriceWrapper>
       </MyCartView>
     </ScrollView>
   );

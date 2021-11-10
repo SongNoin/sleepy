@@ -12,6 +12,28 @@ export const ModifynameWrapper = styled.View``;
 export const ModifyTitleWapper = styled.View`
   margin-top: 24px;
 `;
+
+export const ModifyInputWrapper = styled.View`
+  width: 339px;
+  height: 36px;
+
+  border: 1px solid #5b5bc0;
+  border-radius: 8px;
+  margin-top: 5px;
+
+  justify-content: center;
+`;
+
+export const RecentNameContent = styled.Text`
+  font-family: "NotoSans-Bold";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 19px;
+
+  color: black;
+  margin-left: 15px;
+`;
 export const Title = styled.Text`
   font-family: "NotoSans-Bold";
   font-style: normal;
@@ -35,13 +57,18 @@ export const ModifyInputLabel = styled.Text`
 `;
 export const ModifyInput = styled.TextInput`
   width: 339px;
-  height: 36px;
-
-  border: 1px solid #5b5bc0;
-  border-radius: 8px;
-  margin-top: 5px;
-
+  height: 50px;
   padding-left: 15px;
+  padding-top: 15px;
+
+  font-family: "NotoSans-Bold";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 19px;
+
+  color: black;
+  justify-content: center;
 `;
 export const ModifyPasswordWrapper = styled.View``;
 

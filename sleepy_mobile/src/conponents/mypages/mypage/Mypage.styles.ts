@@ -2,7 +2,7 @@ import styled from "@emotion/native";
 
 export const MyMainView = styled.View`
   flex: 1;
-  align-items: center;
+  /* align-items: center; */
   background-color: white;
   padding-bottom: 20px;
 `;
@@ -12,6 +12,7 @@ export const ProfileWrapper = styled.View`
   display: flex;
   flex-direction: row;
   margin-top: 24px;
+  margin-left: 18px;
 `;
 
 export const ProfileImage = styled.Image`
@@ -89,13 +90,13 @@ export const IconBackGround = styled.TouchableOpacity`
 `;
 
 export const IconWrapper = styled.View`
-  width: 75%;
   height: 50px;
+  margin-top: 32px;
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  margin-top: 32px;
   justify-content: space-between;
+  padding-left: 62px;
+  padding-right: 62px;
 `;
 
 export const InsertImage = styled.Image``;
@@ -104,6 +105,7 @@ export const HistoryWrapper = styled.View``;
 export const HistoryTitleWrapper = styled.View`
   display: flex;
   flex-direction: row;
+  justify-content: center;
 
   margin-top: 30px;
 `;
@@ -143,6 +145,9 @@ export const PointHistory = styled.Text<{ isPoint: boolean }>`
 
 export const BuyHistoryWrapper = styled.View`
   margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 export const ProductCard = styled.View`
   width: 339px;
@@ -210,7 +215,7 @@ export const ProductPriceWrapper = styled.View`
 `;
 
 export const ProductPrice = styled.Text`
-  font-family: "NotoSans-Regular";
+  font-family: "NotoSans-Bold";
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
@@ -242,6 +247,9 @@ export const ReviewButtonText = styled.Text`
 
 export const PointHistoryWrapper = styled.View`
   margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const RowName = styled.View`

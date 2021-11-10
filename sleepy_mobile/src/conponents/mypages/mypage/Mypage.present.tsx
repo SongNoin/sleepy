@@ -49,16 +49,20 @@ const MypageUI = (props: any) => {
           />
           <ProfileInfoWrapper>
             <ProfileNameWapper>
-              <ProfileName>밥 먹고 똥 싸는게 좋다</ProfileName>
+              <ProfileName>{props.data?.fetchUserLoggedIn?.name}</ProfileName>
               <ProfileNameNim>님</ProfileNameNim>
             </ProfileNameWapper>
             <ProfileEmailWrapper>
               <ProfileEmail>이메일</ProfileEmail>
-              <ProfileEmailContent>littlebi96@naver.com</ProfileEmailContent>
+              <ProfileEmailContent>
+                {props.data?.fetchUserLoggedIn?.email}
+              </ProfileEmailContent>
             </ProfileEmailWrapper>
             <ProfilePointWrapper>
               <ProfilePoint>포인트</ProfilePoint>
-              <ProfilePointContent>100,000,000,000</ProfilePointContent>
+              <ProfilePointContent>
+                {props.data?.fetchUserLoggedIn?.userPoint.amount} 원
+              </ProfilePointContent>
             </ProfilePointWrapper>
           </ProfileInfoWrapper>
         </ProfileWrapper>
@@ -78,7 +82,7 @@ const MypageUI = (props: any) => {
               source={require("../../../../public/images/mypage/cart.png")}
             />
           </IconBackGround>
-          <IconBackGround>
+          <IconBackGround onPress={() => navigation.navigate("포인트")}>
             <InsertImage
               source={require("../../../../public/images/mypage/charge.png")}
             />
@@ -117,14 +121,16 @@ const MypageUI = (props: any) => {
               <ColumnName>거래 및 충전내역</ColumnName>
               <ColumnName>잔액</ColumnName>
             </RowName>
-            <Row>
-              <Column>2021-02-24</Column>
-              <ColumnContentWapper>
-                <ColumnContent>충전</ColumnContent>
-              </ColumnContentWapper>
-              <Column>+1000000</Column>
-              <Column>1000000</Column>
-            </Row>
+            {props.pointData?.fetchPointTransactions.map((el: any) => (
+              <Row key={el._id}>
+                <Column>{el.createdAt.slice(0, 10)}</Column>
+                <ColumnContentWapper>
+                  <ColumnContent>{el.status}</ColumnContent>
+                </ColumnContentWapper>
+                <Column>{el.amount.toLocaleString("ko-KR")}</Column>
+                <Column>{el.balance.toLocaleString("ko-KR")}</Column>
+              </Row>
+            ))}
           </PointHistoryWrapper>
         )}
       </MyMainView>
