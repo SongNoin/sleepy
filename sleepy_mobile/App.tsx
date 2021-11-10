@@ -12,19 +12,43 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import TabNavigator from "./pages/navigation/tabNavigator";
 import LoginNavigator from "./pages/navigation/loginAuth";
+import { onError } from "@apollo/client/link/error";
+import { getAccessToken } from "./src/commons/library/getAccessToken";
 
 export const AuthContext = createContext(null);
 
 const App: () => Node = () => {
   const Stack = createNativeStackNavigator();
   const [accessToken , setAccessToken] = useState("")
-  const authValue = {};
+  const authValue = {
+    setAccessToken: setAccessToken,
+  };
 
   useEffect(() => {
     AsyncStorage.getItem("@user", (_: any, result: any) => {
-      setAccessToken(result)
+      // console.log("user: ",result)
+      if(result){ 
+        // result가 있을때만 accessToken 저장
+        setAccessToken(result)
+      }
     });
   }, []);
+
+  const errorLink = onError(({ graphQLErrors, operation, forward }) => {
+    if (graphQLErrors) {
+      for (const err of graphQLErrors) {
+        if (err.extensions?.code === "UNAUTHENTICATED") {
+          operation.setContext({
+            headers: {
+              ...operation.getContext().headers,
+              authorization: `Bearer ${getAccessToken(setAccessToken)}`,
+            },
+          });
+          return forward(operation);
+        }
+      }
+    }
+  });
 
   const uploadLink = createUploadLink({
     uri: 'http://34.64.161.16/team05',
@@ -36,7 +60,7 @@ const App: () => Node = () => {
 
   const client = new ApolloClient({
     cache: new InMemoryCache(),
-    link: ApolloLink.from([uploadLink]),
+    link: ApolloLink.from([errorLink,uploadLink]),
   });
 
   return (
