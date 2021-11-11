@@ -69,7 +69,12 @@ const TabNavigator = () => {
       }}
     >
       <Tab.Group screenOptions={{ headerShown: false }}>
-        {!isHidden && <Tab.Screen name="검색" component={SearchNavigator} />}
+        {!isHidden && <Tab.Screen 
+          name="검색" 
+          component={SearchNavigator} 
+          options={{ tabBarHideOnKeyboard: true }}
+        />
+        }
         {isHidden ? (
           <Tab.Screen
             name="홈"
