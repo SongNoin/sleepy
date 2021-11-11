@@ -1,7 +1,6 @@
 import React from "react";
 import { ScrollView } from "react-native";
 import ReviewListContainer from "../reviewlist/ReviewList.container";
-import BuyContainer from "../buy/Buy.container";
 import ProductImages from "./ProductImages";
 
 import {
@@ -18,8 +17,6 @@ import {
   Photo,
   ReviewWrapper,
   Title,
-  IconBackGround,
-  BuyButton,
 } from "./DetailMain.styles";
 
 const DetailUI = () => {
@@ -70,10 +67,6 @@ const DetailUI = () => {
         <ReviewListContainer />
         <ReviewListContainer />
       </ReviewWrapper>
-      <IconBackGround>
-        <BuyButton>구매하기</BuyButton>
-      </IconBackGround>
-      <BuyContainer />
     </ScrollView>
   );
 };

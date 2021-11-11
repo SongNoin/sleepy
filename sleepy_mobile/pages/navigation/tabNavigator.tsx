@@ -1,5 +1,5 @@
-import React from "react";
-
+import React, { useContext } from "react";
+import { AuthContext } from "../../App";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Image } from "react-native";
 
@@ -7,8 +7,10 @@ import HomeNavigator from "./home";
 import SearchNavigator from "./search";
 import FavoriteNavigator from "./favorite";
 import MyScreenNavigator from "./mypages";
+import NavigationDetail from "../../src/conponents/commons/navigationbottom/navigationdetail";
 
 const TabNavigator = () => {
+  const { isHidden } = useContext(AuthContext);
   const Tab = createBottomTabNavigator();
 
   return (
@@ -67,10 +69,24 @@ const TabNavigator = () => {
       }}
     >
       <Tab.Group screenOptions={{ headerShown: false }}>
-        <Tab.Screen name="검색" component={SearchNavigator} />
-        <Tab.Screen name="홈" component={HomeNavigator} />
-        <Tab.Screen name="마이찜" component={FavoriteNavigator} />
-        <Tab.Screen name="마이페이지" component={MyScreenNavigator} />
+        {!isHidden && <Tab.Screen name="검색" component={SearchNavigator} />}
+        {isHidden ? (
+          <Tab.Screen
+            name="홈"
+            component={HomeNavigator}
+            options={{
+              tabBarIcon: () => <NavigationDetail />,
+            }}
+          />
+        ) : (
+          <Tab.Screen name="홈" component={HomeNavigator} options={{}} />
+        )}
+        {!isHidden && (
+          <>
+            <Tab.Screen name="마이찜" component={FavoriteNavigator} />
+            <Tab.Screen name="마이페이지" component={MyScreenNavigator} />
+          </>
+        )}
       </Tab.Group>
     </Tab.Navigator>
   );
