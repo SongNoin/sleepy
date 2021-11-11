@@ -14,9 +14,11 @@ import {
   ProductWrapper
 } from "./Search.styles";
 import { ScrollView } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 
 const SearchUI = (props:any) => {
+  const navigation = useNavigation();
   return (
     <ScrollView>
       <SearchPageView>
@@ -27,7 +29,11 @@ const SearchUI = (props:any) => {
         <SearchBarLine />
         <ProductList>
         {props.data?.fetchUseditems.map((el:any)=>(
-          <ProductWrapper key={el._id} onPress={props.onPressProduct}>
+          <ProductWrapper key={el._id} onPress={()=>{
+            navigation.navigate("상품 상세보기", {
+              id: props.onPressDetail(el)
+            })
+          }}>
             <Product >
               <ProductImage source={require("../../../public/images/search/temporaryImage.png")} />
               <ProductNameAndPrice>
