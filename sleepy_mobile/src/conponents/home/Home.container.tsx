@@ -1,11 +1,13 @@
 import { useQuery } from "@apollo/client";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { GlobalContext } from "../../../App";
 
 import HomeUI from "./Home.present";
 import { FETCH_USED_ITEMS } from "./Home.quries";
 
 const HomeContainer = () => {
   const [isEdit, setIsEdit] = useState(false);
+  const { setId } = useContext(GlobalContext);
 
   const onPressMoreProduct = () => {
     setIsEdit(true);
@@ -21,12 +23,18 @@ const HomeContainer = () => {
     },
   });
 
+  const onPressDetail = (el) => {
+    setId(el._id);
+    console.log("444", el._id);
+  };
+
   return (
     <HomeUI
       data={data}
       isEdit={isEdit}
       onPressMoreProduct={onPressMoreProduct}
       onPressCloseProduct={onPressCloseProduct}
+      onPressDetail={onPressDetail}
     />
   );
 };
