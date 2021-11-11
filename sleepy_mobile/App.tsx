@@ -15,13 +15,13 @@ import LoginNavigator from "./pages/navigation/loginAuth";
 import { onError } from "@apollo/client/link/error";
 import { getAccessToken } from "./src/commons/library/getAccessToken";
 
-export const AuthContext = createContext(null);
+export const GlobalContext = createContext(null);
 
 const App: () => Node = () => {
   const Stack = createNativeStackNavigator();
   const [accessToken, setAccessToken] = useState("");
   const [isHidden, setIsHidden] = useState(false);
-  const authValue = {
+  const value = {
     setAccessToken: setAccessToken,
     isHidden: isHidden,
     setIsHidden: setIsHidden,
@@ -67,7 +67,7 @@ const App: () => Node = () => {
   });
 
   return (
-    <AuthContext.Provider value={authValue}>
+    <GlobalContext.Provider value={value}>
       <ApolloProvider client={client}>
         <NavigationContainer>
           <Stack.Navigator screenOptions={{ headerShown: false }}>
@@ -79,7 +79,7 @@ const App: () => Node = () => {
           </Stack.Navigator>
         </NavigationContainer>
       </ApolloProvider>
-    </AuthContext.Provider>
+    </GlobalContext.Provider>
   );
 };
 

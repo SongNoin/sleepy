@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { AuthContext } from "../../App";
+import { GlobalContext } from "../../App";
 
 import HomeScreen from "../screens/home";
 import DetailScreen from "../screens/detail";
@@ -15,7 +15,7 @@ import NavigationLogo2 from "../../src/conponents/commons/navigationheader/navig
 const HomeNavigator = () => {
   const Stack = createStackNavigator();
 
-  const { setIsHidden } = useContext(AuthContext);
+  const { setIsHidden } = useContext(GlobalContext);
 
   const getVisibility = (route: any) => {
     console.log(route.name);
