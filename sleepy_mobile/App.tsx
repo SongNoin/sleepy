@@ -21,10 +21,13 @@ const App: () => Node = () => {
   const Stack = createNativeStackNavigator();
   const [accessToken, setAccessToken] = useState("");
   const [isHidden, setIsHidden] = useState(false);
+  const [id , setId] = useState("")
   const value = {
     setAccessToken: setAccessToken,
     isHidden: isHidden,
     setIsHidden: setIsHidden,
+    id: id,
+    setId: setId,
   };
 
   useEffect(() => {
