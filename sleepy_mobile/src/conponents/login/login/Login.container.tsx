@@ -4,12 +4,12 @@ import { GoogleSignin } from "@react-native-google-signin/google-signin";
 import { CREATE_USER, LOGIN_USER } from "./Login.queries";
 import { useMutation } from "@apollo/client";
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { AuthContext } from "../../../../App";
+import { GlobalContext } from "../../../../App";
 
 const LoginContainer = () => {
   const [createUser] = useMutation(CREATE_USER);
   const [loginUser] = useMutation(LOGIN_USER);
-  const {setAccessToken}:any = useContext(AuthContext)
+  const {setAccessToken}:any = useContext(GlobalContext)
 
   GoogleSignin.configure({
     webClientId:

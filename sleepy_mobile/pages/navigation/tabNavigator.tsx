@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { AuthContext } from "../../App";
+import { GlobalContext } from "../../App";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Image } from "react-native";
 
@@ -10,7 +10,7 @@ import MyScreenNavigator from "./mypages";
 import NavigationDetail from "../../src/conponents/commons/navigationbottom/navigationdetail";
 
 const TabNavigator = () => {
-  const { isHidden } = useContext(AuthContext);
+  const { isHidden } = useContext(GlobalContext);
   const Tab = createBottomTabNavigator();
 
   return (
