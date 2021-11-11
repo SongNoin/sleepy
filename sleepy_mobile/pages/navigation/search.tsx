@@ -4,6 +4,8 @@ import SearchScreen from "../screens/search";
 
 import { createStackNavigator } from "@react-navigation/stack";
 import NavigationLogo from "../../src/conponents/commons/navigationheader/navigationlogo";
+import DetailScreen from "../screens/detail";
+import NavigationLogo2 from "../../src/conponents/commons/navigationheader/navigationlogo2";
 
 
 const SearchNavigator = () => {
@@ -19,6 +21,15 @@ const SearchNavigator = () => {
                     title:"",
                     headerShown:true,
                     headerTitle: () => <NavigationLogo />, 
+                }}
+            />
+            <Stack.Screen 
+                name="상품 상세보기"
+                component={DetailScreen}
+                options={{
+                
+                    headerShown:true,
+                    headerTitle: () => <NavigationLogo2 />, 
                 }}
             />
         </Stack.Navigator>
