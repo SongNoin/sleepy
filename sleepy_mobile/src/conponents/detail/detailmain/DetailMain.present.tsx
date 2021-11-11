@@ -19,7 +19,7 @@ import {
   Title,
 } from "./DetailMain.styles";
 
-const DetailUI = () => {
+const DetailUI = (props) => {
   return (
     <ScrollView>
       <Wrapper>
@@ -46,17 +46,11 @@ const DetailUI = () => {
             />
             <ReviewAverage>(3.25)</ReviewAverage>
           </ReviewInfoWrapper>
-          <ProductName>글자는 띄어쓰기 포함 이정도로 맞추면 되겠습</ProductName>
-          <ProductPrice>19999999999999999원</ProductPrice>
+          <ProductName>{props.data?.fetchUseditem.name}</ProductName>
+          <ProductPrice>{props.data?.fetchUseditem.price}</ProductPrice>
         </ProductWrapper>
         <DetaillWrapper>
-          <DetailContent>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet,
-            risus, venenatis bibendum amet turpis. Sed odio quisque faucibus
-            neque et nisi, malesuada pretiu m. Ut at convallis at nunc. Aenean
-            est justo rutrum eu. 한국말 아무말 어쩌고 저쩌고 뭐라고 어쩌상품의
-            상세 설명입니다.
-          </DetailContent>
+          <DetailContent>{props.data?.fetchUseditem.contents}</DetailContent>
           <Photo
             source={require("../../../../public/images/detail/bag2.png")}
           />
