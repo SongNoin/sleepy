@@ -6,6 +6,7 @@ const SideWrapper = styled.div`
   display: flex;
   flex-direction: row;
 `;
+
 const Body = styled.div`
   width: 1440px;
   height: 1086px;
