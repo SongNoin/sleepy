@@ -112,7 +112,11 @@ const HomeUI = (props) => {
           </DetailProductWrapper>
         </BestProductWrapper>
 
-        <NewProductItem data={props.data} isEdit={props.isEdit} />
+        <NewProductItem
+          data={props.data}
+          isEdit={props.isEdit}
+          onPressDetail={props.onPressDetail}
+        />
 
         {props.isEdit === false ? (
           <MoreProduct>

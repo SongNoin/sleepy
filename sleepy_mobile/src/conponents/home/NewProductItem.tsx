@@ -90,7 +90,11 @@ const NewProductItem = (props) => {
                   {index % 2 === 0 && (
                     <>
                       <DetailProduct
-                        onPress={() => navigation.navigate("상품 상세보기")}
+                        onPress={() =>
+                          navigation.navigate("상품 상세보기", {
+                            id: props.onPressDetail(el),
+                          })
+                        }
                       >
                         <ProductImage
                           source={require("../../../public/images/home/product1.png")}
@@ -115,7 +119,11 @@ const NewProductItem = (props) => {
                   {index % 2 === 0 && (
                     <>
                       <DetailProduct
-                        onPress={() => navigation.navigate("상품 상세보기")}
+                        onPress={() =>
+                          navigation.navigate("상품 상세보기", {
+                            id: props.onPressDetail(el),
+                          })
+                        }
                       >
                         <ProductImage
                           source={require("../../../public/images/home/product1.png")}
@@ -143,7 +151,11 @@ const NewProductItem = (props) => {
                   {index % 2 !== 0 && (
                     <>
                       <DetailProduct
-                        onPress={() => navigation.navigate("상품 상세보기")}
+                        onPress={() =>
+                          navigation.navigate("상품 상세보기", {
+                            id: props.onPressDetail(el),
+                          })
+                        }
                       >
                         <ProductImage
                           source={require("../../../public/images/home/product1.png")}
@@ -168,7 +180,11 @@ const NewProductItem = (props) => {
                   {index % 2 !== 0 && (
                     <>
                       <DetailProduct
-                        onPress={() => navigation.navigate("상품 상세보기")}
+                        onPress={() =>
+                          navigation.navigate("상품 상세보기", {
+                            id: props.onPressDetail(el),
+                          })
+                        }
                       >
                         <ProductImage
                           source={require("../../../public/images/home/product1.png")}
