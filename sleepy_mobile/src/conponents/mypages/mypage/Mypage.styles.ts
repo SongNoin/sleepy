@@ -305,17 +305,19 @@ export const ColumnContentWapper = styled.View`
   align-items: center;
 `;
 
-export const ColumnContent = styled.Text`
+export const ColumnContent = styled.Text<{ status: string }>`
   width: 34px;
   height: 14px;
-  border: 1px solid #5b5bc0;
+  border: ${(props) =>
+    props.status === "충전" ? "1px solid #5b5bc0" : "1px solid  #FFABAB"};
   border-radius: 2px;
   text-align: center;
+  padding-top: 1px;
 
-  font-family: "NotoSans-Regular";
+  font-family: "NotoSans-Bold";
   font-style: normal;
   font-weight: normal;
   font-size: 9px;
   line-height: 12px;
-  color: #5b5bc0;
+  color: ${(props) => (props.status === "충전" ? "#5b5bc0" : "#FFABAB")};
 `;

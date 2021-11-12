@@ -16,7 +16,7 @@ import {
   ReviewButtonText,
 } from "./Mypage.styles";
 
-const BoughtProductCard = () => {
+const BoughtProductCard = (props: any) => {
   const navigation = useNavigation();
   return (
     <ProductCard>
@@ -26,13 +26,17 @@ const BoughtProductCard = () => {
       <ProductInfo>
         <ProductDateWrapper>
           <ProductDate>구매 날짜</ProductDate>
-          <ProductDateContent>2021-11-04</ProductDateContent>
+          <ProductDateContent>
+            {props.el.createdAt.slice(0, 10)}
+          </ProductDateContent>
         </ProductDateWrapper>
         <ProductNameWrapper>
-          <ProductName>글자는띄어쓰기없이</ProductName>
+          <ProductName>{props.el.useditem.name}</ProductName>
         </ProductNameWrapper>
         <ProductPriceWrapper>
-          <ProductPrice>199000원</ProductPrice>
+          <ProductPrice>
+            {props.el.useditem.price.toLocaleString("ko-KR")}
+          </ProductPrice>
         </ProductPriceWrapper>
         <ReviewButon onPress={() => navigation.navigate("리뷰쓰기")}>
           <ReviewButtonText>리뷰 쓰기 & 리뷰수정</ReviewButtonText>

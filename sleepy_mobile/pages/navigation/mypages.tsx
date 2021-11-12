@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import MypageScreen from "../screens/mypages/myMain";
 import CartScreen from "../screens/mypages/cart";
