@@ -15,7 +15,7 @@ const MyPointUI = (props: any) => {
     <>
       <MyPointView>
         <MyPointInput></MyPointInput>
-        <ChargeButton onPress={() => navigation.navigate("결제창")}>
+        <ChargeButton onPress={() => navigation.navigate("아임포트충전")}>
           <ChangeText>충전하기</ChangeText>
         </ChargeButton>
       </MyPointView>

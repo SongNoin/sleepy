@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/core";
 import React from "react";
 
 import {
@@ -16,6 +17,7 @@ import {
 } from "./Mypage.styles";
 
 const BoughtProductCard = () => {
+  const navigation = useNavigation();
   return (
     <ProductCard>
       <ProductImage
@@ -32,7 +34,7 @@ const BoughtProductCard = () => {
         <ProductPriceWrapper>
           <ProductPrice>199000원</ProductPrice>
         </ProductPriceWrapper>
-        <ReviewButon>
+        <ReviewButon onPress={() => navigation.navigate("리뷰쓰기")}>
           <ReviewButtonText>리뷰 쓰기 & 리뷰수정</ReviewButtonText>
         </ReviewButon>
       </ProductInfo>

@@ -10,7 +10,8 @@ import { createStackNavigator } from "@react-navigation/stack";
 import NavigationLogo from "../../src/conponents/commons/navigationheader/navigationlogo";
 import NavigationLogo2 from "../../src/conponents/commons/navigationheader/navigationlogo2";
 import MyPointScreen from "../screens/mypages/mypoint";
-import Payment from "../screens/mypages/payment";
+import Charge from "../screens/mypages/charge";
+import ReviewWriteScreen from "../screens/mypages/reviewwrite";
 
 const MyScreenNavigator = () => {
   const Stack = createStackNavigator();
@@ -59,8 +60,16 @@ const MyScreenNavigator = () => {
         }}
       />
       <Stack.Screen
-        name="결제창"
-        component={Payment}
+        name="아임포트충전"
+        component={Charge}
+        options={{
+          headerShown: true,
+          headerTitle: () => <NavigationLogo2 />,
+        }}
+      />
+      <Stack.Screen
+        name="리뷰쓰기"
+        component={ReviewWriteScreen}
         options={{
           headerShown: true,
           headerTitle: () => <NavigationLogo2 />,
