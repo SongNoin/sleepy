@@ -1,5 +1,4 @@
 import React from "react";
-import { useNavigation } from "@react-navigation/native";
 
 import {
   BuyView,
@@ -7,10 +6,9 @@ import {
   Phrase,
   ButtonBackGround,
   ButtonText,
-} from "./Buy.styles";
+} from "./BuyComplete.styles";
 
-const BuyUI = () => {
-  const navigation = useNavigation();
+const BuyCompelteUI = (props:any) => {
   return (
     <BuyView>
       <PurchaseImg
@@ -18,7 +16,10 @@ const BuyUI = () => {
       />
       <Phrase>구매가 완료되었습니다!</Phrase>
       <ButtonBackGround>
-        <ButtonText onPress={() => navigation.navigate("마이페이지")}>
+        {/* <ButtonText onPress={() => navigation.navigate("마이페이지")}>
+          구매 내역 보러가기
+        </ButtonText> */}
+        <ButtonText onPress={props.onPressMoveToMyPage}>
           구매 내역 보러가기
         </ButtonText>
       </ButtonBackGround>
@@ -26,4 +27,4 @@ const BuyUI = () => {
   );
 };
 
-export default BuyUI;
+export default BuyCompelteUI;

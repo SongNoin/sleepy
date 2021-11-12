@@ -20,12 +20,18 @@ export const GlobalContext = createContext(null);
 const App: () => Node = () => {
   const Stack = createNativeStackNavigator();
   const [accessToken, setAccessToken] = useState("");
-  const [isHidden, setIsHidden] = useState(false);
+  const [isSearchHidden, setIsSearchHidden] = useState(false);
+  const [isHomeHidden, setIsHomeHidden] = useState(false);
+  const [isMyPage , setIsMyPage] = useState(false);
   const [id , setId] = useState("")
   const value = {
     setAccessToken: setAccessToken,
-    isHidden: isHidden,
-    setIsHidden: setIsHidden,
+    isSearchHidden: isSearchHidden,
+    setIsSearchHidden: setIsSearchHidden,
+    isHomeHidden: isHomeHidden,
+    setIsHomeHidden: setIsHomeHidden,
+    isMyPage: isMyPage,
+    setIsMyPage: setIsMyPage,
     id: id,
     setId: setId,
   };
@@ -66,7 +72,7 @@ const App: () => Node = () => {
 
   const client = new ApolloClient({
     cache: new InMemoryCache(),
-    link: ApolloLink.from([errorLink, uploadLink]),
+    link: ApolloLink.from([errorLink, uploadLink as unknown as ApolloLink]),
   });
 
   return (
