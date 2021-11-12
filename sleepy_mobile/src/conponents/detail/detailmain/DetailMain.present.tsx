@@ -19,6 +19,8 @@ import {
   Title,
 } from "./DetailMain.styles";
 
+import RenderHTML from "react-native-render-html";
+
 const DetailUI = (props) => {
   return (
     <ScrollView>
@@ -50,7 +52,11 @@ const DetailUI = (props) => {
           <ProductPrice>{props.data?.fetchUseditem.price}</ProductPrice>
         </ProductWrapper>
         <DetaillWrapper>
-          <DetailContent>{props.data?.fetchUseditem.contents}</DetailContent>
+          <DetailContent>
+            <RenderHTML
+              source={{ html: `${props.data?.fetchUseditem.contents}` }}
+            />
+          </DetailContent>
           <Photo
             source={require("../../../../public/images/detail/bag2.png")}
           />
