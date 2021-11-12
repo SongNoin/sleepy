@@ -28,7 +28,11 @@ const ListUI = (props) => {
         {props.data?.fetchUseditems.map((el) => (
           <DetailProductWrapper key={el._id}>
             <ProductImageWrapper
-              onPress={() => navigation.navigate("상품 상세보기")}
+              onPress={() =>
+                navigation.navigate("상품 상세보기", {
+                  id: props.onPressDetail(el),
+                })
+              }
             >
               <ProductImage
                 source={require("../../../public/images/list/productimage.png")}

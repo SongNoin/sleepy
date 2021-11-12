@@ -5,9 +5,9 @@ import {
   ApolloProvider,
   InMemoryCache,
   ApolloLink,
-} from '@apollo/client';
-import {createUploadLink} from 'apollo-upload-client';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+} from "@apollo/client";
+import { createUploadLink } from "apollo-upload-client";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import TabNavigator from "./pages/navigation/tabNavigator";
@@ -15,21 +15,33 @@ import LoginNavigator from "./pages/navigation/loginAuth";
 import { onError } from "@apollo/client/link/error";
 import { getAccessToken } from "./src/commons/library/getAccessToken";
 
-export const AuthContext = createContext(null);
+export const GlobalContext = createContext(null);
 
 const App: () => Node = () => {
   const Stack = createNativeStackNavigator();
-  const [accessToken , setAccessToken] = useState("")
-  const authValue = {
+  const [accessToken, setAccessToken] = useState("");
+  const [isSearchHidden, setIsSearchHidden] = useState(false);
+  const [isHomeHidden, setIsHomeHidden] = useState(false);
+  const [isMyPage , setIsMyPage] = useState(false);
+  const [id , setId] = useState("")
+  const value = {
     setAccessToken: setAccessToken,
+    isSearchHidden: isSearchHidden,
+    setIsSearchHidden: setIsSearchHidden,
+    isHomeHidden: isHomeHidden,
+    setIsHomeHidden: setIsHomeHidden,
+    isMyPage: isMyPage,
+    setIsMyPage: setIsMyPage,
+    id: id,
+    setId: setId,
   };
 
   useEffect(() => {
     AsyncStorage.getItem("@user", (_: any, result: any) => {
       // console.log("user: ",result)
-      if(result){ 
+      if (result) {
         // result가 있을때만 accessToken 저장
-        setAccessToken(result)
+        setAccessToken(result);
       }
     });
   }, []);
@@ -51,34 +63,32 @@ const App: () => Node = () => {
   });
 
   const uploadLink = createUploadLink({
-    uri: 'http://34.64.161.16/team05',
+    uri: "http://34.64.161.16/team05",
     headers: {
       authorization: `Bearer ${accessToken}`,
     },
-    credentials: 'include', 
+    credentials: "include",
   });
 
   const client = new ApolloClient({
     cache: new InMemoryCache(),
-    link: ApolloLink.from([errorLink,uploadLink]),
+    link: ApolloLink.from([errorLink, uploadLink as unknown as ApolloLink]),
   });
 
   return (
-    <AuthContext.Provider value={authValue}>
+    <GlobalContext.Provider value={value}>
       <ApolloProvider client={client}>
         <NavigationContainer>
           <Stack.Navigator screenOptions={{ headerShown: false }}>
-            {
-              accessToken ? 
-                <Stack.Screen name="tabNavigator" component={TabNavigator} /> 
-                : 
-                <Stack.Screen name="Login" component={LoginNavigator} />
-            }
+            {accessToken ? (
+              <Stack.Screen name="tabNavigator" component={TabNavigator} />
+            ) : (
+              <Stack.Screen name="Login" component={LoginNavigator} />
+            )}
           </Stack.Navigator>
         </NavigationContainer>
       </ApolloProvider>
-    </AuthContext.Provider>
-    
+    </GlobalContext.Provider>
   );
 };
 

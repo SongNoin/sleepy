@@ -7,7 +7,7 @@ import {
   FETCH_USER_LOGGEDIN,
 } from "../../../src/conponents/mypages/mypoint/mypoint.queries";
 
-const Payment = () => {
+const Charge = () => {
   const { data: userData } = useQuery(FETCH_USER_LOGGEDIN);
   const [createPointTransactionOfLoading] = useMutation(
     CREATE_POINT_TRANSACTION_OF_LOADING
@@ -52,4 +52,4 @@ const Payment = () => {
   );
 };
 
-export default Payment;
+export default Charge;

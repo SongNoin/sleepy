@@ -105,7 +105,3 @@ export const Title = styled.Text`
   border-bottom-width: 2px;
   border-bottom-color: #f1eef7;
 `;
-
-export const IconBackGround = styled.TouchableOpacity``;
-
-export const BuyButton = styled.Text``;
