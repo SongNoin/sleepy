@@ -76,15 +76,9 @@ const NavigationDetail = () => {
       <CartButton onPress={() => navigation.navigate("장바구니")}>
         <CartText>장바구니</CartText>
       </CartButton>
-      <BuyButton onPress={() => navigation.navigate("구매하기")}>
+      <BuyButton onPress={() => navigation.navigate("결제하기")}>
         구매하기
       </BuyButton>
-      {/* <CartButton onPress={() => navigation.navigate("장바구니")}>
-        장바구니
-      </CartButton>
-      <BuyButton onPress={() => navigation.navigate("구매하기")}>
-        구매하기
-      </BuyButton> */}
     </Wrapper>
   );
 };

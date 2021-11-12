@@ -10,7 +10,7 @@ import MyScreenNavigator from "./mypages";
 import NavigationDetail from "../../src/conponents/commons/navigationbottom/navigationdetail";
 
 const TabNavigator = () => {
-  const { isHidden } = useContext(GlobalContext);
+  const { isSearchHidden, isHomeHidden, isMyPage }:any = useContext(GlobalContext);
   const Tab = createBottomTabNavigator();
 
   return (
@@ -48,7 +48,7 @@ const TabNavigator = () => {
                 source={require("../../public/images/navigation/favorite-off.png")}
               />
             );
-          } else if (route.name === "마이페이지") {
+          } else if (route.name === "마이페이지" || isMyPage ) {
             iconName = focused ? (
               <Image
                 source={require("../../public/images/navigation/my-on.png")}
@@ -57,8 +57,19 @@ const TabNavigator = () => {
               <Image
                 source={require("../../public/images/navigation/my-off.png")}
               />
-            );
-          }
+            ) 
+          } 
+          // else if (isMyPage) {
+          //   iconName = focused ? (
+          //     <Image
+          //       source={require("../../public/images/navigation/my-on.png")}
+          //     />
+          //   ) : (
+          //     <Image
+          //       source={require("../../public/images/navigation/my-off.png")}
+          //     />
+          //   ) 
+          // }
           return iconName;
         },
       })}
@@ -69,27 +80,32 @@ const TabNavigator = () => {
       }}
     >
       <Tab.Group screenOptions={{ headerShown: false }}>
-        {!isHidden && <Tab.Screen 
-          name="검색" 
-          component={SearchNavigator} 
-          options={{ tabBarHideOnKeyboard: true }}
-        />
-        }
-        {isHidden ? (
+        {isSearchHidden && (
           <Tab.Screen
-            name="홈"
-            component={HomeNavigator}
+            name="검색"
+            component={SearchNavigator}
             options={{
+              tabBarHideOnKeyboard: true,
               tabBarIcon: () => <NavigationDetail />,
             }}
           />
-        ) : (
-          <Tab.Screen name="홈" component={HomeNavigator} options={{}} />
         )}
-        {!isHidden && (
+        {isHomeHidden && (
+          <Tab.Screen
+            name="홈"
+            component={HomeNavigator}
+            options={{ tabBarIcon: () => <NavigationDetail /> }} />
+        )}
+        {!isHomeHidden && !isSearchHidden && (
           <>
+            <Tab.Screen
+              name="검색"
+              component={SearchNavigator}
+              options={{ tabBarHideOnKeyboard: true }}
+            />
+            <Tab.Screen name="홈" component={HomeNavigator} />
             <Tab.Screen name="마이찜" component={FavoriteNavigator} />
-            <Tab.Screen name="마이페이지" component={MyScreenNavigator} />
+            <Tab.Screen name="마이페이지" component={MyScreenNavigator} options={{ tabBarHideOnKeyboard: true }} />
           </>
         )}
       </Tab.Group>

@@ -17,7 +17,6 @@ const SearchContainer = () => {
     }
   })
   
-
   const getDebounce = _.debounce((data)=>{
     refetch({
       search: data,
