@@ -4,15 +4,25 @@ import {
   InnerWrapper,
   ItemContent,
   RowCategory,
+  ColumnIndexRow,
+  ColumnCategoryRow,
+  ColumnNameRow,
+  CloumnDateRow,
+  ColumnPriceRow,
   ColumnIndex,
   ColumnCategory,
+  ColumnImageRow,
+  ColumnImage,
+  FakeImage,
   ColumnName,
   ColumnSale,
   ColumnSold,
-  ColumnNone,
+  ColumnSell,
   ColumnPrice,
   CloumnDate,
   ColumnModify,
+  ModifyButton,
+  DeleteButton,
   Row,
 } from "./productstable.styles";
 
@@ -25,7 +35,7 @@ export default function ProductstableUI(props) {
           <RowCategory>
             <ColumnIndex>NO</ColumnIndex>
             <ColumnCategory>카테고리</ColumnCategory>
-            <ColumnCategory>상품이미지</ColumnCategory>
+            <ColumnImageRow>상품이미지</ColumnImageRow>
             <ColumnName>상품명</ColumnName>
             <ColumnSale>판매여부</ColumnSale>
             <CloumnDate>날짜</CloumnDate>
@@ -34,16 +44,23 @@ export default function ProductstableUI(props) {
           </RowCategory>
           {props.data?.fetchUseditemsISold.map((el, index) => (
             <Row key={el._id}>
-              <ColumnIndex>{10 - index}</ColumnIndex>
-              <ColumnCategory>{el.tags}</ColumnCategory>
-              <ColumnName>{el.name}</ColumnName>
+              <ColumnIndexRow>{10 - index}</ColumnIndexRow>
+              <ColumnCategoryRow>{el.tags}</ColumnCategoryRow>
+              <ColumnImage>
+                <FakeImage src="/images/bag2.png" />
+              </ColumnImage>
+              <ColumnNameRow>{el.name}</ColumnNameRow>
               {el.buyer?.name ? (
-                <ColumnSold>{el.buyer?.name && "SOLD OUT"}</ColumnSold>
+                <ColumnSold>{el.buyer?.name && "판매완료"}</ColumnSold>
               ) : (
-                <ColumnNone />
+                <ColumnSell>판매중</ColumnSell>
               )}
-              <CloumnDate>{el.createdAt.slice(0, 10)}</CloumnDate>
-              <ColumnPrice>{el.price}</ColumnPrice>
+              <CloumnDateRow>{el.createdAt.slice(0, 10)}</CloumnDateRow>
+              <ColumnPriceRow>₩ {el.price}</ColumnPriceRow>
+              <ColumnModify>
+                <ModifyButton>수정</ModifyButton>
+                <DeleteButton>삭제</DeleteButton>
+              </ColumnModify>
             </Row>
           ))}
         </ItemContent>

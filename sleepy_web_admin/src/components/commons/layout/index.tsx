@@ -8,8 +8,7 @@ const SideWrapper = styled.div`
 `;
 
 const Body = styled.div`
-  width: 1440px;
-  height: 1086px;
+  /* width: 1560px; */
 `;
 
 export default function Layout(props) {
