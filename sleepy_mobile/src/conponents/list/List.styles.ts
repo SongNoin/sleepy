@@ -23,7 +23,11 @@ export const ProductImageWrapper = styled.TouchableOpacity`
   height: 193px;
 `;
 
-export const ProductImage = styled.Image``;
+export const ProductImage = styled.Image`
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+`;
 
 export const InfoWrapper = styled.View`
   display: flex;
