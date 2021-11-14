@@ -34,6 +34,7 @@ export const FETCH_POINT_TRANSACTIONS_OF_BUYING = gql`
       useditem {
         name
         price
+        images
       }
     }
   }
