@@ -39,10 +39,11 @@ export default function RegisterUI(props) {
                   <MenuItem value={"배게"}>배게</MenuItem>
                   <MenuItem value={"이불"}>이불</MenuItem>
                   <MenuItem value={"잠옷"}>잠옷</MenuItem>
+                  <MenuItem value={"도서"}>도서</MenuItem>
                   <MenuItem value={"암막커튼"}>암막 커튼</MenuItem>
-                  <MenuItem value={"수면 오일"}>수면 오일</MenuItem>
-                  <MenuItem value={"수면 용품"}>수면 용품</MenuItem>
-                  <MenuItem value={"수면 보조제"}>수면 보조제</MenuItem>
+                  <MenuItem value={"오일"}>오일</MenuItem>
+                  <MenuItem value={"수면용품"}>수면 용품</MenuItem>
+                  <MenuItem value={"수면보조제"}>수면 보조제</MenuItem>
                 </Select>
               </FormControl>
             </Box>

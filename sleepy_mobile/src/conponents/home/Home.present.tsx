@@ -38,7 +38,7 @@ const HomeUI = (props) => {
             source={require("../../../public/images/home/mainbanner.png")}
           />
         </MainBannerWrapper>
-        <Category />
+        <Category onPressCategory={props.onPressCategory} />
         <BestProductWrapper>
           <BestProductTitle>베스트 상품</BestProductTitle>
 

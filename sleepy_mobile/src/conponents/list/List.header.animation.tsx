@@ -30,7 +30,7 @@ const ScrollText = styled.Text`
   text-align: center;
 `;
 
-const HeaderAnimation = () => {
+const HeaderAnimation = (props) => {
   return (
     <ScrollViewWrapper>
       <ScrollView
@@ -42,47 +42,53 @@ const HeaderAnimation = () => {
           paddingEnd: 5,
         }}
       >
-        <ScrollIconWrapper>
+        <ScrollIconWrapper onPress={() => props.onPressListCategory("배게")}>
           <ScrollIcon
             source={require("../../../public/images/list/pillow.png")}
           />
           <ScrollText>배게</ScrollText>
         </ScrollIconWrapper>
-        <ScrollIconWrapper>
+        <ScrollIconWrapper onPress={() => props.onPressListCategory("이불")}>
           <ScrollIcon
             source={require("../../../public/images/list/blankits.png")}
           />
           <ScrollText>이불</ScrollText>
         </ScrollIconWrapper>
-        <ScrollIconWrapper>
+        <ScrollIconWrapper
+          onPress={() => props.onPressListCategory("암막커튼")}
+        >
           <ScrollIcon
             source={require("../../../public/images/list/courtain.png")}
           />
           <ScrollText>암막 커튼</ScrollText>
         </ScrollIconWrapper>
-        <ScrollIconWrapper>
+        <ScrollIconWrapper onPress={() => props.onPressListCategory("잠옷")}>
           <ScrollIcon
             source={require("../../../public/images/list/pajamas.png")}
           />
           <ScrollText>수면 잠옷</ScrollText>
         </ScrollIconWrapper>
-        <ScrollIconWrapper>
+        <ScrollIconWrapper onPress={() => props.onPressListCategory("오일")}>
           <ScrollIcon source={require("../../../public/images/list/oil.png")} />
           <ScrollText>오일</ScrollText>
         </ScrollIconWrapper>
-        <ScrollIconWrapper>
+        <ScrollIconWrapper onPress={() => props.onPressListCategory("도서")}>
           <ScrollIcon
             source={require("../../../public/images/list/book.png")}
           />
           <ScrollText>도서</ScrollText>
         </ScrollIconWrapper>
-        <ScrollIconWrapper>
+        <ScrollIconWrapper
+          onPress={() => props.onPressListCategory("수면용품")}
+        >
           <ScrollIcon
             source={require("../../../public/images/list/eyepatch.png")}
           />
           <ScrollText>수면 용품</ScrollText>
         </ScrollIconWrapper>
-        <ScrollIconWrapper>
+        <ScrollIconWrapper
+          onPress={() => props.onPressListCategory("수면보조제")}
+        >
           <ScrollIcon
             source={require("../../../public/images/list/pill.png")}
           />
