@@ -10,7 +10,7 @@ import MyScreenNavigator from "./mypages";
 import NavigationDetail from "../../src/conponents/commons/navigationbottom/navigationdetail";
 
 const TabNavigator = () => {
-  const { isSearchHidden, isHomeHidden, isMyPage }:any = useContext(GlobalContext);
+  const { isSearchHidden, isHomeHidden }: any = useContext(GlobalContext);
   const Tab = createBottomTabNavigator();
 
   return (
@@ -48,7 +48,7 @@ const TabNavigator = () => {
                 source={require("../../public/images/navigation/favorite-off.png")}
               />
             );
-          } else if (route.name === "마이페이지" || isMyPage ) {
+          } else if (route.name === "마이페이지") {
             iconName = focused ? (
               <Image
                 source={require("../../public/images/navigation/my-on.png")}
@@ -57,19 +57,8 @@ const TabNavigator = () => {
               <Image
                 source={require("../../public/images/navigation/my-off.png")}
               />
-            ) 
-          } 
-          // else if (isMyPage) {
-          //   iconName = focused ? (
-          //     <Image
-          //       source={require("../../public/images/navigation/my-on.png")}
-          //     />
-          //   ) : (
-          //     <Image
-          //       source={require("../../public/images/navigation/my-off.png")}
-          //     />
-          //   ) 
-          // }
+            );
+          }
           return iconName;
         },
       })}
@@ -90,12 +79,15 @@ const TabNavigator = () => {
             }}
           />
         )}
+
         {isHomeHidden && (
           <Tab.Screen
             name="홈"
             component={HomeNavigator}
-            options={{ tabBarIcon: () => <NavigationDetail /> }} />
+            options={{ tabBarIcon: () => <NavigationDetail /> }}
+          />
         )}
+
         {!isHomeHidden && !isSearchHidden && (
           <>
             <Tab.Screen
@@ -105,7 +97,11 @@ const TabNavigator = () => {
             />
             <Tab.Screen name="홈" component={HomeNavigator} />
             <Tab.Screen name="마이찜" component={FavoriteNavigator} />
-            <Tab.Screen name="마이페이지" component={MyScreenNavigator} options={{ tabBarHideOnKeyboard: true }} />
+            <Tab.Screen
+              name="마이페이지"
+              component={MyScreenNavigator}
+              options={{ tabBarHideOnKeyboard: true }}
+            />
           </>
         )}
       </Tab.Group>
