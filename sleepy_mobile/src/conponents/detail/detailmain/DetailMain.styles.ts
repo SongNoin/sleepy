@@ -67,7 +67,7 @@ export const DetaillWrapper = styled.View`
   margin-bottom: 5%;
 `;
 
-export const DetailContent = styled.Text`
+export const DetailContent = styled.View`
   text-align: center;
   font-weight: 400;
   font-style: normal;

@@ -1,5 +1,26 @@
 import React from "react";
 import { FlatList, View } from "react-native";
+import styled from "@emotion/native";
+
+const Container = styled.View`
+  height: 195px;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Indicator = styled.View<{ focused: boolean }>`
+  margin: 0px 4px;
+  background-color: ${(props) => (props.focused ? "#262626" : "#dfdfdf")};
+  width: 6px;
+  height: 6px;
+  border-radius: 3px;
+`;
+
+const IndicatorWrapper = styled.View`
+  flex-direction: row;
+  align-items: center;
+  margin-top: 16px;
+`;
 
 type CarouselProps = {
   gap: number;
@@ -28,7 +49,7 @@ const Carousel = ({
   };
 
   return (
-    <View style={{ flexDirection: "row" }}>
+    <Container>
       <FlatList
         automaticallyAdjustContentInsets={false}
         contentContainerStyle={{
@@ -49,7 +70,12 @@ const Carousel = ({
         )}
         showsHorizontalScrollIndicator={false}
       />
-    </View>
+      <IndicatorWrapper>
+        {Array.from({ length: data.length }, (_, i) => i).map((i) => (
+          <Indicator key={`indicator_${i}`} focused={i === page} />
+        ))}
+      </IndicatorWrapper>
+    </Container>
   );
 };
 
