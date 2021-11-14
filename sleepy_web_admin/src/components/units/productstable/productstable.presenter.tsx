@@ -55,11 +55,21 @@ export default function ProductstableUI(props) {
               ) : (
                 <ColumnSell>판매중</ColumnSell>
               )}
-              <CloumnDateRow>{el.createdAt.slice(0, 10)}</CloumnDateRow>
-              <ColumnPriceRow>₩ {el.price}</ColumnPriceRow>
+              <CloumnDateRow>
+                {el.createdAt.slice(0, 10)} {el.createdAt.slice(11, 19)}
+              </CloumnDateRow>
+              <ColumnPriceRow>
+                ₩{" "}
+                {el.price
+                  .toLocaleString("ko-KR")
+                  .toString()
+                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+              </ColumnPriceRow>
               <ColumnModify>
                 <ModifyButton>수정</ModifyButton>
-                <DeleteButton>삭제</DeleteButton>
+                <DeleteButton onClickDelete={props.onClickDelete(el)}>
+                  삭제
+                </DeleteButton>
               </ColumnModify>
             </Row>
           ))}

@@ -7,8 +7,18 @@ import {
   Phrase,
   BottomWrapper,
   InnerWrapper,
+  InnerWrapperRegister,
+  InnerWrapperProduct,
+  InnerWrapperSales,
+  InnerWrapperSignup,
+  InnerWrapperLogin,
   SideMenuIcon,
   SideMenuButton,
+  SideMenuButtonRegister,
+  SideMenuButtonProduct,
+  SideMenuButtonSales,
+  SideMenuButtonSignup,
+  SideMenuIconLogin,
 } from "./sidebar.styles";
 
 export default function SidebarUI(props) {
@@ -22,48 +32,91 @@ export default function SidebarUI(props) {
           <Line />
         </TopWrapper>
         <BottomWrapper>
-          <InnerWrapper>
-            <SideMenuIcon src="/images/posticon.png" />
-            <SideMenuButton onClick={props.onClickMoveToRegister}>
+          <InnerWrapperRegister isClickRegister={props.isClickRegister}>
+            {!props.isClickRegister ? (
+              <SideMenuIcon src="/images/posticon.png" />
+            ) : (
+              <SideMenuIcon src="/images/posticon_click.png" />
+            )}
+
+            <SideMenuButtonRegister
+              isClickRegister={props.isClickRegister}
+              onClick={props.onClickMoveToRegister}
+            >
               상품 등록
-            </SideMenuButton>
-          </InnerWrapper>
-          <Line />
-          <InnerWrapper>
-            <SideMenuIcon src="/images/presenticon.png" />
-            <SideMenuButton onClick={props.onClickMoveToProductstable}>
+            </SideMenuButtonRegister>
+          </InnerWrapperRegister>
+
+          <InnerWrapperProduct isClickProduct={props.isClickProduct}>
+            {props.isClickProduct ? (
+              <SideMenuIcon src="/images/presenticon_click.png" />
+            ) : (
+              <SideMenuIcon src="/images/presenticon.png" />
+            )}
+
+            <SideMenuButtonProduct
+              isClickProduct={props.isClickProduct}
+              onClick={props.onClickMoveToProductstable}
+            >
               상품 현황
-            </SideMenuButton>
-          </InnerWrapper>
-          <Line />
-          <InnerWrapper>
-            <SideMenuIcon src="/images/sellicon.png" />
-            <SideMenuButton onClick={props.onClickMoveToSalestable}>
+            </SideMenuButtonProduct>
+          </InnerWrapperProduct>
+
+          <InnerWrapperSales isClickSales={props.isClickSales}>
+            {props.isClickSales ? (
+              <SideMenuIcon src="/images/sellicon_click.png" />
+            ) : (
+              <SideMenuIcon src="/images/sellicon.png" />
+            )}
+
+            <SideMenuButtonSales
+              isClickSales={props.isClickSales}
+              onClick={props.onClickMoveToSalestable}
+            >
               판매 현황
-            </SideMenuButton>
-          </InnerWrapper>
-          <Line />
+            </SideMenuButtonSales>
+          </InnerWrapperSales>
+
           {!props.accessToken && (
             <>
-              <InnerWrapper>
-                <SideMenuIcon src="/images/posticon.png" />
-                <SideMenuButton onClick={props.onClickMoveToSignup}>
+              <InnerWrapperSignup isClickSignup={props.isClickSignup}>
+                {props.isClickSignup ? (
+                  <SideMenuIcon src="/images/Moon_click.png" />
+                ) : (
+                  <SideMenuIcon src="/images/Moon.png" />
+                )}
+
+                <SideMenuButtonSignup
+                  isClickSignup={props.isClickSignup}
+                  onClick={props.onClickMoveToSignup}
+                >
                   회원 가입
-                </SideMenuButton>
-              </InnerWrapper>
-              <Line />
-              <InnerWrapper>
-                <SideMenuIcon src="/images/logouticon.png" />
-                <SideMenuButton onClick={props.onClickMoveToLogin}>
+                </SideMenuButtonSignup>
+              </InnerWrapperSignup>
+
+              <InnerWrapperLogin isClickLogin={props.isClickLogin}>
+                {props.isClickLogin ? (
+                  <SideMenuIcon src="/images/logouticon_click.png" />
+                ) : (
+                  <SideMenuIcon src="/images/logouticon.png" />
+                )}
+
+                <SideMenuButtonSignup
+                  isClickLogin={props.isClickLogin}
+                  onClick={props.onClickMoveToLogin}
+                >
                   로그인
-                </SideMenuButton>
-              </InnerWrapper>
+                </SideMenuButtonSignup>
+              </InnerWrapperLogin>
             </>
           )}
           {props.accessToken && (
-            <SideMenuButton onClick={props.onClickLogout}>
-              로그아웃
-            </SideMenuButton>
+            <InnerWrapper>
+              <SideMenuIcon src="/images/logouticon.png" />
+              <SideMenuButton onClick={props.onClickLogout}>
+                로그아웃
+              </SideMenuButton>
+            </InnerWrapper>
           )}
         </BottomWrapper>
       </Wrapper>
