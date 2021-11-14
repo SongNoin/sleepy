@@ -15,7 +15,7 @@ export const Title = styled.div`
 `;
 
 export const InnerWrapper = styled.div`
-  width: 1476px;
+  width: 1400px;
   padding: 32px 0px 30px 64px;
   /* border: 4px solid blue; */
   background-color: white;
@@ -24,7 +24,6 @@ export const InnerWrapper = styled.div`
 export const ItemContent = styled.div`
   width: 1348px;
   font-size: 12px;
-  margin-left: 20px;
 `;
 
 export const RowCategory = styled.div`
@@ -159,7 +158,7 @@ export const ColumnSale = styled.div`
 `;
 
 export const ColumnSold = styled.div`
-  width: 128px;
+  width: 10%;
   height: 36px;
   display: flex;
   flex-direction: row;
@@ -167,6 +166,23 @@ export const ColumnSold = styled.div`
   align-items: center;
   background-color: white;
   color: #5b5bc0;
+  border: 1px solid #5b5bc0;
+  border-radius: 5px;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 21.79px;
+`;
+
+export const ColumnSell = styled.div`
+  width: 10%;
+  height: 36px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: #5b5bc0;
   border: 1px solid #5b5bc0;
   border-radius: 5px;
   font-weight: 500;
@@ -199,23 +215,6 @@ export const CloumnDateRow = styled.div`
   font-size: 16px;
   line-height: 21.79px;
   color: #767676;
-`;
-
-export const ColumnSell = styled.div`
-  width: 128px;
-  height: 36px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  background-color: #5b5bc0;
-  border: 1px solid #5b5bc0;
-  border-radius: 5px;
-  font-weight: 500;
-  font-style: normal;
-  font-size: 16px;
-  line-height: 21.79px;
 `;
 
 export const ColumnPrice = styled.div`
