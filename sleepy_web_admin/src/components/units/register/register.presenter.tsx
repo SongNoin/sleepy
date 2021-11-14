@@ -1,4 +1,4 @@
-import { Wrapper, All } from "./register.styles";
+import { Wrapper, All, UploadImage } from "./register.styles";
 
 import Select from "@mui/material/Select";
 
@@ -8,6 +8,8 @@ import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
 
 import ReactQuil01 from "./register.quill";
+
+import Uploads from "../../commons/uploads/Uploads.container";
 
 export default function RegisterUI(props) {
   return (
@@ -47,8 +49,18 @@ export default function RegisterUI(props) {
             <div style={{ marginLeft: "30px" }}>
               {props.tag?.length ? `#${props.tag}` : ""}
             </div>
-            <button>업로드</button>
           </div>
+          <UploadImage>
+            {new Array(3).fill(1).map((el, index) => (
+              <Uploads
+                onChangeFiles={props.onChangeFiles}
+                key={`${el}_${index}`}
+                index={index}
+                type="submit"
+              />
+            ))}
+          </UploadImage>
+          <button>업로드</button>
         </form>
       </All>
     </>

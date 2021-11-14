@@ -1,9 +1,13 @@
 import RegisterUI from "./register.presenter";
 
-import { useMutation } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 
 import { useState } from "react";
-import { CREATE_USEDITEM } from "./register.queries";
+import {
+  CREATE_USEDITEM,
+  FETCH_USED_ITEM,
+  UPLOAD_FILE,
+} from "./register.queries";
 
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
@@ -12,6 +16,9 @@ import { schema } from "./register.validation";
 export default function Register() {
   const [age, setAge] = useState("");
   const [tag, setTag] = useState([]);
+  const [uploadFile] = useMutation(UPLOAD_FILE);
+
+  const [files, setFiles] = useState([null, null, null]);
 
   const handleChange = (event) => {
     setAge(event.target.value);
@@ -47,7 +54,13 @@ export default function Register() {
 
   async function onClickUploadProudct(data) {
     try {
-      await createUseditem({
+      const uploadFiles = files.map((el) =>
+        el ? uploadFile({ variables: { file: el } }) : null
+      );
+      const results = await Promise.all(uploadFiles);
+      const myImages = results.map((el) => el?.data.uploadFile.url || "");
+
+      const result = await createUseditem({
         variables: {
           createUseditemInput: {
             name: myName,
@@ -55,14 +68,21 @@ export default function Register() {
             contents: data.myContents,
             price: Number(myPrice),
             tags: tag,
+            images: myImages,
           },
         },
       });
-      console.log(223123);
+      console.log(result);
       alert("상품이 등록되었습니다");
     } catch (error) {
       console.log(error.message);
     }
+  }
+
+  function onChangeFiles(file: any, index: any) {
+    const newFiles = [...files];
+    newFiles[index] = file;
+    setFiles(newFiles);
   }
 
   return (
@@ -77,6 +97,7 @@ export default function Register() {
       onChangeMyName={onChangeMyName}
       onChangeMyRemark={onChangeMyRemark}
       onChangeMyPrice={onChangeMyPrice}
+      onChangeFiles={onChangeFiles}
     />
   );
 }
