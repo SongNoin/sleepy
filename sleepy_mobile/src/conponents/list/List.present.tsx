@@ -23,32 +23,36 @@ const ListUI = (props) => {
 
   return (
     <ListView>
-      <HeaderAnimation />
+      <HeaderAnimation onPressListCategory={props.onPressListCategory} />
       <ScrollView>
         {props.data?.fetchUseditems.map((el) => (
           <DetailProductWrapper key={el._id}>
-            <ProductImageWrapper
-              onPress={() =>
-                navigation.navigate("상품 상세보기", {
-                  id: props.onPressDetail(el),
-                })
-              }
-            >
-              <ProductImage
-                source={{
-                  uri: `https://storage.googleapis.com/${el.images[0]}`,
-                }}
-              />
-            </ProductImageWrapper>
-            <InfoWrapper>
-              <InfoTextWrapper>
-                <InfoTitle>{el.name}</InfoTitle>
-                <InfoPrice>{el.price}원</InfoPrice>
-              </InfoTextWrapper>
-              <InfoFavoriteImage
-                source={require("../../../public/images/list/infofavorite.png")}
-              />
-            </InfoWrapper>
+            {el.tags[0]?.includes(props.tagId) && (
+              <>
+                <ProductImageWrapper
+                  onPress={() =>
+                    navigation.navigate("상품 상세보기", {
+                      id: props.onPressDetail(el),
+                    })
+                  }
+                >
+                  <ProductImage
+                    source={{
+                      uri: `https://storage.googleapis.com/${el.images[0]}`,
+                    }}
+                  />
+                </ProductImageWrapper>
+                <InfoWrapper>
+                  <InfoTextWrapper>
+                    <InfoTitle>{el.name}</InfoTitle>
+                    <InfoPrice>{el.price}원</InfoPrice>
+                  </InfoTextWrapper>
+                  <InfoFavoriteImage
+                    source={require("../../../public/images/list/infofavorite.png")}
+                  />
+                </InfoWrapper>
+              </>
+            )}
           </DetailProductWrapper>
         ))}
       </ScrollView>

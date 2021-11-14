@@ -41,31 +41,55 @@ const CategoryText = styled.Text`
   color: #4d4d72;
 `;
 
-const Category = () => {
+const Category = (props) => {
   const navigation = useNavigation();
 
   return (
     <CategofyMainWrapper>
       <CategoryMiddleWrapper>
-        <CategoryIconWrapper onPress={() => navigation.navigate("상품 리스트")}>
+        <CategoryIconWrapper
+          onPress={() =>
+            navigation.navigate("상품 리스트", {
+              id: props.onPressCategory("배게"),
+            })
+          }
+        >
           <CategoryIcon
             source={require("../../../public/images/home/pillow.png")}
           />
           <CategoryText>배게</CategoryText>
         </CategoryIconWrapper>
-        <CategoryIconWrapper onPress={() => navigation.navigate("상품 리스트")}>
+        <CategoryIconWrapper
+          onPress={() =>
+            navigation.navigate("상품 리스트", {
+              id: props.onPressCategory("이불"),
+            })
+          }
+        >
           <CategoryIcon
             source={require("../../../public/images/home/blankits.png")}
           />
           <CategoryText>이불</CategoryText>
         </CategoryIconWrapper>
-        <CategoryIconWrapper onPress={() => navigation.navigate("상품 리스트")}>
+        <CategoryIconWrapper
+          onPress={() =>
+            navigation.navigate("상품 리스트", {
+              id: props.onPressCategory("암막커튼"),
+            })
+          }
+        >
           <CategoryIcon
             source={require("../../../public/images/home/courtain.png")}
           />
           <CategoryText>암막커튼</CategoryText>
         </CategoryIconWrapper>
-        <CategoryIconWrapper onPress={() => navigation.navigate("상품 리스트")}>
+        <CategoryIconWrapper
+          onPress={() =>
+            navigation.navigate("상품 리스트", {
+              id: props.onPressCategory("잠옷"),
+            })
+          }
+        >
           <CategoryIcon
             source={require("../../../public/images/home/pajamas.png")}
           />
@@ -73,25 +97,49 @@ const Category = () => {
         </CategoryIconWrapper>
       </CategoryMiddleWrapper>
       <CategoryMiddleWrapper>
-        <CategoryIconWrapper onPress={() => navigation.navigate("상품 리스트")}>
+        <CategoryIconWrapper
+          onPress={() =>
+            navigation.navigate("상품 리스트", {
+              id: props.onPressCategory("오일"),
+            })
+          }
+        >
           <CategoryIcon
             source={require("../../../public/images/home/oil.png")}
           />
           <CategoryText>오일</CategoryText>
         </CategoryIconWrapper>
-        <CategoryIconWrapper onPress={() => navigation.navigate("상품 리스트")}>
+        <CategoryIconWrapper
+          onPress={() =>
+            navigation.navigate("상품 리스트", {
+              id: props.onPressCategory("도서"),
+            })
+          }
+        >
           <CategoryIcon
             source={require("../../../public/images/home/book.png")}
           />
           <CategoryText>도서</CategoryText>
         </CategoryIconWrapper>
-        <CategoryIconWrapper onPress={() => navigation.navigate("상품 리스트")}>
+        <CategoryIconWrapper
+          onPress={() =>
+            navigation.navigate("상품 리스트", {
+              id: props.onPressCategory("수면용품"),
+            })
+          }
+        >
           <CategoryIcon
             source={require("../../../public/images/home/eyepatch.png")}
           />
           <CategoryText>수면용품</CategoryText>
         </CategoryIconWrapper>
-        <CategoryIconWrapper onPress={() => navigation.navigate("상품 리스트")}>
+        <CategoryIconWrapper
+          onPress={() =>
+            navigation.navigate("상품 리스트", {
+              id: props.onPressCategory("수면보조제"),
+            })
+          }
+        >
           <CategoryIcon
             source={require("../../../public/images/home/pill.png")}
           />
