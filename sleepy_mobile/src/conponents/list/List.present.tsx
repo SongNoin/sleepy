@@ -35,7 +35,9 @@ const ListUI = (props) => {
               }
             >
               <ProductImage
-                source={require("../../../public/images/list/productimage.png")}
+                source={{
+                  uri: `https://storage.googleapis.com/${el.images[0]}`,
+                }}
               />
             </ProductImageWrapper>
             <InfoWrapper>
