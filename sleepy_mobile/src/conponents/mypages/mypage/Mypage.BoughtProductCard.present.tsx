@@ -21,7 +21,10 @@ const BoughtProductCard = (props: any) => {
   return (
     <ProductCard>
       <ProductImage
-        source={require("../../../../public/images/mypage/buyhistoryproductphoto.png")}
+        // source={`https://storage.googleapis.com/${props.el.useditem.images[0]}`}
+        source={{
+          uri: `https://storage.googleapis.com/${props.el.useditem.images[0]}`,
+        }}
       />
       <ProductInfo>
         <ProductDateWrapper>
