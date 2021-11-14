@@ -6,8 +6,6 @@ import styled from "@emotion/native";
 const ProductWrapper = styled.View`
   display: flex;
   flex-direction: row;
-  /* justify-content: center;
-  align-items: center; */
   height: 200px;
 `;
 
@@ -19,15 +17,41 @@ const ProductImage = styled.Image`
 
 // const ProudctDot = styled.Text``;
 
-const screenWidth = Math.round(Dimensions.get("window").width);
-const ProductsSheet = [
-  { id: 0, image: require("../../../../public/images/detail/bag1.png") },
-  { id: 1, image: require("../../../../public/images/detail/bag2.png") },
-  { id: 2, image: require("../../../../public/images/detail/bag1.png") },
-];
-
-const ProductImages = () => {
+const ProductImages = (props) => {
   const [page, setPage] = useState(0);
+
+  const screenWidth = Math.round(Dimensions.get("window").width);
+  const ProductsSheet = [
+    {
+      id: 0,
+      image: props.data?.fetchUseditem?.images[0],
+    },
+    {
+      id: 1,
+      image: props.data?.fetchUseditem?.images[1],
+    },
+    {
+      id: 2,
+      image: props.data?.fetchUseditem?.images[2],
+    },
+  ];
+
+  const ProductsSheetPage = ({
+    item,
+  }: {
+    item: {
+      id: number;
+    };
+  }) => {
+    return (
+      <ProductWrapper>
+        <ProductImage
+          source={{ uri: `https://storage.googleapis.com/${item.image}` }}
+        ></ProductImage>
+      </ProductWrapper>
+    );
+  };
+
   return (
     <Carousel
       page={page}
@@ -38,24 +62,6 @@ const ProductImages = () => {
       pageWidth={screenWidth - (5 + 15) * 2}
       RenderItem={ProductsSheetPage}
     />
-  );
-};
-
-const ProductsSheetPage = ({
-  item,
-}: {
-  item: {
-    id: number;
-  };
-}) => {
-  return (
-    <ProductWrapper>
-      {/* <ProductImage  source={require("../../../../public/images/detail/bag1.png")}></ProductImage>
-      <ProductImage source={require("../../../../public/images/detail/bag2.png")}></ProductImage>
-      <ProductImage source={require("../../../../public/images/detail/bag2.png")}></ProductImage> */}
-      <ProductImage source={item.image}></ProductImage>
-      {/* <ProudctDot>{item.id}</ProudctDot> */}
-    </ProductWrapper>
   );
 };
 

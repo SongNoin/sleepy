@@ -21,14 +21,16 @@ import {
 
 import RenderHTML from "react-native-render-html";
 
-const DetailUI = (props) => {
+const DetailUI = (props: any) => {
   return (
     <ScrollView>
       <Wrapper>
         <ProductWrapper>
-          <ProductImages />
+          <ProductImages data={props.data} />
           {/* <ProductImage
-            source={require("../../../../public/images/detail/bag1.png")}
+            source={{
+              uri: `https://storage.googleapis.com/${props.data?.fetchUseditem.images[0]}`,
+            }}
           /> */}
           <ReviewInfoWrapper>
             <ReviewStar
@@ -58,7 +60,9 @@ const DetailUI = (props) => {
             />
           </DetailContent>
           <Photo
-            source={require("../../../../public/images/detail/bag2.png")}
+            source={{
+              uri: `https://storage.googleapis.com/${props.data?.fetchUseditem.images[0]}`,
+            }}
           />
         </DetaillWrapper>
       </Wrapper>
