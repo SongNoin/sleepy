@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import styled from "@emotion/native";
-import { TouchableHighlight } from "react-native";
+import { Alert, TouchableHighlight } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { gql, useQuery } from "@apollo/client";
+import { GlobalContext } from "../../../../App";
 
 const Wrapper = styled.View`
   width: 100%;
@@ -62,8 +65,81 @@ const BuyButton = styled.Text`
   color: #5b5bc0;
 `;
 
+const FETCH_USED_ITEM = gql`
+  query fetchUseditem($useditemId: ID!) {
+    fetchUseditem(useditemId: $useditemId) {
+      _id
+      name
+      remarks
+      contents
+      price
+      tags
+      images
+      seller {
+        email
+        name
+      }
+    }
+  }
+`;
+
 const NavigationDetail = () => {
+  const { id }: any = useContext(GlobalContext);
+  const { data } = useQuery(FETCH_USED_ITEM, {
+    variables: {
+      useditemId: id,
+    },
+  });
   const navigation = useNavigation();
+
+  interface IProduct {
+    productName: string;
+    productContents: string;
+    productPrice: number;
+    seller: string;
+    id: any;
+    images: any;
+  }
+
+  const cartProduct: IProduct = {
+    productName: data?.fetchUseditem.name,
+    productContents: data?.fetchUseditem.contents,
+    productPrice: data?.fetchUseditem.price,
+    seller: data?.fetchUseditem.seller,
+    id: data?.fetchUseditem._id,
+    images: data?.fetchUseditem.images,
+  };
+
+  const onPressCart = async () => {
+    const a: any = await AsyncStorage.getItem("@carts");
+    const products = JSON.parse(a) || [];
+
+    let isExists = false;
+    products.forEach((el: any) => {
+      if (el.id === id) {
+        isExists = true;
+      }
+    });
+
+    // 상품이 늦게 받아와지는 이슈가 있음. 그래서 일단 안받아와졌으면 알람띄우고 리턴
+    if (!data?.fetchUseditem.name || !data?.fetchUseditem.price) {
+      Alert.alert("", "상품이 아직 안받아와졌습니다!", [
+        { text: "OK", onPress: () => console.log("OK Pressed") },
+      ]);
+      return;
+    }
+
+    if (isExists) {
+      Alert.alert("", "장바구니에 이미 담으셨습니다!", [
+        { text: "OK", onPress: () => console.log("OK Pressed") },
+      ]);
+      return;
+    }
+
+    products.push(cartProduct);
+    AsyncStorage.setItem("@carts", JSON.stringify(products));
+    navigation.navigate("장바구니");
+  };
 
   return (
     <Wrapper>
@@ -73,7 +149,7 @@ const NavigationDetail = () => {
         />
         <FavoriteCount>3025</FavoriteCount>
       </FavoriteWrapper>
-      <CartButton onPress={() => navigation.navigate("장바구니")}>
+      <CartButton onPress={onPressCart}>
         <CartText>장바구니</CartText>
       </CartButton>
       <BuyButton onPress={() => navigation.navigate("결제하기")}>

@@ -22,16 +22,13 @@ const App: () => Node = () => {
   const [accessToken, setAccessToken] = useState("");
   const [isSearchHidden, setIsSearchHidden] = useState(false);
   const [isHomeHidden, setIsHomeHidden] = useState(false);
-  const [isMyPage , setIsMyPage] = useState(false);
-  const [id , setId] = useState("")
+  const [id, setId] = useState("");
   const value = {
     setAccessToken: setAccessToken,
     isSearchHidden: isSearchHidden,
     setIsSearchHidden: setIsSearchHidden,
     isHomeHidden: isHomeHidden,
     setIsHomeHidden: setIsHomeHidden,
-    isMyPage: isMyPage,
-    setIsMyPage: setIsMyPage,
     id: id,
     setId: setId,
   };
