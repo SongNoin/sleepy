@@ -24,6 +24,7 @@ const App: () => Node = () => {
   const [isHomeHidden, setIsHomeHidden] = useState(false);
   const [id, setId] = useState("");
   const [tagId, setTagId] = useState("");
+  const [chargeAmount, setChargeAmount] = useState("");
   const value = {
     setAccessToken: setAccessToken,
     isSearchHidden: isSearchHidden,
@@ -34,6 +35,8 @@ const App: () => Node = () => {
     setId: setId,
     tagId: tagId,
     setTagId: setTagId,
+    chargeAmount: chargeAmount,
+    setChargeAmount: setChargeAmount,
   };
 
   useEffect(() => {

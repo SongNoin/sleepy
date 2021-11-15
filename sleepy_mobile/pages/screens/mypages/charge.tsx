@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import IMP from "iamport-react-native";
 import { useMutation, useQuery } from "@apollo/client";
@@ -6,8 +6,11 @@ import {
   CREATE_POINT_TRANSACTION_OF_LOADING,
   FETCH_USER_LOGGEDIN,
 } from "../../../src/conponents/mypages/mypoint/mypoint.queries";
+import { GlobalContext } from "../../../App";
 
 const Charge = () => {
+  const { chargeAmount } = useContext(GlobalContext);
+
   const { data: userData } = useQuery(FETCH_USER_LOGGEDIN);
   const [createPointTransactionOfLoading] = useMutation(
     CREATE_POINT_TRANSACTION_OF_LOADING
@@ -22,16 +25,17 @@ const Charge = () => {
         impUid: String(response.imp_uid),
       },
     });
+    alert(`${chargeAmount} 포인트 충전이 완료되었습니다.`);
   }
 
   /* [필수입력] 결제에 필요한 데이터를 입력합니다. */
   const data = {
     pg: "html5_inicis",
     pay_method: "card",
-    name: "Sleepy 포인트",
+    name: `Sleepy ${chargeAmount} 포인트`,
     merchant_uid: `mid_${new Date().getTime()}`,
-    amount: "100",
-    buyer_name: `송경환`,
+    amount: `${chargeAmount}`,
+    buyer_name: `${userData.name}`,
     buyer_tel: "01012345678",
     buyer_email: `${userData.email}`,
     buyer_addr: "서울시 금천구 시흥대로 291",
