@@ -101,3 +101,5 @@ export const TotalPriceWrapper = styled.View`
   padding-left: 9px;
   padding-right: 9px;
 `;
+
+export const CartCardWrapper = styled.TouchableOpacity``;
