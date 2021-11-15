@@ -4,56 +4,31 @@ import {
   SearchBarLine,
   SearchIcon,
   SearchPageView,
-  Search,
-  Product,
   ProductList,
-  ProductImage,
-  ProductNameAndPrice,
-  ProductName,
-  ProductPrice,
-  ProductWrapper,
+  Search,
 } from "./Search.styles";
-import { ScrollView } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { FlatList } from "react-native";
 
 const SearchUI = (props: any) => {
-  const navigation = useNavigation();
   return (
-    <ScrollView>
-      <SearchPageView>
-        <Search>
-          <SearchIcon
-            source={require("../../../public/images/search/searchIcon.png")}
-          />
-          <SearchBar onChangeText={props.onChangeSearch} />
-        </Search>
-        <SearchBarLine />
-        <ProductList>
-          {props.data?.fetchUseditems.map((el: any) => (
-            <ProductWrapper
-              key={el._id}
-              onPress={() => {
-                navigation.navigate("상품 상세보기", {
-                  id: props.onPressDetail(el),
-                });
-              }}
-            >
-              <Product>
-                <ProductImage
-                  source={{
-                    uri: `https://storage.googleapis.com/${el.images[0]}`,
-                  }}
-                />
-                <ProductNameAndPrice>
-                  <ProductName>{el.name}</ProductName>
-                  <ProductPrice>{`${el.price}원`}</ProductPrice>
-                </ProductNameAndPrice>
-              </Product>
-            </ProductWrapper>
-          ))}
-        </ProductList>
-      </SearchPageView>
-    </ScrollView>
+    <SearchPageView>
+      <Search>
+        <SearchIcon
+          source={require("../../../public/images/search/searchIcon.png")}
+        />
+        <SearchBar onChangeText={props.onChangeSearch} />
+      </Search>
+      <SearchBarLine />
+      <ProductList>
+        <FlatList
+          data={props.data?.fetchUseditems}
+          keyExtractor={(item) => item.id}
+          showsVerticalScrollIndicator={false}
+          onEndReached={props.onLoadMore}
+          renderItem={props.renderItem}
+        />
+      </ProductList>
+    </SearchPageView>
   );
 };
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { ScrollView } from "react-native-gesture-handler";
-
+import { useNavigation } from "@react-navigation/native";
 import {
   MyCartView,
   CartCountWrapper,
@@ -13,9 +13,11 @@ import {
   CartName,
   CartPrice,
   TotalPriceWrapper,
+  CartCardWrapper,
 } from "./Cart.styles";
 
 const CartUI = (props: any) => {
+  const navigation = useNavigation();
   return (
     <ScrollView>
       <MyCartView>
@@ -27,22 +29,31 @@ const CartUI = (props: any) => {
         </CartCountWrapper>
         <CartListWrapper>
           {props.productInfo
-            ?.map((el) => (
-              <CartCard key={el.id}>
-                <CartImage
-                  source={{
-                    uri: `https://storage.googleapis.com/${el.images[0]}`,
-                  }}
-                />
-                <CartContent>
-                  <CartName>
-                    {el.productName.length > 9
-                      ? `${el.productName.substr(0, 10)}..`
-                      : el.productName}
-                  </CartName>
-                  <CartPrice>{`${el.productPrice}원`}</CartPrice>
-                </CartContent>
-              </CartCard>
+            ?.map((el: any) => (
+              <CartCardWrapper
+                key={el.id}
+                onPress={() => {
+                  navigation.navigate("상품 상세보기", {
+                    id: props.onPressDetail(el),
+                  });
+                }}
+              >
+                <CartCard>
+                  <CartImage
+                    source={{
+                      uri: `https://storage.googleapis.com/${el.images[0]}`,
+                    }}
+                  />
+                  <CartContent>
+                    <CartName>
+                      {el.productName.length > 9
+                        ? `${el.productName.substr(0, 10)}..`
+                        : el.productName}
+                    </CartName>
+                    <CartPrice>{`${el.productPrice}원`}</CartPrice>
+                  </CartContent>
+                </CartCard>
+              </CartCardWrapper>
             ))
             .reverse()}
         </CartListWrapper>
