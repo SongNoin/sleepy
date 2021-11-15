@@ -3,7 +3,7 @@ import { useNavigation } from "@react-navigation/native";
 import styled from "@emotion/native";
 import { Alert, TouchableHighlight } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { gql, useQuery } from "@apollo/client";
+import { gql, useMutation, useQuery } from "@apollo/client";
 import { GlobalContext } from "../../../../App";
 
 const Wrapper = styled.View`
@@ -16,7 +16,7 @@ const Wrapper = styled.View`
   padding: 0px 10px 0px 10px;
 `;
 
-const FavoriteWrapper = styled.View`
+const FavoriteWrapper = styled.TouchableOpacity`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -75,11 +75,18 @@ const FETCH_USED_ITEM = gql`
       price
       tags
       images
+      pickedCount
       seller {
         email
         name
       }
     }
+  }
+`;
+
+const TOGGLE_USED_ITEM_PICK = gql`
+  mutation toggleUseditemPick($useditemId: ID!) {
+    toggleUseditemPick(useditemId: $useditemId)
   }
 `;
 
@@ -90,7 +97,10 @@ const NavigationDetail = () => {
       useditemId: id,
     },
   });
+
   const navigation = useNavigation();
+
+  const [toggleUseditemPick] = useMutation(TOGGLE_USED_ITEM_PICK);
 
   interface IProduct {
     productName: string;
@@ -141,13 +151,32 @@ const NavigationDetail = () => {
     navigation.navigate("장바구니");
   };
 
+  const onPressPicked = async () => {
+    await toggleUseditemPick({
+      variables: { useditemId: id },
+      refetchQueries: [
+        {
+          query: FETCH_USED_ITEM,
+          variables: { useditemId: id },
+        },
+      ],
+    });
+    Alert.alert("찜 목록에 추가되었습니다.");
+  };
+
   return (
     <Wrapper>
-      <FavoriteWrapper>
-        <FavoriteImage
-          source={require("../../../../public/images/list/infofavorite.png")}
-        />
-        <FavoriteCount>3025</FavoriteCount>
+      <FavoriteWrapper onPress={onPressPicked}>
+        {data?.fetchUseditem.pickedCount === 1 ? (
+          <FavoriteImage
+            source={require("../../../../public/images/list/infofavorite.png")}
+          />
+        ) : (
+          <FavoriteImage
+            source={require("../../../../public/images/home/moon-off.png")}
+          />
+        )}
+        <FavoriteCount>{data?.fetchUseditem.pickedCount}</FavoriteCount>
       </FavoriteWrapper>
       <CartButton onPress={onPressCart}>
         <CartText>장바구니</CartText>
