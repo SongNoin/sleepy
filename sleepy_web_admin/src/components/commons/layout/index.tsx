@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { useRouter } from "next/dist/client/router";
 import Header from "./header/header.container";
 import Sidebar from "./sidebar/sidebar.container";
 
@@ -15,15 +16,24 @@ const Body = styled.div`
   width: 1620px;
   display: flex;
 `;
-
+const MainBody = styled.div``;
+const HiddenLayout = ["/", "/login", "/signup"];
 export default function Layout(props) {
+  const router = useRouter();
+  const isHiddenLayout = HiddenLayout.includes(router.pathname);
   return (
     <Wrapper>
-      <Header />
-      <SideWrapper>
-        <Sidebar />
-        <Body>{props.children}</Body>
-      </SideWrapper>
+      {!isHiddenLayout ? (
+        <>
+          <Header />
+          <SideWrapper>
+            <Sidebar />
+            <Body>{props.children}</Body>
+          </SideWrapper>
+        </>
+      ) : (
+        <MainBody>{props.children}</MainBody>
+      )}
     </Wrapper>
   );
 }

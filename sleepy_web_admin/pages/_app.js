@@ -9,6 +9,8 @@ import {
 } from "@apollo/client";
 import { createUploadLink } from "apollo-upload-client";
 import { getAccessToken } from "../src/commons/libraries/getAccessToken";
+import { Global } from "@emotion/react";
+import { globalStyles } from "../src/commons/styles/globalStyles";
 
 export const GlobalContext = createContext(null);
 function MyApp({ Component, pageProps }) {
@@ -59,6 +61,7 @@ function MyApp({ Component, pageProps }) {
   });
   return (
     <GlobalContext.Provider value={value}>
+      <Global styles={globalStyles} />
       <ApolloProvider client={client}>
         <Layout>
           <Component {...pageProps} />

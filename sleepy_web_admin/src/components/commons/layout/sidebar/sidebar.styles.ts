@@ -71,6 +71,7 @@ export const InnerWrapperRegister = styled.div`
   justify-content: center;
   align-items: center;
   padding: 15px 0px 15px 36px;
+  cursor: pointer;
   background-color: ${(props: IProps) =>
     props.isClickRegister === true ? "#F5F5FB" : "#normal"};
 `;
@@ -81,6 +82,8 @@ export const InnerWrapperProduct = styled.div`
   justify-content: center;
   align-items: center;
   padding: 15px 0px 15px 36px;
+  cursor: pointer;
+
   background-color: ${(props: IProps) =>
     props.isClickProduct === true ? "#F5F5FB" : "#normal"};
 `;
@@ -90,7 +93,10 @@ export const InnerWrapperSales = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+
   padding: 15px 0px 15px 36px;
+  cursor: pointer;
+
   background-color: ${(props: IProps) =>
     props.isClickSales === true ? "#F5F5FB" : "#normal"};
 `;
@@ -101,6 +107,8 @@ export const InnerWrapperSignup = styled.div`
   justify-content: center;
   align-items: center;
   padding: 15px 0px 15px 36px;
+  cursor: pointer;
+
   background-color: ${(props: IProps) =>
     props.isClickSignup === true ? "#F5F5FB" : "#normal"};
 `;
@@ -111,6 +119,8 @@ export const InnerWrapperLogin = styled.div`
   justify-content: center;
   align-items: center;
   padding: 15px 0px 15px 36px;
+  cursor: pointer;
+
   background-color: ${(props: IProps) =>
     props.isClickLogin === true ? "#F5F5FB" : "#normal"};
 `;
