@@ -24,6 +24,7 @@ import {
   ModifyButton,
   DeleteButton,
   Row,
+  ColumnModifyNone,
 } from "./productstable.styles";
 
 export default function ProductstableUI(props) {
@@ -66,10 +67,17 @@ export default function ProductstableUI(props) {
                   .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
               </ColumnPriceRow>
               <ColumnModify>
-                <ModifyButton>수정</ModifyButton>
-                <DeleteButton onClickDelete={props.onClickDelete(el)}>
-                  삭제
-                </DeleteButton>
+                {!el.buyer?.name ? (
+                  <>
+                    {" "}
+                    <ModifyButton>수정</ModifyButton>
+                    <DeleteButton onClick={props.onClickDelete} id={el._id}>
+                      삭제
+                    </DeleteButton>{" "}
+                  </>
+                ) : (
+                  <ColumnModifyNone>수정/삭제 불가</ColumnModifyNone>
+                )}
               </ColumnModify>
             </Row>
           ))}

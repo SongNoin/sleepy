@@ -15,7 +15,7 @@ export const Title = styled.div`
 `;
 
 export const InnerWrapper = styled.div`
-  width: 1400px;
+  width: 1476px;
   padding: 32px 0px 30px 64px;
   /* border: 4px solid blue; */
   background-color: white;
@@ -32,7 +32,7 @@ export const RowCategory = styled.div`
   flex-direction: row;
   justify-content: space-between;
   font-weight: 900;
-  padding-bottom: 10px;
+  padding-bottom: 40px;
   border-bottom: 2px solid #ededed;
 `;
 
@@ -286,6 +286,19 @@ export const DeleteButton = styled.button`
   border: 1px solid #ff7c7c;
   border-radius: 5px;
   font-weight: 500;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 21.79px;
+`;
+
+export const ColumnModifyNone = styled.button`
+  width: 180px;
+  height: 36px;
+  background-color: white;
+  color: #5b5bc0;
+  border: 1px solid #5b5bc0;
+  border-radius: 5px;
+  font-weight: 400;
   font-style: normal;
   font-size: 16px;
   line-height: 21.79px;
