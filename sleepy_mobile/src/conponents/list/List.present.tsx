@@ -26,9 +26,9 @@ const ListUI = (props) => {
       <HeaderAnimation onPressListCategory={props.onPressListCategory} />
       <ScrollView>
         {props.data?.fetchUseditems.map((el) => (
-          <DetailProductWrapper key={el._id}>
+          <>
             {el.tags[0]?.includes(props.tagId) && (
-              <>
+              <DetailProductWrapper key={el._id}>
                 <ProductImageWrapper
                   onPress={() =>
                     navigation.navigate("상품 상세보기", {
@@ -51,9 +51,9 @@ const ListUI = (props) => {
                     source={require("../../../public/images/list/infofavorite.png")}
                   />
                 </InfoWrapper>
-              </>
+              </DetailProductWrapper>
             )}
-          </DetailProductWrapper>
+          </>
         ))}
       </ScrollView>
     </ListView>
