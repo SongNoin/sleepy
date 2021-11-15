@@ -76,6 +76,7 @@ const FETCH_USED_ITEM = gql`
       tags
       images
       pickedCount
+      createdAt
       seller {
         email
         name
@@ -90,6 +91,21 @@ const TOGGLE_USED_ITEM_PICK = gql`
   }
 `;
 
+const FETCH_USED_ITEM_I_PICKED = gql`
+  query fetchUseditemsIPicked($search: String, $page: Int) {
+    fetchUseditemsIPicked(search: $search, page: $page) {
+      _id
+      name
+      price
+      seller {
+        name
+      }
+      createdAt
+      pickedCount
+    }
+  }
+`;
+
 const NavigationDetail = () => {
   const { id }: any = useContext(GlobalContext);
   const { data } = useQuery(FETCH_USED_ITEM, {
@@ -101,6 +117,13 @@ const NavigationDetail = () => {
   const navigation = useNavigation();
 
   const [toggleUseditemPick] = useMutation(TOGGLE_USED_ITEM_PICK);
+
+  const { data: Ipickdata } = useQuery(FETCH_USED_ITEM_I_PICKED, {
+    variables: { search: "" },
+  });
+
+  // console.log("Dd", Ipickdata);
+  console.log("Dd", Ipickdata?.fetchUseditemsIPicked._id);
 
   interface IProduct {
     productName: string;
@@ -164,10 +187,13 @@ const NavigationDetail = () => {
     Alert.alert("찜 목록에 추가되었습니다.");
   };
 
+  // console.log(data?.fetchUseditem._id);
+
   return (
     <Wrapper>
       <FavoriteWrapper onPress={onPressPicked}>
-        {data?.fetchUseditem.pickedCount === 1 ? (
+        {data?.fetchUseditem._id !==
+        Ipickdata?.fetchUseditemsIPicked?.buyer?._id ? (
           <FavoriteImage
             source={require("../../../../public/images/list/infofavorite.png")}
           />

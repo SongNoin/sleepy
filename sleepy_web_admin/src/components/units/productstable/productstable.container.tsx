@@ -1,5 +1,4 @@
 import { useMutation, useQuery } from "@apollo/client";
-import { useRouter } from "next/dist/client/router";
 import ProductstableUI from "./productstable.presenter";
 import {
   FETCH_USED_ITEMS_I_SOLD,
@@ -7,18 +6,28 @@ import {
 } from "./productstable.queries";
 
 export default function Productstable() {
-  const router = useRouter;
   const { data } = useQuery(FETCH_USED_ITEMS_I_SOLD, {
     variables: { page: 1 },
   });
 
-  console.log("dd:", data);
+  const [deleteUseditem] = useMutation(DELETE_USED_ITEM);
 
-  const onClickDelete = () => () => {
-    // data = data.filter((cur) => {
-    //   return cur._id !== data._id;
-    // });
-  };
+  async function onClickDelete(e) {
+    try {
+      await deleteUseditem({
+        variables: {
+          useditemId: e.target.id,
+        },
+        refetchQueries: [
+          {
+            query: FETCH_USED_ITEMS_I_SOLD,
+            variables: { page: 1 },
+          },
+        ],
+      });
+      alert("삭제되었습니다!");
+    } catch (error: any) {}
+  }
 
   return <ProductstableUI data={data} onClickDelete={onClickDelete} />;
 }

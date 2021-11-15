@@ -15,7 +15,7 @@ export const Title = styled.div`
 `;
 
 export const InnerWrapper = styled.div`
-  width: 1400px;
+  width: 1476px;
   padding: 32px 0px 30px 64px;
   /* border: 4px solid blue; */
   background-color: white;
@@ -32,7 +32,7 @@ export const RowCategory = styled.div`
   flex-direction: row;
   justify-content: space-between;
   font-weight: 900;
-  padding-bottom: 10px;
+  padding-bottom: 40px;
   border-bottom: 2px solid #ededed;
 `;
 
