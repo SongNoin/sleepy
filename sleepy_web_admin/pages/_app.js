@@ -8,9 +8,10 @@ import {
   ApolloLink,
 } from "@apollo/client";
 import { createUploadLink } from "apollo-upload-client";
-import { getAccessToken } from "../src/commons/libraries/getAccessToken";
+
 import { Global } from "@emotion/react";
 import { globalStyles } from "../src/commons/styles/globalStyles";
+import { getAccessToken } from "../src/commons/libraries/getAccessToken";
 
 export const GlobalContext = createContext(null);
 function MyApp({ Component, pageProps }) {
@@ -24,9 +25,6 @@ function MyApp({ Component, pageProps }) {
   };
 
   useEffect(() => {
-    // const accessToken = localStorage.getItem("accessToken") || "";
-    // setAccessToken(accessToken);
-    //* 이 두줄은 로컬스토리지에 저장하는 방법
     if (localStorage.getItem("refreshToken")) getAccessToken(setAccessToken);
   }, []);
 
@@ -51,8 +49,7 @@ function MyApp({ Component, pageProps }) {
     headers: {
       authorization: `Bearer ${accessToken}`,
     },
-    credentials: "include", // 이걸 안쓰면 쿠키가 안들어 왔다.
-    // 탬플릿 리터널 (변수와 문자 같이쓰는방법)
+    credentials: "include",
   });
 
   const client = new ApolloClient({
