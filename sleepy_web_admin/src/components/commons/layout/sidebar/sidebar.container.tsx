@@ -6,7 +6,7 @@ import SidebarUI from "./sidebar.presenter";
 
 export default function Sidebar() {
   const router = useRouter();
-  const { accessToken, setUserInfo } = useContext(GlobalContext);
+  const { accessToken } = useContext(GlobalContext);
   const [isClickRegister, setIsClickRegister] = useState(false);
   const [isClickProduct, setIsClickProduct] = useState(false);
   const [isClickSales, setIsClickSales] = useState(false);
