@@ -66,7 +66,7 @@ const App: () => Node = () => {
   });
 
   const uploadLink = createUploadLink({
-    uri: "http://34.64.161.16/team05",
+    uri: "https://backend03-team.codebootcamp.co.kr/team05",
     headers: {
       authorization: `Bearer ${accessToken}`,
     },
