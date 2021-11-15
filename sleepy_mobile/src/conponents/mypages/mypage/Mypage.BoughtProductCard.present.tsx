@@ -34,8 +34,13 @@ const BoughtProductCard = (props: any) => {
           </ProductDateContent>
         </ProductDateWrapper>
         <ProductNameWrapper>
-          <ProductName>{props.el.useditem.name}</ProductName>
+          <ProductName>
+            {props.el.useditem.name.length > 9
+              ? `${props.el.useditem.name.substr(0, 10)}...`
+              : props.el.useditem.name}
+          </ProductName>
         </ProductNameWrapper>
+
         <ProductPriceWrapper>
           <ProductPrice>
             {props.el.useditem.price.toLocaleString("ko-KR")}
