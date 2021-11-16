@@ -14,19 +14,11 @@ export const ProductWrapper = styled.View`
   border-bottom-color: #f1eef7;
 `;
 
-export const ProductImage = styled.Image`
-  border: 1px solid black;
-  border: none;
-  width: 339px;
-  height: 174px;
-  border-radius: 13px;
-  margin-bottom: 7%;
-`;
-
 export const ReviewInfoWrapper = styled.View`
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin-top: 5%;
   margin-bottom: 5%;
 `;
 
@@ -39,6 +31,7 @@ export const ReviewStar = styled.Image`
 export const ReviewAverage = styled.Text``;
 
 export const ProductName = styled.Text`
+  font-family: "NotoSans-Bold";
   font-weight: 700;
   font-style: normal;
   font-size: 17px;
@@ -48,6 +41,7 @@ export const ProductName = styled.Text`
 `;
 
 export const ProductPrice = styled.Text`
+  font-family: "NotoSans-Bold";
   font-weight: 700;
   font-style: normal;
   font-size: 14px;
@@ -68,6 +62,7 @@ export const DetaillWrapper = styled.View`
 `;
 
 export const DetailContent = styled.View`
+  font-family: "NotoSans-Regular";
   text-align: center;
   font-weight: 400;
   font-style: normal;
@@ -80,9 +75,9 @@ export const DetailContent = styled.View`
 export const Photo = styled.Image`
   width: 320px;
   height: 320px;
-  border: 1px solid black;
-  border: none;
+  border: 1px solid #f1eef7;
   border-radius: 13px;
+  margin-bottom: 3%;
 `;
 
 export const ReviewWrapper = styled.View`

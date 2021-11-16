@@ -12,12 +12,13 @@ import {
   ReviewStar,
   Photos,
   AddPhoto,
+  NoPhoto,
   BottomWrapper,
   ContentTitle,
   ReviewContent,
 } from "./ReviewList.styles";
 
-const ReviewListUI = () => {
+const ReviewListUI = (props: any) => {
   return (
     <ScrollView>
       <InnerWrapper>
@@ -47,12 +48,24 @@ const ReviewListUI = () => {
               </Star>
             </TopMiddleWrapper>
             <Photos>
-              <AddPhoto
-                source={require("../../../../public/images/detail/reviewimg1.png")}
-              />
-              <AddPhoto
-                source={require("../../../../public/images/detail/reviewimg2.png")}
-              />
+              {props.data?.fetchUseditem.images[0] ? (
+                <AddPhoto
+                  source={{
+                    uri: `https://storage.googleapis.com/${props.data?.fetchUseditem.images[0]}`,
+                  }}
+                />
+              ) : (
+                <NoPhoto />
+              )}
+              {props.data?.fetchUseditem.images[1] ? (
+                <AddPhoto
+                  source={{
+                    uri: `https://storage.googleapis.com/${props.data?.fetchUseditem.images[1]}`,
+                  }}
+                />
+              ) : (
+                <NoPhoto />
+              )}
             </Photos>
           </InnerTopWrapper>
           <BottomWrapper>
