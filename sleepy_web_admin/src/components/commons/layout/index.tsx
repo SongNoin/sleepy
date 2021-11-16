@@ -17,7 +17,9 @@ const Body = styled.div`
   display: flex;
   background-color: #f6f6fb;
 `;
-const MainBody = styled.div``;
+const MainBody = styled.div`
+  background-color: #f6f6fb;
+`;
 const HiddenLayout = ["/", "/login", "/signup"];
 export default function Layout(props) {
   const router = useRouter();
@@ -33,7 +35,10 @@ export default function Layout(props) {
           </SideWrapper>
         </>
       ) : (
-        <MainBody>{props.children}</MainBody>
+        <>
+          <Header />
+          <MainBody>{props.children}</MainBody>
+        </>
       )}
     </Wrapper>
   );

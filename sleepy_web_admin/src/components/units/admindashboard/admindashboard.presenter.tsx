@@ -12,26 +12,26 @@ import {
   FooterPart,
   WrapperHeader,
   WrapperFooter,
-} from "./dashboard.styles";
-export default function DashboardUI(props) {
+} from "./admindashboard.styles";
+export default function AdminDashboardUI(props) {
   return (
     <>
       <Wrapper>
-        <Title>대쉬보드</Title>
+        <Title>관리자 대쉬보드</Title>
         <InnerWrapper>
           <WrapperHeader>
             <HeaderPart>
-              <ProductCountLabel>총 상품 개수</ProductCountLabel>
+              <ProductCountLabel></ProductCountLabel>
               <ProductCount></ProductCount>
             </HeaderPart>
             <HeaderPart>
-              <SalesCountLabel>판매 갯수</SalesCountLabel>
+              <SalesCountLabel></SalesCountLabel>
               <SalesCount>
                 {props.productCountData?.fetchUseditemsCountISold} 개
               </SalesCount>
             </HeaderPart>
             <HeaderPart>
-              <TotalAmountLabel>총 수익</TotalAmountLabel>
+              <TotalAmountLabel></TotalAmountLabel>
               <TotalAmount>
                 {props.amountData?.fetchUserLoggedIn.userPoint.amount} 원
               </TotalAmount>
