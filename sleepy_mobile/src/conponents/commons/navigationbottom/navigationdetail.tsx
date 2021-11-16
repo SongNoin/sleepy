@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import styled from "@emotion/native";
 import { Alert, TouchableHighlight } from "react-native";
@@ -107,7 +107,7 @@ const FETCH_USED_ITEM_I_PICKED = gql`
 `;
 
 const NavigationDetail = () => {
-  const { id }: any = useContext(GlobalContext);
+  const { id, isFavorite, setIsFavorite }: any = useContext(GlobalContext);
   const { data } = useQuery(FETCH_USED_ITEM, {
     variables: {
       useditemId: id,
@@ -122,8 +122,16 @@ const NavigationDetail = () => {
     variables: { search: "" },
   });
 
-  // console.log("Dd", Ipickdata);
-  console.log("Dd", Ipickdata?.fetchUseditemsIPicked._id);
+  useEffect(() => {
+    for (let i = 0; i < Ipickdata?.fetchUseditemsIPicked.length; i++) {
+      if (Ipickdata?.fetchUseditemsIPicked[i]._id === id) {
+        setIsFavorite(true);
+        break;
+      } else {
+        setIsFavorite(false);
+      }
+    }
+  }, [Ipickdata]);
 
   interface IProduct {
     productName: string;
@@ -174,26 +182,17 @@ const NavigationDetail = () => {
     navigation.navigate("장바구니");
   };
 
-  const onPressPicked = async () => {
+  async function onPressPicked() {
     await toggleUseditemPick({
       variables: { useditemId: id },
-      refetchQueries: [
-        {
-          query: FETCH_USED_ITEM,
-          variables: { useditemId: id },
-        },
-      ],
     });
-    Alert.alert("찜 목록에 추가되었습니다.");
-  };
-
-  // console.log(data?.fetchUseditem._id);
+    setIsFavorite((prev) => !prev);
+  }
 
   return (
     <Wrapper>
       <FavoriteWrapper onPress={onPressPicked}>
-        {data?.fetchUseditem._id !==
-        Ipickdata?.fetchUseditemsIPicked?.buyer?._id ? (
+        {isFavorite ? (
           <FavoriteImage
             source={require("../../../../public/images/list/infofavorite.png")}
           />

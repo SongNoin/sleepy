@@ -25,6 +25,7 @@ const App: () => Node = () => {
   const [id, setId] = useState("");
   const [tagId, setTagId] = useState("");
   const [chargeAmount, setChargeAmount] = useState("");
+  const [isFavorite, setIsFavorite] = useState(true);
   const value = {
     setAccessToken: setAccessToken,
     isSearchHidden: isSearchHidden,
@@ -37,6 +38,8 @@ const App: () => Node = () => {
     setTagId: setTagId,
     chargeAmount: chargeAmount,
     setChargeAmount: setChargeAmount,
+    isFavorite: isFavorite,
+    setIsFavorite: setIsFavorite,
   };
 
   useEffect(() => {

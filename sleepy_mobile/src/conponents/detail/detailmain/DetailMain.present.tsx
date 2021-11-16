@@ -6,7 +6,6 @@ import ProductImages from "./ProductImages";
 import {
   Wrapper,
   ProductWrapper,
-  ProductImage,
   ReviewInfoWrapper,
   ReviewStar,
   ReviewAverage,
@@ -27,11 +26,6 @@ const DetailUI = (props: any) => {
       <Wrapper>
         <ProductWrapper>
           <ProductImages data={props.data} />
-          {/* <ProductImage
-            source={{
-              uri: `https://storage.googleapis.com/${props.data?.fetchUseditem.images[0]}`,
-            }}
-          /> */}
           <ReviewInfoWrapper>
             <ReviewStar
               source={require("../../../../public/images/detail/star.png")}
@@ -51,7 +45,13 @@ const DetailUI = (props: any) => {
             <ReviewAverage>(3.25)</ReviewAverage>
           </ReviewInfoWrapper>
           <ProductName>{props.data?.fetchUseditem.name}</ProductName>
-          <ProductPrice>{props.data?.fetchUseditem.price}</ProductPrice>
+          <ProductPrice>
+            {props.data?.fetchUseditem.price
+              .toLocaleString("ko-KR")
+              .toString()
+              .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{" "}
+            원
+          </ProductPrice>
         </ProductWrapper>
         <DetaillWrapper>
           <DetailContent>
@@ -59,17 +59,25 @@ const DetailUI = (props: any) => {
               source={{ html: `${props.data?.fetchUseditem.contents}` }}
             />
           </DetailContent>
-          <Photo
+          {props.data?.fetchUseditem.images
+            ?.filter((el) => el)
+            .map((el) => (
+              <Photo
+                key={el}
+                source={{ uri: `https://storage.googleapis.com/${el}` }}
+              />
+            ))}
+          {/* <Photo
             source={{
               uri: `https://storage.googleapis.com/${props.data?.fetchUseditem.images[0]}`,
             }}
-          />
+          /> */}
         </DetaillWrapper>
       </Wrapper>
       <ReviewWrapper>
         <Title>리뷰</Title>
-        <ReviewListContainer />
-        <ReviewListContainer />
+        <ReviewListContainer data={props.data} />
+        <ReviewListContainer data={props.data} />
       </ReviewWrapper>
     </ScrollView>
   );

@@ -6,16 +6,16 @@ import styled from "@emotion/native";
 const ProductWrapper = styled.View`
   display: flex;
   flex-direction: row;
+  justify-content: center;
   height: 200px;
 `;
 
 const ProductImage = styled.Image`
-  border-radius: 13px;
-  width: 333px;
+  border-top-left-radius: 13px;
+  border-top-right-radius: 13px;
+  width: 325px;
   height: 174px;
 `;
-
-// const ProudctDot = styled.Text``;
 
 const ProductImages = (props) => {
   const [page, setPage] = useState(0);

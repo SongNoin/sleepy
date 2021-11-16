@@ -3,9 +3,12 @@ import { FlatList, View } from "react-native";
 import styled from "@emotion/native";
 
 const Container = styled.View`
-  height: 195px;
+  height: 200px;
   justify-content: center;
   align-items: center;
+  border-radius: 13px;
+  padding-top: 6px;
+  border: 1px solid #f1eef7;
 `;
 
 const Indicator = styled.View<{ focused: boolean }>`
@@ -19,7 +22,7 @@ const Indicator = styled.View<{ focused: boolean }>`
 const IndicatorWrapper = styled.View`
   flex-direction: row;
   align-items: center;
-  margin-top: 16px;
+  margin-bottom: 6px;
 `;
 
 type CarouselProps = {
