@@ -23,10 +23,11 @@ export const Avatar = styled.img`
   width: 100px;
   height: 100px;
   margin-bottom: 6%;
+  border-radius: 50%;
 `;
 
 export const Name = styled.div`
-  font-family: "NotoSans-Bold";
+  font-family: NotoSans-Bold;
   font-weight: 600;
   font-style: normal;
   font-size: 16px;
@@ -35,7 +36,7 @@ export const Name = styled.div`
 `;
 
 export const Phrase = styled.div`
-  font-family: "NotoSans-Regular";
+  font-family: NotoSans-Regular;
   font-weight: 400;
   font-style: normal;
   font-size: 14px;
@@ -101,7 +102,7 @@ export const InnerWrapperSales = styled.div`
     props.isClickSales === true ? "#F5F5FB" : "#normal"};
 `;
 
-export const InnerWrapperSignup = styled.div`
+export const InnerWrapperDashboard = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -110,10 +111,10 @@ export const InnerWrapperSignup = styled.div`
   cursor: pointer;
 
   background-color: ${(props: IProps) =>
-    props.isClickSignup === true ? "#F5F5FB" : "#normal"};
+    props.isClickDashboard === true ? "#F5F5FB" : "#normal"};
 `;
 
-export const InnerWrapperLogin = styled.div`
+export const InnerWrapperModify = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -122,7 +123,21 @@ export const InnerWrapperLogin = styled.div`
   cursor: pointer;
 
   background-color: ${(props: IProps) =>
-    props.isClickLogin === true ? "#F5F5FB" : "#normal"};
+    props.isClickModify === true ? "#F5F5FB" : "#normal"};
+`;
+
+export const SideMenuButtonModify = styled.div`
+  width: 100%;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  font-family: NotoSans-Regular;
+  font-size: 14px;
+  font-style: normal;
+  line-height: 19.07px;
+  color: #3b3b3b;
+  font-weight: ${(props: IProps) =>
+    props.isClickModify === true ? "700" : "400"};
 `;
 
 export const SideMenuIcon = styled.img`
@@ -136,12 +151,13 @@ export const SideMenuButton = styled.div`
   height: 18px;
   display: flex;
   align-items: center;
-  font-family: "NotoSans-Regular";
+  font-family: NotoSans-Regular;
   font-weight: 400;
   font-size: 14px;
   font-style: normal;
   line-height: 19.07px;
   color: #3b3b3b;
+  cursor: pointer;
 `;
 
 export const SideMenuButtonRegister = styled.div`
@@ -149,7 +165,7 @@ export const SideMenuButtonRegister = styled.div`
   height: 18px;
   display: flex;
   align-items: center;
-  font-family: "NotoSans-Regular";
+  font-family: NotoSans-Regular;
   font-size: 14px;
   font-style: normal;
   line-height: 19.07px;
@@ -163,7 +179,7 @@ export const SideMenuButtonProduct = styled.div`
   height: 18px;
   display: flex;
   align-items: center;
-  font-family: "NotoSans-Bold";
+  font-family: NotoSans-Regular;
   font-size: 14px;
   font-style: normal;
   line-height: 19.07px;
@@ -177,7 +193,7 @@ export const SideMenuButtonSales = styled.div`
   height: 18px;
   display: flex;
   align-items: center;
-  font-family: "NotoSans-Regular";
+  font-family: NotoSans-Regular;
   font-weight: ${(props: IProps) =>
     props.isClickSales === true ? "700" : "400"};
   font-size: 14px;
@@ -186,27 +202,14 @@ export const SideMenuButtonSales = styled.div`
   color: #3b3b3b;
 `;
 
-export const SideMenuButtonSignup = styled.div`
+export const SideMenuButtonDashboard = styled.div`
   width: 100%;
   height: 18px;
   display: flex;
   align-items: center;
-  font-family: "NotoSans-Regular";
+  font-family: NotoSans-Regular;
   font-weight: ${(props: IProps) =>
-    props.isClickSignup === true ? "700" : "400"};
-  font-size: 14px;
-  font-style: normal;
-  line-height: 19.07px;
-  color: #3b3b3b;
-`;
-
-export const SideMenuIconLogin = styled.div`
-  width: 100%;
-  height: 18px;
-  display: flex;
-  align-items: center;
-  font-weight: ${(props: IProps) =>
-    props.isClickLogin === true ? "700" : "400"};
+    props.isClickDashboard === true ? "700" : "400"};
   font-size: 14px;
   font-style: normal;
   line-height: 19.07px;

@@ -42,6 +42,8 @@ export const ColumnIndex = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
+
+  font-family: NotoSans-Bold;
   font-weight: 500;
   font-style: normal;
   font-size: 18px;
@@ -68,6 +70,8 @@ export const ColumnCategory = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
+
+  font-family: NotoSans-Bold;
   font-weight: 500;
   font-style: normal;
   font-size: 18px;
@@ -95,6 +99,8 @@ export const ColumnImageRow = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
+
+  font-family: NotoSans-Bold;
   font-weight: 500;
   font-style: normal;
   font-size: 18px;
@@ -122,8 +128,8 @@ export const FakeImage = styled.img`
 export const ColumnName = styled.div`
   /* border: 1px solid red; */
   width: 15%;
-  display: flex;
-  flex-direction: row;
+
+  font-family: NotoSans-Bold;
   font-weight: 500;
   font-style: normal;
   font-size: 18px;
@@ -134,8 +140,7 @@ export const ColumnName = styled.div`
 export const ColumnNameRow = styled.div`
   /* border: 1px solid red; */
   width: 15%;
-  display: flex;
-  flex-direction: row;
+
   font-weight: 400;
   font-style: normal;
   font-size: 16px;
@@ -146,13 +151,26 @@ export const ColumnNameRow = styled.div`
 export const ColumnSale = styled.div`
   /* border: 1px solid red; */
   width: 10%;
-  display: flex;
-  flex-direction: row;
+  text-align: center;
+
+  font-family: NotoSans-Bold;
   font-weight: 500;
   font-style: normal;
   font-size: 18px;
   line-height: 24.52px;
   color: #3b3b3b;
+`;
+
+export const ColumnSaleRow = styled.div`
+  width: 10%;
+  text-align: center;
+
+  font-family: NotoSans-Bold;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 18px;
+  line-height: 24.52px;
+  color: #ff7c7c;
 `;
 
 export const ColumnSold = styled.div`
@@ -178,6 +196,8 @@ export const CloumnDate = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
+
+  font-family: NotoSans-Bold;
   font-weight: 500;
   font-style: normal;
   font-size: 18px;
@@ -221,6 +241,8 @@ export const ColumnPrice = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
+
+  font-family: NotoSans-Bold;
   font-weight: 500;
   font-style: normal;
   font-size: 18px;
