@@ -11,7 +11,7 @@ import {
 } from "./reviewwrite.queries";
 
 export default function ReviewContainer() {
-  const { id } = useContext(GlobalContext);
+  const { id, setIsReview } = useContext(GlobalContext);
   const [myContents, setMycontents] = useState("");
   const navigation = useNavigation();
   console.log("review", id);
@@ -44,6 +44,7 @@ export default function ReviewContainer() {
       });
       Alert.alert("리뷰를 등록합니다~");
       navigation.navigate("마이페이지");
+      setIsReview(true);
     } catch (error) {
       Alert.alert(error.message);
     }

@@ -60,7 +60,7 @@ export default function RegisterUI(props) {
             <RightWrapper>
               <NameInput
                 type="text"
-                onChange={props.onChangeMyName}
+                onChange={props.onChangeMyPrice}
                 placeholder="상품 가격을 입력해주세요."
               />
             </RightWrapper>
