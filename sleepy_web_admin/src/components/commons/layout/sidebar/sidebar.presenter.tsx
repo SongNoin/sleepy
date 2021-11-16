@@ -53,19 +53,34 @@ export default function SidebarUI(props) {
         <BottomWrapper>
           {props.data?.fetchUserLoggedIn.name[0] === "#" ? (
             // 관리자인 경우
-            <InnerWrapperDashboard isClickDashboard={props.isClickDashboard}>
-              {props.isClickDashboard ? (
-                <SideMenuDashboardIcon src="/images/dashboard_click.png" />
-              ) : (
-                <SideMenuDashboardIcon src="/images/dashboard.png" />
-              )}
-              <SideMenuButtonDashboard
-                isClickDashboard={props.isClickDashboard}
-                onClick={props.onClickMoveToDashboard}
-              >
-                대쉬보드
-              </SideMenuButtonDashboard>
-            </InnerWrapperDashboard>
+            <>
+              <InnerWrapperDashboard isClickDashboard={props.isClickDashboard}>
+                {props.isClickDashboard ? (
+                  <SideMenuDashboardIcon src="/images/dashboard_click.png" />
+                ) : (
+                  <SideMenuDashboardIcon src="/images/dashboard.png" />
+                )}
+                <SideMenuButtonDashboard
+                  isClickDashboard={props.isClickDashboard}
+                  onClick={props.onClickMoveToDashboard}
+                >
+                  대쉬보드
+                </SideMenuButtonDashboard>
+              </InnerWrapperDashboard>
+              <InnerWrapperModify isClickModify={props.isClickModify}>
+                {props.isClickModify ? (
+                  <SideMenuIcon src="/images/modify_click.png" />
+                ) : (
+                  <SideMenuIcon src="/images/modify.png" />
+                )}
+                <SideMenuButtonModify
+                  isClickModify={props.isClickModify}
+                  onClick={props.onClickMoveToModify}
+                >
+                  내 정보 수정
+                </SideMenuButtonModify>
+              </InnerWrapperModify>
+            </>
           ) : (
             // 판매자인 경우
             <>
