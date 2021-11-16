@@ -111,7 +111,12 @@ const MypageUI = (props: any) => {
         {!props.isPoint ? (
           <BuyHistoryWrapper>
             {props.buyData?.fetchPointTransactionsOfBuying.map((el: any) => (
-              <BoughtProductCard key={el._id} el={el} />
+              <BoughtProductCard
+                key={el._id}
+                el={el}
+                onPressMoveToReviewWrite={props.onPressMoveToReviewWrite}
+                onPressMoveToDetail={props.onPressMoveToDetail}
+              />
             ))}
           </BuyHistoryWrapper>
         ) : (

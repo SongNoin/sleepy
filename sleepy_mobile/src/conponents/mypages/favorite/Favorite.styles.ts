@@ -46,7 +46,7 @@ export const FavoriteListWrapper = styled.View`
   display: flex;
   align-items: center;
 `;
-export const FavoriteCard = styled.View`
+export const FavoriteCard = styled.TouchableOpacity`
   width: 339px;
   height: 140px;
 
@@ -88,4 +88,3 @@ export const FavoritePrice = styled.Text`
 
   color: #5b5bc0;
 `;
-
