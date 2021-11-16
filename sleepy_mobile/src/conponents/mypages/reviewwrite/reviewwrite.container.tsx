@@ -8,10 +8,11 @@ import ReviewUI from "./reviewwrite.presenter";
 import {
   CREATE_USEDITEM_QUESTION,
   FETCH_USED_ITEM,
+  FETCH_USED_ITEM_QUESTIONS,
 } from "./reviewwrite.queries";
 
 export default function ReviewContainer() {
-  const { id, setIsReview } = useContext(GlobalContext);
+  const { id } = useContext(GlobalContext);
   const [myContents, setMycontents] = useState("");
   const navigation = useNavigation();
   console.log("review", id);
@@ -35,16 +36,15 @@ export default function ReviewContainer() {
             contents: myContents,
           },
         },
-        // refetchQueries: [
-        //   {
-        //     query: FETCH_USEDITEM_QUESTIONS,
-        //     variables: { useditemId: router.query.number },
-        //   },
-        // ],
+        refetchQueries: [
+          {
+            query: FETCH_USED_ITEM_QUESTIONS,
+            variables: { useditemId: id },
+          },
+        ],
       });
       Alert.alert("리뷰를 등록합니다~");
       navigation.navigate("마이페이지");
-      setIsReview(true);
     } catch (error) {
       Alert.alert(error.message);
     }
