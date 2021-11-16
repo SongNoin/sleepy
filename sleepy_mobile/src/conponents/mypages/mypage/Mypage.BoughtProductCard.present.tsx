@@ -18,8 +18,15 @@ import {
 
 const BoughtProductCard = (props: any) => {
   const navigation = useNavigation();
+
   return (
-    <ProductCard>
+    <ProductCard
+      onPress={() =>
+        navigation.navigate("상품 상세보기", {
+          id: props.onPressMoveToDetail(props.el),
+        })
+      }
+    >
       <ProductImage
         // source={`https://storage.googleapis.com/${props.el.useditem.images[0]}`}
         source={{
@@ -46,8 +53,14 @@ const BoughtProductCard = (props: any) => {
             {props.el.useditem.price.toLocaleString("ko-KR")}
           </ProductPrice>
         </ProductPriceWrapper>
-        <ReviewButon onPress={() => navigation.navigate("리뷰쓰기")}>
-          <ReviewButtonText>리뷰 쓰기 & 리뷰수정</ReviewButtonText>
+        <ReviewButon
+          onPress={() =>
+            navigation.navigate("리뷰쓰기", {
+              id: props.onPressMoveToReviewWrite(props.el),
+            })
+          }
+        >
+          <ReviewButtonText>리뷰 쓰기</ReviewButtonText>
         </ReviewButon>
       </ProductInfo>
     </ProductCard>

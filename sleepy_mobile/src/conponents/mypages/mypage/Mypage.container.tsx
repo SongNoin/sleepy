@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useQuery } from "@apollo/client";
 import MypageUI from "./Mypage.present";
 import {
@@ -6,9 +6,11 @@ import {
   FETCH_POINT_TRANSACTIONS,
   FETCH_POINT_TRANSACTIONS_OF_BUYING,
 } from "./Mypage.queries";
+import { GlobalContext } from "../../../../App";
 
 const MypageContainer = () => {
-  // const { setId } = useContext(GlobalContext);
+  const { setId, id } = useContext(GlobalContext);
+
   const [isPoint, setIsPoint] = useState(false);
   const { data } = useQuery(FETCH_USER_LOGGED_IN);
   const { data: buyData } = useQuery(FETCH_POINT_TRANSACTIONS_OF_BUYING, {
@@ -25,6 +27,15 @@ const MypageContainer = () => {
   function onPressShowPoint() {
     setIsPoint(true);
   }
+
+  function onPressMoveToDetail(el: any) {
+    setId(el.useditem._id);
+  }
+
+  const onPressMoveToReviewWrite = (el: any) => {
+    setId(el.useditem._id);
+  };
+
   // function onPressDetail(el: any) {
   //   setId(el._id);
   //   console.log(el._id);
@@ -34,6 +45,8 @@ const MypageContainer = () => {
     <MypageUI
       onPressShowBuy={onPressShowBuy}
       onPressShowPoint={onPressShowPoint}
+      onPressMoveToReviewWrite={onPressMoveToReviewWrite}
+      onPressMoveToDetail={onPressMoveToDetail}
       // onPressDetail={onPressDetail}
       isPoint={isPoint}
       data={data}

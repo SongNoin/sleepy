@@ -32,6 +32,7 @@ export const ProductImage = styled.Image`
 
 export const ProductInfo = styled.View`
   margin-left: 15px;
+  margin-top: 15px;
 `;
 export const CategoryWrapper = styled.View`
   display: flex;
@@ -41,8 +42,8 @@ export const CategoryWrapper = styled.View`
 export const Category = styled.Text`
   font-family: "NotoSans-Bold";
   font-weight: 600;
-  font-size: 9px;
-  line-height: 12px;
+  font-size: 12px;
+  line-height: 15px;
 
   color: #646464;
 `;
@@ -50,10 +51,10 @@ export const CategoryContent = styled.Text`
   font-family: "NotoSans-Regular";
   font-style: normal;
   font-weight: normal;
-  font-size: 9px;
-  line-height: 12px;
+  font-size: 12px;
+  line-height: 15px;
 
-  color: #646464;
+  color: #5b5bc0;
 
   margin-left: 2px;
 `;

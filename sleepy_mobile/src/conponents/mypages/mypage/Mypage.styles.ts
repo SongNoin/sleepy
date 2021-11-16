@@ -149,7 +149,7 @@ export const BuyHistoryWrapper = styled.View`
   align-items: center;
   justify-content: center;
 `;
-export const ProductCard = styled.View`
+export const ProductCard = styled.TouchableOpacity`
   width: 339px;
   height: 140px;
 

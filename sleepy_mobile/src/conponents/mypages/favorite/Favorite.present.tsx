@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/core";
 import React from "react";
 import { ScrollView } from "react-native-gesture-handler";
 
@@ -14,24 +15,42 @@ import {
   FavoritePrice,
 } from "./Favorite.styles";
 
-const FavoriteUI = () => {
+const FavoriteUI = (props) => {
+  const navigation = useNavigation();
   return (
     <ScrollView>
       <FavoriteView>
         <FavoriteCountWrapper>
           <FavoriteCount>찜한 상품</FavoriteCount>
-          <FavoriteCountContent>9999+</FavoriteCountContent>
+          <FavoriteCountContent>
+            {props.pickCountData?.fetchUseditemsCountIPicked} 개
+          </FavoriteCountContent>
         </FavoriteCountWrapper>
         <FavoriteListWrapper>
-          <FavoriteCard>
-            <FavoriteImage
-              source={require("../../../../public/images/mypage/buyhistoryproductphoto.png")}
-            />
-            <FavoriteContent>
-              <FavoriteName>글자는띄어쓰기없이</FavoriteName>
-              <FavoritePrice>199000 원</FavoritePrice>
-            </FavoriteContent>
-          </FavoriteCard>
+          {props.data?.fetchUseditemsIPicked.map((el) => (
+            <FavoriteCard
+              key={el._id}
+              onPress={() => {
+                navigation.navigate("상품 상세보기", {
+                  id: props.onPressDetail(el),
+                });
+              }}
+            >
+              <FavoriteImage
+                source={{
+                  uri: `https://storage.googleapis.com/${el.images[0]}`,
+                }}
+              />
+              <FavoriteContent>
+                <FavoriteName>
+                  {el.name.length > 9 ? `${el.name.substr(0, 10)}...` : el.name}
+                </FavoriteName>
+                <FavoritePrice>
+                  {el.price.toLocaleString("ko-KR")} 원
+                </FavoritePrice>
+              </FavoriteContent>
+            </FavoriteCard>
+          ))}
         </FavoriteListWrapper>
       </FavoriteView>
     </ScrollView>
