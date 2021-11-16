@@ -14,6 +14,8 @@ import {
   ColumnImageRow,
   ColumnImage,
   FakeImage,
+  NoImage,
+  NoImageImg,
   ColumnName,
   ColumnSale,
   ColumnSold,
@@ -48,7 +50,15 @@ export default function ProductstableUI(props) {
               <ColumnIndexRow>{10 - index}</ColumnIndexRow>
               <ColumnCategoryRow>{el.tags}</ColumnCategoryRow>
               <ColumnImage>
-                <FakeImage src="/images/bag2.png" />
+                {el?.images[0] ? (
+                  <FakeImage
+                    src={`https://storage.googleapis.com/${el?.images[0]}`}
+                  />
+                ) : (
+                  <NoImage>
+                    <NoImageImg src="/images/logo.png" />
+                  </NoImage>
+                )}
               </ColumnImage>
               <ColumnNameRow>{el.name}</ColumnNameRow>
               {el.buyer?.name ? (

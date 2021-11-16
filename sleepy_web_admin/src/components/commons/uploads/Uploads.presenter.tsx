@@ -2,6 +2,7 @@ import {
   UploadsWrapper,
   UploadImage,
   UploadsButton,
+  BtnImg,
   UploadFileHidden,
 } from "./Uploads.styles";
 
@@ -15,9 +16,7 @@ export default function UploadsUI(props) {
         ></UploadImage>
       ) : (
         <UploadsButton onClick={props.onClickUpload} type="button">
-          {" "}
-          <> + </>
-          <>Upload</>
+          <BtnImg src="/images/uploadbtn.png" />
         </UploadsButton>
       )}
       <UploadFileHidden

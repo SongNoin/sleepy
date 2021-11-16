@@ -125,6 +125,20 @@ export const FakeImage = styled.img`
   border-radius: 18px;
 `;
 
+export const NoImage = styled.div`
+  width: 118px;
+  height: 112px;
+  border-radius: 18px;
+  background-color: #f6f6fb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const NoImageImg = styled.img`
+  width: 60%;
+`;
+
 export const ColumnName = styled.div`
   /* border: 1px solid red; */
   width: 15%;

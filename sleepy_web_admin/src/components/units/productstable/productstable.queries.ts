@@ -8,6 +8,7 @@ export const FETCH_USED_ITEMS_I_SOLD = gql`
       price
       createdAt
       tags
+      images
       buyer {
         name
       }

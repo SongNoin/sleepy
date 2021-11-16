@@ -7,9 +7,16 @@ const LogoWrapper = styled.View`
   height: 40px;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
 `;
-const EmptyWrapper = styled.View``;
+const EmptyWrapper = styled.View`
+  width: 35%;
+`;
+
+const InnerWrapper = styled.View`
+  width: 93%;
+  display: flex;
+  flex-direction: row;
+`;
 
 import Sleepy from "../../../../public/images/navigation/Sleepy.svg";
 import Cart from "../../../../public/images/navigation/Cart.svg";
@@ -17,8 +24,10 @@ import Cart from "../../../../public/images/navigation/Cart.svg";
 const NavigationLogo2 = () => {
   return (
     <LogoWrapper>
-      <EmptyWrapper />
-      <Sleepy width={60} height={30} />
+      <InnerWrapper>
+        <EmptyWrapper />
+        <Sleepy width={60} height={30} />
+      </InnerWrapper>
       <Cart width={24} height={24} />
     </LogoWrapper>
   );

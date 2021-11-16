@@ -14,6 +14,8 @@ import {
   ColumnImageRow,
   ColumnImage,
   FakeImage,
+  NoImage,
+  NoImageImg,
   ColumnName,
   ColumnSale,
   ColumnSaleRow,
@@ -44,10 +46,20 @@ export default function SalestableUI(props) {
                 <ColumnIndexRow>{10 - index}</ColumnIndexRow>
                 <ColumnCategoryRow>{el.useditem.tags}</ColumnCategoryRow>
                 <ColumnImage>
-                  <FakeImage src="/images/bag2.png" />
+                  {el?.useditem.images[0] ? (
+                    <FakeImage
+                      src={`https://storage.googleapis.com/${el?.useditem.images[0]}`}
+                    />
+                  ) : (
+                    <NoImage>
+                      <NoImageImg src="/images/logo.png" />
+                    </NoImage>
+                  )}
                 </ColumnImage>
                 <ColumnNameRow>{el.useditem.name}</ColumnNameRow>
-                <ColumnSaleRow>+{el.amount.toLocaleString("ko-KR")}</ColumnSaleRow>
+                <ColumnSaleRow>
+                  +{el.amount.toLocaleString("ko-KR")}
+                </ColumnSaleRow>
                 <CloumnDateRow>
                   {el.createdAt.slice(0, 10)} {el.createdAt.slice(11, 19)}
                 </CloumnDateRow>
