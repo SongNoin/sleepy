@@ -20,13 +20,13 @@ export const MoveButtonWrapper = styled.div`
 `;
 
 export const MoveButton = styled.button`
-  width: 128px;
-  height: 36px;
+  width: 200px;
+  height: 50px;
   background: #5b5bc0;
   border-radius: 5px;
   border: none;
 
-  font-family: Noto Sans;
+  font-family: NotoSans-Bold;
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
@@ -34,4 +34,6 @@ export const MoveButton = styled.button`
 
   color: #ffffff;
   margin-right: 30px;
+
+  cursor: pointer;
 `;

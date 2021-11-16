@@ -16,6 +16,7 @@ import {
   FakeImage,
   ColumnName,
   ColumnSale,
+  ColumnSaleRow,
   ColumnPrice,
   CloumnDate,
   Row,
@@ -46,12 +47,12 @@ export default function SalestableUI(props) {
                   <FakeImage src="/images/bag2.png" />
                 </ColumnImage>
                 <ColumnNameRow>{el.useditem.name}</ColumnNameRow>
-                <ColumnSale>+{el.amount.toLocaleString("ko-KR")}</ColumnSale>
+                <ColumnSaleRow>+{el.amount.toLocaleString("ko-KR")}</ColumnSaleRow>
                 <CloumnDateRow>
                   {el.createdAt.slice(0, 10)} {el.createdAt.slice(11, 19)}
                 </CloumnDateRow>
                 <ColumnPriceRow>
-                  ₩{" "}
+                  ₩
                   {el.balance
                     .toLocaleString("ko-KR")
                     .toString()

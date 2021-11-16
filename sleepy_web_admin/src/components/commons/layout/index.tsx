@@ -14,7 +14,9 @@ const SideWrapper = styled.div`
 
 const Body = styled.div`
   width: 1620px;
+  height: 830px;
   display: flex;
+  background-color: #f6f6fb;
 `;
 const MainBody = styled.div``;
 const HiddenLayout = ["/", "/login", "/signup"];

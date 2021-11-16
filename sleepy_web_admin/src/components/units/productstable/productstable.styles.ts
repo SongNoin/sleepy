@@ -8,6 +8,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Title = styled.div`
+  font-family: NotoSans-Bold;
   margin-bottom: 32px;
   font-weight: 600;
   font-style: normal;
@@ -28,6 +29,7 @@ export const ItemContent = styled.div`
 
 export const RowCategory = styled.div`
   height: 27px;
+
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -38,6 +40,8 @@ export const RowCategory = styled.div`
 
 export const ColumnIndex = styled.div`
   /* border: 1px solid red; */
+  font-family: NotoSans-Bold;
+
   width: 3%;
   display: flex;
   flex-direction: row;
@@ -68,6 +72,8 @@ export const ColumnCategory = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
+  font-family: NotoSans-Bold;
+
   font-weight: 500;
   font-style: normal;
   font-size: 18px;
@@ -95,6 +101,8 @@ export const ColumnImageRow = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
+  font-family: NotoSans-Bold;
+
   font-weight: 500;
   font-style: normal;
   font-size: 18px;
@@ -122,8 +130,8 @@ export const FakeImage = styled.img`
 export const ColumnName = styled.div`
   /* border: 1px solid red; */
   width: 15%;
-  display: flex;
-  flex-direction: row;
+
+  font-family: NotoSans-Bold;
   font-weight: 500;
   font-style: normal;
   font-size: 18px;
@@ -150,6 +158,8 @@ export const ColumnSale = styled.div`
   flex-direction: row;
   justify-content: center;
   /* padding: 5px; */
+
+  font-family: NotoSans-Bold;
   font-weight: 500;
   font-style: normal;
   font-size: 18px;
@@ -168,6 +178,8 @@ export const ColumnSold = styled.div`
   color: #5b5bc0;
   border: 1px solid #5b5bc0;
   border-radius: 5px;
+
+  font-family: NotoSans-Bold;
   font-weight: 500;
   font-style: normal;
   font-size: 16px;
@@ -185,6 +197,8 @@ export const ColumnSell = styled.div`
   background-color: #5b5bc0;
   border: 1px solid #5b5bc0;
   border-radius: 5px;
+
+  font-family: NotoSans-Bold;
   font-weight: 500;
   font-style: normal;
   font-size: 16px;
@@ -197,6 +211,8 @@ export const CloumnDate = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
+
+  font-family: NotoSans-Bold;
   font-weight: 500;
   font-style: normal;
   font-size: 18px;
@@ -223,6 +239,8 @@ export const ColumnPrice = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
+
+  font-family: NotoSans-Bold;
   font-weight: 500;
   font-style: normal;
   font-size: 18px;
@@ -249,6 +267,8 @@ export const ColumnModify = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+
+  font-family: NotoSans-Bold;
   font-weight: 500;
   font-style: normal;
   font-size: 18px;
@@ -272,6 +292,8 @@ export const ModifyButton = styled.button`
   color: #5b5bc0;
   border: 1px solid #5b5bc0;
   border-radius: 5px;
+
+  font-family: NotoSans-Bold;
   font-weight: 500;
   font-style: normal;
   font-size: 16px;
@@ -285,6 +307,8 @@ export const DeleteButton = styled.button`
   color: #ff7c7c;
   border: 1px solid #ff7c7c;
   border-radius: 5px;
+
+  font-family: NotoSans-Bold;
   font-weight: 500;
   font-style: normal;
   font-size: 16px;
@@ -298,6 +322,8 @@ export const ColumnModifyNone = styled.button`
   color: #5b5bc0;
   border: 1px solid #5b5bc0;
   border-radius: 5px;
+
+  font-family: NotoSans-Bold;
   font-weight: 400;
   font-style: normal;
   font-size: 16px;

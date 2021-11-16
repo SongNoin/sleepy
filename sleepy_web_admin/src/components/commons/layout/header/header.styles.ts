@@ -23,8 +23,7 @@ export const Logo = styled.img`
 `;
 
 export const Title = styled.div`
-  /* font-family: "NotoSans-Regular"; */
-  /* font: "NotoSans-Bold"; */
+  font: NotoSans-Bold;
   font-weight: 600;
   font-style: normal;
   font-size: 24px;

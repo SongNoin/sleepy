@@ -4,14 +4,15 @@ export const globalStyles = css`
   * {
     margin: 0px;
     box-sizing: border-box;
+    font-family: NotoSans-Regular;
   }
   @font-face {
     font-family: "NotoSans-Regular";
-    src: url("/font/NotoSans-Regular.ttf");
+    src: url("/font/NotoSansKR-Regular.otf");
   }
 
   @font-face {
     font-family: "NotoSans-Bold";
-    src: url("/font/NotoSans-Bold.ttf");
+    src: url("/font/NotoSansKR-Bold.otf");
   }
 `;

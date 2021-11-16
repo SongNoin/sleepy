@@ -60,7 +60,7 @@ export default function ProductstableUI(props) {
                 {el.createdAt.slice(0, 10)} {el.createdAt.slice(11, 19)}
               </CloumnDateRow>
               <ColumnPriceRow>
-                ₩{" "}
+                ₩
                 {el.price
                   .toLocaleString("ko-KR")
                   .toString()
@@ -69,11 +69,10 @@ export default function ProductstableUI(props) {
               <ColumnModify>
                 {!el.buyer?.name ? (
                   <>
-                    {" "}
                     <ModifyButton>수정</ModifyButton>
                     <DeleteButton onClick={props.onClickDelete} id={el._id}>
                       삭제
-                    </DeleteButton>{" "}
+                    </DeleteButton>
                   </>
                 ) : (
                   <ColumnModifyNone>수정/삭제 불가</ColumnModifyNone>
