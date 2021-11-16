@@ -1,8 +1,5 @@
 import "react-quill/dist/quill.snow.css";
-
-import dynamic from "next/dynamic";
-
-const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+import { DetailText } from "./register.styles";
 
 export default function ReactQuil01(props) {
   const modules = {
@@ -63,12 +60,12 @@ export default function ReactQuil01(props) {
   };
 
   return (
-    <>
-      <ReactQuill
-        style={{ height: "320px", width: "996px", marginBottom: "100px" }}
+    <div>
+      <DetailText
         modules={modules}
         onChange={props.onChange}
+        placeholder="상품 설명을 입력해주세요."
       />
-    </>
+    </div>
   );
 }

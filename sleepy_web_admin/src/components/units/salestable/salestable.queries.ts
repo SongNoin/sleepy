@@ -7,6 +7,7 @@ export const FETCH_POINT_TRANSACTIONS_OF_SELLING = gql`
       useditem {
         name
         tags
+        images
       }
       balance
       createdAt

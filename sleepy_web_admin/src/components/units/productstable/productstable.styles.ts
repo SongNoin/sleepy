@@ -127,6 +127,20 @@ export const FakeImage = styled.img`
   border-radius: 18px;
 `;
 
+export const NoImage = styled.div`
+  width: 118px;
+  height: 112px;
+  border-radius: 18px;
+  background-color: #f6f6fb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const NoImageImg = styled.img`
+  width: 60%;
+`;
+
 export const ColumnName = styled.div`
   /* border: 1px solid red; */
   width: 15%;
@@ -292,12 +306,12 @@ export const ModifyButton = styled.button`
   color: #5b5bc0;
   border: 1px solid #5b5bc0;
   border-radius: 5px;
-
   font-family: NotoSans-Bold;
   font-weight: 500;
   font-style: normal;
   font-size: 16px;
   line-height: 21.79px;
+  cursor: pointer;
 `;
 
 export const DeleteButton = styled.button`
@@ -307,12 +321,12 @@ export const DeleteButton = styled.button`
   color: #ff7c7c;
   border: 1px solid #ff7c7c;
   border-radius: 5px;
-
   font-family: NotoSans-Bold;
   font-weight: 500;
   font-style: normal;
   font-size: 16px;
   line-height: 21.79px;
+  cursor: pointer;
 `;
 
 export const ColumnModifyNone = styled.button`
@@ -322,7 +336,6 @@ export const ColumnModifyNone = styled.button`
   color: #5b5bc0;
   border: 1px solid #5b5bc0;
   border-radius: 5px;
-
   font-family: NotoSans-Bold;
   font-weight: 400;
   font-style: normal;
