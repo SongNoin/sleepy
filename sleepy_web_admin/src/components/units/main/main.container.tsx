@@ -50,7 +50,7 @@ export default function Main() {
       setAccessToken(result.data?.loginUser.accessToken);
       // location.reload();
       alert("로그인 성공했습니다~");
-      router.push("/register");
+      router.push("/dashboard");
     } catch (error) {
       alert(error.message);
     }

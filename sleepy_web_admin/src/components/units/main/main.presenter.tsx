@@ -21,7 +21,7 @@ export default function MainUI(props) {
           <Logo src="images/logo.png" />
           <MainTitleWrapper>
             <Line />
-            <TitleText>관리자 로그인</TitleText>
+            <TitleText>판매자 & 관리자 로그인</TitleText>
             <Line />
           </MainTitleWrapper>
           <InputWrapper>
