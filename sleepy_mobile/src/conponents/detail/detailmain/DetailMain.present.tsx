@@ -77,7 +77,6 @@ const DetailUI = (props: any) => {
       <ReviewWrapper>
         <Title>리뷰</Title>
         <ReviewListContainer data={props.data} />
-        <ReviewListContainer data={props.data} />
       </ReviewWrapper>
     </ScrollView>
   );
