@@ -2,8 +2,6 @@ import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
   width: 290px;
-  /* padding: 32px 36px 0px 32px; */
-  /* background-color: beige; */
   padding-top: 32px;
 `;
 
@@ -49,14 +47,6 @@ export const BottomWrapper = styled.div`
   /* padding-left: 36px; */
 `;
 
-interface IProps {
-  isClickRegister: boolean;
-  isClickProduct: boolean;
-  isClickSales: boolean;
-  isClickSignup: boolean;
-  isClickLogin: boolean;
-}
-
 export const InnerWrapper = styled.div`
   display: flex;
   flex-direction: row;
@@ -66,18 +56,18 @@ export const InnerWrapper = styled.div`
   /* background-color: #f5f5fb; */
 `;
 
-export const InnerWrapperRegister = styled.div`
+export const InnerWrapperRegister = styled.div<{ isClickRegister: boolean }>`
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   padding: 15px 0px 15px 36px;
   cursor: pointer;
-  background-color: ${(props: IProps) =>
+  background-color: ${(props) =>
     props.isClickRegister === true ? "#F5F5FB" : "#normal"};
 `;
 
-export const InnerWrapperProduct = styled.div`
+export const InnerWrapperProduct = styled.div<{ isClickProduct: boolean }>`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -85,11 +75,11 @@ export const InnerWrapperProduct = styled.div`
   padding: 15px 0px 15px 36px;
   cursor: pointer;
 
-  background-color: ${(props: IProps) =>
+  background-color: ${(props) =>
     props.isClickProduct === true ? "#F5F5FB" : "#normal"};
 `;
 
-export const InnerWrapperSales = styled.div`
+export const InnerWrapperSales = styled.div<{ isClickSales: boolean }>`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -98,23 +88,23 @@ export const InnerWrapperSales = styled.div`
   padding: 15px 0px 15px 36px;
   cursor: pointer;
 
-  background-color: ${(props: IProps) =>
+  background-color: ${(props) =>
     props.isClickSales === true ? "#F5F5FB" : "#normal"};
 `;
 
-export const InnerWrapperDashboard = styled.div`
+export const InnerWrapperDashboard = styled.div<{ isClickDashboard: boolean }>`
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 15px 0px 15px 36px;
+  padding: 20px 0px 20px 36px;
   cursor: pointer;
 
-  background-color: ${(props: IProps) =>
+  background-color: ${(props) =>
     props.isClickDashboard === true ? "#F5F5FB" : "#normal"};
 `;
 
-export const InnerWrapperModify = styled.div`
+export const InnerWrapperModify = styled.div<{ isClickModify: boolean }>`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -122,11 +112,11 @@ export const InnerWrapperModify = styled.div`
   padding: 15px 0px 15px 36px;
   cursor: pointer;
 
-  background-color: ${(props: IProps) =>
+  background-color: ${(props) =>
     props.isClickModify === true ? "#F5F5FB" : "#normal"};
 `;
 
-export const SideMenuButtonModify = styled.div`
+export const SideMenuButtonModify = styled.div<{ isClickModify: boolean }>`
   width: 100%;
   height: 18px;
   display: flex;
@@ -136,16 +126,19 @@ export const SideMenuButtonModify = styled.div`
   font-style: normal;
   line-height: 19.07px;
   color: #3b3b3b;
-  font-weight: ${(props: IProps) =>
-    props.isClickModify === true ? "700" : "400"};
+  font-weight: ${(props) => (props.isClickModify === true ? "700" : "400")};
 `;
 
 export const SideMenuIcon = styled.img`
-  width: 19.5px;
-  height: 19.47px;
+  width: 24px;
+  height: 24px;
   margin-right: 15px;
 `;
-
+export const SideMenuDashboardIcon = styled.img`
+  width: 24px;
+  height: 14px;
+  margin-right: 15px;
+`;
 export const SideMenuButton = styled.div`
   width: 100%;
   height: 18px;
@@ -160,7 +153,7 @@ export const SideMenuButton = styled.div`
   cursor: pointer;
 `;
 
-export const SideMenuButtonRegister = styled.div`
+export const SideMenuButtonRegister = styled.div<{ isClickRegister: boolean }>`
   width: 100%;
   height: 18px;
   display: flex;
@@ -170,11 +163,10 @@ export const SideMenuButtonRegister = styled.div`
   font-style: normal;
   line-height: 19.07px;
   color: #3b3b3b;
-  font-weight: ${(props: IProps) =>
-    props.isClickRegister === true ? "700" : "400"};
+  font-weight: ${(props) => (props.isClickRegister === true ? "700" : "400")};
 `;
 
-export const SideMenuButtonProduct = styled.div`
+export const SideMenuButtonProduct = styled.div<{ isClickProduct: boolean }>`
   width: 100%;
   height: 18px;
   display: flex;
@@ -184,32 +176,31 @@ export const SideMenuButtonProduct = styled.div`
   font-style: normal;
   line-height: 19.07px;
   color: #3b3b3b;
-  font-weight: ${(props: IProps) =>
-    props.isClickProduct === true ? "700" : "400"};
+  font-weight: ${(props) => (props.isClickProduct === true ? "700" : "400")};
 `;
 
-export const SideMenuButtonSales = styled.div`
+export const SideMenuButtonSales = styled.div<{ isClickSales: boolean }>`
   width: 100%;
   height: 18px;
   display: flex;
   align-items: center;
   font-family: NotoSans-Regular;
-  font-weight: ${(props: IProps) =>
-    props.isClickSales === true ? "700" : "400"};
+  font-weight: ${(props) => (props.isClickSales === true ? "700" : "400")};
   font-size: 14px;
   font-style: normal;
   line-height: 19.07px;
   color: #3b3b3b;
 `;
 
-export const SideMenuButtonDashboard = styled.div`
+export const SideMenuButtonDashboard = styled.div<{
+  isClickDashboard: boolean;
+}>`
   width: 100%;
   height: 18px;
   display: flex;
   align-items: center;
   font-family: NotoSans-Regular;
-  font-weight: ${(props: IProps) =>
-    props.isClickDashboard === true ? "700" : "400"};
+  font-weight: ${(props) => (props.isClickDashboard === true ? "700" : "400")};
   font-size: 14px;
   font-style: normal;
   line-height: 19.07px;

@@ -1,11 +1,11 @@
 import { useQuery } from "@apollo/client";
-import DashboardUI from "./dashboard.presenter";
+import DashboardUI from "./admindashboard.presenter";
 import {
   FETCH_USED_ITEMS_COUNT_I_SOLD,
   FETCH_USER_LOGGEDIN,
-} from "./dashboard.queries";
+} from "./admindashboard.queries";
 
-export default function Dashboard() {
+export default function AdminDashboard() {
   const { data: amountData } = useQuery(FETCH_USER_LOGGEDIN);
   const { data: productCountData } = useQuery(FETCH_USED_ITEMS_COUNT_I_SOLD);
   return (
