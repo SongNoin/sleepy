@@ -72,7 +72,7 @@ export default function Register(props) {
       const result = await createUseditem({
         variables: {
           createUseditemInput: {
-            name: myName,
+            name: tag + "#" + myName,
             remarks: myRemark,
             contents: data.myContents,
             price: Number(myPrice),
@@ -96,7 +96,7 @@ export default function Register(props) {
 
   async function onClickUpdateProduct(data) {
     const myUpdateUseditemInput: any = {};
-    if (myName) myUpdateUseditemInput.name = myName;
+    if (myName) myUpdateUseditemInput.name = tag + "#" + myName;
     if (myRemark) myUpdateUseditemInput.remarks = myRemark;
     if (data.myContents) myUpdateUseditemInput.contents = data.myContents;
     if (Number(myPrice)) myUpdateUseditemInput.price = Number(myPrice);

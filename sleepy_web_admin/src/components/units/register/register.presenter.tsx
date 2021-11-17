@@ -46,7 +46,7 @@ export default function RegisterUI(props) {
                 type="text"
                 onChange={props.onChangeMyName}
                 placeholder="상품 명을 입력해주세요."
-                defaultValue={props.fetchData?.fetchUseditem.name}
+                defaultValue={props.fetchData?.fetchUseditem.name.split("#")[1]}
               />
             </RightWrapper>
           </BasicWrapper>
