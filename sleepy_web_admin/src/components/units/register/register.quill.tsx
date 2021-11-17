@@ -61,11 +61,24 @@ export default function ReactQuil01(props) {
 
   return (
     <div>
-      <DetailText
-        modules={modules}
-        onChange={props.onChange}
-        placeholder="상품 설명을 입력해주세요."
-      />
+      {!props.isEdit ? (
+        <DetailText
+          modules={modules}
+          onChange={props.onChange}
+          placeholder="상품 설명을 입력해주세요."
+        />
+      ) : (
+        <>
+          {props.defaultValue && (
+            <DetailText
+              modules={modules}
+              onChange={props.onChange}
+              placeholder="상품 설명을 입력해주세요."
+              defaultValue={props.defaultValue}
+            />
+          )}
+        </>
+      )}
     </div>
   );
 }

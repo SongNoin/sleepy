@@ -1,4 +1,5 @@
 import { useMutation, useQuery } from "@apollo/client";
+import { useRouter } from "next/router";
 import ProductstableUI from "./productstable.presenter";
 import {
   FETCH_USED_ITEMS_I_SOLD,
@@ -6,17 +7,22 @@ import {
 } from "./productstable.queries";
 
 export default function Productstable() {
+  const router = useRouter();
   const { data } = useQuery(FETCH_USED_ITEMS_I_SOLD, {
     variables: { page: 1 },
   });
 
   const [deleteUseditem] = useMutation(DELETE_USED_ITEM);
 
-  async function onClickDelete(e) {
+  function onClickMovetoUpdateProduct(event) {
+    router.push(`/productDetail/${event.target.id}/edit`);
+  }
+
+  async function onClickDelete(event) {
     try {
       await deleteUseditem({
         variables: {
-          useditemId: e.target.id,
+          useditemId: event.target.id,
         },
         refetchQueries: [
           {
@@ -29,5 +35,11 @@ export default function Productstable() {
     } catch (error: any) {}
   }
 
-  return <ProductstableUI data={data} onClickDelete={onClickDelete} />;
+  return (
+    <ProductstableUI
+      data={data}
+      onClickMovetoUpdateProduct={onClickMovetoUpdateProduct}
+      onClickDelete={onClickDelete}
+    />
+  );
 }
