@@ -31,7 +31,7 @@ export const FooterPart = styled.div`
 `;
 
 export const WrapperHeader = styled.div`
-  height: 350px;
+  height: 200px;
   display: flex;
 `;
 
@@ -43,6 +43,6 @@ export const TotalAmountLabel = styled.div``;
 export const TotalAmount = styled.div``;
 
 export const WrapperFooter = styled.div`
-  height: 350px;
+  height: 500px;
   display: flex;
 `;
