@@ -1,5 +1,6 @@
 import React from "react";
 import { ScrollView } from "react-native-gesture-handler";
+import ReviewUploadContainer from "../../commons/reviewupload/reviewupload.container";
 
 import {
   ReviewWriteView,
@@ -9,6 +10,7 @@ import {
   CategoryWrapper,
   Category,
   CategoryContent,
+  ReviewPhotoWrapper,
   ProductNameWrapper,
   ProductName,
   ProductPriceWrapper,
@@ -16,10 +18,8 @@ import {
   LabelWrapper,
   Label,
   LableLine,
-  ReviewPhotoWrapper,
-  ReviewPhotoUpload,
-  Plus,
   ReviewStarWrapper,
+  StarButton,
   StarIcon,
   ReviewContentWrapper,
   ReviewContentInput,
@@ -59,40 +59,90 @@ export default function ReviewUI(props: any) {
           <LabelWrapper>
             <Label>이미지 등록</Label>
             <LableLine />
-            <TentInput onChangeText={props.onChangeImage} />
           </LabelWrapper>
           <ReviewPhotoWrapper>
-            <ReviewPhotoUpload>
-              <Plus>+</Plus>
-            </ReviewPhotoUpload>
-            <ReviewPhotoUpload>
-              <Plus>+</Plus>
-            </ReviewPhotoUpload>
-            <ReviewPhotoUpload>
-              <Plus>+</Plus>
-            </ReviewPhotoUpload>
+            <ReviewUploadContainer setImage={props.setImages} />
           </ReviewPhotoWrapper>
           <LabelWrapper>
             <Label>별점</Label>
             <LableLine />
           </LabelWrapper>
-          <TentInput onChangeText={props.onChangeStar} />
           <ReviewStarWrapper>
-            <StarIcon
-              source={require("../../../../public/images/mypage/onstar.png")}
-            />
-            <StarIcon
-              source={require("../../../../public/images/mypage/onstar.png")}
-            />
-            <StarIcon
-              source={require("../../../../public/images/mypage/onstar.png")}
-            />
-            <StarIcon
-              source={require("../../../../public/images/mypage/onstar.png")}
-            />
-            <StarIcon
-              source={require("../../../../public/images/mypage/offstar.png")}
-            />
+            {/* {new Array(Number(props.myStar) > 5 ? 5 : Number(props.myStar))
+              .fill(1)
+              .map((el, index) => (
+                <StarButton key={index}>
+                  <StarIcon
+                    source={require("../../../../public/images/mypage/onstar.png")}
+                  />
+                </StarButton>
+              ))}
+            {new Array(
+              5 - Number(props.myStar) < 0 ? 0 : 5 - Number(props.myStar)
+            )
+              .fill(2)
+              .map((el, index) => (
+                <StarButton key={index}>
+                  <StarIcon
+                    source={require("../../../../public/images/mypage/offstar.png")}
+                  />
+                </StarButton>
+              ))} */}
+            <StarButton onPress={() => props.setMyStar(1)}>
+              {props.myStar > 0 ? (
+                <StarIcon
+                  source={require("../../../../public/images/mypage/onstar.png")}
+                />
+              ) : (
+                <StarIcon
+                  source={require("../../../../public/images/mypage/offstar.png")}
+                />
+              )}
+            </StarButton>
+            <StarButton onPress={() => props.setMyStar(2)}>
+              {props.myStar > 1 ? (
+                <StarIcon
+                  source={require("../../../../public/images/mypage/onstar.png")}
+                />
+              ) : (
+                <StarIcon
+                  source={require("../../../../public/images/mypage/offstar.png")}
+                />
+              )}
+            </StarButton>
+            <StarButton onPress={() => props.setMyStar(3)}>
+              {props.myStar > 2 ? (
+                <StarIcon
+                  source={require("../../../../public/images/mypage/onstar.png")}
+                />
+              ) : (
+                <StarIcon
+                  source={require("../../../../public/images/mypage/offstar.png")}
+                />
+              )}
+            </StarButton>
+            <StarButton onPress={() => props.setMyStar(4)}>
+              {props.myStar > 3 ? (
+                <StarIcon
+                  source={require("../../../../public/images/mypage/onstar.png")}
+                />
+              ) : (
+                <StarIcon
+                  source={require("../../../../public/images/mypage/offstar.png")}
+                />
+              )}
+            </StarButton>
+            <StarButton onPress={() => props.setMyStar(5)}>
+              {props.myStar > 4 ? (
+                <StarIcon
+                  source={require("../../../../public/images/mypage/onstar.png")}
+                />
+              ) : (
+                <StarIcon
+                  source={require("../../../../public/images/mypage/offstar.png")}
+                />
+              )}
+            </StarButton>
           </ReviewStarWrapper>
           <LabelWrapper>
             <Label>리뷰 작성</Label>

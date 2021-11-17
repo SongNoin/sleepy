@@ -30,21 +30,32 @@ const ReviewListUIItem = (props: any) => {
             <TopMiddleWrapper>
               <Nickname>{props.el?.user?.name}</Nickname>
               <Star>
-                <ReviewStar
-                  source={require("../../../../public/images/detail/star.png")}
-                />
-                <ReviewStar
-                  source={require("../../../../public/images/detail/star.png")}
-                />
-                <ReviewStar
-                  source={require("../../../../public/images/detail/star.png")}
-                />
-                <ReviewStar
-                  source={require("../../../../public/images/detail/starempty.png")}
-                />
-                <ReviewStar
-                  source={require("../../../../public/images/detail/starempty.png")}
-                />
+                {new Array(
+                  typeof Number(props.el?.contents.split("#$%&")[0]) ===
+                  "string"
+                    ? 5
+                    : Number(props.el?.contents.split("#$%&")[0])
+                )
+                  .fill(1)
+                  .map((el) => (
+                    <ReviewStar
+                      key={el}
+                      source={require("../../../../public/images/detail/star.png")}
+                    />
+                  ))}
+                {new Array(
+                  typeof Number(props.el?.contents.split("#$%&")[0]) ===
+                  "string"
+                    ? 0
+                    : Number(5 - props.el?.contents.split("#$%&")[0])
+                )
+                  .fill(1)
+                  .map((el) => (
+                    <ReviewStar
+                      key={el}
+                      source={require("../../../../public/images/detail/starempty.png")}
+                    />
+                  ))}
               </Star>
             </TopMiddleWrapper>
             <Photos>
