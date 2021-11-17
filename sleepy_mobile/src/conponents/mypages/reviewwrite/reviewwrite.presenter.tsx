@@ -25,6 +25,7 @@ import {
   ReviewContentInput,
   ReviewWriteButton,
   ReviewWriteButtonText,
+  TentInput,
 } from "./reviewwrite.styles";
 
 export default function ReviewUI(props: any) {
@@ -58,6 +59,7 @@ export default function ReviewUI(props: any) {
           <LabelWrapper>
             <Label>이미지 등록</Label>
             <LableLine />
+            <TentInput onChangeText={props.onChangeImage} />
           </LabelWrapper>
           <ReviewPhotoWrapper>
             <ReviewPhotoUpload>
@@ -74,6 +76,7 @@ export default function ReviewUI(props: any) {
             <Label>별점</Label>
             <LableLine />
           </LabelWrapper>
+          <TentInput onChangeText={props.onChangeStar} />
           <ReviewStarWrapper>
             <StarIcon
               source={require("../../../../public/images/mypage/onstar.png")}

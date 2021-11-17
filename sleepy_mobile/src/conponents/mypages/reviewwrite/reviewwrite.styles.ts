@@ -192,3 +192,19 @@ export const ReviewWriteButtonText = styled.Text`
 
   color: #ffffff;
 `;
+
+export const TentInput = styled.TextInput`
+  width: 339px;
+  height: 50px;
+  padding-left: 15px;
+  padding-top: 15px;
+
+  font-family: "NotoSans-Bold";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 19px;
+
+  color: black;
+  justify-content: center;
+`;

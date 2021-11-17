@@ -48,29 +48,19 @@ const ReviewListUIItem = (props: any) => {
               </Star>
             </TopMiddleWrapper>
             <Photos>
-              {props.data?.fetchUseditem.images[0] ? (
-                <AddPhoto
-                  source={{
-                    uri: `https://storage.googleapis.com/${props.data?.fetchUseditem.images[0]}`,
-                  }}
-                />
-              ) : (
-                <NoPhoto />
-              )}
-              {props.data?.fetchUseditem.images[1] ? (
-                <AddPhoto
-                  source={{
-                    uri: `https://storage.googleapis.com/${props.data?.fetchUseditem.images[1]}`,
-                  }}
-                />
-              ) : (
-                <NoPhoto />
-              )}
+              <AddPhoto
+                source={{
+                  uri: `https://storage.googleapis.com/${
+                    props.el?.contents.split("#$%&")[2]
+                  }`,
+                }}
+              />
+              <NoPhoto />
             </Photos>
           </InnerTopWrapper>
           <BottomWrapper>
             <ContentTitle>리뷰 내용</ContentTitle>
-            <ReviewContent>{props.el?.contents}</ReviewContent>
+            <ReviewContent>{props.el?.contents.split("#$%&")[1]}</ReviewContent>
           </BottomWrapper>
         </ReviewWrapper>
       </InnerWrapper>
