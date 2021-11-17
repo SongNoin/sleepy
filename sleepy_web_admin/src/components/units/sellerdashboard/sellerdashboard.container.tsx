@@ -8,6 +8,7 @@ import {
 export default function SellerDashboard() {
   const { data: amountData } = useQuery(FETCH_USER_LOGGEDIN);
   const { data: productCountData } = useQuery(FETCH_USED_ITEMS_COUNT_I_SOLD);
+
   return (
     <DashboardUI amountData={amountData} productCountData={productCountData} />
   );
