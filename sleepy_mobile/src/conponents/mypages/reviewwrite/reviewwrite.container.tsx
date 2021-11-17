@@ -13,7 +13,11 @@ import {
 
 export default function ReviewContainer() {
   const { id } = useContext(GlobalContext);
+  const [myImage, setMyImage] = useState("");
+  const [myStar, setMyStar] = useState("");
+
   const [myContents, setMycontents] = useState("");
+
   const navigation = useNavigation();
   console.log("review", id);
 
@@ -23,6 +27,12 @@ export default function ReviewContainer() {
     variables: { useditemId: id },
   });
 
+  function onChangeImage(event: any) {
+    setMyImage(event);
+  }
+  function onChangeStar(event: any) {
+    setMyStar(event);
+  }
   function onChangeContents(event: any) {
     setMycontents(event);
   }
@@ -33,7 +43,7 @@ export default function ReviewContainer() {
         variables: {
           useditemId: id,
           createUseditemQuestionInput: {
-            contents: myContents,
+            contents: myStar + "#$%&" + myContents + "#$%&" + myImage,
           },
         },
         refetchQueries: [
@@ -45,6 +55,7 @@ export default function ReviewContainer() {
       });
       Alert.alert("리뷰를 등록합니다~");
       navigation.navigate("마이페이지");
+      console.log("id", id);
     } catch (error) {
       Alert.alert(error.message);
     }
@@ -52,6 +63,8 @@ export default function ReviewContainer() {
   return (
     <ReviewUI
       onChangeContents={onChangeContents}
+      onChangeStar={onChangeStar}
+      onChangeImage={onChangeImage}
       onClickRegisterReview={onClickRegisterReview}
       data={data}
     />

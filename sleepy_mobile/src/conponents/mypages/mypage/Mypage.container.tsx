@@ -9,7 +9,7 @@ import {
 import { GlobalContext } from "../../../../App";
 
 const MypageContainer = () => {
-  const { setId, id, setIsReview } = useContext(GlobalContext);
+  const { setId, setIsReview } = useContext(GlobalContext);
 
   const [isPoint, setIsPoint] = useState(false);
   const { data } = useQuery(FETCH_USER_LOGGED_IN);
@@ -30,7 +30,7 @@ const MypageContainer = () => {
 
   function onPressMoveToDetail(el: any) {
     setId(el.useditem._id);
-    setIsReview(true);
+    setIsReview((prev) => !prev);
   }
 
   const onPressMoveToReviewWrite = (el: any) => {

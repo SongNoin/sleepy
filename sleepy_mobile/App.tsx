@@ -26,7 +26,7 @@ const App: () => Node = () => {
   const [tagId, setTagId] = useState("");
   const [chargeAmount, setChargeAmount] = useState("");
   const [isFavorite, setIsFavorite] = useState(true);
-  const [isReview, setIsReview] = useState(true);
+  const [isReview, setIsReview] = useState(false);
 
   const value = {
     setAccessToken: setAccessToken,
