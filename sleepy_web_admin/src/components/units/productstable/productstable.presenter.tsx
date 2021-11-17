@@ -60,7 +60,7 @@ export default function ProductstableUI(props) {
                   </NoImage>
                 )}
               </ColumnImage>
-              <ColumnNameRow>{el.name}</ColumnNameRow>
+              <ColumnNameRow>{el.name.split("#")[1]}</ColumnNameRow>
               {el.buyer?.name ? (
                 <ColumnSold>{el.buyer?.name && "판매완료"}</ColumnSold>
               ) : (
