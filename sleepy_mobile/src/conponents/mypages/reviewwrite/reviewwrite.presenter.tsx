@@ -25,33 +25,41 @@ import {
   ReviewContentInput,
   ReviewWriteButton,
   ReviewWriteButtonText,
+  TentInput,
 } from "./reviewwrite.styles";
 
-export default function ReviewUI() {
+export default function ReviewUI(props: any) {
   return (
     <>
       <ScrollView>
         <ReviewWriteView>
           <ProductCard>
             <ProductImage
-              source={require("../../../../public/images/mypage/buyhistoryproductphoto.png")}
+              source={{
+                uri: `https://storage.googleapis.com/${props.data?.fetchUseditem.images[0]}`,
+              }}
             />
             <ProductInfo>
               <CategoryWrapper>
                 <Category>카테고리</Category>
-                <CategoryContent>이불</CategoryContent>
+                <CategoryContent>
+                  {props.data?.fetchUseditem.tags}
+                </CategoryContent>
               </CategoryWrapper>
               <ProductNameWrapper>
-                <ProductName>글자는띄어쓰기없이</ProductName>
+                <ProductName>{props.data?.fetchUseditem.name}</ProductName>
               </ProductNameWrapper>
               <ProductPriceWrapper>
-                <ProductPrice>199000원</ProductPrice>
+                <ProductPrice>
+                  {props.data?.fetchUseditem.price.toLocaleString("ko-KR")}원
+                </ProductPrice>
               </ProductPriceWrapper>
             </ProductInfo>
           </ProductCard>
           <LabelWrapper>
             <Label>이미지 등록</Label>
             <LableLine />
+            <TentInput onChangeText={props.onChangeImage} />
           </LabelWrapper>
           <ReviewPhotoWrapper>
             <ReviewPhotoUpload>
@@ -68,6 +76,7 @@ export default function ReviewUI() {
             <Label>별점</Label>
             <LableLine />
           </LabelWrapper>
+          <TentInput onChangeText={props.onChangeStar} />
           <ReviewStarWrapper>
             <StarIcon
               source={require("../../../../public/images/mypage/onstar.png")}
@@ -86,17 +95,18 @@ export default function ReviewUI() {
             />
           </ReviewStarWrapper>
           <LabelWrapper>
-            <Label>리뷰 작성 & 리뷰 수정</Label>
+            <Label>리뷰 작성</Label>
             <LableLine />
           </LabelWrapper>
           <ReviewContentWrapper>
             <ReviewContentInput
+              onChangeText={props.onChangeContents}
               style={{ flexShrink: 1 }}
               multiline={true}
             ></ReviewContentInput>
           </ReviewContentWrapper>
-          <ReviewWriteButton>
-            <ReviewWriteButtonText>리뷰 작성 & 리뷰 수정</ReviewWriteButtonText>
+          <ReviewWriteButton onPress={props.onClickRegisterReview}>
+            <ReviewWriteButtonText>리뷰 작성</ReviewWriteButtonText>
           </ReviewWriteButton>
         </ReviewWriteView>
       </ScrollView>

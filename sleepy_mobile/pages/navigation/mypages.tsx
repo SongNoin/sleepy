@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import MypageScreen from "../screens/mypages/myMain";
 import CartScreen from "../screens/mypages/cart";
@@ -12,6 +12,7 @@ import NavigationLogo2 from "../../src/conponents/commons/navigationheader/navig
 import MyPointScreen from "../screens/mypages/mypoint";
 import Charge from "../screens/mypages/charge";
 import ReviewWriteScreen from "../screens/mypages/reviewwrite";
+import DetailScreen from "../screens/detail";
 
 const MyScreenNavigator = () => {
   const Stack = createStackNavigator();
@@ -70,6 +71,14 @@ const MyScreenNavigator = () => {
       <Stack.Screen
         name="리뷰쓰기"
         component={ReviewWriteScreen}
+        options={{
+          headerShown: true,
+          headerTitle: () => <NavigationLogo2 />,
+        }}
+      />
+      <Stack.Screen
+        name="상품 상세보기"
+        component={DetailScreen}
         options={{
           headerShown: true,
           headerTitle: () => <NavigationLogo2 />,

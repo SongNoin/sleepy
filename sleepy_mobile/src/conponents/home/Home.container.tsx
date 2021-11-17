@@ -7,7 +7,7 @@ import { FETCH_USED_ITEMS } from "./Home.quries";
 
 const HomeContainer = () => {
   const [isEdit, setIsEdit] = useState(false);
-  const { setId } = useContext(GlobalContext);
+  const { setId, setTagId } = useContext(GlobalContext);
 
   const onPressMoreProduct = () => {
     setIsEdit(true);
@@ -23,6 +23,12 @@ const HomeContainer = () => {
     },
   });
 
+  const onPressCategory = (value) => {
+    setTagId(value);
+
+    console.log("666", value);
+  };
+
   const onPressDetail = (el) => {
     setId(el._id);
     console.log("444", el._id);
@@ -35,6 +41,7 @@ const HomeContainer = () => {
       onPressMoreProduct={onPressMoreProduct}
       onPressCloseProduct={onPressCloseProduct}
       onPressDetail={onPressDetail}
+      onPressCategory={onPressCategory}
     />
   );
 };

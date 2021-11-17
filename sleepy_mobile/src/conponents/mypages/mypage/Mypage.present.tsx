@@ -110,8 +110,14 @@ const MypageUI = (props: any) => {
         </HistoryWrapper>
         {!props.isPoint ? (
           <BuyHistoryWrapper>
-            <BoughtProductCard />
-            <BoughtProductCard />
+            {props.buyData?.fetchPointTransactionsOfBuying.map((el: any) => (
+              <BoughtProductCard
+                key={el._id}
+                el={el}
+                onPressMoveToReviewWrite={props.onPressMoveToReviewWrite}
+                onPressMoveToDetail={props.onPressMoveToDetail}
+              />
+            ))}
           </BuyHistoryWrapper>
         ) : (
           <PointHistoryWrapper>
@@ -125,7 +131,7 @@ const MypageUI = (props: any) => {
               <Row key={el._id}>
                 <Column>{el.createdAt.slice(0, 10)}</Column>
                 <ColumnContentWapper>
-                  <ColumnContent>{el.status}</ColumnContent>
+                  <ColumnContent status={el.status}>{el.status}</ColumnContent>
                 </ColumnContentWapper>
                 <Column>{el.amount.toLocaleString("ko-KR")}</Column>
                 <Column>{el.balance.toLocaleString("ko-KR")}</Column>

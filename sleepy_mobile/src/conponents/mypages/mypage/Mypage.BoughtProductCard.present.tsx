@@ -16,26 +16,51 @@ import {
   ReviewButtonText,
 } from "./Mypage.styles";
 
-const BoughtProductCard = () => {
+const BoughtProductCard = (props: any) => {
   const navigation = useNavigation();
+
   return (
-    <ProductCard>
+    <ProductCard
+      onPress={() =>
+        navigation.navigate("상품 상세보기", {
+          id: props.onPressMoveToDetail(props.el),
+        })
+      }
+    >
       <ProductImage
-        source={require("../../../../public/images/mypage/buyhistoryproductphoto.png")}
+        // source={`https://storage.googleapis.com/${props.el.useditem.images[0]}`}
+        source={{
+          uri: `https://storage.googleapis.com/${props.el.useditem.images[0]}`,
+        }}
       />
       <ProductInfo>
         <ProductDateWrapper>
           <ProductDate>구매 날짜</ProductDate>
-          <ProductDateContent>2021-11-04</ProductDateContent>
+          <ProductDateContent>
+            {props.el.createdAt.slice(0, 10)}
+          </ProductDateContent>
         </ProductDateWrapper>
         <ProductNameWrapper>
-          <ProductName>글자는띄어쓰기없이</ProductName>
+          <ProductName>
+            {props.el.useditem.name.length > 9
+              ? `${props.el.useditem.name.substr(0, 10)}...`
+              : props.el.useditem.name}
+          </ProductName>
         </ProductNameWrapper>
+
         <ProductPriceWrapper>
-          <ProductPrice>199000원</ProductPrice>
+          <ProductPrice>
+            {props.el.useditem.price.toLocaleString("ko-KR")}
+          </ProductPrice>
         </ProductPriceWrapper>
-        <ReviewButon onPress={() => navigation.navigate("리뷰쓰기")}>
-          <ReviewButtonText>리뷰 쓰기 & 리뷰수정</ReviewButtonText>
+        <ReviewButon
+          onPress={() =>
+            navigation.navigate("리뷰쓰기", {
+              id: props.onPressMoveToReviewWrite(props.el),
+            })
+          }
+        >
+          <ReviewButtonText>리뷰 쓰기</ReviewButtonText>
         </ReviewButon>
       </ProductInfo>
     </ProductCard>

@@ -22,18 +22,28 @@ const App: () => Node = () => {
   const [accessToken, setAccessToken] = useState("");
   const [isSearchHidden, setIsSearchHidden] = useState(false);
   const [isHomeHidden, setIsHomeHidden] = useState(false);
-  const [isMyPage , setIsMyPage] = useState(false);
-  const [id , setId] = useState("")
+  const [id, setId] = useState("");
+  const [tagId, setTagId] = useState("");
+  const [chargeAmount, setChargeAmount] = useState("");
+  const [isFavorite, setIsFavorite] = useState(true);
+  const [isReview, setIsReview] = useState(false);
+
   const value = {
     setAccessToken: setAccessToken,
     isSearchHidden: isSearchHidden,
     setIsSearchHidden: setIsSearchHidden,
     isHomeHidden: isHomeHidden,
     setIsHomeHidden: setIsHomeHidden,
-    isMyPage: isMyPage,
-    setIsMyPage: setIsMyPage,
     id: id,
     setId: setId,
+    tagId: tagId,
+    setTagId: setTagId,
+    chargeAmount: chargeAmount,
+    setChargeAmount: setChargeAmount,
+    isFavorite: isFavorite,
+    setIsFavorite: setIsFavorite,
+    isReview: isReview,
+    setIsReview: setIsReview,
   };
 
   useEffect(() => {
@@ -63,7 +73,7 @@ const App: () => Node = () => {
   });
 
   const uploadLink = createUploadLink({
-    uri: "http://34.64.161.16/team05",
+    uri: "https://backend03-team.codebootcamp.co.kr/team05",
     headers: {
       authorization: `Bearer ${accessToken}`,
     },

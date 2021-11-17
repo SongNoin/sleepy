@@ -2,20 +2,23 @@ import React from "react";
 
 import {
   MyPointView,
+  MyPointImage,
   MyPointInput,
+  MyPointInputText,
   ChangeText,
   ChargeButton,
 } from "./mypoint.styles";
-import { useNavigation } from "@react-navigation/core";
 
 const MyPointUI = (props: any) => {
-  const navigation = useNavigation();
-
   return (
     <>
       <MyPointView>
-        <MyPointInput></MyPointInput>
-        <ChargeButton onPress={() => navigation.navigate("아임포트충전")}>
+        <MyPointImage
+          source={require("../../../../public/images/detail/purchase.png")}
+        />
+        <MyPointInputText>충전할 금액을 입력해주세요!</MyPointInputText>
+        <MyPointInput onChangeText={props.onChageChageAmount}></MyPointInput>
+        <ChargeButton onPress={props.onPressNavigateCharge}>
           <ChangeText>충전하기</ChangeText>
         </ChargeButton>
       </MyPointView>

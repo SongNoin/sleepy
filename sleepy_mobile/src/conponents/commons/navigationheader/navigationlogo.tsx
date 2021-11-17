@@ -11,13 +11,29 @@ const LogoWrapper = styled.View`
   justify-content: space-between;
 `;
 
+const InnerWrapper = styled.View`
+  width: 77%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-left: 16%;
+`;
+
+const SleepyWrapper = styled.View`
+  margin-right: 9%;
+`;
+
 import Sleepy from "../../../../public/images/navigation/Sleepy.svg";
 import Cart from "../../../../public/images/navigation/Cart.svg";
 
 const NavigationLogo = () => {
   return (
     <LogoWrapper>
-      <Sleepy width={60} height={30} />
+      <InnerWrapper>
+        <SleepyWrapper>
+          <Sleepy width={60} height={30} />
+        </SleepyWrapper>
+      </InnerWrapper>
       <Cart width={24} height={24} />
     </LogoWrapper>
   );

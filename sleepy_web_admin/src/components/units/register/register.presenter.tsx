@@ -1,97 +1,141 @@
-import { Wrapper, All } from "./register.styles";
+import {
+  UploadImage,
+  Wrapper,
+  Title,
+  InnerWrapper,
+  BasicWrapper,
+  ContentWrapper,
+  ImagesWrapper,
+  LeftWrapper,
+  LeftBasicWrapper,
+  RightWrapper,
+  RightContentWrapper,
+  Name,
+  NameInput,
+  ButtonWrapper,
+  UploadButton,
+} from "./register.styles";
 
 import Select from "@mui/material/Select";
-import { useMutation } from "@apollo/client";
+
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
-import { useState } from "react";
-import { CREATE_USEDITEM } from "./register.queries";
 
-export default function RegisterUI() {
-  const [age, setAge] = useState("");
-  const [tag, setTag] = useState([]);
+import ReactQuil01 from "./register.quill";
 
-  const handleChange = (event) => {
-    setAge(event.target.value);
-    console.log(event.target.value);
-    setTag(event.target.value);
-  };
-  const [createUseditem] = useMutation(CREATE_USEDITEM);
-  const [myName, setMyName] = useState("");
-  const [myRemark, setMyRemark] = useState("");
-  const [myContent, setMyContent] = useState("");
-  const [myPrice, setMyPrice] = useState("");
+import Uploads from "../../commons/uploads/Uploads.container";
 
-  function onChangeMyName(event) {
-    setMyName(event.target.value);
-  }
-  function onChangeMyRemark(event) {
-    setMyRemark(event.target.value);
-  }
-  function onChangeMyContent(event) {
-    setMyContent(event.target.value);
-  }
-  function onChangeMyPrice(event) {
-    setMyPrice(event.target.value);
-  }
-
-  async function onClickUploadProudct() {
-    try {
-      await createUseditem({
-        variables: {
-          createUseditemInput: {
-            name: myName,
-            remarks: myRemark,
-            contents: myContent,
-            price: Number(myPrice),
-            tags: tag,
-          },
-        },
-      });
-      alert("상품이 등록되었습니다");
-    } catch (error) {
-      console.log(error.message);
-    }
-  }
-
+export default function RegisterUI(props) {
   return (
-    <>
-      <All>
-        <Wrapper>
-          상품명: <input type="text" onChange={onChangeMyName} />
-          한줄요약: <input type="text" onChange={onChangeMyRemark} />
-          상품설명: <input type="text" onChange={onChangeMyContent} />
-          판매가격: <input type="text" onChange={onChangeMyPrice} />
-        </Wrapper>
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <Box sx={{ minWidth: 120, marginTop: "10px", marginBottom: "10px" }}>
-            <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-label">카테고리</InputLabel>
-              <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                value={age}
-                label="Age"
-                onChange={handleChange}
+    <Wrapper>
+      <Title>상품 등록</Title>
+      <form onSubmit={props.handleSubmit(props.onClickUploadProudct)}>
+        <InnerWrapper>
+          <BasicWrapper>
+            <LeftWrapper>
+              <Name>상품 명</Name>
+            </LeftWrapper>
+            <RightWrapper>
+              <NameInput
+                type="text"
+                onChange={props.onChangeMyName}
+                placeholder="상품 명을 입력해주세요."
+              />
+            </RightWrapper>
+          </BasicWrapper>
+          <ContentWrapper>
+            <LeftBasicWrapper>
+              <Name>상품 설명</Name>
+            </LeftBasicWrapper>
+            <RightContentWrapper>
+              <ReactQuil01 onChange={props.onChangeMyContent} />
+            </RightContentWrapper>
+          </ContentWrapper>
+          <BasicWrapper>
+            <LeftWrapper>
+              <Name>가격</Name>
+            </LeftWrapper>
+            <RightWrapper>
+              <NameInput
+                type="text"
+                onChange={props.onChangeMyPrice}
+                placeholder="상품 가격을 입력해주세요."
+              />
+            </RightWrapper>
+          </BasicWrapper>
+          <BasicWrapper>
+            <LeftWrapper>
+              <Name>카테고리</Name>
+            </LeftWrapper>
+            <RightWrapper>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  marginLeft: "40px",
+                }}
               >
-                <MenuItem value={"배게"}>배게</MenuItem>
-                <MenuItem value={"이불"}>이불</MenuItem>
-                <MenuItem value={"잠옷"}>잠옷</MenuItem>
-                <MenuItem value={"암막커튼"}>암막 커튼</MenuItem>
-                <MenuItem value={"수면 오일"}>수면 오일</MenuItem>
-                <MenuItem value={"수면 용품"}>수면 용품</MenuItem>
-                <MenuItem value={"수면 보조제"}>수면 보조제</MenuItem>
-              </Select>
-            </FormControl>
-          </Box>
-          <div style={{ marginLeft: "30px" }}>
-            {tag.length ? `#${tag}` : ""}
-          </div>
-        </div>
-        <button onClick={onClickUploadProudct}>업로드</button>
-      </All>
-    </>
+                <Box
+                  sx={{
+                    minWidth: 120,
+                    marginTop: "10px",
+                    marginBottom: "10px",
+                    border: "2px solid #5b5bc0",
+                    borderRadius: "10px",
+                  }}
+                >
+                  <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">
+                      카테고리
+                    </InputLabel>
+                    <Select
+                      labelId="demo-simple-select-label"
+                      id="demo-simple-select"
+                      value={props.age}
+                      label="Age"
+                      onChange={props.handleChange}
+                    >
+                      <MenuItem value={"배게"}>배게</MenuItem>
+                      <MenuItem value={"이불"}>이불</MenuItem>
+                      <MenuItem value={"잠옷"}>잠옷</MenuItem>
+                      <MenuItem value={"도서"}>도서</MenuItem>
+                      <MenuItem value={"암막커튼"}>암막 커튼</MenuItem>
+                      <MenuItem value={"오일"}>오일</MenuItem>
+                      <MenuItem value={"수면용품"}>수면 용품</MenuItem>
+                      <MenuItem value={"수면보조제"}>수면 보조제</MenuItem>
+                    </Select>
+                  </FormControl>
+                </Box>
+                <div style={{ marginLeft: "30px" }}>
+                  {props.tag?.length ? `#${props.tag}` : ""}
+                </div>
+              </div>
+            </RightWrapper>
+          </BasicWrapper>
+          <ImagesWrapper>
+            <LeftBasicWrapper>
+              <Name>이미지 첨부</Name>
+            </LeftBasicWrapper>
+            <RightWrapper>
+              <UploadImage>
+                {new Array(3).fill(1).map((el, index) => (
+                  <Uploads
+                    onChangeFiles={props.onChangeFiles}
+                    key={`${el}_${index}`}
+                    index={index}
+                    type="submit"
+                  />
+                ))}
+              </UploadImage>
+            </RightWrapper>
+          </ImagesWrapper>
+        </InnerWrapper>
+        <ButtonWrapper>
+          <UploadButton>상품 등록하기</UploadButton>
+        </ButtonWrapper>
+      </form>
+    </Wrapper>
   );
 }

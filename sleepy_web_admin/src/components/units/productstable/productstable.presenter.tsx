@@ -4,16 +4,29 @@ import {
   InnerWrapper,
   ItemContent,
   RowCategory,
+  ColumnIndexRow,
+  ColumnCategoryRow,
+  ColumnNameRow,
+  CloumnDateRow,
+  ColumnPriceRow,
   ColumnIndex,
   ColumnCategory,
+  ColumnImageRow,
+  ColumnImage,
+  FakeImage,
+  NoImage,
+  NoImageImg,
   ColumnName,
   ColumnSale,
   ColumnSold,
-  ColumnNone,
+  ColumnSell,
   ColumnPrice,
   CloumnDate,
   ColumnModify,
+  ModifyButton,
+  DeleteButton,
   Row,
+  ColumnModifyNone,
 } from "./productstable.styles";
 
 export default function ProductstableUI(props) {
@@ -25,7 +38,7 @@ export default function ProductstableUI(props) {
           <RowCategory>
             <ColumnIndex>NO</ColumnIndex>
             <ColumnCategory>카테고리</ColumnCategory>
-            <ColumnCategory>상품이미지</ColumnCategory>
+            <ColumnImageRow>상품이미지</ColumnImageRow>
             <ColumnName>상품명</ColumnName>
             <ColumnSale>판매여부</ColumnSale>
             <CloumnDate>날짜</CloumnDate>
@@ -34,16 +47,47 @@ export default function ProductstableUI(props) {
           </RowCategory>
           {props.data?.fetchUseditemsISold.map((el, index) => (
             <Row key={el._id}>
-              <ColumnIndex>{10 - index}</ColumnIndex>
-              <ColumnCategory>{el.tags}</ColumnCategory>
-              <ColumnName>{el.name}</ColumnName>
+              <ColumnIndexRow>{10 - index}</ColumnIndexRow>
+              <ColumnCategoryRow>{el.tags}</ColumnCategoryRow>
+              <ColumnImage>
+                {el?.images[0] ? (
+                  <FakeImage
+                    src={`https://storage.googleapis.com/${el?.images[0]}`}
+                  />
+                ) : (
+                  <NoImage>
+                    <NoImageImg src="/images/logo.png" />
+                  </NoImage>
+                )}
+              </ColumnImage>
+              <ColumnNameRow>{el.name}</ColumnNameRow>
               {el.buyer?.name ? (
-                <ColumnSold>{el.buyer?.name && "SOLD OUT"}</ColumnSold>
+                <ColumnSold>{el.buyer?.name && "판매완료"}</ColumnSold>
               ) : (
-                <ColumnNone />
+                <ColumnSell>판매중</ColumnSell>
               )}
-              <CloumnDate>{el.createdAt.slice(0, 10)}</CloumnDate>
-              <ColumnPrice>{el.price}</ColumnPrice>
+              <CloumnDateRow>
+                {el.createdAt.slice(0, 10)} {el.createdAt.slice(11, 19)}
+              </CloumnDateRow>
+              <ColumnPriceRow>
+                ₩
+                {el.price
+                  .toLocaleString("ko-KR")
+                  .toString()
+                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+              </ColumnPriceRow>
+              <ColumnModify>
+                {!el.buyer?.name ? (
+                  <>
+                    <ModifyButton>수정</ModifyButton>
+                    <DeleteButton onClick={props.onClickDelete} id={el._id}>
+                      삭제
+                    </DeleteButton>
+                  </>
+                ) : (
+                  <ColumnModifyNone>수정/삭제 불가</ColumnModifyNone>
+                )}
+              </ColumnModify>
             </Row>
           ))}
         </ItemContent>

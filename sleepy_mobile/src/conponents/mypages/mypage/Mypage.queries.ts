@@ -25,3 +25,18 @@ export const FETCH_POINT_TRANSACTIONS = gql`
     }
   }
 `;
+
+export const FETCH_POINT_TRANSACTIONS_OF_BUYING = gql`
+  query fetchPointTransactionsOfBuying($page: Int) {
+    fetchPointTransactionsOfBuying(page: $page) {
+      _id
+      createdAt
+      useditem {
+        _id
+        name
+        price
+        images
+      }
+    }
+  }
+`;

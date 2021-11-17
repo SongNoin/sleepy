@@ -8,10 +8,17 @@ export const FETCH_USED_ITEMS_I_SOLD = gql`
       price
       createdAt
       tags
+      images
       buyer {
         name
       }
       pickedCount
     }
+  }
+`;
+
+export const DELETE_USED_ITEM = gql`
+  mutation deleteUseditem($useditemId: ID!) {
+    deleteUseditem(useditemId: $useditemId)
   }
 `;

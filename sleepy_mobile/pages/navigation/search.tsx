@@ -84,15 +84,6 @@ const SearchNavigator = () => {
           tabBarStyle: getVisibility(route),
         })}
       />
-      {/* <Stack.Screen
-        name="마이페이지"
-        component={MypageScreen}
-        options={({ route }) => ({
-          headerShown: true,
-          headerTitle: () => <NavigationLogo2 />,
-          tabBarStyle: getVisibility(route),
-        })}
-      /> */}
     </Stack.Navigator>
   );
 };

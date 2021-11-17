@@ -59,7 +59,19 @@ export const Photos = styled.View`
   justify-content: space-between;
 `;
 
-export const AddPhoto = styled.Image``;
+export const AddPhoto = styled.Image`
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  /* border: 1px solid red; */
+`;
+
+export const NoPhoto = styled.View`
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background-color: #f1eef7;
+`;
 
 export const BottomWrapper = styled.View``;
 

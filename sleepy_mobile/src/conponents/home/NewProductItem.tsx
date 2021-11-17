@@ -45,6 +45,8 @@ const DetailProduct = styled.TouchableOpacity`
 
 const ProductImage = styled.Image`
   border-radius: 15px;
+  width: 100%;
+  height: 100%;
 `;
 
 const ContentsWrapper = styled.View`
@@ -97,7 +99,9 @@ const NewProductItem = (props) => {
                         }
                       >
                         <ProductImage
-                          source={require("../../../public/images/home/product1.png")}
+                          source={{
+                            uri: `https://storage.googleapis.com/${el.images[0]}`,
+                          }}
                         />
                       </DetailProduct>
                       <ContentsWrapper>
@@ -126,7 +130,9 @@ const NewProductItem = (props) => {
                         }
                       >
                         <ProductImage
-                          source={require("../../../public/images/home/product1.png")}
+                          source={{
+                            uri: `https://storage.googleapis.com/${el.images[0]}`,
+                          }}
                         />
                       </DetailProduct>
                       <ContentsWrapper>
@@ -158,7 +164,9 @@ const NewProductItem = (props) => {
                         }
                       >
                         <ProductImage
-                          source={require("../../../public/images/home/product1.png")}
+                          source={{
+                            uri: `https://storage.googleapis.com/${el.images[0]}`,
+                          }}
                         />
                       </DetailProduct>
                       <ContentsWrapper>
@@ -187,7 +195,9 @@ const NewProductItem = (props) => {
                         }
                       >
                         <ProductImage
-                          source={require("../../../public/images/home/product1.png")}
+                          source={{
+                            uri: `https://storage.googleapis.com/${el.images[0]}`,
+                          }}
                         />
                       </DetailProduct>
                       <ContentsWrapper>

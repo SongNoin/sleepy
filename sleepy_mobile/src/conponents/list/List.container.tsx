@@ -12,7 +12,7 @@ const ListContainer = () => {
     },
   });
 
-  const { setId, id } = useContext(GlobalContext);
+  const { setId, id, setTagId, tagId } = useContext(GlobalContext);
 
   const onPressDetail = (el) => {
     setId(el._id);
@@ -20,7 +20,18 @@ const ListContainer = () => {
     console.log("433", id);
   };
 
-  return <ListUI data={data} onPressDetail={onPressDetail} />;
+  const onPressListCategory = (value) => {
+    setTagId(value);
+  };
+
+  return (
+    <ListUI
+      data={data}
+      onPressDetail={onPressDetail}
+      onPressListCategory={onPressListCategory}
+      tagId={tagId}
+    />
+  );
 };
 
 export default ListContainer;

@@ -1,11 +1,26 @@
 import {
   Wrapper,
+  Title,
+  InnerWrapper,
+  ItemContent,
   RowCategory,
-  ColumnDate,
+  ColumnIndexRow,
+  ColumnCategoryRow,
+  ColumnNameRow,
+  CloumnDateRow,
+  ColumnPriceRow,
+  ColumnIndex,
   ColumnCategory,
-  ColumnStatus,
-  ColumnHistory,
-  ClounmBalance,
+  ColumnImageRow,
+  ColumnImage,
+  FakeImage,
+  NoImage,
+  NoImageImg,
+  ColumnName,
+  ColumnSale,
+  ColumnSaleRow,
+  ColumnPrice,
+  CloumnDate,
   Row,
 } from "./salestable.styles";
 
@@ -13,22 +28,53 @@ export default function SalestableUI(props) {
   return (
     <>
       <Wrapper>
-        <RowCategory>
-          <ColumnDate>거래일</ColumnDate>
-          <ColumnCategory>카테고리</ColumnCategory>
-          <ColumnStatus>상품명</ColumnStatus>
-          <ColumnHistory>거래내역</ColumnHistory>
-          <ClounmBalance>거래 후 잔액</ClounmBalance>
-        </RowCategory>
-        {props.data?.fetchPointTransactionsOfSelling.map((el) => (
-          <Row key={el._id}>
-            <ColumnDate>{el.createdAt.slice(0, 10)}</ColumnDate>
-            <ColumnCategory>{el.useditem.tags}</ColumnCategory>
-            <ColumnStatus>{el.useditem.name}</ColumnStatus>
-            <ColumnHistory>+{el.amount.toLocaleString("ko-KR")}</ColumnHistory>
-            <ClounmBalance>₩{el.balance.toLocaleString("ko-KR")}</ClounmBalance>
-          </Row>
-        ))}
+        <Title>판매 현황</Title>
+        <InnerWrapper>
+          <ItemContent>
+            <RowCategory>
+              <ColumnIndex>NO</ColumnIndex>
+              <ColumnCategory>카테고리</ColumnCategory>
+              <ColumnImageRow>상품이미지</ColumnImageRow>
+              <ColumnName>상품명</ColumnName>
+              <ColumnSale>수익내역</ColumnSale>
+              <CloumnDate>거래일</CloumnDate>
+              <ColumnPrice>잔액</ColumnPrice>
+              {/* <ColumnModify>수정/삭제</ColumnModify> */}
+            </RowCategory>
+            {props.data?.fetchPointTransactionsOfSelling.map((el, index) => (
+              <Row key={el._id}>
+                <ColumnIndexRow>{10 - index}</ColumnIndexRow>
+                <ColumnCategoryRow>{el.useditem.tags}</ColumnCategoryRow>
+                <ColumnImage>
+                  {el?.useditem.images[0] ? (
+                    <FakeImage
+                      src={`https://storage.googleapis.com/${el?.useditem.images[0]}`}
+                    />
+                  ) : (
+                    <NoImage>
+                      <NoImageImg src="/images/logo.png" />
+                    </NoImage>
+                  )}
+                </ColumnImage>
+                <ColumnNameRow>{el.useditem.name}</ColumnNameRow>
+                <ColumnSaleRow>
+                  +{el.amount.toLocaleString("ko-KR")}
+                </ColumnSaleRow>
+                <CloumnDateRow>
+                  {el.createdAt.slice(0, 10)} {el.createdAt.slice(11, 19)}
+                </CloumnDateRow>
+                <ColumnPriceRow>
+                  ₩
+                  {el.balance
+                    .toLocaleString("ko-KR")
+                    .toString()
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                  {/* ₩{el.balance.toLocaleString("ko-KR")} */}
+                </ColumnPriceRow>
+              </Row>
+            ))}
+          </ItemContent>
+        </InnerWrapper>
       </Wrapper>
     </>
   );
