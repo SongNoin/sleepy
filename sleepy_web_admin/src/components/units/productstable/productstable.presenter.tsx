@@ -79,7 +79,12 @@ export default function ProductstableUI(props) {
               <ColumnModify>
                 {!el.buyer?.name ? (
                   <>
-                    <ModifyButton>수정</ModifyButton>
+                    <ModifyButton
+                      onClick={props.onClickMovetoUpdateProduct}
+                      id={el._id}
+                    >
+                      수정
+                    </ModifyButton>
                     <DeleteButton onClick={props.onClickDelete} id={el._id}>
                       삭제
                     </DeleteButton>

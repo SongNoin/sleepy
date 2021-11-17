@@ -2,9 +2,10 @@ import RegisterUI from "./register.presenter";
 
 import { useMutation, useQuery } from "@apollo/client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   CREATE_USEDITEM,
+  UPDATE_USED_ITEM,
   FETCH_USED_ITEM,
   UPLOAD_FILE,
 } from "./register.queries";
@@ -12,13 +13,20 @@ import {
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import { schema } from "./register.validation";
+import { useRouter } from "next/router";
 
-export default function Register() {
+export default function Register(props) {
+  const router = useRouter();
+
   const [age, setAge] = useState("");
   const [tag, setTag] = useState([]);
   const [uploadFile] = useMutation(UPLOAD_FILE);
 
   const [files, setFiles] = useState([null, null, null]);
+
+  const { data: fetchData } = useQuery(FETCH_USED_ITEM, {
+    variables: { useditemId: router.query.Id },
+  });
 
   const handleChange = (event) => {
     setAge(event.target.value);
@@ -32,6 +40,7 @@ export default function Register() {
   });
 
   const [createUseditem] = useMutation(CREATE_USEDITEM);
+  const [updateUseditem] = useMutation(UPDATE_USED_ITEM);
 
   const [myName, setMyName] = useState("");
   const [myRemark, setMyRemark] = useState("");
@@ -72,8 +81,8 @@ export default function Register() {
           },
         },
       });
-      console.log(result);
       alert("상품이 등록되었습니다");
+      router.push(`/productstable`);
     } catch (error) {
       console.log(error.message);
     }
@@ -84,6 +93,52 @@ export default function Register() {
     newFiles[index] = file;
     setFiles(newFiles);
   }
+
+  async function onClickUpdateProduct(data) {
+    const myUpdateUseditemInput: any = {};
+    if (myName) myUpdateUseditemInput.name = myName;
+    if (myRemark) myUpdateUseditemInput.remarks = myRemark;
+    if (data.myContents) myUpdateUseditemInput.contents = data.myContents;
+    if (Number(myPrice)) myUpdateUseditemInput.price = Number(myPrice);
+    if (tag) myUpdateUseditemInput.tags = tag;
+
+    const uploadFiles = files.map((el) =>
+      el ? uploadFile({ variables: { file: el } }) : null
+    );
+    const results = await Promise.all(uploadFiles);
+    const nextImages = results.map((el) => el?.data.uploadFile.url || "");
+    myUpdateUseditemInput.images = nextImages;
+
+    if (fetchData?.fetchUseditem.images.length) {
+      const prevImages = [...fetchData?.fetchUseditem.images];
+      myUpdateUseditemInput.images = prevImages.map(
+        (el, index) => nextImages[index] || el
+      );
+    } else {
+      myUpdateUseditemInput.images = nextImages;
+    }
+
+    try {
+      await updateUseditem({
+        variables: {
+          updateUseditemInput: myUpdateUseditemInput,
+          useditemId: router.query.Id,
+        },
+      });
+      alert("상품이 수정되었습니다");
+      router.push(`/productstable`);
+    } catch (error: any) {}
+  }
+
+  useEffect(() => {
+    if (!props.isEdit && fetchData?.fetchUseditem) {
+      setValue("myName", fetchData?.fetchUseditem.name);
+      setValue("myRemarks", fetchData?.fetchUseditem.remarks);
+      setValue("myContents", fetchData?.fetchUseditem.contents);
+      setValue("myPrice", fetchData?.fetchUseditem.price);
+      setValue("tag", fetchData?.fetchUseditem.tags);
+    }
+  }, [!props.isEdit, fetchData?.fetchUseditem]);
 
   return (
     <RegisterUI
@@ -98,6 +153,9 @@ export default function Register() {
       onChangeMyRemark={onChangeMyRemark}
       onChangeMyPrice={onChangeMyPrice}
       onChangeFiles={onChangeFiles}
+      onClickUpdateProduct={onClickUpdateProduct}
+      isEdit={props.isEdit}
+      fetchData={fetchData}
     />
   );
 }
