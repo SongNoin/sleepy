@@ -106,41 +106,20 @@ export const LableLine = styled.View`
 
   margin-top: 12px;
 `;
-
 export const ReviewPhotoWrapper = styled.View`
   margin-top: 12px;
 
   display: flex;
   flex-direction: row;
 `;
-
-export const ReviewPhotoUpload = styled.TouchableOpacity`
-  width: 72px;
-  height: 72px;
-
-  background: #f1eef6;
-  border-radius: 8px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 20px;
-`;
-
-export const Plus = styled.Text`
-  font-family: "NotoSans-Regular";
-  font-style: normal;
-  font-size: 35px;
-
-  color: #3c3c3c;
-`;
-
 export const ReviewStarWrapper = styled.View`
   margin-top: 13px;
 
   display: flex;
   flex-direction: row;
 `;
+
+export const StarButton = styled.TouchableOpacity``;
 
 export const StarIcon = styled.Image`
   width: 22px;
