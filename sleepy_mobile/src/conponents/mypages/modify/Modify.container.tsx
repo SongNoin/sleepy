@@ -12,6 +12,7 @@ const ModifyContainer = () => {
   const { data } = useQuery(FETCH_USER_LOGGEDIN);
   const { setMypage }: any = useContext(GlobalContext);
   const [myName, setMyName] = useState("");
+  const [myImage, setImage] = useState("");
   const navigation = useNavigation();
 
   function onChangeNickname(event: any) {
@@ -34,10 +35,29 @@ const ModifyContainer = () => {
       console.log(error);
     }
   }
+
+  async function onClickUpdateUserPhoto() {
+    try {
+      await updateUser({
+        variables: {
+          updateUserInput: {
+            picture: myImage,
+          },
+        },
+      });
+      Alert.alert("프로필 사진이 수정되었습니다~");
+      navigation.navigate("마이페이지");
+      setMypage("마이페이지");
+    } catch (error) {
+      console.log(error);
+    }
+  }
   return (
     <ModifyUI
       onChangeNickname={onChangeNickname}
       onClickUpdateUserName={onClickUpdateUserName}
+      setImage={setImage}
+      onClickUpdateUserPhoto={onClickUpdateUserPhoto}
       myName={myName}
       data={data}
     />

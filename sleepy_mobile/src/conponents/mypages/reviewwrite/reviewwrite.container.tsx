@@ -13,7 +13,7 @@ import {
 export default function ReviewContainer() {
   const { id } = useContext(GlobalContext);
   const [myStar, setMyStar] = useState(5);
-  const [myImages, setImages] = useState("");
+  const [myImage, setImage] = useState("");
 
   const [myContents, setMycontents] = useState("");
 
@@ -37,7 +37,7 @@ export default function ReviewContainer() {
         variables: {
           useditemId: id,
           createUseditemQuestionInput: {
-            contents: myStar + "#$%&" + myContents + "#$%&" + myImages,
+            contents: myStar + "#$%&" + myContents + "#$%&" + myImage,
           },
         },
       });
@@ -51,7 +51,7 @@ export default function ReviewContainer() {
     <ReviewUI
       onChangeContents={onChangeContents}
       onClickRegisterReview={onClickRegisterReview}
-      setImages={setImages}
+      setImage={setImage}
       myStar={myStar}
       setMyStar={setMyStar}
       data={data}

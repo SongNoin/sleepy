@@ -46,7 +46,9 @@ export default function ReviewUI(props: any) {
                 </CategoryContent>
               </CategoryWrapper>
               <ProductNameWrapper>
-                <ProductName>{props.data?.fetchUseditem.name}</ProductName>
+                <ProductName>
+                  {props.data?.fetchUseditem.name.split("#")[1]}
+                </ProductName>
               </ProductNameWrapper>
               <ProductPriceWrapper>
                 <ProductPrice>
@@ -60,7 +62,7 @@ export default function ReviewUI(props: any) {
             <LableLine />
           </LabelWrapper>
           <ReviewPhotoWrapper>
-            <ReviewUploadContainer setImage={props.setImages} />
+            <ReviewUploadContainer setImage={props.setImage} />
           </ReviewPhotoWrapper>
           <LabelWrapper>
             <Label>별점</Label>

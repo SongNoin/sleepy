@@ -16,6 +16,8 @@ import {
   BottomWrapper,
   ContentTitle,
   ReviewContent,
+  AddPhotoButton,
+  BigAddPhoto,
 } from "./ReviewList.styles";
 
 const ReviewListUIItem = (props: any) => {
@@ -24,9 +26,17 @@ const ReviewListUIItem = (props: any) => {
       <InnerWrapper>
         <ReviewWrapper>
           <InnerTopWrapper>
-            <Avatar
-              source={require("../../../../public/images/detail/reviewavatar.png")}
-            />
+            {props.userData?.fetchUserLoggedIn.picture ? (
+              <Avatar
+                source={{
+                  uri: `https://storage.googleapis.com/${props.userData?.fetchUserLoggedIn.picture}`,
+                }}
+              />
+            ) : (
+              <Avatar
+                source={require("../../../../public/images/mypage/mypagedefaultprofile.png")}
+              />
+            )}
             <TopMiddleWrapper>
               <Nickname>{props.el?.user?.name}</Nickname>
               <Star>
@@ -37,9 +47,9 @@ const ReviewListUIItem = (props: any) => {
                     : Number(props.el?.contents.split("#$%&")[0])
                 )
                   .fill(1)
-                  .map((el) => (
+                  .map((el, index) => (
                     <ReviewStar
-                      key={el}
+                      key={index}
                       source={require("../../../../public/images/detail/star.png")}
                     />
                   ))}
@@ -50,22 +60,36 @@ const ReviewListUIItem = (props: any) => {
                     : Number(5 - props.el?.contents.split("#$%&")[0])
                 )
                   .fill(1)
-                  .map((el) => (
+                  .map((el, index) => (
                     <ReviewStar
-                      key={el}
+                      key={index}
                       source={require("../../../../public/images/detail/starempty.png")}
                     />
                   ))}
               </Star>
             </TopMiddleWrapper>
             <Photos>
-              <AddPhoto
-                source={{
-                  uri: `https://storage.googleapis.com/${
-                    props.el?.contents.split("#$%&")[2]
-                  }`,
-                }}
-              />
+              <AddPhotoButton onPress={props.onPressEnlargePicture}>
+                {props.isLarge ? (
+                  <BigAddPhoto
+                    source={{
+                      uri: `https://storage.googleapis.com/${
+                        props.el?.contents.split("#$%&")[2]
+                      }`,
+                    }}
+                    isLarge={props.isLarge}
+                  />
+                ) : (
+                  <AddPhoto
+                    source={{
+                      uri: `https://storage.googleapis.com/${
+                        props.el?.contents.split("#$%&")[2]
+                      }`,
+                    }}
+                    isLarge={props.isLarge}
+                  />
+                )}
+              </AddPhotoButton>
               <NoPhoto />
             </Photos>
           </InnerTopWrapper>

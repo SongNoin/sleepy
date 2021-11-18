@@ -44,9 +44,17 @@ const MypageUI = (props: any) => {
     <ScrollView>
       <MyMainView>
         <ProfileWrapper>
-          <ProfileImage
-            source={require("../../../../public/images/mypage/mypageexmapleprofile.png")}
-          />
+          {props.data?.fetchUserLoggedIn.picture ? (
+            <ProfileImage
+              source={{
+                uri: `https://storage.googleapis.com/${props.data?.fetchUserLoggedIn.picture}`,
+              }}
+            />
+          ) : (
+            <ProfileImage
+              source={require("../../../../public/images/mypage/mypagedefaultprofile.png")}
+            />
+          )}
           <ProfileInfoWrapper>
             <ProfileNameWapper>
               <ProfileName>{props.data?.fetchUserLoggedIn?.name}</ProfileName>
