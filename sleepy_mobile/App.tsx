@@ -14,7 +14,7 @@ import TabNavigator from "./pages/navigation/tabNavigator";
 import LoginNavigator from "./pages/navigation/loginAuth";
 import { onError } from "@apollo/client/link/error";
 import { getAccessToken } from "./src/commons/library/getAccessToken";
-import LottieView from 'lottie-react-native';
+import LottieView from "lottie-react-native";
 import { View } from "react-native";
 
 export const GlobalContext = createContext(null);
@@ -29,7 +29,8 @@ const App: () => Node = () => {
   const [chargeAmount, setChargeAmount] = useState("");
   const [isFavorite, setIsFavorite] = useState(true);
   const [isReview, setIsReview] = useState(false);
-  const [loading , setLoading] = useState(true)
+  const [isMypage, setMypage] = useState("");
+  const [loading, setLoading] = useState(true);
 
   const value = {
     setAccessToken: setAccessToken,
@@ -47,6 +48,8 @@ const App: () => Node = () => {
     setIsFavorite: setIsFavorite,
     isReview: isReview,
     setIsReview: setIsReview,
+    isMypage: isMypage,
+    setMypage: setMypage,
   };
 
   useEffect(() => {
@@ -92,28 +95,28 @@ const App: () => Node = () => {
     <>
       {loading ? (
         <View
-        style={{
+          style={{
             flex: 1,
-            backgroundColor: '#ffffff'
+            backgroundColor: "#ffffff",
           }}
         >
-          <LottieView 
-            source={require('./assets/splash.json')} 
-            autoPlay 
+          <LottieView
+            source={require("./assets/splash.json")}
+            autoPlay
             loop={false}
             speed={2}
             duration={1450}
-            onAnimationFinish={()=>{
-              console.log('Animation Finished')
-              setLoading(false)
+            onAnimationFinish={() => {
+              console.log("Animation Finished");
+              setLoading(false);
             }}
           />
         </View>
-       ) : (
+      ) : (
         <GlobalContext.Provider value={value}>
-        <ApolloProvider client={client}>
-          <NavigationContainer>
-            <Stack.Navigator screenOptions={{ headerShown: false }}>
+          <ApolloProvider client={client}>
+            <NavigationContainer>
+              <Stack.Navigator screenOptions={{ headerShown: false }}>
                 {accessToken ? (
                   <Stack.Screen name="tabNavigator" component={TabNavigator} />
                 ) : (
@@ -123,8 +126,7 @@ const App: () => Node = () => {
             </NavigationContainer>
           </ApolloProvider>
         </GlobalContext.Provider>
-        )
-      }
+      )}
     </>
   );
 };
