@@ -43,7 +43,7 @@ const FavoriteUI = (props) => {
               />
               <FavoriteContent>
                 <FavoriteName>
-                  {el.name.split("#")[1].length > 9
+                  {String(el.name.split("#")[1]).length > 9
                     ? `${el.name.split("#")[1].substr(0, 10)}...`
                     : el.name.split("#")[1]}
                 </FavoriteName>

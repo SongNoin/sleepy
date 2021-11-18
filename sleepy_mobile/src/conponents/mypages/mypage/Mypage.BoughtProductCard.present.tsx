@@ -42,7 +42,7 @@ const BoughtProductCard = (props: any) => {
         </ProductDateWrapper>
         <ProductNameWrapper>
           <ProductName>
-            {props.el.useditem.name.split("#")[1].length > 9
+            {String(props.el.useditem.name.split("#")[1]).length > 9
               ? `${props.el.useditem.name.split("#")[1].substr(0, 10)}...`
               : props.el.useditem.name.split("#")[1]}
           </ProductName>
