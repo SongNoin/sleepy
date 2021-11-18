@@ -14,6 +14,7 @@ import {
   NameInput,
   ButtonWrapper,
   UploadButton,
+  ImageArea,
 } from "./register.styles";
 
 import Select from "@mui/material/Select";
@@ -25,7 +26,9 @@ import InputLabel from "@mui/material/InputLabel";
 
 import ReactQuil01 from "./register.quill";
 
-import Uploads from "../../commons/uploads/Uploads.container";
+// import Uploads from "../../commons/uploads/Uploads.container";
+
+import DropZone01 from "../../commons/dropzone/Dropzone.container";
 
 export default function RegisterUI(props) {
   return (
@@ -137,7 +140,7 @@ export default function RegisterUI(props) {
             </LeftBasicWrapper>
             <RightWrapper>
               <UploadImage>
-                {new Array(3).fill(1).map((el, index) => (
+                {/* {new Array(3).fill(1).map((el, index) => (
                   <Uploads
                     onChangeFiles={props.onChangeFiles}
                     defaultFileUrl={
@@ -147,7 +150,15 @@ export default function RegisterUI(props) {
                     index={index}
                     type="submit"
                   />
-                ))}
+                ))} */}
+                <ImageArea>
+                  <DropZone01
+                    onChangeFiles={props.onChangeFiles}
+                    defaultFileUrl={props.fetchData?.fetchUseditem.images}
+                    data={props.fetchData}
+                    isEdit={props.isEdit}
+                  />
+                </ImageArea>
               </UploadImage>
             </RightWrapper>
           </ImagesWrapper>
