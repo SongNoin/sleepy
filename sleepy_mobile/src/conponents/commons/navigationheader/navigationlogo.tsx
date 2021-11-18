@@ -1,6 +1,8 @@
 import React from "react";
-
+import Sleepy from "../../../../public/images/navigation/Sleepy.svg";
+import Cart from "../../../../public/images/navigation/Cart.svg";
 import styled from "@emotion/native";
+import { useNavigation } from "@react-navigation/native";
 
 const LogoWrapper = styled.View`
   width: 100%;
@@ -23,10 +25,15 @@ const SleepyWrapper = styled.View`
   margin-right: 9%;
 `;
 
-import Sleepy from "../../../../public/images/navigation/Sleepy.svg";
-import Cart from "../../../../public/images/navigation/Cart.svg";
+const GoMyFavoritePage = styled.TouchableOpacity``;
+const CartWrapper = styled.View``;
 
 const NavigationLogo = () => {
+  const navigation = useNavigation();
+  const goToMyFavoritePage = () => {
+    navigation.navigate("장바구니");
+  };
+
   return (
     <LogoWrapper>
       <InnerWrapper>
@@ -34,7 +41,11 @@ const NavigationLogo = () => {
           <Sleepy width={60} height={30} />
         </SleepyWrapper>
       </InnerWrapper>
-      <Cart width={24} height={24} />
+      <GoMyFavoritePage onPress={goToMyFavoritePage}>
+        <CartWrapper>
+          <Cart width={24} height={24} />
+        </CartWrapper>
+      </GoMyFavoritePage>
     </LogoWrapper>
   );
 };

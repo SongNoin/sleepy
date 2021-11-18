@@ -46,13 +46,29 @@ const CartUI = (props: any) => {
                   />
                 </CartImageWrapper>
                 <CartContent>
-                  <CartName>
-                    {el.productName.length > 9
-                      ? `${el.productName.substr(0, 10)}..`
-                      : el.productName}
+                  <CartName
+                    onPress={() => {
+                      if (!soldOutList?.includes(el.id)) {
+                        navigation.navigate("상품 상세보기", {
+                          id: props.onPressDetail(el),
+                        });
+                      }
+                    }}
+                  >
+                    {el.productName.split("#")[1].length > 9
+                      ? `${el.productName.split("#")[1].substr(0, 10)}..`
+                      : el.productName.split("#")[1]}
                   </CartName>
 
-                  <CartPrice>{`${el.productPrice}원`}</CartPrice>
+                  <CartPrice
+                    onPress={() => {
+                      if (!soldOutList?.includes(el.id)) {
+                        navigation.navigate("상품 상세보기", {
+                          id: props.onPressDetail(el),
+                        });
+                      }
+                    }}
+                  >{`${el.productPrice}원`}</CartPrice>
 
                   {!soldOutList?.includes(el.id) && (
                     <BuyButton onPress={props.buyMyFavoritePr(el)}>
