@@ -13,6 +13,7 @@ import {
   RightContentWrapper,
   Name,
   NameInput,
+  BasicInput,
   ContentInput,
 } from "./tableDetail.styles";
 import InfiniteScroll from "react-infinite-scroller";
@@ -53,13 +54,13 @@ export default function TableDetailUI(props) {
             <Name>가격</Name>
           </LeftWrapper>
           <RightWrapper>
-            <NameInput>
+            <BasicInput>
               {props.fetchData?.fetchUseditem?.price
                 .toLocaleString("ko-KR")
                 .toString()
                 .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{" "}
               원
-            </NameInput>
+            </BasicInput>
           </RightWrapper>
         </BasicWrapper>
         <BasicWrapper>
@@ -67,7 +68,9 @@ export default function TableDetailUI(props) {
             <Name>카테고리</Name>
           </LeftWrapper>
           <RightWrapper>
-            <NameInput>{props.fetchData?.fetchUseditem?.tags}</NameInput>
+            {/* <InfiniteScroll pageStart={0} loadMore={props.onLoadMore} hasMore={true}> */}
+            <BasicInput>{props.fetchData?.fetchUseditem?.tags}</BasicInput>
+            {/* </InfiniteScroll> */}
           </RightWrapper>
         </BasicWrapper>
         <ImagesWrapper>

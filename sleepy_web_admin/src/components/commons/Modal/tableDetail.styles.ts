@@ -89,6 +89,17 @@ export const NameInput = styled.div`
   align-items: center;
 `;
 
+export const BasicInput = styled.div`
+  width: 100%;
+  height: 40px;
+  margin-left: 18px;
+  border-radius: 10px;
+  border: 1px solid #5b5bc0;
+  padding-left: 16px;
+  display: flex;
+  align-items: center;
+`;
+
 export const Name = styled.div`
   color: white;
   margin-right: 28px;
