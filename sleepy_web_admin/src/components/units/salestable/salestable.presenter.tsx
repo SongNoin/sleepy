@@ -61,7 +61,7 @@ export default function SalestableUI(props) {
                     </NoImage>
                   )}
                 </ColumnImage>
-                <ColumnNameRow>{el.useditem.name}</ColumnNameRow>
+                <ColumnNameRow>{el.useditem.name.split("#")[1]}</ColumnNameRow>
                 <ColumnSaleRow>
                   +{el.amount.toLocaleString("ko-KR")}
                 </ColumnSaleRow>
