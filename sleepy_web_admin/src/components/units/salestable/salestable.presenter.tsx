@@ -22,6 +22,11 @@ import {
   ColumnPrice,
   CloumnDate,
   Row,
+  PageWarpper,
+  PageCount,
+  LeftIcon,
+  RightIcon,
+  Page,
 } from "./salestable.styles";
 
 export default function SalestableUI(props) {
@@ -74,6 +79,33 @@ export default function SalestableUI(props) {
               </Row>
             ))}
           </ItemContent>
+          <PageWarpper>
+            <PageCount>
+              <LeftIcon
+                onClick={props.onClickPrevPage}
+                src="/images/left.png"
+              />
+              {new Array(5).fill(1).map(
+                (_, index) =>
+                  props.startPage + index <= props.lastPage && (
+                    <Page
+                      onClick={props.onClickPage}
+                      key={props.startPage + index}
+                      id={props.startPage + index}
+                      colorChange={
+                        props.currentPage === props.startPage + index
+                      }
+                    >
+                      {props.startPage + index}
+                    </Page>
+                  )
+              )}
+              <RightIcon
+                onClick={props.onClickNextPage}
+                src="/images/right.png"
+              />
+            </PageCount>
+          </PageWarpper>
         </InnerWrapper>
       </Wrapper>
     </>

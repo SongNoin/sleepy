@@ -15,3 +15,9 @@ export const FETCH_POINT_TRANSACTIONS_OF_SELLING = gql`
     }
   }
 `;
+
+export const FETCH_POINT_TRANSACTIONS_COUNT_OF_SELLING = gql`
+  query fetchPointTransactionsCountOfSelling {
+    fetchPointTransactionsCountOfSelling
+  }
+`;

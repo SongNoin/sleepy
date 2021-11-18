@@ -27,6 +27,11 @@ import {
   DeleteButton,
   Row,
   ColumnModifyNone,
+  PageWarpper,
+  PageCount,
+  LeftIcon,
+  RightIcon,
+  Page,
 } from "./productstable.styles";
 
 export default function ProductstableUI(props) {
@@ -96,6 +101,28 @@ export default function ProductstableUI(props) {
             </Row>
           ))}
         </ItemContent>
+        <PageWarpper>
+          <PageCount>
+            <LeftIcon onClick={props.onClickPrevPage} src="/images/left.png" />
+            {new Array(5).fill(1).map(
+              (_, index) =>
+                props.startPage + index <= props.lastPage && (
+                  <Page
+                    onClick={props.onClickPage}
+                    key={props.startPage + index}
+                    id={props.startPage + index}
+                    colorChange={props.currentPage === props.startPage + index}
+                  >
+                    {props.startPage + index}
+                  </Page>
+                )
+            )}
+            <RightIcon
+              onClick={props.onClickNextPage}
+              src="/images/right.png"
+            />
+          </PageCount>
+        </PageWarpper>
       </InnerWrapper>
     </Wrapper>
   );
