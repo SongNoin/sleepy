@@ -15,4 +15,8 @@ export const globalStyles = css`
     font-family: "NotoSans-Bold";
     src: url("/font/NotoSansKR-Bold.otf");
   }
+  @font-face {
+    font-family: "BlackHanSans";
+    src: url("/font/BlackHanSans-Regular.otf");
+  }
 `;
