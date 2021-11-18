@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
   width: 100%;
-  padding: 32px 0px 64px 72px;
+  padding: 32px 0px 34px 72px;
   /* border: 1px solid red; */
   background-color: #f6f6fb;
 `;
@@ -23,6 +23,10 @@ export const InnerWrapper = styled.div`
 export const HeaderPart = styled.div`
   width: 34%;
   border: 5px solid #f6f6fb;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const FooterPart = styled.div`
@@ -31,18 +35,62 @@ export const FooterPart = styled.div`
 `;
 
 export const WrapperHeader = styled.div`
-  height: 350px;
+  height: 200px;
   display: flex;
 `;
 
-export const ProductCountLabel = styled.div``;
-export const ProductCount = styled.div``;
-export const SalesCountLabel = styled.div``;
-export const SalesCount = styled.div``;
-export const TotalAmountLabel = styled.div``;
-export const TotalAmount = styled.div``;
+export const ProductCountLabel = styled.div`
+  font-family: NotoSans-Bold;
+  font-weight: 900;
+  font-size: 36px;
+  line-height: 49px;
+  color: black;
+`;
+export const ProductCount = styled.div`
+  font-family: NotoSans-Bold;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 49px;
+`;
+export const SalesCountLabel = styled.div`
+  font-family: NotoSans-Bold;
+  font-weight: 900;
+  font-size: 36px;
+  line-height: 49px;
+  color: #5b5bc0;
+`;
+export const SalesCount = styled.div`
+  font-family: NotoSans-Bold;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 49px;
+`;
+export const TotalAmountLabel = styled.div`
+  font-family: NotoSans-Bold;
+  font-weight: 900;
+  font-size: 36px;
+  line-height: 49px;
+  color: #ff7c7c;
+`;
+export const TotalAmount = styled.div`
+  font-family: NotoSans-Bold;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 49px;
+`;
 
 export const WrapperFooter = styled.div`
-  height: 350px;
+  height: 500px;
   display: flex;
+`;
+
+export const GraphTitle = styled.div`
+  font-family: NotoSans-Bold;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  margin-left: 10px;
 `;

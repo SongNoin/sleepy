@@ -42,7 +42,8 @@ export default function DashboardUI(props) {
             <FooterPartLeft>
               <ResponsiveLine
                 data={sellerLineGraph}
-                margin={{ top: 50, right: 110, bottom: 50, left: 80 }}
+                colors={{ scheme: "set2" }}
+                margin={{ top: 50, right: 160, bottom: 50, left: 80 }}
                 xScale={{ type: "point" }}
                 yScale={{
                   type: "linear",
@@ -149,12 +150,6 @@ export default function DashboardUI(props) {
                 fill={[
                   {
                     match: {
-                      id: "배게",
-                    },
-                    id: "dots",
-                  },
-                  {
-                    match: {
                       id: "오일",
                     },
                     id: "dots",
@@ -163,7 +158,7 @@ export default function DashboardUI(props) {
                     match: {
                       id: "잠옷",
                     },
-                    id: "dots",
+                    id: "lines",
                   },
                   {
                     match: {
@@ -175,7 +170,7 @@ export default function DashboardUI(props) {
                     match: {
                       id: "암막커튼",
                     },
-                    id: "lines",
+                    id: "dots",
                   },
                   {
                     match: {
