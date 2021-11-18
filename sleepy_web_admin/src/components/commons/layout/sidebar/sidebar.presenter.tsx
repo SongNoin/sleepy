@@ -64,7 +64,7 @@ export default function SidebarUI(props) {
                   isClickDashboard={props.isClickDashboard}
                   onClick={props.onClickMoveToDashboard}
                 >
-                  대쉬보드
+                  대시보드
                 </SideMenuButtonDashboard>
               </InnerWrapperDashboard>
               <InnerWrapperModify isClickModify={props.isClickModify}>
@@ -94,7 +94,7 @@ export default function SidebarUI(props) {
                   isClickDashboard={props.isClickDashboard}
                   onClick={props.onClickMoveToDashboard}
                 >
-                  대쉬보드
+                  대시보드
                 </SideMenuButtonDashboard>
               </InnerWrapperDashboard>
               <InnerWrapperRegister isClickRegister={props.isClickRegister}>

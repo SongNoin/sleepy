@@ -10,7 +10,8 @@ import {
   SalesCount,
   TotalAmountLabel,
   TotalAmount,
-  FooterPart,
+  FooterPartLeft,
+  FooterPartRight,
   WrapperHeader,
   WrapperFooter,
 } from "./sellerdashboard.styles";
@@ -21,37 +22,33 @@ export default function DashboardUI(props) {
   return (
     <>
       <Wrapper>
-        <Title>판매자 대쉬보드</Title>
+        <Title>판매자 대시보드</Title>
         <InnerWrapper>
           <WrapperHeader>
             <HeaderPart>
               <ProductCountLabel>총 상품 개수</ProductCountLabel>
-              <ProductCount></ProductCount>
+              <ProductCount>2,529 개</ProductCount>
             </HeaderPart>
             <HeaderPart>
-              <SalesCountLabel>판매 갯수</SalesCountLabel>
-              <SalesCount>
-                {props.productCountData?.fetchUseditemsCountISold} 개
-              </SalesCount>
+              <SalesCountLabel>판매 상품 개수</SalesCountLabel>
+              <SalesCount>2,034 개</SalesCount>
             </HeaderPart>
             <HeaderPart>
               <TotalAmountLabel>총 수익</TotalAmountLabel>
-              <TotalAmount>
-                {props.amountData?.fetchUserLoggedIn.userPoint.amount} 원
-              </TotalAmount>
+              <TotalAmount>133,536,000 원</TotalAmount>
             </HeaderPart>
           </WrapperHeader>
           <WrapperFooter>
-            <FooterPart>
+            <FooterPartLeft>
               <ResponsiveLine
                 data={sellerLineGraph}
-                margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
+                margin={{ top: 50, right: 110, bottom: 50, left: 80 }}
                 xScale={{ type: "point" }}
                 yScale={{
                   type: "linear",
                   min: "auto",
                   max: "auto",
-                  stacked: true,
+                  stacked: false,
                   reverse: false,
                 }}
                 yFormat=" >-.2f"
@@ -62,7 +59,7 @@ export default function DashboardUI(props) {
                   tickSize: 5,
                   tickPadding: 5,
                   tickRotation: 0,
-                  legend: "시간",
+                  legend: "기간 ( 월 )",
                   legendOffset: 36,
                   legendPosition: "middle",
                 }}
@@ -71,8 +68,8 @@ export default function DashboardUI(props) {
                   tickSize: 5,
                   tickPadding: 5,
                   tickRotation: 0,
-                  legend: "금액 ( 천원 )",
-                  legendOffset: -40,
+                  legend: "금액 ( 천 원 )",
+                  legendOffset: -60,
                   legendPosition: "middle",
                 }}
                 pointSize={10}
@@ -108,10 +105,11 @@ export default function DashboardUI(props) {
                   },
                 ]}
               />
-            </FooterPart>
-            <FooterPart>
+            </FooterPartLeft>
+            <FooterPartRight>
               <ResponsivePie
                 data={sellerPieGraph}
+                colors={{ scheme: "paired" }}
                 margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
                 innerRadius={0.5}
                 padAngle={0.7}
@@ -151,51 +149,39 @@ export default function DashboardUI(props) {
                 fill={[
                   {
                     match: {
-                      id: "ruby",
+                      id: "배게",
                     },
                     id: "dots",
                   },
                   {
                     match: {
-                      id: "c",
+                      id: "오일",
                     },
                     id: "dots",
                   },
                   {
                     match: {
-                      id: "go",
+                      id: "잠옷",
                     },
                     id: "dots",
                   },
                   {
                     match: {
-                      id: "python",
+                      id: "이불",
+                    },
+                    id: "lines",
+                  },
+                  {
+                    match: {
+                      id: "암막커튼",
+                    },
+                    id: "lines",
+                  },
+                  {
+                    match: {
+                      id: "수면용품",
                     },
                     id: "dots",
-                  },
-                  {
-                    match: {
-                      id: "scala",
-                    },
-                    id: "lines",
-                  },
-                  {
-                    match: {
-                      id: "lisp",
-                    },
-                    id: "lines",
-                  },
-                  {
-                    match: {
-                      id: "elixir",
-                    },
-                    id: "lines",
-                  },
-                  {
-                    match: {
-                      id: "javascript",
-                    },
-                    id: "lines",
                   },
                 ]}
                 legends={[
@@ -204,14 +190,14 @@ export default function DashboardUI(props) {
                     direction: "row",
                     justify: false,
                     translateX: 0,
-                    translateY: 56,
+                    translateY: 50,
                     itemsSpacing: 0,
-                    itemWidth: 100,
+                    itemWidth: 70,
                     itemHeight: 18,
                     itemTextColor: "#999",
                     itemDirection: "left-to-right",
                     itemOpacity: 1,
-                    symbolSize: 18,
+                    symbolSize: 12,
                     symbolShape: "circle",
                     effects: [
                       {
@@ -224,7 +210,7 @@ export default function DashboardUI(props) {
                   },
                 ]}
               />
-            </FooterPart>
+            </FooterPartRight>
           </WrapperFooter>
         </InnerWrapper>
       </Wrapper>
