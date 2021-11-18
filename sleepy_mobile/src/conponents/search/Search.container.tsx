@@ -78,7 +78,11 @@ const SearchContainer = () => {
             }}
           />
           <ProductNameAndPrice>
-            <ProductName>{item.name}</ProductName>
+            <ProductName>
+              {String(item.name.split("#")[1]).length > 60
+                ? `${String(item.name.split("#")[1]).substr(0, 61)}...`
+                : item.name.split("#")[1]}
+            </ProductName>
             <ProductPrice>{`${item.price}원`}</ProductPrice>
           </ProductNameAndPrice>
         </Product>

@@ -8,7 +8,6 @@ import { useQuery } from "@apollo/client";
 
 const CartContainer = () => {
   const [productInfo, setProductInfo]: any = useState([]);
-  const [getPrices, setGetPrices]: any = useState("");
   const { setId }: any = useContext(GlobalContext);
   const navigation = useNavigation();
   const { data, fetchMore }: any = useQuery(FETCH_USED_ITEMS, {
@@ -46,11 +45,6 @@ const CartContainer = () => {
     AsyncStorage.getItem("@carts", async (_: any, result: any) => {
       const favoritePr = await JSON.parse(result);
       setProductInfo(favoritePr);
-      let prices = 0;
-      favoritePr.forEach((el: any) => {
-        prices += el.productPrice;
-      });
-      setGetPrices(prices);
     });
   }, [AsyncStorage.getItem("@carts")]);
 
@@ -73,7 +67,6 @@ const CartContainer = () => {
   return (
     <CartUI
       productInfo={productInfo}
-      getPrices={getPrices}
       onPressDetail={onPressDetail}
       soldOutList={data?.fetchUseditems}
       deleteMyFavoritePr={deleteMyFavoritePr}
