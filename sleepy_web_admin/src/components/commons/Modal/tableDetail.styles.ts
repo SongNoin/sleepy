@@ -82,8 +82,8 @@ export const NameInput = styled.div`
   width: 100%;
   height: 40px;
   margin-left: 18px;
-  border-radius: 15px;
-  border: 2px solid #5b5bc0;
+  border-radius: 10px;
+  border: 1px solid #5b5bc0;
   padding-left: 16px;
   display: flex;
   align-items: center;
@@ -95,11 +95,10 @@ export const Name = styled.div`
 `;
 
 export const UploadImage = styled.img`
-  border: 1px solid red;
   margin-left: 20px;
   width: 140px;
   height: 140px;
-  border: 2px solid #5b5bc0;
+  border: 1px solid #5b5bc0;
   border-radius: 15px;
 `;
 
@@ -107,7 +106,7 @@ export const ContentInput = styled.div`
   width: 676px;
   height: 160px;
   border-radius: 15px;
-  border: 2px solid #5b5bc0;
+  border: 1px solid #5b5bc0;
   padding-top: 12px;
   padding-left: 16px;
 `;

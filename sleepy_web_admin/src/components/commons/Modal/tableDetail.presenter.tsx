@@ -15,6 +15,7 @@ import {
   NameInput,
   ContentInput,
 } from "./tableDetail.styles";
+import InfiniteScroll from "react-infinite-scroller";
 
 export default function TableDetailUI(props) {
   return (
