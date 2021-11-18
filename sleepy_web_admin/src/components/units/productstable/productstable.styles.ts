@@ -297,6 +297,7 @@ export const Row = styled.div`
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #ededed;
+  cursor: pointer;
 `;
 
 export const ModifyButton = styled.button`
