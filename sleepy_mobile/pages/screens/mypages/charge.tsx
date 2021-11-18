@@ -7,10 +7,12 @@ import {
   FETCH_USER_LOGGEDIN,
 } from "../../../src/conponents/mypages/mypoint/mypoint.queries";
 import { GlobalContext } from "../../../App";
+import { useNavigation } from "@react-navigation/core";
 
 const Charge = () => {
-  const { chargeAmount } = useContext(GlobalContext);
+  const { chargeAmount, setMypage } = useContext(GlobalContext);
 
+  const navigation = useNavigation();
   const { data: userData } = useQuery(FETCH_USER_LOGGEDIN);
   const [createPointTransactionOfLoading] = useMutation(
     CREATE_POINT_TRANSACTION_OF_LOADING
@@ -18,14 +20,15 @@ const Charge = () => {
   /* [필수입력] 결제 종료 후, 라우터를 변경하고 결과를 전달합니다. */
   function callback(response: any) {
     // navigation.replace("PaymentResult", response);
-    console.log("response", response);
-    console.log("data", data);
+    // console.log("response", response);
+    // console.log("data", data);
     createPointTransactionOfLoading({
       variables: {
         impUid: String(response.imp_uid),
       },
     });
-    alert(`${chargeAmount} 포인트 충전이 완료되었습니다.`);
+    setMypage("결제");
+    navigation.navigate("마이페이지");
   }
 
   /* [필수입력] 결제에 필요한 데이터를 입력합니다. */
@@ -35,9 +38,9 @@ const Charge = () => {
     name: `Sleepy ${chargeAmount} 포인트`,
     merchant_uid: `mid_${new Date().getTime()}`,
     amount: `${chargeAmount}`,
-    buyer_name: `${userData.name}`,
+    buyer_name: `${userData?.name}`,
     buyer_tel: "01012345678",
-    buyer_email: `${userData.email}`,
+    buyer_email: `${userData?.email}`,
     buyer_addr: "서울시 금천구 시흥대로 291",
     buyer_postcode: "08608",
     app_scheme: "example",
