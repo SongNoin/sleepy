@@ -18,6 +18,7 @@ export const ProfileWrapper = styled.View`
 export const ProfileImage = styled.Image`
   width: 100px;
   height: 100px;
+  border-radius: 50px;
 `;
 
 export const ProfileInfoWrapper = styled.View`

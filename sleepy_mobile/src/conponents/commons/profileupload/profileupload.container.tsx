@@ -4,10 +4,10 @@ import { launchImageLibrary } from "react-native-image-picker";
 import { ReactNativeFile } from "apollo-upload-client";
 import { Alert } from "react-native";
 
-import ReviewUploadUI from "./reviewupload.presenter";
-import { UPLOAD_FILE } from "./reviewupload.queries";
+import { UPLOAD_FILE } from "./profileupload.queries";
+import ProfileUploadUI from "./profileupload.presenter";
 
-const ReviewUploadContainer = (props) => {
+const ProfileUploadContainer = (props) => {
   const [uploadFile] = useMutation(UPLOAD_FILE);
   const [imageUri, setImageUri] = useState({ uri: "" });
   const onPressOpenAlbum = () => {
@@ -39,8 +39,8 @@ const ReviewUploadContainer = (props) => {
     );
   };
   return (
-    <ReviewUploadUI imageUri={imageUri} onPressOpenAlbum={onPressOpenAlbum} />
+    <ProfileUploadUI imageUri={imageUri} onPressOpenAlbum={onPressOpenAlbum} />
   );
 };
 
-export default ReviewUploadContainer;
+export default ProfileUploadContainer;
