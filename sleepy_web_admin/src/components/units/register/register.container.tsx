@@ -88,9 +88,15 @@ export default function Register(props) {
     }
   }
 
-  function onChangeFiles(file: any, index: any) {
-    const newFiles = [...files];
-    newFiles[index] = file;
+  // function onChangeFiles(file: any, index: any) {
+  //   const newFiles = [...files];
+  //   newFiles[index] = file;
+  //   setFiles(newFiles);
+  // }
+
+  function onChangeFiles(acceptedFiles) {
+    const newFiles = [...acceptedFiles];
+    newFiles[acceptedFiles] = acceptedFiles;
     setFiles(newFiles);
   }
 
