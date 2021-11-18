@@ -285,3 +285,38 @@ export const Row = styled.div`
   align-items: center;
   border-bottom: 1px solid #ededed;
 `;
+
+export const PageWarpper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  margin-top: 30px;
+`;
+
+export const PageCount = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`;
+
+interface IColorChange {
+  colorChange: Boolean;
+}
+
+export const Page = styled.div<IColorChange>`
+  padding-right: 20px;
+  cursor: pointer;
+  color: ${(props: any) => (props.colorChange ? "#5b5bc0" : "black")};
+`;
+
+export const LeftIcon = styled.img`
+  padding-right: 28.59px;
+  cursor: pointer;
+`;
+
+export const RightIcon = styled.img`
+  padding-left: 8.59px;
+  cursor: pointer;
+`;
