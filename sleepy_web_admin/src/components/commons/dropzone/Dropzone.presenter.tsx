@@ -12,6 +12,7 @@ import {
 import Dropzone from "react-dropzone";
 
 import { useState } from "react";
+import { array } from "yup/lib/locale";
 
 export default function DropZoneUI(props) {
   const [dropzoneUrl, setDropzoneUrl] = useState([]);

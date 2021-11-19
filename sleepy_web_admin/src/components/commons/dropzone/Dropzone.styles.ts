@@ -4,23 +4,28 @@ export const TempImage = styled.img`
   width: 165px;
   height: 165px;
   border-radius: 15px;
-  margin-right: 24px;
   border: 1px solid #5b5bc0;
   cursor: pointer;
+  margin-right: 10px;
 `;
 
 export const TempWrapper = styled.div`
-  height: 150px;
+  height: 190px;
   display: flex;
-  justify-content: center;
+  width: 100%;
+  /* justify-content: center; */
   /* background-color: #f5f5fb; */
   margin-top: 40px;
+
+  justify-content: space-between;
+  /* padding: 10px; */
 `;
 
 export const TempMiddleWrapper = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
+  justify-content: center;
 `;
 
 export const DropZoneWrapper = styled.div`
@@ -60,5 +65,11 @@ export const MainWrapper = styled.div`
   width: 100%;
 `;
 export const PrevImageWrapper = styled.div`
+  width: 1050px;
   display: flex;
+  overflow: scroll;
+  overflow-y: hidden;
+  /* ::-webkit-scrollbar {
+    width: 3px;
+  } */
 `;
