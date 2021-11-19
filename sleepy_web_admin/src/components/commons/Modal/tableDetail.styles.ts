@@ -129,11 +129,16 @@ export const RightImageWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  /* border: 1px solid red; */
-  overflow: scroll;
+  overflow: auto;
+  overflow-y: hidden;
   ::-webkit-scrollbar {
-    width: 3px;
-    /* border: 1px solid blue; */
+    width: 1px;
+  }
+  ::-webkit-scrollbar-track {
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #5b5bc0;
+    border-radius: 20px;
   }
 `;
 
