@@ -58,6 +58,7 @@ export default function Productstable() {
   const lastPage = Math.ceil(pagecountData?.fetchUseditemsCountISold / 10);
 
   function onClickMovetoUpdateProduct(event) {
+    event.stopPropagation();
     router.push(`/productDetail/${event.target.id}/edit`);
   }
 
@@ -79,6 +80,7 @@ export default function Productstable() {
   }
 
   async function onClickDelete(event) {
+    event.stopPropagation();
     try {
       await deleteUseditem({
         variables: {

@@ -10,13 +10,14 @@ import {
   LeftWrapper,
   LeftBasicWrapper,
   RightWrapper,
+  RightNameScrollInput,
+  NameScrollInput,
   RightContentWrapper,
+  RightContentInput,
   Name,
-  NameInput,
   BasicInput,
   ContentInput,
 } from "./tableDetail.styles";
-import InfiniteScroll from "react-infinite-scroller";
 
 export default function TableDetailUI(props) {
   return (
@@ -28,9 +29,11 @@ export default function TableDetailUI(props) {
             <Name>상품 명</Name>
           </LeftWrapper>
           <RightWrapper>
-            <NameInput>
-              {props.fetchData?.fetchUseditem?.name.split("#")[1]}
-            </NameInput>
+            <RightNameScrollInput>
+              <NameScrollInput>
+                {props.fetchData?.fetchUseditem.name.split("#")[1]}
+              </NameScrollInput>
+            </RightNameScrollInput>
           </RightWrapper>
         </BasicWrapper>
         <ContentWrapper>
@@ -38,15 +41,17 @@ export default function TableDetailUI(props) {
             <Name>상품 설명</Name>
           </LeftBasicWrapper>
           <RightContentWrapper>
-            {process.browser && (
-              <ContentInput
-                dangerouslySetInnerHTML={{
-                  __html: Dompurify.sanitize(
-                    props.fetchData?.fetchUseditem?.contents
-                  ),
-                }}
-              />
-            )}
+            <RightContentInput>
+              {process.browser && (
+                <ContentInput
+                  dangerouslySetInnerHTML={{
+                    __html: Dompurify.sanitize(
+                      props.fetchData?.fetchUseditem?.contents
+                    ),
+                  }}
+                />
+              )}
+            </RightContentInput>
           </RightContentWrapper>
         </ContentWrapper>
         <BasicWrapper>
@@ -68,9 +73,7 @@ export default function TableDetailUI(props) {
             <Name>카테고리</Name>
           </LeftWrapper>
           <RightWrapper>
-            {/* <InfiniteScroll pageStart={0} loadMore={props.onLoadMore} hasMore={true}> */}
             <BasicInput>{props.fetchData?.fetchUseditem?.tags}</BasicInput>
-            {/* </InfiniteScroll> */}
           </RightWrapper>
         </BasicWrapper>
         <ImagesWrapper>
