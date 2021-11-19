@@ -31,7 +31,7 @@ export default function SidebarUI(props) {
             src={
               props.data?.fetchUserLoggedIn.picture
                 ? `https://storage.googleapis.com/${props.data?.fetchUserLoggedIn.picture}`
-                : "/images/slavatar.png"
+                : "/images/defaultprofile.png"
             }
           />
           <Name>
