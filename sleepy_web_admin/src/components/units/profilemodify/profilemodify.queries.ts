@@ -19,6 +19,7 @@ export const FETCH_USER_LOGGEDIN = gql`
     fetchUserLoggedIn {
       _id
       picture
+      name
     }
   }
 `;
