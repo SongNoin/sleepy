@@ -70,8 +70,8 @@ export default function ReviewUI(props: any) {
           </LabelWrapper>
           <ReviewStarWrapper>
             {new Array(5).fill(1).map((el, index) => (
-              <StarButton key={index} onPress={() => props.setMyStar(index)}>
-                {props.myStar > index - 1 ? (
+              <StarButton key={index} onPress={() => props.setMyStar(index+1)}>
+                {props.myStar > index ? (
                   <StarIcon
                     source={require("../../../../public/images/mypage/onstar.png")}
                   />

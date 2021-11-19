@@ -18,7 +18,6 @@ export default function ReviewContainer() {
   const [myContents, setMycontents] = useState("");
 
   const navigation = useNavigation();
-  console.log("review", id);
 
   const [createUseditemQuestion] = useMutation(CREATE_USEDITEM_QUESTION);
 
@@ -30,7 +29,6 @@ export default function ReviewContainer() {
     setMycontents(event);
   }
 
-  console.log("star", myStar);
   async function onClickRegisterReview() {
     try {
       await createUseditemQuestion({
