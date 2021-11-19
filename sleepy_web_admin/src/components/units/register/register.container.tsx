@@ -117,8 +117,8 @@ export default function Register(props) {
 
     if (fetchData?.fetchUseditem.images.length) {
       const prevImages = [...fetchData?.fetchUseditem.images];
-      myUpdateUseditemInput.images = prevImages.map(
-        (el, index) => nextImages[index] || el
+      myUpdateUseditemInput.images = nextImages.map(
+        (el, index) => prevImages[index] || el
       );
     } else {
       myUpdateUseditemInput.images = nextImages;
