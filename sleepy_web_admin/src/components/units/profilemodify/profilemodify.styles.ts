@@ -85,6 +85,7 @@ export const UserName = styled.div`
 export const Input = styled.input`
   width: 732px;
   height: 48px;
+  padding-left: 10px;
 
   background: #e0e0e0;
   border: 1px solid #5b5bc0;
