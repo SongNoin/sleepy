@@ -10,6 +10,7 @@ import {
   LeftWrapper,
   LeftBasicWrapper,
   RightWrapper,
+  RightImageWrapper,
   RightNameScrollInput,
   NameScrollInput,
   RightContentWrapper,
@@ -80,7 +81,7 @@ export default function TableDetailUI(props) {
           <LeftBasicWrapper>
             <Name>이미지 첨부</Name>
           </LeftBasicWrapper>
-          <RightWrapper>
+          <RightImageWrapper>
             {props.fetchData?.fetchUseditem.images
               ?.filter((el) => el)
               .map((el) => (
@@ -89,7 +90,7 @@ export default function TableDetailUI(props) {
                   src={`https://storage.googleapis.com/${el}`}
                 />
               ))}
-          </RightWrapper>
+          </RightImageWrapper>
         </ImagesWrapper>
       </InnerWrapper>
     </Wrapper>
