@@ -3,7 +3,7 @@ import React, { useContext, useState } from "react";
 import { GlobalContext } from "../../../App";
 
 import HomeUI from "./Home.present";
-import { FETCH_USED_ITEMS } from "./Home.quries";
+import { FETCH_USED_ITEMS, FETCH_USED_ITEMS_OF_THE_BEST } from "./Home.quries";
 
 const HomeContainer = () => {
   const [isEdit, setIsEdit] = useState(false);
@@ -22,6 +22,8 @@ const HomeContainer = () => {
       page: 1,
     },
   });
+
+  const { data: bestData } = useQuery(FETCH_USED_ITEMS_OF_THE_BEST);
 
   const onPressCategory = (value) => {
     setTagId(value);
@@ -42,6 +44,7 @@ const HomeContainer = () => {
       onPressCloseProduct={onPressCloseProduct}
       onPressDetail={onPressDetail}
       onPressCategory={onPressCategory}
+      bestData={bestData}
     />
   );
 };

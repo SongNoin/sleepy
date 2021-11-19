@@ -72,7 +72,7 @@ const FavoriteImage = styled.Image`
 
 const ProductPrice = styled.Text`
   width: 100px;
-  height: 16px;
+  height: 18px;
   color: #5b5bc0;
   font-weight: 600;
 `;
@@ -105,7 +105,7 @@ const NewProductItem = (props) => {
                         />
                       </DetailProduct>
                       <ContentsWrapper>
-                        <ProductTitle>{el.name}</ProductTitle>
+                        <ProductTitle>{el.name.split("#")[1]}</ProductTitle>
                         <FavoriteImage
                           source={require("../../../public/images/home/moon-off.png")}
                         />
@@ -136,7 +136,7 @@ const NewProductItem = (props) => {
                         />
                       </DetailProduct>
                       <ContentsWrapper>
-                        <ProductTitle>{el.name}</ProductTitle>
+                        <ProductTitle>{el.name.split("#")[1]}</ProductTitle>
                         <FavoriteImage
                           source={require("../../../public/images/home/moon-off.png")}
                         />
@@ -170,7 +170,7 @@ const NewProductItem = (props) => {
                         />
                       </DetailProduct>
                       <ContentsWrapper>
-                        <ProductTitle>{el.name}</ProductTitle>
+                        <ProductTitle>{el.name.split("#")[1]}</ProductTitle>
                         <FavoriteImage
                           source={require("../../../public/images/home/moon-off.png")}
                         />
@@ -201,7 +201,7 @@ const NewProductItem = (props) => {
                         />
                       </DetailProduct>
                       <ContentsWrapper>
-                        <ProductTitle>{el.name}</ProductTitle>
+                        <ProductTitle>{el.name.split("#")[1]}</ProductTitle>
                         <FavoriteImage
                           source={require("../../../public/images/home/moon-off.png")}
                         />

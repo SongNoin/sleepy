@@ -23,18 +23,6 @@ export const MainBannerWrapper = styled.View`
   align-items: center;
 `;
 
-export const DetailProduct = styled.TouchableOpacity`
-  width: 160px;
-  height: 135px;
-  border: 1px solid #e8e8e8;
-  background-color: #e8e8e8;
-  border-radius: 15px;
-`;
-
-export const ProductImage = styled.Image`
-  border-radius: 15px;
-`;
-
 export const BestProductWrapper = styled.View`
   margin-top: 32px;
   width: 100%;
@@ -54,16 +42,6 @@ export const BestProductTitle = styled.Text`
   padding-left: 18px;
 `;
 
-export const DetailProductWrapper = styled.View`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-
-  margin-top: 10px;
-`;
-
-export const InformationWrapper = styled.View``;
-
 export const NewProductInfoWrapper = styled.View``;
 
 export const NewProductInfoWrapper2 = styled.View``;
@@ -79,33 +57,6 @@ export const MiddleWrapper2 = styled.View`
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
-`;
-
-export const ContentsWrapper = styled.View`
-  width: 160px;
-  height: 18px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-top: 9px;
-`;
-
-export const ProductTitle = styled.Text`
-  width: 122px;
-  height: 16px;
-  font-size: 12px;
-  color: #3c3c3c;
-`;
-
-export const FavoriteImage = styled.Image`
-  width: 15.72px;
-  height: 16.97px;
-`;
-export const ProductPrice = styled.Text`
-  width: 100px;
-  height: 16px;
-  color: #5b5bc0;
-  font-weight: 600;
 `;
 
 export const MoreProduct = styled.TouchableOpacity`
