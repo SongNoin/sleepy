@@ -78,15 +78,25 @@ export const RightContentWrapper = styled.div`
   padding: 16px 0px 0px 18px;
 `;
 
-export const NameInput = styled.div`
+export const RightNameScrollInput = styled.div`
   width: 100%;
   height: 40px;
-  margin-left: 18px;
-  border-radius: 10px;
+  border-radius: 15px;
   border: 1px solid #5b5bc0;
+  padding-top: 12px;
   padding-left: 16px;
-  display: flex;
-  align-items: center;
+  padding: 9px 0px 12px 16px;
+  margin-left: 18px;
+`;
+
+export const NameScrollInput = styled.div`
+  width: 100%;
+  height: 17px;
+  overflow: scroll;
+  overflow-x: hidden;
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
 `;
 
 export const BasicInput = styled.div`
@@ -113,11 +123,23 @@ export const UploadImage = styled.img`
   border-radius: 15px;
 `;
 
-export const ContentInput = styled.div`
+export const RightContentInput = styled.div`
   width: 676px;
   height: 160px;
   border-radius: 15px;
   border: 1px solid #5b5bc0;
   padding-top: 12px;
   padding-left: 16px;
+  padding: 12px 0px 12px 16px;
+`;
+
+export const ContentInput = styled.div`
+  /* border: 1px solid red; */
+  width: 656px;
+  height: 140px;
+  overflow: scroll;
+  overflow-x: hidden;
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
 `;
