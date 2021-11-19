@@ -123,6 +123,20 @@ export const UploadImage = styled.img`
   border-radius: 15px;
 `;
 
+export const RightImageWrapper = styled.div`
+  width: 695px;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /* border: 1px solid red; */
+  overflow: scroll;
+  ::-webkit-scrollbar {
+    width: 3px;
+    /* border: 1px solid blue; */
+  }
+`;
+
 export const RightContentInput = styled.div`
   width: 676px;
   height: 160px;
