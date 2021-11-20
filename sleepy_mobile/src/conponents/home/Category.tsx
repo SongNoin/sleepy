@@ -38,6 +38,11 @@ const CategoryText = styled.Text`
   font-size: 8px;
   font-weight: bold;
   text-align: center;
+  font-family: "NotoSans-Bold";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 8px;
+  line-height: 11px;
   color: #4d4d72;
 `;
 

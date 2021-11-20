@@ -3,7 +3,7 @@ import React from "react";
 import styled from "@emotion/native";
 import { useNavigation } from "@react-navigation/native";
 
-export const DetailProduct = styled.TouchableOpacity`
+const DetailProduct = styled.TouchableOpacity`
   width: 160px;
   height: 135px;
   border: 1px solid #e8e8e8;
@@ -11,7 +11,7 @@ export const DetailProduct = styled.TouchableOpacity`
   border-radius: 15px;
 `;
 
-export const DetailProductWrapper = styled.View`
+const DetailProductWrapper = styled.View`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -20,27 +20,30 @@ export const DetailProductWrapper = styled.View`
   /* margin-left: 20px; */
 `;
 
-export const ProductImage = styled.Image`
+const ProductImage = styled.Image`
   border-radius: 15px;
   width: 100%;
   height: 100%;
 `;
 
-export const InformationWrapper = styled.View``;
+const InformationWrapper = styled.View``;
 
-export const ProductTitle = styled.Text`
+const ProductTitle = styled.Text`
   width: 122px;
   height: 16px;
+  font-style: normal;
+  font-weight: 500;
   font-size: 12px;
+  line-height: 16px;
   color: #3c3c3c;
 `;
 
-export const FavoriteImage = styled.Image`
+const FavoriteImage = styled.Image`
   width: 15.72px;
-  height: 16.97px;
+  height: 18px;
 `;
 
-export const ContentsWrapper = styled.View`
+const ContentsWrapper = styled.View`
   width: 160px;
   height: 18px;
   display: flex;
@@ -49,11 +52,31 @@ export const ContentsWrapper = styled.View`
   margin-top: 9px;
 `;
 
-export const ProductPrice = styled.Text`
+const ProductPrice = styled.Text`
   width: 100px;
   height: 18px;
   color: #5b5bc0;
-  font-weight: 600;
+  font-style: normal;
+  font-family: "NotoSans-Bold";
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 16px;
+`;
+
+const PickedCount = styled.Text`
+  width: 10px;
+  height: 15px;
+  /* color: #5b5bc0; */
+  /* font-weight: 600; */
+`;
+
+const ContentsTextWrapper = styled.View`
+  width: 160px;
+  height: 18px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 9px;
 `;
 
 const BestItem = (props) => {
@@ -81,12 +104,27 @@ const BestItem = (props) => {
                   />
                 </DetailProduct>
                 <ContentsWrapper>
-                  <ProductTitle>{el.name.split("#")[1]}</ProductTitle>
-                  <FavoriteImage
-                    source={require("../../../public/images/home/moon-off.png")}
-                  />
+                  <ProductTitle>
+                    {String(el.name.split("#")[1]).length > 9
+                      ? `${el.name.split("#")[1].substr(0, 10)}...`
+                      : el.name.split("#")[1]}
+                  </ProductTitle>
+                  {props.myPickData?.includes(el._id) ? (
+                    <FavoriteImage
+                      source={require("../../../public/images/home/moon-on.png")}
+                    />
+                  ) : (
+                    <FavoriteImage
+                      source={require("../../../public/images/home/moon-off.png")}
+                    />
+                  )}
                 </ContentsWrapper>
-                <ProductPrice>{el.price}원</ProductPrice>
+                <ContentsTextWrapper>
+                  <ProductPrice>
+                    {el.price.toLocaleString("ko-KR")}원
+                  </ProductPrice>
+                  <PickedCount>{el.pickedCount}</PickedCount>
+                </ContentsTextWrapper>
               </>
             </InformationWrapper>
           ))}
@@ -111,12 +149,27 @@ const BestItem = (props) => {
                   />
                 </DetailProduct>
                 <ContentsWrapper>
-                  <ProductTitle>{el.name.split("#")[1]}</ProductTitle>
-                  <FavoriteImage
-                    source={require("../../../public/images/home/moon-off.png")}
-                  />
+                  <ProductTitle>
+                    {String(el.name.split("#")[1]).length > 9
+                      ? `${el.name.split("#")[1].substr(0, 10)}...`
+                      : el.name.split("#")[1]}
+                  </ProductTitle>
+                  {props.myPickData?.includes(el._id) ? (
+                    <FavoriteImage
+                      source={require("../../../public/images/home/moon-on.png")}
+                    />
+                  ) : (
+                    <FavoriteImage
+                      source={require("../../../public/images/home/moon-off.png")}
+                    />
+                  )}
                 </ContentsWrapper>
-                <ProductPrice>{el.price}원</ProductPrice>
+                <ContentsTextWrapper>
+                  <ProductPrice>
+                    {el.price.toLocaleString("ko-KR")}원
+                  </ProductPrice>
+                  <PickedCount>{el.pickedCount}</PickedCount>
+                </ContentsTextWrapper>
               </>
             </InformationWrapper>
           ))}
