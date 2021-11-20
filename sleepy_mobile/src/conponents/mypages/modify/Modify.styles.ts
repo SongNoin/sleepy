@@ -2,10 +2,9 @@ import styled from "@emotion/native";
 
 export const ModifyView = styled.View`
   flex: 1;
-  /* align-items: center; */
+  align-items: center;
   /* background-color: skyblue; */
   background-color: white;
-  padding-left: 18px;
   padding-bottom: 20px;
 `;
 

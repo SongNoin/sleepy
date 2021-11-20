@@ -2,12 +2,11 @@ import { useMutation } from "@apollo/client";
 import React, { useState } from "react";
 import { launchImageLibrary } from "react-native-image-picker";
 import { ReactNativeFile } from "apollo-upload-client";
-import { Alert } from "react-native";
 
 import ReviewUploadUI from "./reviewupload.presenter";
 import { UPLOAD_FILE } from "./reviewupload.queries";
 
-const ReviewUploadContainer = (props) => {
+const ReviewUploadContainer = (props: any) => {
   const [uploadFile] = useMutation(UPLOAD_FILE);
   const [imageUri, setImageUri] = useState({ uri: "" });
   const onPressOpenAlbum = () => {

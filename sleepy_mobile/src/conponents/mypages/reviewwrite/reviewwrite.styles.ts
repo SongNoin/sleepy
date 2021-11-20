@@ -6,6 +6,7 @@ export const ReviewWriteView = styled.View`
   padding-left: 16px;
   background-color: #ffffff;
   padding-bottom: 20px;
+  align-items: center;
 `;
 
 export const ProductCard = styled.View`
@@ -105,15 +106,24 @@ export const LableLine = styled.View`
 
   margin-top: 12px;
 `;
+
+export const FlexLine = styled.View`
+  width: 339px;
+`;
 export const ReviewPhotoWrapper = styled.View`
   margin-top: 12px;
 
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 `;
 export const ReviewStarWrapper = styled.View`
   margin-top: 13px;
 
+  display: flex;
+  flex-direction: column;
+`;
+
+export const Star = styled.View`
   display: flex;
   flex-direction: row;
 `;
