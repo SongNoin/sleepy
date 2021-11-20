@@ -96,7 +96,7 @@ export default function RegisterUI(props) {
                     marginTop: "10px",
                     marginBottom: "10px",
                     border: "2px solid #5b5bc0",
-                    borderRadius: "10px",
+                    borderRadius: "6px",
                   }}
                 >
                   <FormControl fullWidth>

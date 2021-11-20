@@ -5,15 +5,11 @@ import ProductstableUI from "./productstable.presenter";
 import {
   FETCH_USED_ITEMS_I_SOLD,
   DELETE_USED_ITEM,
-  FETCH_USED_ITEMS_COUNT_I_SOLD,
   FETCH_USED_ITEM,
 } from "./productstable.queries";
 
 export default function Productstable() {
   const router = useRouter();
-
-  const [startPage, setStartPage] = useState(1);
-  const [currentPage, setCurrentPage] = useState(1);
 
   const [isId, setIsId] = useState("");
 
@@ -47,36 +43,30 @@ export default function Productstable() {
     setIsOpen(false);
   }
 
-  const { data, refetch } = useQuery(FETCH_USED_ITEMS_I_SOLD, {
-    variables: { page: startPage },
+  const { data, fetchMore } = useQuery(FETCH_USED_ITEMS_I_SOLD, {
+    variables: { page: 0 },
   });
 
+  function onloadMore() {
+    if (!data) return;
+    fetchMore({
+      variables: { page: Math.ceil(data?.fetchUseditemsISold.length / 10) + 1 },
+      updateQuery: (prev, { fetchMoreResult }) => {
+        return {
+          fetchUseditemsISold: [
+            ...prev.fetchUseditemsISold,
+            ...fetchMoreResult.fetchUseditemsISold,
+          ],
+        };
+      },
+    });
+  }
+
   const [deleteUseditem] = useMutation(DELETE_USED_ITEM);
-
-  const { data: pagecountData } = useQuery(FETCH_USED_ITEMS_COUNT_I_SOLD);
-
-  const lastPage = Math.ceil(pagecountData?.fetchUseditemsCountISold / 10);
 
   function onClickMovetoUpdateProduct(event) {
     event.stopPropagation();
     router.push(`/productDetail/${event.target.id}/edit`);
-  }
-
-  function onClickPage(event) {
-    refetch({
-      page: Number(event.target.id),
-    });
-    setCurrentPage(Number(event.target.id));
-  }
-
-  function onClickPrevPage() {
-    if (startPage === 1) return;
-    setStartPage((prev) => prev - 10);
-  }
-
-  function onClickNextPage() {
-    if (startPage + 10 > lastPage) return;
-    setStartPage((prev) => prev + 10);
   }
 
   async function onClickDelete(event) {
@@ -102,19 +92,13 @@ export default function Productstable() {
       data={data}
       onClickMovetoUpdateProduct={onClickMovetoUpdateProduct}
       onClickDelete={onClickDelete}
-      onClickPrevPage={onClickPrevPage}
-      onClickNextPage={onClickNextPage}
-      onClickPage={onClickPage}
-      startPage={startPage}
-      lastPage={lastPage}
-      refetch={refetch}
-      currentPage={currentPage}
       customStyles={customStyles}
       modalIsOpen={modalIsOpen}
       openModal={openModal}
       afterOpenModal={afterOpenModal}
       closeModal={closeModal}
       fetchData={fetchData}
+      onloadMore={onloadMore}
     />
   );
 }

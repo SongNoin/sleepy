@@ -14,7 +14,8 @@
     "@emotion/styled": "^11.3.0",
     "@hookform/resolvers": "^2.8.3",
     "@material-ui/core": "^4.12.3",
-    "@mui/material": "^5.1.0",
+    "@mui/icons-material": "^5.1.1",
+    "@mui/material": "^5.1.1",
     "@nivo/bar": "^0.74.0",
     "@nivo/calendar": "^0.74.0",
     "@nivo/core": "^0.74.0",
@@ -33,6 +34,7 @@
     "react-infinite-scroller": "^1.2.4",
     "react-modal": "^3.14.4",
     "react-quill": "^1.3.5",
+    "reactstrap": "^9.0.1",
     "yup": "^0.32.11"
   },
   "devDependencies": {

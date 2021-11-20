@@ -23,12 +23,6 @@ export const DELETE_USED_ITEM = gql`
   }
 `;
 
-export const FETCH_USED_ITEMS_COUNT_I_SOLD = gql`
-  query fetchUseditemsCountISold {
-    fetchUseditemsCountISold
-  }
-`;
-
 export const FETCH_USED_ITEM = gql`
   query fetchUseditem($useditemId: ID!) {
     fetchUseditem(useditemId: $useditemId) {
