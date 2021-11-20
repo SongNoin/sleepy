@@ -20,11 +20,13 @@ import {
   LableLine,
   ReviewStarWrapper,
   StarButton,
+  FlexLine,
   StarIcon,
   ReviewContentWrapper,
   ReviewContentInput,
   ReviewWriteButton,
   ReviewWriteButtonText,
+  Star,
 } from "./reviewwrite.styles";
 
 export default function ReviewUI(props: any) {
@@ -63,25 +65,32 @@ export default function ReviewUI(props: any) {
           </LabelWrapper>
           <ReviewPhotoWrapper>
             <ReviewUploadContainer setImage={props.setImage} />
+            <FlexLine />
           </ReviewPhotoWrapper>
           <LabelWrapper>
             <Label>별점</Label>
             <LableLine />
           </LabelWrapper>
           <ReviewStarWrapper>
-            {new Array(5).fill(1).map((el, index) => (
-              <StarButton key={index} onPress={() => props.setMyStar(index+1)}>
-                {props.myStar > index ? (
-                  <StarIcon
-                    source={require("../../../../public/images/mypage/onstar.png")}
-                  />
-                ) : (
-                  <StarIcon
-                    source={require("../../../../public/images/mypage/offstar.png")}
-                  />
-                )}
-              </StarButton>
-            ))}
+            <Star>
+              {new Array(5).fill(1).map((el, index) => (
+                <StarButton
+                  key={index}
+                  onPress={() => props.setMyStar(index + 1)}
+                >
+                  {props.myStar > index ? (
+                    <StarIcon
+                      source={require("../../../../public/images/mypage/onstar.png")}
+                    />
+                  ) : (
+                    <StarIcon
+                      source={require("../../../../public/images/mypage/offstar.png")}
+                    />
+                  )}
+                </StarButton>
+              ))}
+            </Star>
+            <FlexLine />
           </ReviewStarWrapper>
           <LabelWrapper>
             <Label>리뷰 작성</Label>

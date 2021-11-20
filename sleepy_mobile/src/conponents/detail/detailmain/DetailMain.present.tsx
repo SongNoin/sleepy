@@ -45,7 +45,9 @@ const DetailUI = (props: any) => {
               />
               <ReviewAverage>(3.25)</ReviewAverage>
             </ReviewInfoWrapper>
-            <ProductName>{props.data?.fetchUseditem.name}</ProductName>
+            <ProductName>
+              {props.data?.fetchUseditem.name.split("#")[1]}
+            </ProductName>
             <ProductPrice>
               {props.data?.fetchUseditem.price
                 .toLocaleString("ko-KR")
@@ -68,11 +70,6 @@ const DetailUI = (props: any) => {
                   source={{ uri: `https://storage.googleapis.com/${el}` }}
                 />
               ))}
-            {/* <Photo
-            source={{
-              uri: `https://storage.googleapis.com/${props.data?.fetchUseditem.images[0]}`,
-            }}
-          /> */}
           </DetaillWrapper>
         </Wrapper>
         <ReviewWrapper>

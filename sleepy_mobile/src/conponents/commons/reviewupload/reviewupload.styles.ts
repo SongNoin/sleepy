@@ -30,6 +30,8 @@ export const Preview = styled.ImageBackground`
 `;
 
 export const PreviewUpload = styled.View`
+  width: 72px;
+  height: 72px;
   background-color: #f1eef6;
   border-radius: 8px;
 `;

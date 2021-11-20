@@ -69,33 +69,38 @@ const ReviewListUIItem = (props: any) => {
               </Star>
             </TopMiddleWrapper>
             <Photos>
-              <AddPhotoButton onPress={props.onPressEnlargePicture}>
-                {props.isLarge ? (
-                  <BigAddPhoto
-                    source={{
-                      uri: `https://storage.googleapis.com/${
-                        props.el?.contents.split("#$%&")[2]
-                      }`,
-                    }}
-                    isLarge={props.isLarge}
-                  />
-                ) : (
-                  <AddPhoto
-                    source={{
-                      uri: `https://storage.googleapis.com/${
-                        props.el?.contents.split("#$%&")[2]
-                      }`,
-                    }}
-                    isLarge={props.isLarge}
-                  />
-                )}
-              </AddPhotoButton>
-              <NoPhoto />
+              {props.el?.contents.split("#$%&")[2] !== "" && (
+                <AddPhotoButton onPress={props.onPressEnlargePicture}>
+                  {props.isLarge ? (
+                    <BigAddPhoto
+                      source={{
+                        uri: `https://storage.googleapis.com/${
+                          props.el?.contents.split("#$%&")[2]
+                        }`,
+                      }}
+                    />
+                  ) : (
+                    <AddPhoto
+                      source={{
+                        uri: `https://storage.googleapis.com/${
+                          props.el?.contents.split("#$%&")[2]
+                        }`,
+                      }}
+                    />
+                  )}
+                </AddPhotoButton>
+              )}
             </Photos>
           </InnerTopWrapper>
           <BottomWrapper>
-            <ContentTitle>리뷰 내용</ContentTitle>
-            <ReviewContent>{props.el?.contents.split("#$%&")[1]}</ReviewContent>
+            {!props.isLarge && (
+              <>
+                <ContentTitle>리뷰 내용</ContentTitle>
+                <ReviewContent>
+                  {props.el?.contents.split("#$%&")[1]}
+                </ReviewContent>
+              </>
+            )}
           </BottomWrapper>
         </ReviewWrapper>
       </InnerWrapper>

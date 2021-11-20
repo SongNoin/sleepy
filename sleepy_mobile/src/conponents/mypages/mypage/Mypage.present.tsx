@@ -17,6 +17,8 @@ import {
   IconBackGround,
   IconWrapper,
   InsertImage,
+  InsertFavoriteImage,
+  InsertText,
   HistoryWrapper,
   HistoryTitleWrapper,
   BuyLineWrapper,
@@ -79,21 +81,25 @@ const MypageUI = (props: any) => {
             <InsertImage
               source={require("../../../../public/images/mypage/myinformation.png")}
             />
+            <InsertText>내 정보</InsertText>
           </IconBackGround>
           <IconBackGround onPress={() => navigation.navigate("마이찜")}>
-            <InsertImage
+            <InsertFavoriteImage
               source={require("../../../../public/images/mypage/favorite.png")}
             />
+            <InsertText>찜목록</InsertText>
           </IconBackGround>
           <IconBackGround onPress={() => navigation.navigate("장바구니")}>
             <InsertImage
               source={require("../../../../public/images/mypage/cart.png")}
             />
+            <InsertText>장바구니</InsertText>
           </IconBackGround>
           <IconBackGround onPress={() => navigation.navigate("포인트")}>
             <InsertImage
               source={require("../../../../public/images/mypage/charge.png")}
             />
+            <InsertText>충전하기</InsertText>
           </IconBackGround>
         </IconWrapper>
         <HistoryWrapper>

@@ -82,6 +82,8 @@ export const Photo = styled.Image`
 
 export const ReviewWrapper = styled.View`
   background-color: white;
+  display: flex;
+  align-items: center;
 `;
 
 export const Title = styled.Text`
@@ -94,7 +96,6 @@ export const Title = styled.Text`
   margin-bottom: 4%;
   padding-left: 4%;
   padding-bottom: 3%;
-  margin-left: 4%;
   margin-bottom: 6%;
   width: 339px;
   border-bottom-width: 2px;

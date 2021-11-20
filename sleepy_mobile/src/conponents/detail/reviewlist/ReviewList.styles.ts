@@ -54,10 +54,8 @@ export const ReviewStar = styled.Image`
 `;
 
 export const Photos = styled.View`
-  width: 26%;
+  width: 8%;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
 `;
 
 export const AddPhoto = styled.Image`
@@ -70,7 +68,7 @@ export const AddPhoto = styled.Image`
 export const BigAddPhoto = styled.Image`
   position: absolute;
   right: -20px;
-  /* bottom: 0px; */
+
   width: 140px;
   height: 140px;
   border-radius: 8px;
