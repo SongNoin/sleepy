@@ -6,7 +6,7 @@ export const DetailText = styled(ReactQuill)`
   height: 190px;
   width: 1096px;
   padding-bottom: 40px;
-  border: 1px solid #5b5bc0;
+  border: 2px solid #5b5bc0;
 `;
 
 export const Wrapper = styled.div`
@@ -88,7 +88,6 @@ export const NameInput = styled.input`
   width: 548px;
   height: 54px;
   margin-left: 40px;
-  border-radius: 15px;
   border: 2px solid #5b5bc0;
   padding-left: 32px;
 `;

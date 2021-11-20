@@ -1,5 +1,9 @@
 import Modal from "react-modal";
 import TableDetail from "../../commons/Modal/tableDetail.container";
+import Chip from "@mui/material/Chip";
+import Stack from "@mui/material/Stack";
+import { useState } from "react";
+import InfiniteScroll from "react-infinite-scroller";
 
 import {
   Wrapper,
@@ -30,14 +34,30 @@ import {
   DeleteButton,
   Row,
   ColumnModifyNone,
-  PageWarpper,
-  PageCount,
-  LeftIcon,
-  RightIcon,
-  Page,
 } from "./productstable.styles";
 
 export default function ProductstableUI(props) {
+  const [isSale, setIsSale] = useState(null);
+
+  const handleClickAll = () => {
+    const all = props.data?.fetchUseditemsISold;
+    setIsSale(all);
+  };
+
+  const handleClickSale = () => {
+    const sale = props.data?.fetchUseditemsISold?.filter(
+      (el) => el?.buyer === null
+    );
+    setIsSale(sale);
+  };
+
+  const handleClickSold = () => {
+    const sold = props.data?.fetchUseditemsISold?.filter(
+      (el) => el?.buyer !== null
+    );
+    setIsSale(sold);
+  };
+
   return (
     <>
       <Modal
@@ -51,95 +71,85 @@ export default function ProductstableUI(props) {
       <Wrapper>
         <Title>상품 현황</Title>
         <InnerWrapper>
-          <ItemContent>
-            <RowCategory>
-              <ColumnIndex>NO</ColumnIndex>
-              <ColumnCategory>카테고리</ColumnCategory>
-              <ColumnImageRow>상품이미지</ColumnImageRow>
-              <ColumnName>상품명</ColumnName>
-              <ColumnSale>판매여부</ColumnSale>
-              <CloumnDate>날짜</CloumnDate>
-              <ColumnPrice>판매가격</ColumnPrice>
-              <ColumnModify>수정/삭제</ColumnModify>
-            </RowCategory>
-            {props.data?.fetchUseditemsISold.map((el, index) => (
-              <Row key={el._id} onClick={props.openModal} id={el._id}>
-                <ColumnIndexRow>{10 - index}</ColumnIndexRow>
-                <ColumnCategoryRow>{el.tags}</ColumnCategoryRow>
-                <ColumnImage>
-                  {el?.images[0] ? (
-                    <FakeImage
-                      src={`https://storage.googleapis.com/${el?.images[0]}`}
-                    />
-                  ) : (
-                    <NoImage>
-                      <NoImageImg src="/images/logo.png" />
-                    </NoImage>
-                  )}
-                </ColumnImage>
-                <ColumnNameRow>{el.name.split("#")[1]}</ColumnNameRow>
-                {el.buyer?.name ? (
-                  <ColumnSold>{el.buyer?.name && "판매완료"}</ColumnSold>
-                ) : (
-                  <ColumnSell>판매중</ColumnSell>
-                )}
-                <CloumnDateRow>
-                  {el.createdAt.slice(0, 10)} {el.createdAt.slice(11, 19)}
-                </CloumnDateRow>
-                <ColumnPriceRow>
-                  ₩
-                  {el.price
-                    .toLocaleString("ko-KR")
-                    .toString()
-                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-                </ColumnPriceRow>
-                <ColumnModify>
-                  {!el.buyer?.name ? (
-                    <>
-                      <ModifyButton
-                        onClick={props.onClickMovetoUpdateProduct}
-                        id={el._id}
-                      >
-                        수정
-                      </ModifyButton>
-                      <DeleteButton onClick={props.onClickDelete} id={el._id}>
-                        삭제
-                      </DeleteButton>
-                    </>
-                  ) : (
-                    <ColumnModifyNone>수정/삭제 불가</ColumnModifyNone>
-                  )}
-                </ColumnModify>
-              </Row>
-            ))}
-          </ItemContent>
-          <PageWarpper>
-            <PageCount>
-              <LeftIcon
-                onClick={props.onClickPrevPage}
-                src="/images/left.png"
+          <div>
+            <Stack direction="row" spacing={1}>
+              <Chip label="ALL" color="default" onClick={handleClickAll} />
+              <Chip label="판매중" color="primary" onClick={handleClickSale} />
+              <Chip
+                label="판매완료"
+                color="success"
+                onClick={handleClickSold}
               />
-              {new Array(5).fill(1).map(
-                (_, index) =>
-                  props.startPage + index <= props.lastPage && (
-                    <Page
-                      onClick={props.onClickPage}
-                      key={props.startPage + index}
-                      id={props.startPage + index}
-                      colorChange={
-                        props.currentPage === props.startPage + index
-                      }
-                    >
-                      {props.startPage + index}
-                    </Page>
-                  )
-              )}
-              <RightIcon
-                onClick={props.onClickNextPage}
-                src="/images/right.png"
-              />
-            </PageCount>
-          </PageWarpper>
+            </Stack>
+          </div>
+          <InfiniteScroll
+            pageStart={0}
+            loadMore={props.onloadMore}
+            hasMore={true}
+          >
+            <ItemContent>
+              <RowCategory>
+                <ColumnIndex>NO</ColumnIndex>
+                <ColumnCategory>카테고리</ColumnCategory>
+                <ColumnImageRow>상품이미지</ColumnImageRow>
+                <ColumnName>상품명</ColumnName>
+                <ColumnSale>판매여부</ColumnSale>
+                <CloumnDate>날짜</CloumnDate>
+                <ColumnPrice>판매가격</ColumnPrice>
+                <ColumnModify>수정/삭제</ColumnModify>
+              </RowCategory>
+              {(isSale || props.data?.fetchUseditemsISold)?.map((el, index) => (
+                <Row key={el._id} onClick={props.openModal} id={el._id}>
+                  <ColumnIndexRow>{index + 1}</ColumnIndexRow>
+                  <ColumnCategoryRow>{el.tags}</ColumnCategoryRow>
+                  <ColumnImage>
+                    {el?.images[0] ? (
+                      <FakeImage
+                        src={`https://storage.googleapis.com/${el?.images[0]}`}
+                      />
+                    ) : (
+                      <NoImage>
+                        <NoImageImg src="/images/logo.png" />
+                      </NoImage>
+                    )}
+                  </ColumnImage>
+                  <ColumnNameRow>{el.name.split("#")[1]}</ColumnNameRow>
+                  {el.buyer?.name ? (
+                    <ColumnSold>{el.buyer?.name && "판매완료"}</ColumnSold>
+                  ) : (
+                    <ColumnSell>판매중</ColumnSell>
+                  )}
+                  <CloumnDateRow>
+                    {el.createdAt.slice(0, 10)} {el.createdAt.slice(11, 19)}
+                  </CloumnDateRow>
+                  <ColumnPriceRow>
+                    ₩
+                    {el.price
+                      .toLocaleString("ko-KR")
+                      .toString()
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                  </ColumnPriceRow>
+                  <ColumnModify>
+                    {!el.buyer?.name ? (
+                      <>
+                        <ModifyButton
+                          onClick={props.onClickMovetoUpdateProduct}
+                          id={el._id}
+                        >
+                          수정
+                        </ModifyButton>
+                        <DeleteButton onClick={props.onClickDelete} id={el._id}>
+                          삭제
+                        </DeleteButton>
+                      </>
+                    ) : (
+                      <ColumnModifyNone>수정/삭제 불가</ColumnModifyNone>
+                    )}
+                  </ColumnModify>
+                </Row>
+              ))}
+            </ItemContent>
+          </InfiniteScroll>
         </InnerWrapper>
       </Wrapper>
     </>
