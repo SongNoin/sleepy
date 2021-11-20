@@ -12,7 +12,10 @@ const NewProductTitle = styled.Text`
   width: 100%;
   height: 25px;
   font-weight: bold;
+  font-style: normal;
+  font-family: "NotoSans-Bold";
   font-size: 18px;
+  line-height: 25px;
   color: #3b3b3b;
   padding-left: 18px;
 `;
@@ -67,14 +70,34 @@ const ProductTitle = styled.Text`
 
 const FavoriteImage = styled.Image`
   width: 15.72px;
-  height: 16.97px;
+  height: 18px;
 `;
 
 const ProductPrice = styled.Text`
   width: 100px;
   height: 18px;
   color: #5b5bc0;
-  font-weight: 600;
+  font-style: normal;
+  font-family: "NotoSans-Bold";
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 16px;
+`;
+
+const ContentsTextWrapper = styled.View`
+  width: 160px;
+  height: 18px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 9px;
+`;
+
+const PickedCount = styled.Text`
+  width: 10px;
+  height: 15px;
+  /* color: #5b5bc0; */
+  /* font-weight: 600; */
 `;
 
 const NewProductItem = (props) => {
@@ -106,11 +129,22 @@ const NewProductItem = (props) => {
                       </DetailProduct>
                       <ContentsWrapper>
                         <ProductTitle>{el.name.split("#")[1]}</ProductTitle>
-                        <FavoriteImage
-                          source={require("../../../public/images/home/moon-off.png")}
-                        />
+                        {props.myPickData?.includes(el._id) ? (
+                          <FavoriteImage
+                            source={require("../../../public/images/home/moon-on.png")}
+                          />
+                        ) : (
+                          <FavoriteImage
+                            source={require("../../../public/images/home/moon-off.png")}
+                          />
+                        )}
                       </ContentsWrapper>
-                      <ProductPrice>{el.price}원</ProductPrice>
+                      <ContentsTextWrapper>
+                        <ProductPrice>
+                          {el.price.toLocaleString("ko-KR")}원
+                        </ProductPrice>
+                        <PickedCount>{el.pickedCount}</PickedCount>
+                      </ContentsTextWrapper>
                     </>
                   )}
                 </NewProductInfoWrapper>
@@ -137,11 +171,22 @@ const NewProductItem = (props) => {
                       </DetailProduct>
                       <ContentsWrapper>
                         <ProductTitle>{el.name.split("#")[1]}</ProductTitle>
-                        <FavoriteImage
-                          source={require("../../../public/images/home/moon-off.png")}
-                        />
+                        {props.myPickData?.includes(el._id) ? (
+                          <FavoriteImage
+                            source={require("../../../public/images/home/moon-on.png")}
+                          />
+                        ) : (
+                          <FavoriteImage
+                            source={require("../../../public/images/home/moon-off.png")}
+                          />
+                        )}
                       </ContentsWrapper>
-                      <ProductPrice>{el.price}원</ProductPrice>
+                      <ContentsTextWrapper>
+                        <ProductPrice>
+                          {el.price.toLocaleString("ko-KR")}원
+                        </ProductPrice>
+                        <PickedCount>{el.pickedCount}</PickedCount>
+                      </ContentsTextWrapper>
                     </>
                   )}
                 </NewProductInfoWrapper>
@@ -171,11 +216,22 @@ const NewProductItem = (props) => {
                       </DetailProduct>
                       <ContentsWrapper>
                         <ProductTitle>{el.name.split("#")[1]}</ProductTitle>
-                        <FavoriteImage
-                          source={require("../../../public/images/home/moon-off.png")}
-                        />
+                        {props.myPickData?.includes(el._id) ? (
+                          <FavoriteImage
+                            source={require("../../../public/images/home/moon-on.png")}
+                          />
+                        ) : (
+                          <FavoriteImage
+                            source={require("../../../public/images/home/moon-off.png")}
+                          />
+                        )}
                       </ContentsWrapper>
-                      <ProductPrice>{el.price}원</ProductPrice>
+                      <ContentsTextWrapper>
+                        <ProductPrice>
+                          {el.price.toLocaleString("ko-KR")}원
+                        </ProductPrice>
+                        <PickedCount>{el.pickedCount}</PickedCount>
+                      </ContentsTextWrapper>
                     </>
                   )}
                 </NewProductInfoWrapper>
@@ -202,11 +258,22 @@ const NewProductItem = (props) => {
                       </DetailProduct>
                       <ContentsWrapper>
                         <ProductTitle>{el.name.split("#")[1]}</ProductTitle>
-                        <FavoriteImage
-                          source={require("../../../public/images/home/moon-off.png")}
-                        />
+                        {props.myPickData?.includes(el._id) ? (
+                          <FavoriteImage
+                            source={require("../../../public/images/home/moon-on.png")}
+                          />
+                        ) : (
+                          <FavoriteImage
+                            source={require("../../../public/images/home/moon-off.png")}
+                          />
+                        )}
                       </ContentsWrapper>
-                      <ProductPrice>{el.price}원</ProductPrice>
+                      <ContentsTextWrapper>
+                        <ProductPrice>
+                          {el.price.toLocaleString("ko-KR")}원
+                        </ProductPrice>
+                        <PickedCount>{el.pickedCount}</PickedCount>
+                      </ContentsTextWrapper>
                     </>
                   )}
                 </NewProductInfoWrapper>

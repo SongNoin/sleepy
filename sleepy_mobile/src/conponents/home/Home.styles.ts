@@ -4,7 +4,7 @@ export const HomeView = styled.View`
   flex: 1;
   align-items: center;
   background-color: white;
-  width: 367px;
+  width: 100%;
 `;
 export const HomeText = styled.Text`
   font-size: 50px;
@@ -37,7 +37,10 @@ export const BestProductTitle = styled.Text`
   width: 100%;
   height: 25px;
   font-weight: bold;
+  font-style: normal;
+  font-family: "NotoSans-Bold";
   font-size: 18px;
+  line-height: 25px;
   color: #3b3b3b;
   padding-left: 18px;
 `;

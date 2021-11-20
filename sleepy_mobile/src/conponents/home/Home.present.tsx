@@ -32,6 +32,7 @@ const HomeUI = (props) => {
           <BestItem
             bestData={props.bestData}
             onPressDetail={props.onPressDetail}
+            myPickData={props.myPickData}
           />
         </BestProductWrapper>
 
@@ -39,6 +40,7 @@ const HomeUI = (props) => {
           data={props.data}
           isEdit={props.isEdit}
           onPressDetail={props.onPressDetail}
+          myPickData={props.myPickData}
         />
 
         {props.isEdit === false ? (

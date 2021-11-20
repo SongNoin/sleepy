@@ -10,6 +10,8 @@ import {
   InfoFavoriteImage,
   InfoTitle,
   InfoPrice,
+  InfoPickedCount,
+  FavoriteWrapper,
 } from "./List.styles";
 
 import HeaderAnimation from "./List.header.animation";
@@ -43,12 +45,25 @@ const ListUI = (props) => {
             </ProductImageWrapper>
             <InfoWrapper>
               <InfoTextWrapper>
-                <InfoTitle>{item.name.split("#")[1]}</InfoTitle>
-                <InfoPrice>{item.price}원</InfoPrice>
+                <InfoTitle>
+                  {String(item.name.split("#")[1]).length > 9
+                    ? `${item.name.split("#")[1].substr(0, 10)}...`
+                    : item.name.split("#")[1]}
+                </InfoTitle>
+                <InfoPrice>{item.price.toLocaleString("ko-KR")}원</InfoPrice>
               </InfoTextWrapper>
-              <InfoFavoriteImage
-                source={require("../../../public/images/list/infofavorite.png")}
-              />
+              <FavoriteWrapper>
+                {props.myPickData?.includes(item._id) ? (
+                  <InfoFavoriteImage
+                    source={require("../../../public/images/list/infofavorite_on.png")}
+                  />
+                ) : (
+                  <InfoFavoriteImage
+                    source={require("../../../public/images/list/infofavorite_off.png")}
+                  />
+                )}
+                {/* <InfoPickedCount>{item.pickedCount}</InfoPickedCount> */}
+              </FavoriteWrapper>
             </InfoWrapper>
           </DetailProductWrapper>
         )}

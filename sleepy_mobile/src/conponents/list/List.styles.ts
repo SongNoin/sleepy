@@ -43,17 +43,33 @@ export const InfoTextWrapper = styled.View``;
 export const InfoTitle = styled.Text`
   width: 300px;
   height: 19px;
-  font-size: 13px;
-  letter-spacing: -0.3px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 19px;
   color: #3b3b3b;
 `;
 
 export const InfoPrice = styled.Text`
   width: 190px;
   height: 19px;
+  font-family: "NotoSans-Bold";
+  font-style: normal;
   font-weight: bold;
-  font-size: 13px;
+  font-size: 14px;
+  line-height: 19px;
   color: #5b5bc0;
 `;
 
-export const InfoFavoriteImage = styled.Image``;
+export const InfoFavoriteImage = styled.Image`
+  width: 22.62px;
+  height: 24.52px;
+`;
+
+export const InfoPickedCount = styled.Text``;
+
+export const FavoriteWrapper = styled.TouchableOpacity`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
