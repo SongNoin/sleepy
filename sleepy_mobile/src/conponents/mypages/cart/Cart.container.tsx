@@ -46,6 +46,13 @@ const CartContainer = () => {
       const favoritePr = await JSON.parse(result);
       setProductInfo(favoritePr);
     });
+  }, []);
+
+  useEffect(() => {
+    AsyncStorage.getItem("@carts", async (_: any, result: any) => {
+      const favoritePr = await JSON.parse(result);
+      setProductInfo(favoritePr);
+    });
   }, [AsyncStorage.getItem("@carts")]);
 
   const onPressDetail = (el: any) => {

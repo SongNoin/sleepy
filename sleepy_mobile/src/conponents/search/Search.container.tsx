@@ -5,19 +5,20 @@ import _ from "lodash";
 import SearchUI from "./Search.present";
 import { useQuery } from "@apollo/client";
 import { GlobalContext } from "../../../App";
-import {
-  Product,
-  ProductImage,
-  ProductName,
-  ProductNameAndPrice,
-  ProductPrice,
-  ProductWrapper,
-} from "./Search.styles";
-import { useNavigation } from "@react-navigation/native";
 
 const SearchContainer = () => {
   const { setId, id } = useContext(GlobalContext);
   const [search, setSearch] = useState("");
+  const [dataRes , setDataRes] = useState(null)
+  
+  const [priceToggle , setPriceToggle] = useState(false)
+  const [dateToggle , setDateToggle] = useState(false)
+  
+  const today = new Date()
+  const day = today.getDate()
+  const month = today.getMonth()
+  const year = today.getFullYear()
+  
   const { data, refetch, fetchMore } = useQuery(FETCH_USED_ITEMS, {
     variables: {
       isSoldout: false,
@@ -25,8 +26,7 @@ const SearchContainer = () => {
       page: 1,
     },
   });
-  const navigation = useNavigation();
-
+  
   const getDebounce = _.debounce((data) => {
     refetch({
       search: data,
@@ -46,6 +46,9 @@ const SearchContainer = () => {
   }
 
   const onLoadMore = () => {
+    if(!data) {
+      return;
+    }
     fetchMore({
       variables: {
         page: Math.ceil(data?.fetchUseditems.length / 10) + 1,
@@ -61,42 +64,102 @@ const SearchContainer = () => {
     });
   };
 
-  const renderItem = ({ item }: any) => {
-    return (
-      <ProductWrapper
-        key={item._id}
-        onPress={() => {
-          navigation.navigate("상품 상세보기", {
-            id: onPressDetail(item),
-          });
-        }}
-      >
-        <Product>
-          <ProductImage
-            source={{
-              uri: `https://storage.googleapis.com/${item.images[0]}`,
-            }}
-          />
-          <ProductNameAndPrice>
-            <ProductName>
-              {String(item.name.split("#")[1]).length > 60
-                ? `${String(item.name.split("#")[1]).substr(0, 61)}...`
-                : item.name.split("#")[1]}
-            </ProductName>
-            <ProductPrice>{`${item.price}원`}</ProductPrice>
-          </ProductNameAndPrice>
-        </Product>
-      </ProductWrapper>
-    );
-  };
+  const priceToggleChange = () => {
+    setPriceToggle((prev)=>!prev)
+    setDateToggle(false)
+  }
 
+  const dateToggleChange = () => {
+    setDateToggle((prev)=>!prev)
+    setPriceToggle(false)
+  }
+
+  const searchAllTime = () => {
+    setDataRes(data?.fetchUseditems)
+  }
+
+  const searchLastDay = () => {
+    const arr: string[] = []
+    for(let i=0; i<=1; i++) {
+      const newArr = new Date(year, month, day-i).toLocaleDateString().split('. ')
+      const res = `${newArr[0]}-${newArr[1]}-${newArr[2]}`
+      const result = res.slice(0,10)
+      arr.push(result)
+    }
+    const filterRes = data?.fetchUseditems.filter((el:any)=>{
+      return arr.includes(el.createdAt.slice(0,10))
+    })
+    setDataRes(filterRes)
+  }
+
+  const searchLastWeek = () => {
+    const arr: string[] = []
+    for(let i=0; i<=7; i++) {
+      const newArr = new Date(year, month, day-i).toLocaleDateString().split('. ')
+      const res = `${newArr[0]}-${newArr[1]}-${newArr[2]}`
+      const result = res.slice(0,10)
+      arr.push(result)
+    }
+    const filterRes = data?.fetchUseditems.filter((el:any)=>{
+      return arr.includes(el.createdAt.slice(0,10))
+    })
+    setDataRes(filterRes)
+  }
+
+  const searchOneThousand = () => {
+    const result = data?.fetchUseditems.filter((el:any)=>{
+      return Number(el.price) <= 1000
+    })
+    setDataRes(result)
+  }
+
+  const searchTenThousand = () => {
+    const result = data?.fetchUseditems.filter((el:any)=>{
+      return Number(el.price) <= 10000
+    })
+    setDataRes(result)
+  }
+
+  const searchOneHundredThousand = () => {
+    const result = data?.fetchUseditems.filter((el:any)=>{
+      return Number(el.price) <= 100000
+    })
+    setDataRes(result)
+  }
+
+  const searchOneMillion = () => {
+    const result = data?.fetchUseditems.filter((el:any)=>{
+      return Number(el.price) <= 1000000
+    })
+    setDataRes(result)
+  }
+
+  const searchTemMillion = () => {
+    const result = data?.fetchUseditems.filter((el:any)=>{
+      return Number(el.price) <= 10000000
+    })
+    setDataRes(result)
+  }
+  
   return (
     <SearchUI
       data={data}
       onChangeSearch={onChangeSearch}
       onPressDetail={onPressDetail}
       onLoadMore={onLoadMore}
-      renderItem={renderItem}
+      priceToggle={priceToggle}
+      priceToggleChange={priceToggleChange}
+      dateToggleChange={dateToggleChange}
+      dateToggle={dateToggle}
+      searchLastDay={searchLastDay}
+      searchLastWeek={searchLastWeek}
+      searchAllTime={searchAllTime}
+      dataRes={dataRes}
+      searchOneThousand={searchOneThousand}
+      searchTenThousand={searchTenThousand}
+      searchOneHundredThousand={searchOneHundredThousand}
+      searchOneMillion={searchOneMillion}
+      searchTemMillion={searchTemMillion}
     />
   );
 };
