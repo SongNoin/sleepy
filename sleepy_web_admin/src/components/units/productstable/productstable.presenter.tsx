@@ -1,8 +1,9 @@
 import Modal from "react-modal";
+
 import TableDetail from "../../commons/Modal/tableDetail.container";
-import Chip from "@mui/material/Chip";
-import Stack from "@mui/material/Stack";
-import { useState } from "react";
+import FilterDetail from "../../commons/filter/filterDetail";
+import { useContext } from "react";
+import { GlobalContext } from "../../../../pages/_app";
 import InfiniteScroll from "react-infinite-scroller";
 
 import {
@@ -37,37 +38,7 @@ import {
 } from "./productstable.styles";
 
 export default function ProductstableUI(props) {
-  const [isSale, setIsSale] = useState(null);
-  const [isCheckSale, setIsCheckSale] = useState(true);
-  const [isCheckSold, setIsCheckSold] = useState(true);
-
-  const handleClickAll = () => {
-    const all = props.data?.fetchUseditemsISold;
-    setIsSale(all);
-
-    setIsCheckSale(true);
-    setIsCheckSold(true);
-  };
-
-  const handleClickSale = () => {
-    const sale = props.data?.fetchUseditemsISold?.filter(
-      (el) => el?.buyer === null
-    );
-    setIsSale(sale);
-
-    setIsCheckSale((prev) => !prev);
-    setIsCheckSold(true);
-  };
-
-  const handleClickSold = () => {
-    const sold = props.data?.fetchUseditemsISold?.filter(
-      (el) => el?.buyer !== null
-    );
-    setIsSale(sold);
-
-    setIsCheckSale(true);
-    setIsCheckSold((prev) => !prev);
-  };
+  const { isSale } = useContext(GlobalContext);
 
   return (
     <>
@@ -82,33 +53,7 @@ export default function ProductstableUI(props) {
       <Wrapper>
         <Title>상품 현황</Title>
         <InnerWrapper>
-          <div>
-            <Stack direction="row" spacing={1}>
-              <Chip label="ALL" color="default" onClick={handleClickAll} />
-              {!isCheckSale ? (
-                <Chip label="판매중" color="primary" onClick={handleClickAll} />
-              ) : (
-                <Chip
-                  label="판매중"
-                  color="default"
-                  onClick={handleClickSale}
-                />
-              )}
-              {!isCheckSold ? (
-                <Chip
-                  label="판매완료"
-                  color="success"
-                  onClick={handleClickAll}
-                />
-              ) : (
-                <Chip
-                  label="판매완료"
-                  color="default"
-                  onClick={handleClickSold}
-                />
-              )}
-            </Stack>
-          </div>
+          <FilterDetail data={props.data} />
           <InfiniteScroll
             pageStart={0}
             loadMore={props.onloadMore}

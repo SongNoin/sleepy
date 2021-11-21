@@ -17,11 +17,14 @@ export const GlobalContext = createContext(null);
 function MyApp({ Component, pageProps }) {
   const [accessToken, setAccessToken] = useState("");
   const [userInfo, setUserInfo] = useState({});
+  const [isSale, setIsSale] = useState(null);
   const value = {
     accessToken: accessToken,
     setAccessToken: setAccessToken,
     userInfo: userInfo,
     setUserInfo: setUserInfo,
+    isSale: isSale,
+    setIsSale: setIsSale,
   };
 
   useEffect(() => {
