@@ -15,6 +15,7 @@ const TabNavigator = () => {
 
   return (
     <Tab.Navigator
+      initialRouteName={"홈"}
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused }) => {
           let iconName;
