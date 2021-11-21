@@ -38,10 +38,15 @@ import {
 
 export default function ProductstableUI(props) {
   const [isSale, setIsSale] = useState(null);
+  const [isCheckSale, setIsCheckSale] = useState(true);
+  const [isCheckSold, setIsCheckSold] = useState(true);
 
   const handleClickAll = () => {
     const all = props.data?.fetchUseditemsISold;
     setIsSale(all);
+
+    setIsCheckSale(true);
+    setIsCheckSold(true);
   };
 
   const handleClickSale = () => {
@@ -49,6 +54,9 @@ export default function ProductstableUI(props) {
       (el) => el?.buyer === null
     );
     setIsSale(sale);
+
+    setIsCheckSale((prev) => !prev);
+    setIsCheckSold(true);
   };
 
   const handleClickSold = () => {
@@ -56,6 +64,9 @@ export default function ProductstableUI(props) {
       (el) => el?.buyer !== null
     );
     setIsSale(sold);
+
+    setIsCheckSale(true);
+    setIsCheckSold((prev) => !prev);
   };
 
   return (
@@ -74,12 +85,28 @@ export default function ProductstableUI(props) {
           <div>
             <Stack direction="row" spacing={1}>
               <Chip label="ALL" color="default" onClick={handleClickAll} />
-              <Chip label="판매중" color="primary" onClick={handleClickSale} />
-              <Chip
-                label="판매완료"
-                color="success"
-                onClick={handleClickSold}
-              />
+              {!isCheckSale ? (
+                <Chip label="판매중" color="primary" onClick={handleClickAll} />
+              ) : (
+                <Chip
+                  label="판매중"
+                  color="default"
+                  onClick={handleClickSale}
+                />
+              )}
+              {!isCheckSold ? (
+                <Chip
+                  label="판매완료"
+                  color="success"
+                  onClick={handleClickAll}
+                />
+              ) : (
+                <Chip
+                  label="판매완료"
+                  color="default"
+                  onClick={handleClickSold}
+                />
+              )}
             </Stack>
           </div>
           <InfiniteScroll
