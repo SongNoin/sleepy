@@ -1,32 +1,63 @@
 import React from "react";
 
-import { useNavigation } from "@react-navigation/native";
-
 import {
   HomeView,
-  HomeText,
-  CategoryWrapper,
-  CategoryIcon,
-  DetailProduct,
-  DetailProductText,
+  MainBanner,
+  MainBannerWrapper,
+  BestProductTitle,
+  MoreProduct,
+  MoreProductText,
+  BestProductWrapper,
+  CloseProduct,
+  CloseProductText,
 } from "./Home.styles";
 
-const HomeUI = () => {
-  const navigation = useNavigation();
+import Category from "./Category";
+import NewProductItem from "./NewProductItem";
+import BestItem from "./BestItem";
+import { ScrollView } from "react-native";
 
+const HomeUI = (props) => {
   return (
-    <HomeView>
-      <HomeText>여기는 메인 페이지 입니다.</HomeText>
-      <CategoryWrapper onPress={() => navigation.navigate("상품 리스트")}>
-        <CategoryIcon
-          source={require("../../../public/images/home/pillow.png")}
-        />
-      </CategoryWrapper>
+    <ScrollView>
+      <HomeView>
+        <MainBannerWrapper>
+          <MainBanner
+            source={require("../../../public/images/home/mainbanner.png")}
+          />
+        </MainBannerWrapper>
+        <Category onPressCategory={props.onPressCategory} />
+        <BestProductWrapper>
+          <BestProductTitle>베스트 상품</BestProductTitle>
+          <BestItem
+            bestData={props.bestData}
+            onPressDetail={props.onPressDetail}
+            myPickData={props.myPickData}
+          />
+        </BestProductWrapper>
 
-      <DetailProduct onPress={() => navigation.navigate("상품 상세보기")}>
-        <DetailProductText>디테일 페이지 이동</DetailProductText>
-      </DetailProduct>
-    </HomeView>
+        <NewProductItem
+          data={props.data}
+          isEdit={props.isEdit}
+          onPressDetail={props.onPressDetail}
+          myPickData={props.myPickData}
+        />
+
+        {props.isEdit === false ? (
+          <MoreProduct>
+            <MoreProductText onPress={props.onPressMoreProduct}>
+              상품 더보기
+            </MoreProductText>
+          </MoreProduct>
+        ) : (
+          <CloseProduct>
+            <CloseProductText onPress={props.onPressCloseProduct}>
+              접기
+            </CloseProductText>
+          </CloseProduct>
+        )}
+      </HomeView>
+    </ScrollView>
   );
 };
 

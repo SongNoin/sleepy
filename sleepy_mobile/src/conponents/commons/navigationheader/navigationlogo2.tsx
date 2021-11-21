@@ -1,25 +1,44 @@
 import React from "react";
-
+import Sleepy from "../../../../public/images/navigation/Sleepy.svg";
+import Cart from "../../../../public/images/navigation/Cart.svg";
 import styled from "@emotion/native";
+import { useNavigation } from "@react-navigation/native";
 
 const LogoWrapper = styled.View`
   width: 100%;
   height: 40px;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
 `;
-const EmptyWrapper = styled.View``;
+const EmptyWrapper = styled.View`
+  width: 35%;
+`;
 
-import Sleepy from "../../../../public/images/navigation/Sleepy.svg";
-import Cart from "../../../../public/images/navigation/Cart.svg";
+const InnerWrapper = styled.View`
+  width: 93%;
+  display: flex;
+  flex-direction: row;
+`;
+
+const GoMyFavoritePage = styled.TouchableOpacity``;
+const CartWrapper = styled.View``;
 
 const NavigationLogo2 = () => {
+  const navigation = useNavigation();
+  const goToMyFavoritePage = () => {
+    navigation.navigate("장바구니");
+  };
   return (
     <LogoWrapper>
-      <EmptyWrapper />
-      <Sleepy width={60} height={30} />
-      <Cart width={24} height={24} />
+      <InnerWrapper>
+        <EmptyWrapper />
+        <Sleepy width={60} height={30} />
+      </InnerWrapper>
+      <GoMyFavoritePage onPress={goToMyFavoritePage}>
+        <CartWrapper>
+          <Cart width={24} height={24} />
+        </CartWrapper>
+      </GoMyFavoritePage>
     </LogoWrapper>
   );
 };

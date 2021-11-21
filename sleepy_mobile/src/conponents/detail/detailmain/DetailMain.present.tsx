@@ -1,12 +1,83 @@
 import React from "react";
+import { ScrollView } from "react-native";
+import ReviewListContainer from "../reviewlist/ReviewList.container";
+import ProductImages from "./ProductImages";
 
-import { DetailMainView, DetailText } from "./DetailMain.styles";
+import {
+  Wrapper,
+  ProductWrapper,
+  ReviewInfoWrapper,
+  ReviewStar,
+  ReviewAverage,
+  ProductName,
+  ProductPrice,
+  DetaillWrapper,
+  DetailContent,
+  Photo,
+  ReviewWrapper,
+  Title,
+} from "./DetailMain.styles";
 
-const DetailUI = () => {
+import RenderHTML from "react-native-render-html";
+
+const DetailUI = (props: any) => {
   return (
-    <DetailMainView>
-      <DetailText>여기는 상품 디테일페이지...</DetailText>
-    </DetailMainView>
+    <ScrollView>
+      <>
+        <Wrapper>
+          <ProductWrapper>
+            <ProductImages data={props.data} />
+            <ReviewInfoWrapper>
+              <ReviewStar
+                source={require("../../../../public/images/detail/star.png")}
+              />
+              <ReviewStar
+                source={require("../../../../public/images/detail/star.png")}
+              />
+              <ReviewStar
+                source={require("../../../../public/images/detail/star.png")}
+              />
+              <ReviewStar
+                source={require("../../../../public/images/detail/starempty.png")}
+              />
+              <ReviewStar
+                source={require("../../../../public/images/detail/starempty.png")}
+              />
+              <ReviewAverage>(3.25)</ReviewAverage>
+            </ReviewInfoWrapper>
+            <ProductName>
+              {props.data?.fetchUseditem.name.split("#")[1]}
+            </ProductName>
+            <ProductPrice>
+              {props.data?.fetchUseditem.price
+                .toLocaleString("ko-KR")
+                .toString()
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{" "}
+              원
+            </ProductPrice>
+          </ProductWrapper>
+          <DetaillWrapper>
+            <DetailContent>
+              <RenderHTML
+                source={{ html: `${props.data?.fetchUseditem.contents}` }}
+              />
+            </DetailContent>
+            {props.data?.fetchUseditem.images
+              ?.filter((el) => el)
+              .map((el) => (
+                <Photo
+                  key={el}
+                  source={{ uri: `https://storage.googleapis.com/${el}` }}
+                />
+              ))}
+          </DetaillWrapper>
+        </Wrapper>
+        <ReviewWrapper>
+          <Title>리뷰</Title>
+          <ReviewListContainer data={props.data} />
+        </ReviewWrapper>
+      </>
+    </ScrollView>
   );
 };
 
