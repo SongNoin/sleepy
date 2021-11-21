@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   SearchBar,
   SearchBarLine,
@@ -21,7 +21,7 @@ import {
   FilterView1,
   Row3,
 } from "./Search.styles";
-import { ScrollView, Text, TextInput, View } from "react-native";
+import { ScrollView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 const SearchUI = (props: any) => {
@@ -157,12 +157,10 @@ const SearchUI = (props: any) => {
             </ProductNameAndPrice>
           </Product>
         </ProductWrapper>
-          ))} 
-        
+        ))} 
       </ProductList>
     </SearchPageView>
     </ScrollView>
-    
   );
 };
 
