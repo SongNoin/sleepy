@@ -27,7 +27,7 @@ const CartUI = (props: any) => {
     <ScrollView style={{ backgroundColor: "white" }}>
       <MyCartView>
         <CartListWrapper>
-          {props.productInfo.length===0 && 
+          {(!props.productInfo || props.productInfo?.length===0) && 
           <EmptyWrapper>
             <EmptyText>장바구니가 비어있습니다!</EmptyText>
           </EmptyWrapper>
