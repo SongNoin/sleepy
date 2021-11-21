@@ -4,15 +4,27 @@ interface IProps {
   isSoldOut: Boolean;
 }
 
+export const EmptyWrapper = styled.View`
+  height:470px;
+  justify-content: center;
+`
+
 export const MyCartView = styled.View`
   flex: 1;
   background-color: white;
   padding-bottom: 20px;
 `;
 
+export const EmptyText = styled.Text`
+  font-family: "NotoSans-Bold";
+  color: #5b5bc0;
+`
+
+
 export const CartListWrapper = styled.View`
   display: flex;
   align-items: center;
+  justify-content: center;
 `;
 
 export const CartCard = styled.View`

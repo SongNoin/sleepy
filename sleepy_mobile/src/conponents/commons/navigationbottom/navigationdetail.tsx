@@ -106,6 +106,14 @@ const FETCH_USED_ITEM_I_PICKED = gql`
   }
 `;
 
+const CREATE_POINT_TRANSACTION_OF_BUYING_AND_SELLING = gql`
+    mutation createPointTransactionOfBuyingAndSelling($useritemId:ID!) {
+        createPointTransactionOfBuyingAndSelling(useritemId:$useritemId) {
+            _id
+        }
+    }
+`;
+
 const NavigationDetail = () => {
   const { id, isFavorite, setIsFavorite }: any = useContext(GlobalContext);
   const { data } = useQuery(FETCH_USED_ITEM, {
@@ -115,7 +123,7 @@ const NavigationDetail = () => {
   });
 
   const navigation = useNavigation();
-
+  const [createPointTransactionOfBuyingAndSelling] = useMutation(CREATE_POINT_TRANSACTION_OF_BUYING_AND_SELLING)
   const [toggleUseditemPick] = useMutation(TOGGLE_USED_ITEM_PICK);
 
   const { data: Ipickdata } = useQuery(FETCH_USED_ITEM_I_PICKED, {
@@ -189,6 +197,17 @@ const NavigationDetail = () => {
     setIsFavorite((prev) => !prev);
   }
 
+  const onPressPay = async() => {
+    try {
+      await createPointTransactionOfBuyingAndSelling({
+        variables: { useritemId: id}
+      })
+      navigation.navigate("구매하기")
+    } catch(_:any) {
+      navigation.navigate("결제실패")
+    }
+  }
+
   return (
     <Wrapper>
       <FavoriteWrapper onPress={onPressPicked}>
@@ -206,7 +225,7 @@ const NavigationDetail = () => {
       <CartButton onPress={onPressCart}>
         <CartText>장바구니</CartText>
       </CartButton>
-      <BuyButton onPress={() => navigation.navigate("결제하기")}>
+      <BuyButton onPress={onPressPay}>
         구매하기
       </BuyButton>
     </Wrapper>

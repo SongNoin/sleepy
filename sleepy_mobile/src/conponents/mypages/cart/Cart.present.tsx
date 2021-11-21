@@ -13,6 +13,8 @@ import {
   DelButton,
   BuyButton,
   BuyButtonText,
+  EmptyWrapper,
+  EmptyText,
 } from "./Cart.styles";
 import { Text } from "react-native";
 import DeleteIcon from "react-native-vector-icons/AntDesign";
@@ -25,7 +27,11 @@ const CartUI = (props: any) => {
     <ScrollView style={{ backgroundColor: "white" }}>
       <MyCartView>
         <CartListWrapper>
-          {!props.productInfo && <Text>장바구니가 비어있습니다!</Text>}
+          {props.productInfo.length===0 && 
+          <EmptyWrapper>
+            <EmptyText>장바구니가 비어있습니다!</EmptyText>
+          </EmptyWrapper>
+          }
 
           {props.productInfo
             ?.map((el: any) => (

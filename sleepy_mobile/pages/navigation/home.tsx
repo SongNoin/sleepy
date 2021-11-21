@@ -10,7 +10,6 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import NavigationLogo from "../../src/conponents/commons/navigationheader/navigationlogo";
 import NavigationLogo2 from "../../src/conponents/commons/navigationheader/navigationlogo2";
-import PayScreen from "../screens/pay";
 import BuyCompleteScreen from "../screens/buyComplete/buyComplete";
 import BuyFailScreen from "../screens/buyFail";
 import MypageScreen from "../screens/mypages/myMain";
@@ -71,15 +70,6 @@ const HomeNavigator = () => {
       <Stack.Screen
         name="장바구니"
         component={CartScreen}
-        options={({ route }) => ({
-          headerShown: true,
-          headerTitle: () => <NavigationLogo2 />,
-          tabBarStyle: getVisibility(route),
-        })}
-      />
-      <Stack.Screen
-        name="결제하기"
-        component={PayScreen}
         options={({ route }) => ({
           headerShown: true,
           headerTitle: () => <NavigationLogo2 />,
