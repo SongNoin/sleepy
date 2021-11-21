@@ -5,11 +5,11 @@ import { useNavigation } from "@react-navigation/native";
 
 const NewProductWrapper = styled.View`
   margin-top: 32px;
-  width: 100%;
+  width: 339px;
 `;
 
 const NewProductTitle = styled.Text`
-  width: 100%;
+  width: 339px;
   height: 25px;
   font-weight: bold;
   font-style: normal;
@@ -17,14 +17,14 @@ const NewProductTitle = styled.Text`
   font-size: 18px;
   line-height: 25px;
   color: #3b3b3b;
-  padding-left: 18px;
+  /* padding-left: 18px; */
 `;
 
 const MiddleWrapper2 = styled.View`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   width: 100%;
 `;
 
@@ -32,7 +32,7 @@ const DetailProductWrapper = styled.View`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
 `;
 
 const NewProductInfoWrapper = styled.View``;
@@ -141,7 +141,11 @@ const NewProductItem = (props) => {
                       </ContentsWrapper>
                       <ContentsTextWrapper>
                         <ProductPrice>
-                          {el.price.toLocaleString("ko-KR")}원
+                          {el.price
+                            .toLocaleString("ko-KR")
+                            .toString()
+                            .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                          원
                         </ProductPrice>
                         <PickedCount>{el.pickedCount}</PickedCount>
                       </ContentsTextWrapper>
@@ -183,7 +187,11 @@ const NewProductItem = (props) => {
                       </ContentsWrapper>
                       <ContentsTextWrapper>
                         <ProductPrice>
-                          {el.price.toLocaleString("ko-KR")}원
+                          {el.price
+                            .toLocaleString("ko-KR")
+                            .toString()
+                            .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                          원
                         </ProductPrice>
                         <PickedCount>{el.pickedCount}</PickedCount>
                       </ContentsTextWrapper>
@@ -228,7 +236,11 @@ const NewProductItem = (props) => {
                       </ContentsWrapper>
                       <ContentsTextWrapper>
                         <ProductPrice>
-                          {el.price.toLocaleString("ko-KR")}원
+                          {el.price
+                            .toLocaleString("ko-KR")
+                            .toString()
+                            .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                          원
                         </ProductPrice>
                         <PickedCount>{el.pickedCount}</PickedCount>
                       </ContentsTextWrapper>
@@ -270,7 +282,11 @@ const NewProductItem = (props) => {
                       </ContentsWrapper>
                       <ContentsTextWrapper>
                         <ProductPrice>
-                          {el.price.toLocaleString("ko-KR")}원
+                          {el.price
+                            .toLocaleString("ko-KR")
+                            .toString()
+                            .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                          원
                         </ProductPrice>
                         <PickedCount>{el.pickedCount}</PickedCount>
                       </ContentsTextWrapper>

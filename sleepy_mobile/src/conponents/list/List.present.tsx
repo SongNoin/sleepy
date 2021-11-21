@@ -50,7 +50,13 @@ const ListUI = (props) => {
                     ? `${item.name.split("#")[1].substr(0, 10)}...`
                     : item.name.split("#")[1]}
                 </InfoTitle>
-                <InfoPrice>{item.price.toLocaleString("ko-KR")}원</InfoPrice>
+                <InfoPrice>
+                  {item.price
+                    .toLocaleString("ko-KR")
+                    .toString()
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                  원
+                </InfoPrice>
               </InfoTextWrapper>
               <FavoriteWrapper>
                 {props.myPickData?.includes(item._id) ? (

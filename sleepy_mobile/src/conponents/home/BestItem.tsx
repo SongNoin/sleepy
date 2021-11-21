@@ -14,7 +14,7 @@ const DetailProduct = styled.TouchableOpacity`
 const DetailProductWrapper = styled.View`
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
 
   margin-top: 10px;
   /* margin-left: 20px; */
@@ -121,7 +121,11 @@ const BestItem = (props) => {
                 </ContentsWrapper>
                 <ContentsTextWrapper>
                   <ProductPrice>
-                    {el.price.toLocaleString("ko-KR")}원
+                    {el.price
+                      .toLocaleString("ko-KR")
+                      .toString()
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                    원
                   </ProductPrice>
                   <PickedCount>{el.pickedCount}</PickedCount>
                 </ContentsTextWrapper>
@@ -166,7 +170,11 @@ const BestItem = (props) => {
                 </ContentsWrapper>
                 <ContentsTextWrapper>
                   <ProductPrice>
-                    {el.price.toLocaleString("ko-KR")}원
+                    {el.price
+                      .toLocaleString("ko-KR")
+                      .toString()
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                    원
                   </ProductPrice>
                   <PickedCount>{el.pickedCount}</PickedCount>
                 </ContentsTextWrapper>

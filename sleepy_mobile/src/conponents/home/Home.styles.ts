@@ -25,7 +25,7 @@ export const MainBannerWrapper = styled.View`
 
 export const BestProductWrapper = styled.View`
   margin-top: 32px;
-  width: 100%;
+  width: 339px;
 `;
 
 export const NewProductWrapper = styled.View`
@@ -34,7 +34,7 @@ export const NewProductWrapper = styled.View`
 `;
 
 export const BestProductTitle = styled.Text`
-  width: 100%;
+  width: 339px;
   height: 25px;
   font-weight: bold;
   font-style: normal;
@@ -42,7 +42,7 @@ export const BestProductTitle = styled.Text`
   font-size: 18px;
   line-height: 25px;
   color: #3b3b3b;
-  padding-left: 18px;
+  /* padding-left: 18px; */
 `;
 
 export const NewProductInfoWrapper = styled.View``;
