@@ -6,13 +6,16 @@ import {
   UploadFileHidden,
 } from "./Uploads.styles";
 
-export default function UploadsUI(props) {
+export default function UploadsUI(props: any) {
   return (
     <UploadsWrapper>
-      {props.fileUrl ? (
+      {props.fileUrl || props.defaultFileUrl ? (
         <UploadImage
           onClick={props.onClickUpload}
-          src={props.fileUrl}
+          src={
+            props.fileUrl ||
+            `https://storage.googleapis.com/${props.defaultFileUrl}`
+          }
         ></UploadImage>
       ) : (
         <UploadsButton onClick={props.onClickUpload} type="button">

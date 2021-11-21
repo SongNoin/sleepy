@@ -24,6 +24,7 @@ export const InnerWrapper = styled.div`
 
 export const ItemContent = styled.div`
   width: 1348px;
+  padding-top: 32px;
   font-size: 12px;
 `;
 
@@ -154,15 +155,19 @@ export const ColumnName = styled.div`
 `;
 
 export const ColumnNameRow = styled.div`
-  /* border: 1px solid red; */
   width: 15%;
-  display: flex;
+  display: -webkit-box;
   flex-direction: row;
   font-weight: 400;
   font-style: normal;
   font-size: 16px;
   line-height: 21.79px;
   color: #767676;
+  overflow-y: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
 `;
 
 export const ColumnSale = styled.div`
@@ -297,6 +302,7 @@ export const Row = styled.div`
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #ededed;
+  cursor: pointer;
 `;
 
 export const ModifyButton = styled.button`

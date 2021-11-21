@@ -9,11 +9,14 @@ import {
   Input,
   ButtonWrapper,
   NameWrapper,
-  WrapperHeader,
-  UploadWrapper,
+  RightWrapper,
   Header,
+  ImageModifyButton,
   ModifyButton,
-  WrapperBody,
+  LeftWrapper,
+  ImageTitle,
+  ImageLabel,
+  UserName,
 } from "./profilemodify.styles";
 
 export default function ProfileModifyUI(props) {
@@ -21,17 +24,29 @@ export default function ProfileModifyUI(props) {
     <Wrapper>
       <ModifyTitle>내 정보 수정</ModifyTitle>
       <ModifyWrapper>
-        <WrapperHeader>
+        <LeftWrapper>
+          <ImageTitle>내 사진 변경</ImageTitle>
+          <ImageLabel>변경 할 사진</ImageLabel>
+          <ProfileUpload
+            onChangeFile={props.onChangeFile}
+            defaultPicture={props.data?.fetchUserLoggedIn.picture}
+          />
+          <UserName>{props.data?.fetchUserLoggedIn.name} 님</UserName>
+          <ImageModifyButton onClick={props.onClickUpdateUserPicture}>
+            프로필사진 변경하기
+          </ImageModifyButton>
+        </LeftWrapper>
+        <RightWrapper>
           <Header>
             <NameWrapper>
               <Title>닉네임 변경</Title>
               <InputWrapper>
-                <Label>변경 할 닉네임</Label>
+                <Label>변경할 닉네임</Label>
                 <Input type="text" onChange={props.onChangeName} />
               </InputWrapper>
               <ButtonWrapper>
                 <ModifyButton onClick={props.onClickUpdateUserName}>
-                  닉네임 변경
+                  닉네임 변경하기
                 </ModifyButton>
               </ButtonWrapper>
             </NameWrapper>
@@ -52,28 +67,11 @@ export default function ProfileModifyUI(props) {
             </InputWrapper>
             <ButtonWrapper>
               <ModifyButton onClick={props.onClickResetPassword}>
-                비밀번호 변경
+                비밀번호 변경하기
               </ModifyButton>
             </ButtonWrapper>
           </Header>
-        </WrapperHeader>
-        <WrapperBody>
-          <NameWrapper>
-            <Title>내 사진 변경</Title>
-            <UploadWrapper>
-              <Label>변경 할 사진</Label>
-              <ProfileUpload
-                onChangeFile={props.onChangeFile}
-                defaultPicture={props.data?.fetchUserLoggedIn.picture}
-              />
-            </UploadWrapper>
-            <ButtonWrapper>
-              <ModifyButton onClick={props.onClickUpdateUserPicture}>
-                프로필사진 변경
-              </ModifyButton>
-            </ButtonWrapper>
-          </NameWrapper>
-        </WrapperBody>
+        </RightWrapper>
       </ModifyWrapper>
     </Wrapper>
   );

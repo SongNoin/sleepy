@@ -8,11 +8,20 @@ export const ModifyView = styled.View`
   padding-bottom: 20px;
 `;
 
-export const ModifynameWrapper = styled.View``;
+export const ModifyPhotoWrapper = styled.View``;
+export const ModifynameWrapper = styled.View`
+  margin-top: 18px;
+`;
 export const ModifyTitleWapper = styled.View`
   margin-top: 24px;
 `;
-
+export const ModifyPhoto = styled.View`
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-right: 18px;
+  display: flex;
+  align-items: center;
+`;
 export const ModifyInputWrapper = styled.View`
   width: 339px;
   height: 36px;

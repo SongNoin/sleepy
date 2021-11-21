@@ -2,7 +2,7 @@ import styled from "@emotion/native";
 
 export const FavoriteView = styled.View`
   flex: 1;
-  /* align-items: center; */
+  align-items: center;
   background-color: white;
   padding-bottom: 20px;
 `;

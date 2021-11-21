@@ -1,5 +1,6 @@
 import React from "react";
 import { ScrollView } from "react-native-gesture-handler";
+import ReviewUploadContainer from "../../commons/reviewupload/reviewupload.container";
 
 import {
   ReviewWriteView,
@@ -9,6 +10,7 @@ import {
   CategoryWrapper,
   Category,
   CategoryContent,
+  ReviewPhotoWrapper,
   ProductNameWrapper,
   ProductName,
   ProductPriceWrapper,
@@ -16,16 +18,15 @@ import {
   LabelWrapper,
   Label,
   LableLine,
-  ReviewPhotoWrapper,
-  ReviewPhotoUpload,
-  Plus,
   ReviewStarWrapper,
+  StarButton,
+  FlexLine,
   StarIcon,
   ReviewContentWrapper,
   ReviewContentInput,
   ReviewWriteButton,
   ReviewWriteButtonText,
-  TentInput,
+  Star,
 } from "./reviewwrite.styles";
 
 export default function ReviewUI(props: any) {
@@ -47,7 +48,9 @@ export default function ReviewUI(props: any) {
                 </CategoryContent>
               </CategoryWrapper>
               <ProductNameWrapper>
-                <ProductName>{props.data?.fetchUseditem.name}</ProductName>
+                <ProductName>
+                  {props.data?.fetchUseditem.name.split("#")[1]}
+                </ProductName>
               </ProductNameWrapper>
               <ProductPriceWrapper>
                 <ProductPrice>
@@ -59,40 +62,35 @@ export default function ReviewUI(props: any) {
           <LabelWrapper>
             <Label>이미지 등록</Label>
             <LableLine />
-            <TentInput onChangeText={props.onChangeImage} />
           </LabelWrapper>
           <ReviewPhotoWrapper>
-            <ReviewPhotoUpload>
-              <Plus>+</Plus>
-            </ReviewPhotoUpload>
-            <ReviewPhotoUpload>
-              <Plus>+</Plus>
-            </ReviewPhotoUpload>
-            <ReviewPhotoUpload>
-              <Plus>+</Plus>
-            </ReviewPhotoUpload>
+            <ReviewUploadContainer setImage={props.setImage} />
+            <FlexLine />
           </ReviewPhotoWrapper>
           <LabelWrapper>
             <Label>별점</Label>
             <LableLine />
           </LabelWrapper>
-          <TentInput onChangeText={props.onChangeStar} />
           <ReviewStarWrapper>
-            <StarIcon
-              source={require("../../../../public/images/mypage/onstar.png")}
-            />
-            <StarIcon
-              source={require("../../../../public/images/mypage/onstar.png")}
-            />
-            <StarIcon
-              source={require("../../../../public/images/mypage/onstar.png")}
-            />
-            <StarIcon
-              source={require("../../../../public/images/mypage/onstar.png")}
-            />
-            <StarIcon
-              source={require("../../../../public/images/mypage/offstar.png")}
-            />
+            <Star>
+              {new Array(5).fill(1).map((el, index) => (
+                <StarButton
+                  key={index}
+                  onPress={() => props.setMyStar(index + 1)}
+                >
+                  {props.myStar > index ? (
+                    <StarIcon
+                      source={require("../../../../public/images/mypage/onstar.png")}
+                    />
+                  ) : (
+                    <StarIcon
+                      source={require("../../../../public/images/mypage/offstar.png")}
+                    />
+                  )}
+                </StarButton>
+              ))}
+            </Star>
+            <FlexLine />
           </ReviewStarWrapper>
           <LabelWrapper>
             <Label>리뷰 작성</Label>

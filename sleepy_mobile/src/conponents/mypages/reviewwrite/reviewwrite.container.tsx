@@ -8,18 +8,16 @@ import ReviewUI from "./reviewwrite.presenter";
 import {
   CREATE_USEDITEM_QUESTION,
   FETCH_USED_ITEM,
-  FETCH_USED_ITEM_QUESTIONS,
 } from "./reviewwrite.queries";
 
 export default function ReviewContainer() {
   const { id } = useContext(GlobalContext);
-  const [myImage, setMyImage] = useState("");
-  const [myStar, setMyStar] = useState("");
+  const [myStar, setMyStar] = useState(5);
+  const [myImage, setImage] = useState("");
 
   const [myContents, setMycontents] = useState("");
 
   const navigation = useNavigation();
-  console.log("review", id);
 
   const [createUseditemQuestion] = useMutation(CREATE_USEDITEM_QUESTION);
 
@@ -27,12 +25,6 @@ export default function ReviewContainer() {
     variables: { useditemId: id },
   });
 
-  function onChangeImage(event: any) {
-    setMyImage(event);
-  }
-  function onChangeStar(event: any) {
-    setMyStar(event);
-  }
   function onChangeContents(event: any) {
     setMycontents(event);
   }
@@ -46,16 +38,9 @@ export default function ReviewContainer() {
             contents: myStar + "#$%&" + myContents + "#$%&" + myImage,
           },
         },
-        refetchQueries: [
-          {
-            query: FETCH_USED_ITEM_QUESTIONS,
-            variables: { useditemId: id },
-          },
-        ],
       });
       Alert.alert("리뷰를 등록합니다~");
       navigation.navigate("마이페이지");
-      console.log("id", id);
     } catch (error) {
       Alert.alert(error.message);
     }
@@ -63,9 +48,10 @@ export default function ReviewContainer() {
   return (
     <ReviewUI
       onChangeContents={onChangeContents}
-      onChangeStar={onChangeStar}
-      onChangeImage={onChangeImage}
       onClickRegisterReview={onClickRegisterReview}
+      setImage={setImage}
+      myStar={myStar}
+      setMyStar={setMyStar}
       data={data}
     />
   );

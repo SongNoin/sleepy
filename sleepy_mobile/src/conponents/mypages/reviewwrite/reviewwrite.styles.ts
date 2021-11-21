@@ -1,5 +1,4 @@
 import styled from "@emotion/native";
-import { TouchableOpacity } from "react-native-gesture-handler";
 
 export const ReviewWriteView = styled.View`
   flex: 1;
@@ -7,6 +6,7 @@ export const ReviewWriteView = styled.View`
   padding-left: 16px;
   background-color: #ffffff;
   padding-bottom: 20px;
+  align-items: center;
 `;
 
 export const ProductCard = styled.View`
@@ -107,40 +107,28 @@ export const LableLine = styled.View`
   margin-top: 12px;
 `;
 
+export const FlexLine = styled.View`
+  width: 339px;
+`;
 export const ReviewPhotoWrapper = styled.View`
   margin-top: 12px;
 
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 `;
-
-export const ReviewPhotoUpload = styled.TouchableOpacity`
-  width: 72px;
-  height: 72px;
-
-  background: #f1eef6;
-  border-radius: 8px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 20px;
-`;
-
-export const Plus = styled.Text`
-  font-family: "NotoSans-Regular";
-  font-style: normal;
-  font-size: 35px;
-
-  color: #3c3c3c;
-`;
-
 export const ReviewStarWrapper = styled.View`
   margin-top: 13px;
 
   display: flex;
+  flex-direction: column;
+`;
+
+export const Star = styled.View`
+  display: flex;
   flex-direction: row;
 `;
+
+export const StarButton = styled.TouchableOpacity``;
 
 export const StarIcon = styled.Image`
   width: 22px;
@@ -191,20 +179,4 @@ export const ReviewWriteButtonText = styled.Text`
   /* identical to box height */
 
   color: #ffffff;
-`;
-
-export const TentInput = styled.TextInput`
-  width: 339px;
-  height: 50px;
-  padding-left: 15px;
-  padding-top: 15px;
-
-  font-family: "NotoSans-Bold";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 19px;
-
-  color: black;
-  justify-content: center;
 `;

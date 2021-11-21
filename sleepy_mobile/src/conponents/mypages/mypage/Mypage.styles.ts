@@ -18,6 +18,7 @@ export const ProfileWrapper = styled.View`
 export const ProfileImage = styled.Image`
   width: 100px;
   height: 100px;
+  border-radius: 50px;
 `;
 
 export const ProfileInfoWrapper = styled.View`
@@ -87,20 +88,37 @@ export const IconBackGround = styled.TouchableOpacity`
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 8px;
 `;
 
 export const IconWrapper = styled.View`
   height: 50px;
-  margin-top: 32px;
+  margin-top: 20px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  padding-left: 62px;
-  padding-right: 62px;
+  justify-content: center;
 `;
 
-export const InsertImage = styled.Image``;
+export const InsertImage = styled.Image`
+  width: 24px;
+  height: 24px;
+`;
 
+export const InsertFavoriteImage = styled.Image`
+  width: 21px;
+  height: 23px;
+`;
+export const InsertText = styled.Text`
+  font-family: "NotoSans-Bold";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 9px;
+  line-height: 12px;
+
+  margin-top: 2px;
+
+  color: #ffffff;
+`;
 export const HistoryWrapper = styled.View``;
 export const HistoryTitleWrapper = styled.View`
   display: flex;

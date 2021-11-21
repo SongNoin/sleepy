@@ -14,6 +14,7 @@ import {
   NameInput,
   ButtonWrapper,
   UploadButton,
+  ImageArea,
 } from "./register.styles";
 
 import Select from "@mui/material/Select";
@@ -25,13 +26,19 @@ import InputLabel from "@mui/material/InputLabel";
 
 import ReactQuil01 from "./register.quill";
 
-import Uploads from "../../commons/uploads/Uploads.container";
+// import Uploads from "../../commons/uploads/Uploads.container";
+
+import DropZone01 from "../../commons/dropzone/Dropzone.container";
 
 export default function RegisterUI(props) {
   return (
     <Wrapper>
       <Title>상품 등록</Title>
-      <form onSubmit={props.handleSubmit(props.onClickUploadProudct)}>
+      <form
+        onSubmit={props.handleSubmit(
+          props.isEdit ? props.onClickUpdateProduct : props.onClickUploadProudct
+        )}
+      >
         <InnerWrapper>
           <BasicWrapper>
             <LeftWrapper>
@@ -42,6 +49,7 @@ export default function RegisterUI(props) {
                 type="text"
                 onChange={props.onChangeMyName}
                 placeholder="상품 명을 입력해주세요."
+                defaultValue={props.fetchData?.fetchUseditem.name.split("#")[1]}
               />
             </RightWrapper>
           </BasicWrapper>
@@ -50,7 +58,11 @@ export default function RegisterUI(props) {
               <Name>상품 설명</Name>
             </LeftBasicWrapper>
             <RightContentWrapper>
-              <ReactQuil01 onChange={props.onChangeMyContent} />
+              <ReactQuil01
+                onChange={props.onChangeMyContent}
+                isEdit={props.isEdit}
+                defaultValue={props.fetchData?.fetchUseditem.contents}
+              />
             </RightContentWrapper>
           </ContentWrapper>
           <BasicWrapper>
@@ -62,6 +74,7 @@ export default function RegisterUI(props) {
                 type="text"
                 onChange={props.onChangeMyPrice}
                 placeholder="상품 가격을 입력해주세요."
+                defaultValue={props.fetchData?.fetchUseditem.price}
               />
             </RightWrapper>
           </BasicWrapper>
@@ -83,13 +96,20 @@ export default function RegisterUI(props) {
                     marginTop: "10px",
                     marginBottom: "10px",
                     border: "2px solid #5b5bc0",
-                    borderRadius: "10px",
+                    borderRadius: "6px",
                   }}
                 >
                   <FormControl fullWidth>
-                    <InputLabel id="demo-simple-select-label">
-                      카테고리
-                    </InputLabel>
+                    {!props.isEdit ? (
+                      <InputLabel id="demo-simple-select-label">
+                        카테고리
+                      </InputLabel>
+                    ) : (
+                      <InputLabel id="demo-simple-select-label">
+                        {props.fetchData?.fetchUseditem.tags}
+                      </InputLabel>
+                    )}
+
                     <Select
                       labelId="demo-simple-select-label"
                       id="demo-simple-select"
@@ -120,20 +140,39 @@ export default function RegisterUI(props) {
             </LeftBasicWrapper>
             <RightWrapper>
               <UploadImage>
-                {new Array(3).fill(1).map((el, index) => (
+                {/* {new Array(3).fill(1).map((el, index) => (
                   <Uploads
                     onChangeFiles={props.onChangeFiles}
+                    defaultFileUrl={
+                      props.fetchData?.fetchUseditem.images?.[index]
+                    }
                     key={`${el}_${index}`}
                     index={index}
                     type="submit"
                   />
-                ))}
+                ))} */}
+                <ImageArea>
+                  <DropZone01
+                    onChangeFiles={props.onChangeFiles}
+                    defaultFileUrl={props.fetchData?.fetchUseditem.images}
+                    data={props.fetchData}
+                    isEdit={props.isEdit}
+                  />
+                </ImageArea>
               </UploadImage>
             </RightWrapper>
           </ImagesWrapper>
         </InnerWrapper>
         <ButtonWrapper>
-          <UploadButton>상품 등록하기</UploadButton>
+          {!props.isEdit ? (
+            <UploadButton onClick={props.onClickUploadProudct}>
+              상품 등록하기
+            </UploadButton>
+          ) : (
+            <UploadButton onClick={props.onClickUpdateProduct}>
+              상품 수정하기
+            </UploadButton>
+          )}
         </ButtonWrapper>
       </form>
     </Wrapper>

@@ -24,6 +24,7 @@ export const InnerTopWrapper = styled.View`
 export const Avatar = styled.Image`
   width: 36px;
   height: 36px;
+  border-radius: 50px;
   margin-right: 2%;
   width: 12%;
 `;
@@ -53,10 +54,8 @@ export const ReviewStar = styled.Image`
 `;
 
 export const Photos = styled.View`
-  width: 26%;
+  width: 8%;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
 `;
 
 export const AddPhoto = styled.Image`
@@ -66,6 +65,15 @@ export const AddPhoto = styled.Image`
   /* border: 1px solid red; */
 `;
 
+export const BigAddPhoto = styled.Image`
+  position: absolute;
+  right: -20px;
+
+  width: 140px;
+  height: 140px;
+  border-radius: 8px;
+`;
+export const AddPhotoButton = styled.TouchableOpacity``;
 export const NoPhoto = styled.View`
   width: 36px;
   height: 36px;

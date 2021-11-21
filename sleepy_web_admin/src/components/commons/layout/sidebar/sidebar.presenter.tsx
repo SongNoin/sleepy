@@ -31,7 +31,7 @@ export default function SidebarUI(props) {
             src={
               props.data?.fetchUserLoggedIn.picture
                 ? `https://storage.googleapis.com/${props.data?.fetchUserLoggedIn.picture}`
-                : "/images/slavatar.png"
+                : "/images/defaultprofile.png"
             }
           />
           <Name>
@@ -54,27 +54,27 @@ export default function SidebarUI(props) {
           {props.data?.fetchUserLoggedIn.name[0] === "#" ? (
             // 관리자인 경우
             <>
-              <InnerWrapperDashboard isClickDashboard={props.isClickDashboard}>
-                {props.isClickDashboard ? (
+              <InnerWrapperDashboard isActive={props.isActive}>
+                {props.isActive === "/dashboard" ? (
                   <SideMenuDashboardIcon src="/images/dashboard_click.png" />
                 ) : (
                   <SideMenuDashboardIcon src="/images/dashboard.png" />
                 )}
                 <SideMenuButtonDashboard
-                  isClickDashboard={props.isClickDashboard}
+                  isActive={props.isActive}
                   onClick={props.onClickMoveToDashboard}
                 >
-                  대쉬보드
+                  대시보드
                 </SideMenuButtonDashboard>
               </InnerWrapperDashboard>
-              <InnerWrapperModify isClickModify={props.isClickModify}>
-                {props.isClickModify ? (
+              <InnerWrapperModify isActive={props.isActive}>
+                {props.isActive === "/profilemodify" ? (
                   <SideMenuIcon src="/images/modify_click.png" />
                 ) : (
                   <SideMenuIcon src="/images/modify.png" />
                 )}
                 <SideMenuButtonModify
-                  isClickModify={props.isClickModify}
+                  isActive={props.isActive}
                   onClick={props.onClickMoveToModify}
                 >
                   내 정보 수정
@@ -84,67 +84,67 @@ export default function SidebarUI(props) {
           ) : (
             // 판매자인 경우
             <>
-              <InnerWrapperDashboard isClickDashboard={props.isClickDashboard}>
-                {props.isClickDashboard ? (
+              <InnerWrapperDashboard isActive={props.isActive}>
+                {props.isActive === "/dashboard" ? (
                   <SideMenuDashboardIcon src="/images/dashboard_click.png" />
                 ) : (
                   <SideMenuDashboardIcon src="/images/dashboard.png" />
                 )}
                 <SideMenuButtonDashboard
-                  isClickDashboard={props.isClickDashboard}
+                  isActive={props.isActive}
                   onClick={props.onClickMoveToDashboard}
                 >
-                  대쉬보드
+                  대시보드
                 </SideMenuButtonDashboard>
               </InnerWrapperDashboard>
-              <InnerWrapperRegister isClickRegister={props.isClickRegister}>
-                {!props.isClickRegister ? (
-                  <SideMenuIcon src="/images/posticon.png" />
-                ) : (
+              <InnerWrapperRegister isActive={props.isActive}>
+                {props.isActive === "/register" ? (
                   <SideMenuIcon src="/images/posticon_click.png" />
+                ) : (
+                  <SideMenuIcon src="/images/posticon.png" />
                 )}
                 <SideMenuButtonRegister
-                  isClickRegister={props.isClickRegister}
+                  isActive={props.isActive}
                   onClick={props.onClickMoveToRegister}
                 >
                   상품 등록
                 </SideMenuButtonRegister>
               </InnerWrapperRegister>
-              <InnerWrapperProduct isClickProduct={props.isClickProduct}>
-                {props.isClickProduct ? (
+              <InnerWrapperProduct isActive={props.isActive}>
+                {props.isActive === "/productstable" ? (
                   <SideMenuIcon src="/images/presenticon_click.png" />
                 ) : (
                   <SideMenuIcon src="/images/presenticon.png" />
                 )}
                 <SideMenuButtonProduct
-                  isClickProduct={props.isClickProduct}
+                  isActive={props.isActive}
                   onClick={props.onClickMoveToProductstable}
                 >
                   상품 현황
                 </SideMenuButtonProduct>
               </InnerWrapperProduct>
 
-              <InnerWrapperSales isClickSales={props.isClickSales}>
-                {props.isClickSales ? (
+              <InnerWrapperSales isActive={props.isActive}>
+                {props.isActive === "/salestable" ? (
                   <SideMenuIcon src="/images/sellicon_click.png" />
                 ) : (
                   <SideMenuIcon src="/images/sellicon.png" />
                 )}
                 <SideMenuButtonSales
-                  isClickSales={props.isClickSales}
+                  isActive={props.isActive}
                   onClick={props.onClickMoveToSalestable}
                 >
                   판매 현황
                 </SideMenuButtonSales>
               </InnerWrapperSales>
-              <InnerWrapperModify isClickModify={props.isClickModify}>
-                {props.isClickModify ? (
+              <InnerWrapperModify isActive={props.isActive}>
+                {props.isActive === "/profilemodify" ? (
                   <SideMenuIcon src="/images/modify_click.png" />
                 ) : (
                   <SideMenuIcon src="/images/modify.png" />
                 )}
                 <SideMenuButtonModify
-                  isClickModify={props.isClickModify}
+                  isActive={props.isActive}
                   onClick={props.onClickMoveToModify}
                 >
                   내 정보 수정

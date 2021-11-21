@@ -56,7 +56,7 @@ export const InnerWrapper = styled.div`
   /* background-color: #f5f5fb; */
 `;
 
-export const InnerWrapperRegister = styled.div<{ isClickRegister: boolean }>`
+export const InnerWrapperRegister = styled.div<{ isActive: string }>`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -64,10 +64,10 @@ export const InnerWrapperRegister = styled.div<{ isClickRegister: boolean }>`
   padding: 15px 0px 15px 36px;
   cursor: pointer;
   background-color: ${(props) =>
-    props.isClickRegister === true ? "#F5F5FB" : "#normal"};
+    props.isActive === "/register" ? "#F5F5FB" : "#normal"};
 `;
 
-export const InnerWrapperProduct = styled.div<{ isClickProduct: boolean }>`
+export const InnerWrapperProduct = styled.div<{ isActive: string }>`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -76,10 +76,10 @@ export const InnerWrapperProduct = styled.div<{ isClickProduct: boolean }>`
   cursor: pointer;
 
   background-color: ${(props) =>
-    props.isClickProduct === true ? "#F5F5FB" : "#normal"};
+    props.isActive === "/productstable" ? "#F5F5FB" : "#normal"};
 `;
 
-export const InnerWrapperSales = styled.div<{ isClickSales: boolean }>`
+export const InnerWrapperSales = styled.div<{ isActive: string }>`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -89,10 +89,10 @@ export const InnerWrapperSales = styled.div<{ isClickSales: boolean }>`
   cursor: pointer;
 
   background-color: ${(props) =>
-    props.isClickSales === true ? "#F5F5FB" : "#normal"};
+    props.isActive === "/salestable" ? "#F5F5FB" : "#normal"};
 `;
 
-export const InnerWrapperDashboard = styled.div<{ isClickDashboard: boolean }>`
+export const InnerWrapperDashboard = styled.div<{ isActive: string }>`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -101,10 +101,10 @@ export const InnerWrapperDashboard = styled.div<{ isClickDashboard: boolean }>`
   cursor: pointer;
 
   background-color: ${(props) =>
-    props.isClickDashboard === true ? "#F5F5FB" : "#normal"};
+    props.isActive === "/dashboard" ? "#F5F5FB" : "#normal"};
 `;
 
-export const InnerWrapperModify = styled.div<{ isClickModify: boolean }>`
+export const InnerWrapperModify = styled.div<{ isActive: string }>`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -113,10 +113,10 @@ export const InnerWrapperModify = styled.div<{ isClickModify: boolean }>`
   cursor: pointer;
 
   background-color: ${(props) =>
-    props.isClickModify === true ? "#F5F5FB" : "#normal"};
+    props.isActive === "/profilemodify" ? "#F5F5FB" : "#normal"};
 `;
 
-export const SideMenuButtonModify = styled.div<{ isClickModify: boolean }>`
+export const SideMenuButtonModify = styled.div<{ isActive: string }>`
   width: 100%;
   height: 18px;
   display: flex;
@@ -126,7 +126,8 @@ export const SideMenuButtonModify = styled.div<{ isClickModify: boolean }>`
   font-style: normal;
   line-height: 19.07px;
   color: #3b3b3b;
-  font-weight: ${(props) => (props.isClickModify === true ? "700" : "400")};
+  font-weight: ${(props) =>
+    props.isActive === "/profilemodify" ? "700" : "400"};
 `;
 
 export const SideMenuIcon = styled.img`
@@ -153,7 +154,7 @@ export const SideMenuButton = styled.div`
   cursor: pointer;
 `;
 
-export const SideMenuButtonRegister = styled.div<{ isClickRegister: boolean }>`
+export const SideMenuButtonRegister = styled.div<{ isActive: string }>`
   width: 100%;
   height: 18px;
   display: flex;
@@ -163,10 +164,10 @@ export const SideMenuButtonRegister = styled.div<{ isClickRegister: boolean }>`
   font-style: normal;
   line-height: 19.07px;
   color: #3b3b3b;
-  font-weight: ${(props) => (props.isClickRegister === true ? "700" : "400")};
+  font-weight: ${(props) => (props.isActive === "/register" ? "700" : "400")};
 `;
 
-export const SideMenuButtonProduct = styled.div<{ isClickProduct: boolean }>`
+export const SideMenuButtonProduct = styled.div<{ isActive: string }>`
   width: 100%;
   height: 18px;
   display: flex;
@@ -176,16 +177,17 @@ export const SideMenuButtonProduct = styled.div<{ isClickProduct: boolean }>`
   font-style: normal;
   line-height: 19.07px;
   color: #3b3b3b;
-  font-weight: ${(props) => (props.isClickProduct === true ? "700" : "400")};
+  font-weight: ${(props) =>
+    props.isActive === "/productstable" ? "700" : "400"};
 `;
 
-export const SideMenuButtonSales = styled.div<{ isClickSales: boolean }>`
+export const SideMenuButtonSales = styled.div<{ isActive: string }>`
   width: 100%;
   height: 18px;
   display: flex;
   align-items: center;
   font-family: NotoSans-Regular;
-  font-weight: ${(props) => (props.isClickSales === true ? "700" : "400")};
+  font-weight: ${(props) => (props.isActive === "/salestable" ? "700" : "400")};
   font-size: 14px;
   font-style: normal;
   line-height: 19.07px;
@@ -193,14 +195,14 @@ export const SideMenuButtonSales = styled.div<{ isClickSales: boolean }>`
 `;
 
 export const SideMenuButtonDashboard = styled.div<{
-  isClickDashboard: boolean;
+  isActive: string;
 }>`
   width: 100%;
   height: 18px;
   display: flex;
   align-items: center;
   font-family: NotoSans-Regular;
-  font-weight: ${(props) => (props.isClickDashboard === true ? "700" : "400")};
+  font-weight: ${(props) => (props.isActive === "/dashboard" ? "700" : "400")};
   font-size: 14px;
   font-style: normal;
   line-height: 19.07px;

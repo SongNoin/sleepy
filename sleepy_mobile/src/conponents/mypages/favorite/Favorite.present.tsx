@@ -43,7 +43,9 @@ const FavoriteUI = (props) => {
               />
               <FavoriteContent>
                 <FavoriteName>
-                  {el.name.length > 9 ? `${el.name.substr(0, 10)}...` : el.name}
+                  {String(el.name.split("#")[1]).length > 9
+                    ? `${el.name.split("#")[1].substr(0, 10)}...`
+                    : el.name.split("#")[1]}
                 </FavoriteName>
                 <FavoritePrice>
                   {el.price.toLocaleString("ko-KR")} 원

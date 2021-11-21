@@ -6,7 +6,7 @@ export const DetailText = styled(ReactQuill)`
   height: 190px;
   width: 1096px;
   padding-bottom: 40px;
-  border: 1px solid #5b5bc0;
+  border: 2px solid #5b5bc0;
 `;
 
 export const Wrapper = styled.div`
@@ -46,7 +46,7 @@ export const ContentWrapper = styled.div`
 
 export const ImagesWrapper = styled.div`
   width: 100%;
-  height: 228px;
+  height: 500px;
   display: flex;
   flex-direction: row;
 `;
@@ -72,6 +72,7 @@ export const LeftBasicWrapper = styled.div`
 `;
 
 export const RightWrapper = styled.div`
+  width: 100%;
   height: 100%;
   display: flex;
   flex-direction: row;
@@ -79,6 +80,7 @@ export const RightWrapper = styled.div`
 `;
 
 export const RightContentWrapper = styled.div`
+  width: 100%;
   padding: 16px 0px 0px 40px;
 `;
 
@@ -86,7 +88,6 @@ export const NameInput = styled.input`
   width: 548px;
   height: 54px;
   margin-left: 40px;
-  border-radius: 15px;
   border: 2px solid #5b5bc0;
   padding-left: 32px;
 `;
@@ -100,6 +101,7 @@ export const UploadImage = styled.div`
   /* border: 1px solid red; */
   margin-left: 40px;
   display: flex;
+  height: 100%;
 `;
 
 export const ButtonWrapper = styled.div`
@@ -118,4 +120,12 @@ export const UploadButton = styled.button`
 
   font-size: 18px;
   margin-top: 30px;
+`;
+
+export const ImageArea = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: 40px;
 `;

@@ -50,6 +50,10 @@ export default function ProfileModify() {
   }
 
   async function onClickUpdateUserName() {
+    if (/[!?@#$%^&*():;+-=~{}<>]/.test(myName)) {
+      alert("이름에 특수부호를 넣을 수 없습니다!");
+      return;
+    }
     try {
       await updateUser({
         variables: {
