@@ -8,7 +8,6 @@ import DetailScreen from "../screens/detail";
 import NavigationLogo2 from "../../src/conponents/commons/navigationheader/navigationlogo2";
 import { GlobalContext } from "../../App";
 import CartScreen from "../screens/mypages/cart";
-import PayScreen from "../screens/pay";
 import BuyCompleteScreen from "../screens/buyComplete/buyComplete";
 import BuyFailScreen from "../screens/buyFail";
 import MypageScreen from "../screens/mypages/myMain";
@@ -60,15 +59,6 @@ const SearchNavigator = () => {
       <Stack.Screen
         name="장바구니"
         component={CartScreen}
-        options={({ route }) => ({
-          headerShown: true,
-          headerTitle: () => <NavigationLogo2 />,
-          tabBarStyle: getVisibility(route),
-        })}
-      />
-      <Stack.Screen
-        name="결제하기"
-        component={PayScreen}
         options={({ route }) => ({
           headerShown: true,
           headerTitle: () => <NavigationLogo2 />,
