@@ -81,10 +81,9 @@ const SearchContainer = () => {
   const searchLastDay = () => {
     const arr: string[] = []
     for(let i=0; i<=1; i++) {
-      const newArr = new Date(year, month, day-i).toLocaleDateString().split('. ')
-      const res = `${newArr[0]}-${newArr[1]}-${newArr[2]}`
-      const result = res.slice(0,10)
-      arr.push(result)
+      const newArr = new Date(year, month, day-i).toLocaleDateString().split('/')
+      const res = `20${newArr[2]}-${newArr[0]}-${newArr[1]}`
+      arr.push(res)
     }
     const filterRes = data?.fetchUseditems.filter((el:any)=>{
       return arr.includes(el.createdAt.slice(0,10))
@@ -95,10 +94,9 @@ const SearchContainer = () => {
   const searchLastWeek = () => {
     const arr: string[] = []
     for(let i=0; i<=7; i++) {
-      const newArr = new Date(year, month, day-i).toLocaleDateString().split('. ')
-      const res = `${newArr[0]}-${newArr[1]}-${newArr[2]}`
-      const result = res.slice(0,10)
-      arr.push(result)
+      const newArr = new Date(year, month, day-i).toLocaleDateString().split('/')
+      const res = `20${newArr[2]}-${newArr[0]}-${newArr[1]}`
+      arr.push(res)
     }
     const filterRes = data?.fetchUseditems.filter((el:any)=>{
       return arr.includes(el.createdAt.slice(0,10))
