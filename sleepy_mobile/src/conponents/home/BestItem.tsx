@@ -15,8 +15,7 @@ const DetailProductWrapper = styled.View`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
-  margin-top: 10px;
+  /* margin-top: 10px; */
   /* margin-left: 20px; */
 `;
 
@@ -26,7 +25,9 @@ const ProductImage = styled.Image`
   height: 100%;
 `;
 
-const InformationWrapper = styled.View``;
+const InformationWrapper = styled.View`
+  margin-top: 20px;
+`;
 
 const ProductTitle = styled.Text`
   width: 122px;
@@ -41,11 +42,12 @@ const ProductTitle = styled.Text`
 const FavoriteImage = styled.Image`
   width: 15.72px;
   height: 18px;
+  margin-right: 3px;
 `;
 
 const ContentsWrapper = styled.View`
   width: 160px;
-  height: 18px;
+  height: 12px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -66,8 +68,12 @@ const ProductPrice = styled.Text`
 const PickedCount = styled.Text`
   width: 10px;
   height: 15px;
-  /* color: #5b5bc0; */
-  /* font-weight: 600; */
+  margin-right: 5px;
+  color: #5b5bc0;
+  font-style: normal;
+  font-family: "NotoSans-Bold";
+  font-weight: bold;
+  font-size: 12px;
 `;
 
 const ContentsTextWrapper = styled.View`
@@ -76,7 +82,9 @@ const ContentsTextWrapper = styled.View`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-top: 9px;
+  margin-top: 6px;
+  margin-bottom: 4px;
+  /* border: 1px solid red; */
 `;
 
 const BestItem = (props) => {
@@ -106,7 +114,7 @@ const BestItem = (props) => {
                 <ContentsWrapper>
                   <ProductTitle>
                     {String(el.name.split("#")[1]).length > 9
-                      ? `${el.name.split("#")[1].substr(0, 10)}...`
+                      ? `${el.name.split("#")[1].substr(0, 11)}...`
                       : el.name.split("#")[1]}
                   </ProductTitle>
                   {props.myPickData?.includes(el._id) ? (
