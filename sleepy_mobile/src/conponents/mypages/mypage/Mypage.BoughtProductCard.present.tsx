@@ -50,7 +50,11 @@ const BoughtProductCard = (props: any) => {
 
         <ProductPriceWrapper>
           <ProductPrice>
-            {props.el.useditem.price.toLocaleString("ko-KR")}
+            {props.el.useditem.price
+              .toLocaleString("ko-KR")
+              .toString()
+              .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{" "}
+            원
           </ProductPrice>
         </ProductPriceWrapper>
         <ReviewButon

@@ -3,10 +3,14 @@ import styled from "@emotion/native";
 export const MyPointView = styled.View`
   flex: 1;
   align-items: center;
+  justify-content: center;
   background-color: white;
 `;
 
-export const MyPointImage = styled.Image``;
+export const MyPointImage = styled.Image`
+  width: 339px;
+  height: 180px;
+`;
 export const MyPointInputText = styled.Text`
   font-family: "NotoSans-Bold";
   font-style: normal;

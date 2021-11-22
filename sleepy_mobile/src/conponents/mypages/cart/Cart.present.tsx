@@ -27,11 +27,11 @@ const CartUI = (props: any) => {
     <ScrollView style={{ backgroundColor: "white" }}>
       <MyCartView>
         <CartListWrapper>
-          {(!props.productInfo || props.productInfo?.length===0) && 
-          <EmptyWrapper>
-            <EmptyText>장바구니가 비어있습니다!</EmptyText>
-          </EmptyWrapper>
-          }
+          {(!props.productInfo || props.productInfo?.length === 0) && (
+            <EmptyWrapper>
+              <EmptyText>장바구니가 비어있습니다!</EmptyText>
+            </EmptyWrapper>
+          )}
 
           {props.productInfo
             ?.map((el: any) => (
@@ -74,7 +74,9 @@ const CartUI = (props: any) => {
                         });
                       }
                     }}
-                  >{`${el.productPrice}원`}</CartPrice>
+                  >{`${el.productPrice
+                    .toString()
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원`}</CartPrice>
 
                   {!soldOutList?.includes(el.id) && (
                     <BuyButton onPress={props.buyMyFavoritePr(el)}>

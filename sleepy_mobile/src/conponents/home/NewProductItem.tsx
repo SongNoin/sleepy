@@ -44,6 +44,7 @@ const DetailProduct = styled.TouchableOpacity`
   background-color: #e8e8e8;
   border-radius: 15px;
   margin-top: 20px;
+  /* border: 1px solid red; */
 `;
 
 const ProductImage = styled.Image`
@@ -54,7 +55,7 @@ const ProductImage = styled.Image`
 
 const ContentsWrapper = styled.View`
   width: 160px;
-  height: 18px;
+  height: 12px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -71,6 +72,7 @@ const ProductTitle = styled.Text`
 const FavoriteImage = styled.Image`
   width: 15.72px;
   height: 18px;
+  margin-right: 3px;
 `;
 
 const ProductPrice = styled.Text`
@@ -90,14 +92,19 @@ const ContentsTextWrapper = styled.View`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-top: 9px;
+  margin-top: 6px;
+  margin-bottom: 4px;
 `;
 
 const PickedCount = styled.Text`
   width: 10px;
   height: 15px;
-  /* color: #5b5bc0; */
-  /* font-weight: 600; */
+  margin-right: 5px;
+  color: #5b5bc0;
+  font-style: normal;
+  font-family: "NotoSans-Bold";
+  font-weight: bold;
+  font-size: 12px;
 `;
 
 const NewProductItem = (props) => {

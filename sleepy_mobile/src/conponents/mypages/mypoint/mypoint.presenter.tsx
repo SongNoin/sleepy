@@ -14,7 +14,7 @@ const MyPointUI = (props: any) => {
     <>
       <MyPointView>
         <MyPointImage
-          source={require("../../../../public/images/detail/purchase.png")}
+          source={require("../../../../public/images/mypage/chargerabbit.png")}
         />
         <MyPointInputText>충전할 금액을 입력해주세요!</MyPointInputText>
         <MyPointInput onChangeText={props.onChageChageAmount}></MyPointInput>
