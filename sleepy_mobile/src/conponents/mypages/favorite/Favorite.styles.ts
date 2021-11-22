@@ -1,5 +1,8 @@
 import styled from "@emotion/native";
 
+export const ScrollView = styled.ScrollView`
+  background-color: white;
+`;
 export const FavoriteView = styled.View`
   flex: 1;
   align-items: center;

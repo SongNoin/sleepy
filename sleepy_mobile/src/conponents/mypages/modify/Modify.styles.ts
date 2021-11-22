@@ -10,11 +10,9 @@ export const ModifyView = styled.View`
 
 export const ModifyPhotoWrapper = styled.View``;
 export const ModifynameWrapper = styled.View`
-  margin-top: 18px;
+  margin-top: 60px;
 `;
-export const ModifyTitleWapper = styled.View`
-  margin-top: 24px;
-`;
+export const ModifyTitleWapper = styled.View``;
 export const ModifyPhoto = styled.View`
   margin-top: 20px;
   margin-bottom: 20px;
@@ -79,7 +77,9 @@ export const ModifyInput = styled.TextInput`
   color: black;
   justify-content: center;
 `;
-export const ModifyPasswordWrapper = styled.View``;
+export const ModifyPasswordWrapper = styled.View`
+  margin-top: 60px;
+`;
 
 export const ModifyButton = styled.TouchableOpacity`
   width: 339px;
