@@ -59,9 +59,6 @@ const ModifyUI = (props: any) => {
           </ModifyButton>
         </ModifynameWrapper>
         <ModifyPasswordWrapper>
-          <ModifyTitleWapper>
-            <Title></Title>
-          </ModifyTitleWapper>
           <ModifynameInputWrapper>
             <ModifyTitleWapper>
               <Title>비밀번호 변경</Title>

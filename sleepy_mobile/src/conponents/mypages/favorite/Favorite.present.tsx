@@ -1,6 +1,5 @@
 import { useNavigation } from "@react-navigation/core";
 import React from "react";
-import { ScrollView } from "react-native-gesture-handler";
 
 import {
   FavoriteView,
@@ -13,6 +12,7 @@ import {
   FavoriteContent,
   FavoriteName,
   FavoritePrice,
+  ScrollView,
 } from "./Favorite.styles";
 
 const FavoriteUI = (props) => {
@@ -48,7 +48,11 @@ const FavoriteUI = (props) => {
                     : el.name.split("#")[1]}
                 </FavoriteName>
                 <FavoritePrice>
-                  {el.price.toLocaleString("ko-KR")} 원
+                  {el.price
+                    .toLocaleString("ko-KR")
+                    .toString()
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{" "}
+                  원
                 </FavoritePrice>
               </FavoriteContent>
             </FavoriteCard>

@@ -8,6 +8,8 @@ export const BuyView = styled.View`
 `;
 
 export const PurchaseImg = styled.Image`
+  width: 339px;
+  height: 180px;
   margin-bottom: 12%;
 `;
 

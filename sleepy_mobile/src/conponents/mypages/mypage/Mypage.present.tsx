@@ -33,11 +33,11 @@ import {
   Column,
   ColumnContent,
   ColumnContentWapper,
+  ScrollView,
 } from "./Mypage.styles";
 
 import { useNavigation } from "@react-navigation/native";
 import BoughtProductCard from "./Mypage.BoughtProductCard.present";
-import { ScrollView } from "react-native-gesture-handler";
 
 const MypageUI = (props: any) => {
   const navigation = useNavigation();
@@ -71,7 +71,11 @@ const MypageUI = (props: any) => {
             <ProfilePointWrapper>
               <ProfilePoint>포인트</ProfilePoint>
               <ProfilePointContent>
-                {props.data?.fetchUserLoggedIn?.userPoint.amount} 원
+                {props.data?.fetchUserLoggedIn?.userPoint.amount
+                  .toLocaleString("ko-KR")
+                  .toString()
+                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{" "}
+                원
               </ProfilePointContent>
             </ProfilePointWrapper>
           </ProfileInfoWrapper>
@@ -147,8 +151,18 @@ const MypageUI = (props: any) => {
                 <ColumnContentWapper>
                   <ColumnContent status={el.status}>{el.status}</ColumnContent>
                 </ColumnContentWapper>
-                <Column>{el.amount.toLocaleString("ko-KR")}</Column>
-                <Column>{el.balance.toLocaleString("ko-KR")}</Column>
+                <Column>
+                  {el.amount
+                    .toLocaleString("ko-KR")
+                    .toString()
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                </Column>
+                <Column>
+                  {el.balance
+                    .toLocaleString("ko-KR")
+                    .toString()
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                </Column>
               </Row>
             ))}
           </PointHistoryWrapper>
