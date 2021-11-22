@@ -11,13 +11,13 @@ const ProductWrapper = styled.View`
 `;
 
 const ProductImage = styled.Image`
-  border-top-left-radius: 13px;
-  border-top-right-radius: 13px;
+  border-radius: 13px;
+  /* border-top-right-radius: 13px; */
   width: 325px;
   height: 174px;
 `;
 
-const ProductImages = (props) => {
+const ProductImages = (props: any) => {
   const [page, setPage] = useState(0);
 
   const screenWidth = Math.round(Dimensions.get("window").width);
@@ -56,10 +56,10 @@ const ProductImages = (props) => {
     <Carousel
       page={page}
       setPage={setPage}
-      gap={6}
+      gap={7}
       offset={0}
       data={ProductsSheet}
-      pageWidth={screenWidth - (5 + 15) * 2}
+      pageWidth={screenWidth - (10 + 15) * 2}
       RenderItem={ProductsSheetPage}
     />
   );

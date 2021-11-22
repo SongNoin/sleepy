@@ -24,7 +24,7 @@ export const MainBannerWrapper = styled.View`
 `;
 
 export const BestProductWrapper = styled.View`
-  margin-top: 32px;
+  margin-top: 46px;
   width: 339px;
 `;
 
@@ -64,13 +64,14 @@ export const MiddleWrapper2 = styled.View`
 
 export const MoreProduct = styled.TouchableOpacity`
   width: 339px;
-  height: 70px;
+  height: 50px;
   background: #f1eef6;
   border-radius: 15px;
   margin-top: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 20px;
 `;
 
 export const MoreProductText = styled.Text`
@@ -84,13 +85,14 @@ export const MoreProductText = styled.Text`
 
 export const CloseProduct = styled.TouchableOpacity`
   width: 339px;
-  height: 70px;
+  height: 50px;
   background: #f1eef6;
   border-radius: 15px;
   margin-top: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 20px;
 `;
 
 export const CloseProductText = styled.Text`
