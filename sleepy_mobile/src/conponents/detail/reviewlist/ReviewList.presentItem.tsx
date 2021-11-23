@@ -26,10 +26,10 @@ const ReviewListUIItem = (props: any) => {
       <InnerWrapper>
         <ReviewWrapper>
           <InnerTopWrapper>
-            {props.userData?.fetchUserLoggedIn.picture ? (
+            {props.el?.user.picture ? (
               <Avatar
                 source={{
-                  uri: `https://storage.googleapis.com/${props.userData?.fetchUserLoggedIn.picture}`,
+                  uri: `https://storage.googleapis.com/${props.el?.user.picture}`,
                 }}
               />
             ) : (
