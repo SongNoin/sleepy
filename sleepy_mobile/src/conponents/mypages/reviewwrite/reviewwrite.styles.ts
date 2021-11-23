@@ -3,7 +3,6 @@ import styled from "@emotion/native";
 export const ReviewWriteView = styled.View`
   flex: 1;
   background-color: white;
-  padding-left: 16px;
   background-color: #ffffff;
   padding-bottom: 20px;
   align-items: center;

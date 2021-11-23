@@ -49,12 +49,21 @@ export default function ReviewUI(props: any) {
               </CategoryWrapper>
               <ProductNameWrapper>
                 <ProductName>
-                  {props.data?.fetchUseditem.name.split("#")[1]}
+                  {String(props.data?.fetchUseditem.name.split("#")[1]).length >
+                  9
+                    ? `${String(
+                        props.data?.fetchUseditem.name.split("#")[1]
+                      ).substr(0, 10)}...`
+                    : props.data?.fetchUseditem.name.split("#")[1]}
                 </ProductName>
               </ProductNameWrapper>
               <ProductPriceWrapper>
                 <ProductPrice>
-                  {props.data?.fetchUseditem.price.toLocaleString("ko-KR")}원
+                  {props.data?.fetchUseditem.price
+                    .toLocaleString("ko-KR")
+                    .toString()
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                  원
                 </ProductPrice>
               </ProductPriceWrapper>
             </ProductInfo>
