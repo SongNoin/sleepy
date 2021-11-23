@@ -1,13 +1,20 @@
+/* eslint-disable no-use-before-define */
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../../../../App";
-import { FETCH_USED_ITEMS } from "./Cart.queries";
+import {
+  CREATE_POINT_TRANSACTION_OF_BUYING_AND_SELLING,
+  FETCH_USED_ITEMS,
+} from "./Cart.queries";
 import { useNavigation } from "@react-navigation/native";
 import CartUI from "./Cart.present";
-import { useQuery } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 
 const CartContainer = () => {
   const [productInfo, setProductInfo]: any = useState([]);
+  const [createPointTransactionOfBuyingAndSelling] = useMutation(
+    CREATE_POINT_TRANSACTION_OF_BUYING_AND_SELLING
+  );
   const { setId }: any = useContext(GlobalContext);
   const navigation = useNavigation();
   const { data, fetchMore }: any = useQuery(FETCH_USED_ITEMS, {
@@ -61,14 +68,22 @@ const CartContainer = () => {
 
   const deleteMyFavoritePr = (el: any) => () => {
     const afterDeleteMyFavoritePr = productInfo.filter(
-      (favorite) => favorite.id !== el.id
+      (favorite: any) => favorite.id !== el.id
     );
     AsyncStorage.setItem("@carts", JSON.stringify(afterDeleteMyFavoritePr));
   };
 
-  const buyMyFavoritePr = (el: any) => () => {
-    setId(el.id);
-    navigation.navigate("결제하기");
+  const buyMyFavoritePr = (el: any) => async () => {
+    try {
+      await createPointTransactionOfBuyingAndSelling({
+        variables: {
+          useritemId: el.id,
+        },
+      });
+      navigation.navigate("구매하기");
+    } catch (error) {
+      navigation.navigate("결제실패");
+    }
   };
 
   return (
