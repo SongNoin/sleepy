@@ -7,7 +7,9 @@ const ProductWrapper = styled.View`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  height: 200px;
+  width: 325px;
+  height: 174px;
+  /* border: 1px solid red; */
 `;
 
 const ProductImage = styled.Image`
@@ -56,7 +58,7 @@ const ProductImages = (props: any) => {
     <Carousel
       page={page}
       setPage={setPage}
-      gap={7}
+      gap={8}
       offset={0}
       data={ProductsSheet}
       pageWidth={screenWidth - (10 + 15) * 2}
