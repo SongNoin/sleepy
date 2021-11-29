@@ -67,7 +67,25 @@
 </p>
 
 ## 프로젝트 목표
+<p align="center">
+  <img width="1000" src="https://user-images.githubusercontent.com/88178866/143811337-932afb58-5810-422c-8cd5-744d5e6a604d.PNG">
+</p>
 
-## 와이어 프레임 & UI 디자인 & 플로우 차트
+## 플로우 차트
+<p align="center">
+  <img width="1000" src="https://user-images.githubusercontent.com/88178866/143814265-8dce2b1e-17e1-4325-8f0c-ecfe7ae93d13.png">
+</p>
 
-## 시연자료
+## 와이어프레임
+<p align="center">
+  <img width="1000" src="https://user-images.githubusercontent.com/88178866/143814935-60a1ba08-d006-4e8e-aba8-d6c6103ddd7f.png">
+</p>
+
+## UI 디자인
+<p align="center">
+  <img width="1000" src="https://user-images.githubusercontent.com/88178866/143814970-980bcd7f-d914-49d2-b316-6a84b972216c.png">
+</p>
+<p align="center">
+  <img width="1000" src="https://user-images.githubusercontent.com/88178866/143815551-faa44e81-aada-464f-96d2-afa18351cdde.png">
+</p>
+
